@@ -1,7 +1,6 @@
 node_modules/
 docs/todo.md
 docs/release-review-notes.md
-dist/
 dist-build/
 data/normalized/
 data/processed/*.geojson
