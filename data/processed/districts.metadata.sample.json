@@ -1,0 +1,136 @@
+[
+  {
+    "id": "TR-D-06-001",
+    "level": "district",
+    "parent_id": "TR-P-06",
+    "name": "Altindag",
+    "name_ascii": "altindag",
+    "slug": "altindag-ankara",
+    "aliases": [],
+    "plate_code": "06",
+    "district_local_code": "001",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1130",
+    "icisleri_id": "1130",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 39.9667,
+      "lon": 32.8667
+    },
+    "bbox": [39.88, 32.7, 40.08, 33.03]
+  },
+  {
+    "id": "TR-D-06-002",
+    "level": "district",
+    "parent_id": "TR-P-06",
+    "name": "Cankaya",
+    "name_ascii": "cankaya",
+    "slug": "cankaya-ankara",
+    "aliases": [],
+    "plate_code": "06",
+    "district_local_code": "002",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1237",
+    "icisleri_id": "1237",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 39.9179,
+      "lon": 32.8627
+    },
+    "bbox": [39.82, 32.68, 39.98, 33.05]
+  },
+  {
+    "id": "TR-D-34-001",
+    "level": "district",
+    "parent_id": "TR-P-34",
+    "name": "Adalar",
+    "name_ascii": "adalar",
+    "slug": "adalar-istanbul",
+    "aliases": [
+      "Princes' Islands"
+    ],
+    "plate_code": "34",
+    "district_local_code": "001",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1103",
+    "icisleri_id": "1103",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 40.87,
+      "lon": 29.12
+    },
+    "bbox": [40.82, 29.02, 40.93, 29.2]
+  },
+  {
+    "id": "TR-D-34-002",
+    "level": "district",
+    "parent_id": "TR-P-34",
+    "name": "Besiktas",
+    "name_ascii": "besiktas",
+    "slug": "besiktas-istanbul",
+    "aliases": [],
+    "plate_code": "34",
+    "district_local_code": "002",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1183",
+    "icisleri_id": "1183",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 41.043,
+      "lon": 29.007
+    },
+    "bbox": [41.01, 28.98, 41.08, 29.06]
+  },
+  {
+    "id": "TR-D-35-001",
+    "level": "district",
+    "parent_id": "TR-P-35",
+    "name": "Karsiyaka",
+    "name_ascii": "karsiyaka",
+    "slug": "karsiyaka-izmir",
+    "aliases": [],
+    "plate_code": "35",
+    "district_local_code": "001",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1432",
+    "icisleri_id": "1432",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 38.455,
+      "lon": 27.109
+    },
+    "bbox": [38.4, 27.03, 38.52, 27.19]
+  },
+  {
+    "id": "TR-D-35-002",
+    "level": "district",
+    "parent_id": "TR-P-35",
+    "name": "Konak",
+    "name_ascii": "konak",
+    "slug": "konak-izmir",
+    "aliases": [],
+    "plate_code": "35",
+    "district_local_code": "002",
+    "iso_3166_2": null,
+    "lau_code": null,
+    "tuik_id": "1461",
+    "icisleri_id": "1461",
+    "osm_relation_id": null,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 38.4189,
+      "lon": 27.1286
+    },
+    "bbox": [38.37, 27.06, 38.47, 27.2]
+  }
+]

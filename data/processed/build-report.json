@@ -1,0 +1,17 @@
+{
+  "validated_at": "2026-04-12T11:32:42.164Z",
+  "region_count": 7,
+  "province_count": 81,
+  "district_count": 973,
+  "crosswalk_report": {
+    "region_rows": 7,
+    "province_region_memberships": 81,
+    "province_crosswalk_rows": 81,
+    "district_crosswalk_rows": 0,
+    "province_display_name_overrides": 14,
+    "district_display_name_overrides": 196,
+    "matched_provinces": 81,
+    "matched_districts": 0
+  },
+  "status": "ok"
+}

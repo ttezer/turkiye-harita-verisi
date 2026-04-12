@@ -1,0 +1,42 @@
+{
+  "name": "turkiye_map",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "fetch:hdx": "python scripts/fetch-hdx.py",
+    "generate:province-crosswalk": "python scripts/generate-province-crosswalk.py",
+    "generate:display-name-overrides": "python scripts/generate-display-name-overrides.py",
+    "inspect:uab": "python scripts/inspect-uab-districts.py",
+    "extract:e-icisleri": "python scripts/extract-e-icisleri-districts.py",
+    "inspect:nvi": "python scripts/inspect-nvi-surface.py",
+    "example:js": "node examples/basic-js-example.mjs",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "node scripts/serve-test-ui.js",
+    "test:smoke": "node scripts/smoke-test.js",
+    "build:data": "node scripts/normalize.js && python scripts/generate-province-crosswalk.py && python scripts/generate-display-name-overrides.py && node scripts/assign-ids.js && node scripts/validate.js",
+    "build:dist": "node scripts/export.js",
+    "build": "node scripts/clean.js && npm run build:data && npm run build:dist",
+    "normalize": "node scripts/normalize.js",
+    "assign-ids": "node scripts/assign-ids.js",
+    "validate": "node scripts/validate.js",
+    "export": "node scripts/export.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.17",
+    "d3-geo": "^3.1.1",
+    "jszip": "^3.10.1",
+    "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.4",
+    "vitest": "^4.1.4"
+  }
+}

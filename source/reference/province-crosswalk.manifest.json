@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-04-12T11:23:13.317558+00:00",
+  "generator": "scripts/generate-province-crosswalk.py",
+  "sources": [
+    {
+      "name": "GISCO NUTS 2024 level 3",
+      "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip",
+      "member": "NUTS_RG_01M_2024_4326_LEVL_3.geojson",
+      "country_code": "TR",
+      "row_count": 81
+    }
+  ],
+  "notes": [
+    "plate_code is derived from HDX adm1_pcode suffix",
+    "tuik_id is set equal to province plate_code / il kayit no as a pragmatic province-level alias",
+    "icisleri_id and osm_relation_id remain null until a reliable reference source is vendored"
+  ]
+}

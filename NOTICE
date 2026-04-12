@@ -1,0 +1,6 @@
+This repository includes source code licensed under MIT and vendored administrative boundary data derived from HDX.
+
+HDX source dataset:
+- https://data.humdata.org/dataset/cod-ab-tur
+
+The vendored HDX-derived data is subject to its own licensing and attribution requirements and is not relicensed as MIT solely by inclusion in this repository.

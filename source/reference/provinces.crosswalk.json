@@ -1,0 +1,1298 @@
+[
+  {
+    "source_hdx_id": "TUR001",
+    "id": "TR-P-01",
+    "plate_code": "01",
+    "iso_3166_2": "TR-01",
+    "nuts_code": "TR621",
+    "tuik_id": "01",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Adana",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR002",
+    "id": "TR-P-02",
+    "plate_code": "02",
+    "iso_3166_2": "TR-02",
+    "nuts_code": "TRC12",
+    "tuik_id": "02",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Adıyaman",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR003",
+    "id": "TR-P-03",
+    "plate_code": "03",
+    "iso_3166_2": "TR-03",
+    "nuts_code": "TR332",
+    "tuik_id": "03",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Afyonkarahisar",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR004",
+    "id": "TR-P-04",
+    "plate_code": "04",
+    "iso_3166_2": "TR-04",
+    "nuts_code": "TRA21",
+    "tuik_id": "04",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Ağrı",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR005",
+    "id": "TR-P-05",
+    "plate_code": "05",
+    "iso_3166_2": "TR-05",
+    "nuts_code": "TR834",
+    "tuik_id": "05",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Amasya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR006",
+    "id": "TR-P-06",
+    "plate_code": "06",
+    "iso_3166_2": "TR-06",
+    "nuts_code": "TR510",
+    "tuik_id": "06",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Ankara",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR007",
+    "id": "TR-P-07",
+    "plate_code": "07",
+    "iso_3166_2": "TR-07",
+    "nuts_code": "TR611",
+    "tuik_id": "07",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Antalya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR008",
+    "id": "TR-P-08",
+    "plate_code": "08",
+    "iso_3166_2": "TR-08",
+    "nuts_code": "TR905",
+    "tuik_id": "08",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Artvin",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR009",
+    "id": "TR-P-09",
+    "plate_code": "09",
+    "iso_3166_2": "TR-09",
+    "nuts_code": "TR321",
+    "tuik_id": "09",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Aydın",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR010",
+    "id": "TR-P-10",
+    "plate_code": "10",
+    "iso_3166_2": "TR-10",
+    "nuts_code": "TR221",
+    "tuik_id": "10",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Balıkesir",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR011",
+    "id": "TR-P-11",
+    "plate_code": "11",
+    "iso_3166_2": "TR-11",
+    "nuts_code": "TR413",
+    "tuik_id": "11",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bilecik",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR012",
+    "id": "TR-P-12",
+    "plate_code": "12",
+    "iso_3166_2": "TR-12",
+    "nuts_code": "TRB13",
+    "tuik_id": "12",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bingöl",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR013",
+    "id": "TR-P-13",
+    "plate_code": "13",
+    "iso_3166_2": "TR-13",
+    "nuts_code": "TRB23",
+    "tuik_id": "13",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bitlis",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR014",
+    "id": "TR-P-14",
+    "plate_code": "14",
+    "iso_3166_2": "TR-14",
+    "nuts_code": "TR424",
+    "tuik_id": "14",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bolu",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR015",
+    "id": "TR-P-15",
+    "plate_code": "15",
+    "iso_3166_2": "TR-15",
+    "nuts_code": "TR613",
+    "tuik_id": "15",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Burdur",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR016",
+    "id": "TR-P-16",
+    "plate_code": "16",
+    "iso_3166_2": "TR-16",
+    "nuts_code": "TR411",
+    "tuik_id": "16",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bursa",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR017",
+    "id": "TR-P-17",
+    "plate_code": "17",
+    "iso_3166_2": "TR-17",
+    "nuts_code": "TR222",
+    "tuik_id": "17",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Çanakkale",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR018",
+    "id": "TR-P-18",
+    "plate_code": "18",
+    "iso_3166_2": "TR-18",
+    "nuts_code": "TR822",
+    "tuik_id": "18",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Çankırı",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR019",
+    "id": "TR-P-19",
+    "plate_code": "19",
+    "iso_3166_2": "TR-19",
+    "nuts_code": "TR833",
+    "tuik_id": "19",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Çorum",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR020",
+    "id": "TR-P-20",
+    "plate_code": "20",
+    "iso_3166_2": "TR-20",
+    "nuts_code": "TR322",
+    "tuik_id": "20",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Denizli",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR021",
+    "id": "TR-P-21",
+    "plate_code": "21",
+    "iso_3166_2": "TR-21",
+    "nuts_code": "TRC22",
+    "tuik_id": "21",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Diyarbakır",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR022",
+    "id": "TR-P-22",
+    "plate_code": "22",
+    "iso_3166_2": "TR-22",
+    "nuts_code": "TR212",
+    "tuik_id": "22",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Edirne",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR023",
+    "id": "TR-P-23",
+    "plate_code": "23",
+    "iso_3166_2": "TR-23",
+    "nuts_code": "TRB12",
+    "tuik_id": "23",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Elazığ",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR024",
+    "id": "TR-P-24",
+    "plate_code": "24",
+    "iso_3166_2": "TR-24",
+    "nuts_code": "TRA12",
+    "tuik_id": "24",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Erzincan",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR025",
+    "id": "TR-P-25",
+    "plate_code": "25",
+    "iso_3166_2": "TR-25",
+    "nuts_code": "TRA11",
+    "tuik_id": "25",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Erzurum",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR026",
+    "id": "TR-P-26",
+    "plate_code": "26",
+    "iso_3166_2": "TR-26",
+    "nuts_code": "TR412",
+    "tuik_id": "26",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Eskişehir",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR027",
+    "id": "TR-P-27",
+    "plate_code": "27",
+    "iso_3166_2": "TR-27",
+    "nuts_code": "TRC11",
+    "tuik_id": "27",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Gaziantep",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR028",
+    "id": "TR-P-28",
+    "plate_code": "28",
+    "iso_3166_2": "TR-28",
+    "nuts_code": "TR903",
+    "tuik_id": "28",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Giresun",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR029",
+    "id": "TR-P-29",
+    "plate_code": "29",
+    "iso_3166_2": "TR-29",
+    "nuts_code": "TR906",
+    "tuik_id": "29",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Gümüşhane",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR030",
+    "id": "TR-P-30",
+    "plate_code": "30",
+    "iso_3166_2": "TR-30",
+    "nuts_code": "TRB24",
+    "tuik_id": "30",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Hakkari",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR031",
+    "id": "TR-P-31",
+    "plate_code": "31",
+    "iso_3166_2": "TR-31",
+    "nuts_code": "TR631",
+    "tuik_id": "31",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Hatay",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR032",
+    "id": "TR-P-32",
+    "plate_code": "32",
+    "iso_3166_2": "TR-32",
+    "nuts_code": "TR612",
+    "tuik_id": "32",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Isparta",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR033",
+    "id": "TR-P-33",
+    "plate_code": "33",
+    "iso_3166_2": "TR-33",
+    "nuts_code": "TR622",
+    "tuik_id": "33",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Mersin",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR034",
+    "id": "TR-P-34",
+    "plate_code": "34",
+    "iso_3166_2": "TR-34",
+    "nuts_code": "TR100",
+    "tuik_id": "34",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "İstanbul",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR035",
+    "id": "TR-P-35",
+    "plate_code": "35",
+    "iso_3166_2": "TR-35",
+    "nuts_code": "TR310",
+    "tuik_id": "35",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "İzmir",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR036",
+    "id": "TR-P-36",
+    "plate_code": "36",
+    "iso_3166_2": "TR-36",
+    "nuts_code": "TRA22",
+    "tuik_id": "36",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kars",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR037",
+    "id": "TR-P-37",
+    "plate_code": "37",
+    "iso_3166_2": "TR-37",
+    "nuts_code": "TR821",
+    "tuik_id": "37",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kastamonu",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR038",
+    "id": "TR-P-38",
+    "plate_code": "38",
+    "iso_3166_2": "TR-38",
+    "nuts_code": "TR721",
+    "tuik_id": "38",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kayseri",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR039",
+    "id": "TR-P-39",
+    "plate_code": "39",
+    "iso_3166_2": "TR-39",
+    "nuts_code": "TR213",
+    "tuik_id": "39",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kırklareli",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR040",
+    "id": "TR-P-40",
+    "plate_code": "40",
+    "iso_3166_2": "TR-40",
+    "nuts_code": "TR715",
+    "tuik_id": "40",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kırşehir",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR041",
+    "id": "TR-P-41",
+    "plate_code": "41",
+    "iso_3166_2": "TR-41",
+    "nuts_code": "TR421",
+    "tuik_id": "41",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kocaeli",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR042",
+    "id": "TR-P-42",
+    "plate_code": "42",
+    "iso_3166_2": "TR-42",
+    "nuts_code": "TR521",
+    "tuik_id": "42",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Konya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR043",
+    "id": "TR-P-43",
+    "plate_code": "43",
+    "iso_3166_2": "TR-43",
+    "nuts_code": "TR333",
+    "tuik_id": "43",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kütahya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR044",
+    "id": "TR-P-44",
+    "plate_code": "44",
+    "iso_3166_2": "TR-44",
+    "nuts_code": "TRB11",
+    "tuik_id": "44",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Malatya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR045",
+    "id": "TR-P-45",
+    "plate_code": "45",
+    "iso_3166_2": "TR-45",
+    "nuts_code": "TR331",
+    "tuik_id": "45",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Manisa",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR046",
+    "id": "TR-P-46",
+    "plate_code": "46",
+    "iso_3166_2": "TR-46",
+    "nuts_code": "TR632",
+    "tuik_id": "46",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kahramanmaraş",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR047",
+    "id": "TR-P-47",
+    "plate_code": "47",
+    "iso_3166_2": "TR-47",
+    "nuts_code": "TRC31",
+    "tuik_id": "47",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Mardin",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR048",
+    "id": "TR-P-48",
+    "plate_code": "48",
+    "iso_3166_2": "TR-48",
+    "nuts_code": "TR323",
+    "tuik_id": "48",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Muğla",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR049",
+    "id": "TR-P-49",
+    "plate_code": "49",
+    "iso_3166_2": "TR-49",
+    "nuts_code": "TRB22",
+    "tuik_id": "49",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Muş",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR050",
+    "id": "TR-P-50",
+    "plate_code": "50",
+    "iso_3166_2": "TR-50",
+    "nuts_code": "TR714",
+    "tuik_id": "50",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Nevşehir",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR051",
+    "id": "TR-P-51",
+    "plate_code": "51",
+    "iso_3166_2": "TR-51",
+    "nuts_code": "TR713",
+    "tuik_id": "51",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Niğde",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR052",
+    "id": "TR-P-52",
+    "plate_code": "52",
+    "iso_3166_2": "TR-52",
+    "nuts_code": "TR902",
+    "tuik_id": "52",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Ordu",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR053",
+    "id": "TR-P-53",
+    "plate_code": "53",
+    "iso_3166_2": "TR-53",
+    "nuts_code": "TR904",
+    "tuik_id": "53",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Rize",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR054",
+    "id": "TR-P-54",
+    "plate_code": "54",
+    "iso_3166_2": "TR-54",
+    "nuts_code": "TR422",
+    "tuik_id": "54",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Sakarya",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR055",
+    "id": "TR-P-55",
+    "plate_code": "55",
+    "iso_3166_2": "TR-55",
+    "nuts_code": "TR831",
+    "tuik_id": "55",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Samsun",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR056",
+    "id": "TR-P-56",
+    "plate_code": "56",
+    "iso_3166_2": "TR-56",
+    "nuts_code": "TRC34",
+    "tuik_id": "56",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Siirt",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR057",
+    "id": "TR-P-57",
+    "plate_code": "57",
+    "iso_3166_2": "TR-57",
+    "nuts_code": "TR823",
+    "tuik_id": "57",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Sinop",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR058",
+    "id": "TR-P-58",
+    "plate_code": "58",
+    "iso_3166_2": "TR-58",
+    "nuts_code": "TR722",
+    "tuik_id": "58",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Sivas",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR059",
+    "id": "TR-P-59",
+    "plate_code": "59",
+    "iso_3166_2": "TR-59",
+    "nuts_code": "TR211",
+    "tuik_id": "59",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Tekirdağ",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR060",
+    "id": "TR-P-60",
+    "plate_code": "60",
+    "iso_3166_2": "TR-60",
+    "nuts_code": "TR832",
+    "tuik_id": "60",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Tokat",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR061",
+    "id": "TR-P-61",
+    "plate_code": "61",
+    "iso_3166_2": "TR-61",
+    "nuts_code": "TR901",
+    "tuik_id": "61",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Trabzon",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR062",
+    "id": "TR-P-62",
+    "plate_code": "62",
+    "iso_3166_2": "TR-62",
+    "nuts_code": "TRB14",
+    "tuik_id": "62",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Tunceli",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR063",
+    "id": "TR-P-63",
+    "plate_code": "63",
+    "iso_3166_2": "TR-63",
+    "nuts_code": "TRC21",
+    "tuik_id": "63",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Şanlıurfa",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR064",
+    "id": "TR-P-64",
+    "plate_code": "64",
+    "iso_3166_2": "TR-64",
+    "nuts_code": "TR334",
+    "tuik_id": "64",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Uşak",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR065",
+    "id": "TR-P-65",
+    "plate_code": "65",
+    "iso_3166_2": "TR-65",
+    "nuts_code": "TRB21",
+    "tuik_id": "65",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Van",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR066",
+    "id": "TR-P-66",
+    "plate_code": "66",
+    "iso_3166_2": "TR-66",
+    "nuts_code": "TR723",
+    "tuik_id": "66",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Yozgat",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR067",
+    "id": "TR-P-67",
+    "plate_code": "67",
+    "iso_3166_2": "TR-67",
+    "nuts_code": "TR811",
+    "tuik_id": "67",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Zonguldak",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR068",
+    "id": "TR-P-68",
+    "plate_code": "68",
+    "iso_3166_2": "TR-68",
+    "nuts_code": "TR712",
+    "tuik_id": "68",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Aksaray",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR069",
+    "id": "TR-P-69",
+    "plate_code": "69",
+    "iso_3166_2": "TR-69",
+    "nuts_code": "TRA13",
+    "tuik_id": "69",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bayburt",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR070",
+    "id": "TR-P-70",
+    "plate_code": "70",
+    "iso_3166_2": "TR-70",
+    "nuts_code": "TR522",
+    "tuik_id": "70",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Karaman",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR071",
+    "id": "TR-P-71",
+    "plate_code": "71",
+    "iso_3166_2": "TR-71",
+    "nuts_code": "TR711",
+    "tuik_id": "71",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kırıkkale",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR072",
+    "id": "TR-P-72",
+    "plate_code": "72",
+    "iso_3166_2": "TR-72",
+    "nuts_code": "TRC32",
+    "tuik_id": "72",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Batman",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR073",
+    "id": "TR-P-73",
+    "plate_code": "73",
+    "iso_3166_2": "TR-73",
+    "nuts_code": "TRC33",
+    "tuik_id": "73",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Şırnak",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR074",
+    "id": "TR-P-74",
+    "plate_code": "74",
+    "iso_3166_2": "TR-74",
+    "nuts_code": "TR813",
+    "tuik_id": "74",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Bartın",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR075",
+    "id": "TR-P-75",
+    "plate_code": "75",
+    "iso_3166_2": "TR-75",
+    "nuts_code": "TRA24",
+    "tuik_id": "75",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Ardahan",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR076",
+    "id": "TR-P-76",
+    "plate_code": "76",
+    "iso_3166_2": "TR-76",
+    "nuts_code": "TRA23",
+    "tuik_id": "76",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Iğdır",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR077",
+    "id": "TR-P-77",
+    "plate_code": "77",
+    "iso_3166_2": "TR-77",
+    "nuts_code": "TR425",
+    "tuik_id": "77",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Yalova",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR078",
+    "id": "TR-P-78",
+    "plate_code": "78",
+    "iso_3166_2": "TR-78",
+    "nuts_code": "TR812",
+    "tuik_id": "78",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Karabük",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR079",
+    "id": "TR-P-79",
+    "plate_code": "79",
+    "iso_3166_2": "TR-79",
+    "nuts_code": "TRC13",
+    "tuik_id": "79",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Kilis",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR080",
+    "id": "TR-P-80",
+    "plate_code": "80",
+    "iso_3166_2": "TR-80",
+    "nuts_code": "TR633",
+    "tuik_id": "80",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Osmaniye",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  },
+  {
+    "source_hdx_id": "TUR081",
+    "id": "TR-P-81",
+    "plate_code": "81",
+    "iso_3166_2": "TR-81",
+    "nuts_code": "TR423",
+    "tuik_id": "81",
+    "icisleri_id": null,
+    "osm_relation_id": null,
+    "aliases": [],
+    "source": {
+      "nuts_name": "Düzce",
+      "nuts_year": 2024,
+      "nuts_url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/ref-nuts-2024-01m.geojson.zip"
+    }
+  }
+]

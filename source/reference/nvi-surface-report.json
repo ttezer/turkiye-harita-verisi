@@ -1,0 +1,82 @@
+{
+  "source": "NVI Adres Kayıt Sistemi public surface discovery",
+  "pages": [
+    {
+      "url": "https://adres.nvi.gov.tr/VatandasIslemleri/AdresSorgu",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hidden_input_count": 1,
+      "has_request_verification_token": true,
+      "vatandas_links": [
+        "/VatandasIslemleri/AdresGenelSorgu",
+        "/VatandasIslemleri/AdresKisiSorgu"
+      ],
+      "select_count": 0,
+      "form_count": 0
+    },
+    {
+      "url": "https://adres.nvi.gov.tr/VatandasIslemleri/AdresGenelSorgu",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hidden_input_count": 1,
+      "has_request_verification_token": true,
+      "vatandas_links": [
+        "/VatandasIslemleri/AdresGenelSorgu",
+        "/VatandasIslemleri/AdresKisiSorgu"
+      ],
+      "select_count": 0,
+      "form_count": 0
+    },
+    {
+      "url": "https://adres.nvi.gov.tr/VatandasIslemleri/AdresKisiSorgu",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hidden_input_count": 1,
+      "has_request_verification_token": true,
+      "vatandas_links": [
+        "/VatandasIslemleri/AdresGenelSorgu",
+        "/VatandasIslemleri/AdresKisiSorgu"
+      ],
+      "select_count": 0,
+      "form_count": 0
+    }
+  ],
+  "bundles": [
+    {
+      "url": "https://adres.nvi.gov.tr/bundles/baseJS?v=b3wcgoxUhLBvwdNwcaRFKfz6X3FigOLcjlzQ6ttXbd81",
+      "status_code": 200,
+      "content_length": 3366734,
+      "hits": {
+        "Ilce": -1,
+        "Mahalle": -1,
+        "Sokak": -1,
+        "Bina": 919002,
+        "Daire": -1,
+        "kale.ajaxUtil.sendRequest": -1,
+        "window.location.replace": -1
+      }
+    },
+    {
+      "url": "https://adres.nvi.gov.tr/bundles/utilJS?v=rdtfDHCZlnQbFAXEL-x-APqH79oooBwcA2UB_nT5nXw1",
+      "status_code": 200,
+      "content_length": 1616848,
+      "hits": {
+        "Ilce": 1242,
+        "Mahalle": 28260,
+        "Sokak": 8795,
+        "Bina": 7758,
+        "Daire": 10479,
+        "kale.ajaxUtil.sendRequest": 57797,
+        "window.location.replace": 58933
+      }
+    }
+  ],
+  "decision": "research_only",
+  "notes": [
+    "Public pages are reachable and expose anti-forgery tokens.",
+    "Target pages do not expose district dropdowns in initial HTML.",
+    "JS bundles contain district/address component terms, which suggests a client-side flow exists.",
+    "No stable public machine-readable district master endpoint has been extracted yet.",
+    "Do not feed district tuik_id / icisleri_id / lau_code from NVI until a reproducible request flow is verified."
+  ]
+}

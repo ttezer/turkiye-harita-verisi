@@ -1,0 +1,394 @@
+{
+  "source": "UAB ilce-listesi.xlsx",
+  "row_count": 1052,
+  "matched_rows": 921,
+  "unmatched_rows": 131,
+  "airport_like_rows": 56,
+  "merkez_rows": 74,
+  "top_unmatched_provinces": [
+    [
+      "İSTANBUL",
+      4
+    ],
+    [
+      "ANTALYA",
+      3
+    ],
+    [
+      "BALIKESİR",
+      3
+    ],
+    [
+      "ÇANAKKALE",
+      3
+    ],
+    [
+      "MUĞLA",
+      3
+    ],
+    [
+      "ADIYAMAN",
+      2
+    ],
+    [
+      "AFYONKARAHİSAR",
+      2
+    ],
+    [
+      "AĞRI",
+      2
+    ],
+    [
+      "AMASYA",
+      2
+    ],
+    [
+      "BİNGÖL",
+      2
+    ],
+    [
+      "DENİZLİ",
+      2
+    ],
+    [
+      "DİYARBAKIR",
+      2
+    ],
+    [
+      "ELAZIĞ",
+      2
+    ],
+    [
+      "ERZİNCAN",
+      2
+    ],
+    [
+      "ERZURUM",
+      2
+    ],
+    [
+      "ESKİŞEHİR",
+      2
+    ],
+    [
+      "GAZİANTEP",
+      2
+    ],
+    [
+      "HAKKARİ",
+      2
+    ],
+    [
+      "HATAY",
+      2
+    ],
+    [
+      "ISPARTA",
+      2
+    ]
+  ],
+  "sample_unmatched_rows": [
+    {
+      "kodu": "99133",
+      "il_kodu": "01",
+      "ad": "Şakirpaşa Havalimanı",
+      "il_adi": "ADANA"
+    },
+    {
+      "kodu": "99139",
+      "il_kodu": "02",
+      "ad": "Adıyaman Havalimanı",
+      "il_adi": "ADIYAMAN"
+    },
+    {
+      "kodu": "1105",
+      "il_kodu": "02",
+      "ad": "MERKEZ",
+      "il_adi": "ADIYAMAN"
+    },
+    {
+      "kodu": "99132",
+      "il_kodu": "03",
+      "ad": "Afyon Havalimanı",
+      "il_adi": "AFYONKARAHİSAR"
+    },
+    {
+      "kodu": "1108",
+      "il_kodu": "03",
+      "ad": "MERKEZ",
+      "il_adi": "AFYONKARAHİSAR"
+    },
+    {
+      "kodu": "99140",
+      "il_kodu": "04",
+      "ad": "Ağrı Ahmed-i Hani Havalimanı",
+      "il_adi": "AĞRI"
+    },
+    {
+      "kodu": "1111",
+      "il_kodu": "04",
+      "ad": "MERKEZ",
+      "il_adi": "AĞRI"
+    },
+    {
+      "kodu": "99166",
+      "il_kodu": "05",
+      "ad": "Amasya Merzifon Havalimanı",
+      "il_adi": "AMASYA"
+    },
+    {
+      "kodu": "1134",
+      "il_kodu": "05",
+      "ad": "MERKEZ",
+      "il_adi": "AMASYA"
+    },
+    {
+      "kodu": "99134",
+      "il_kodu": "06",
+      "ad": "Ankara Esenboğa Havalimanı",
+      "il_adi": "ANKARA"
+    },
+    {
+      "kodu": "99141",
+      "il_kodu": "07",
+      "ad": "Gazipaşa Havalimanı",
+      "il_adi": "ANTALYA"
+    },
+    {
+      "kodu": "99135",
+      "il_kodu": "07",
+      "ad": "Antalya Havalimanı",
+      "il_adi": "ANTALYA"
+    },
+    {
+      "kodu": "1138",
+      "il_kodu": "07",
+      "ad": "MERKEZ",
+      "il_adi": "ANTALYA"
+    },
+    {
+      "kodu": "1152",
+      "il_kodu": "08",
+      "ad": "MERKEZ",
+      "il_adi": "ARTVİN"
+    },
+    {
+      "kodu": "1159",
+      "il_kodu": "09",
+      "ad": "MERKEZ",
+      "il_adi": "AYDIN"
+    },
+    {
+      "kodu": "99142",
+      "il_kodu": "10",
+      "ad": "Balıkesir Merkez Havalimanı",
+      "il_adi": "BALIKESİR"
+    },
+    {
+      "kodu": "99107",
+      "il_kodu": "10",
+      "ad": "Balıkesir Koca Seyit Havalimanı",
+      "il_adi": "BALIKESİR"
+    },
+    {
+      "kodu": "1168",
+      "il_kodu": "10",
+      "ad": "MERKEZ",
+      "il_adi": "BALIKESİR"
+    },
+    {
+      "kodu": "1192",
+      "il_kodu": "11",
+      "ad": "MERKEZ",
+      "il_adi": "BİLECİK"
+    },
+    {
+      "kodu": "99167",
+      "il_kodu": "12",
+      "ad": "Bingöl Havalimanı",
+      "il_adi": "BİNGÖL"
+    },
+    {
+      "kodu": "1193",
+      "il_kodu": "12",
+      "ad": "MERKEZ",
+      "il_adi": "BİNGÖL"
+    },
+    {
+      "kodu": "1196",
+      "il_kodu": "13",
+      "ad": "MERKEZ",
+      "il_adi": "BİTLİS"
+    },
+    {
+      "kodu": "1199",
+      "il_kodu": "14",
+      "ad": "MERKEZ",
+      "il_adi": "BOLU"
+    },
+    {
+      "kodu": "1215",
+      "il_kodu": "15",
+      "ad": "MERKEZ",
+      "il_adi": "BURDUR"
+    },
+    {
+      "kodu": "99124",
+      "il_kodu": "16",
+      "ad": "Bursa Yenişehir Havalimanı",
+      "il_adi": "BURSA"
+    },
+    {
+      "kodu": "99168",
+      "il_kodu": "17",
+      "ad": "Çanakkale Havalimanı",
+      "il_adi": "ÇANAKKALE"
+    },
+    {
+      "kodu": "99128",
+      "il_kodu": "17",
+      "ad": "Gökçeada Havalimanı",
+      "il_adi": "ÇANAKKALE"
+    },
+    {
+      "kodu": "1230",
+      "il_kodu": "17",
+      "ad": "MERKEZ",
+      "il_adi": "ÇANAKKALE"
+    },
+    {
+      "kodu": "1232",
+      "il_kodu": "18",
+      "ad": "MERKEZ",
+      "il_adi": "ÇANKIRI"
+    },
+    {
+      "kodu": "1259",
+      "il_kodu": "19",
+      "ad": "MERKEZ",
+      "il_adi": "ÇORUM"
+    },
+    {
+      "kodu": "99143",
+      "il_kodu": "20",
+      "ad": "Denizli Çardak Havalimanı",
+      "il_adi": "DENİZLİ"
+    },
+    {
+      "kodu": "1271",
+      "il_kodu": "20",
+      "ad": "MERKEZ",
+      "il_adi": "DENİZLİ"
+    },
+    {
+      "kodu": "99126",
+      "il_kodu": "21",
+      "ad": "Diyarbakır Havalimanı",
+      "il_adi": "DİYARBAKIR"
+    },
+    {
+      "kodu": "1284",
+      "il_kodu": "21",
+      "ad": "MERKEZ",
+      "il_adi": "DİYARBAKIR"
+    },
+    {
+      "kodu": "1295",
+      "il_kodu": "22",
+      "ad": "MERKEZ",
+      "il_adi": "EDİRNE"
+    },
+    {
+      "kodu": "99144",
+      "il_kodu": "23",
+      "ad": "Elazığ Havalimanı",
+      "il_adi": "ELAZIĞ"
+    },
+    {
+      "kodu": "1298",
+      "il_kodu": "23",
+      "ad": "MERKEZ",
+      "il_adi": "ELAZIĞ"
+    },
+    {
+      "kodu": "99109",
+      "il_kodu": "24",
+      "ad": "Erzincan Havalimanı",
+      "il_adi": "ERZİNCAN"
+    },
+    {
+      "kodu": "1318",
+      "il_kodu": "24",
+      "ad": "MERKEZ",
+      "il_adi": "ERZİNCAN"
+    },
+    {
+      "kodu": "99100",
+      "il_kodu": "25",
+      "ad": "Erzurum Havalimanı",
+      "il_adi": "ERZURUM"
+    },
+    {
+      "kodu": "1319",
+      "il_kodu": "25",
+      "ad": "MERKEZ",
+      "il_adi": "ERZURUM"
+    },
+    {
+      "kodu": "99162",
+      "il_kodu": "26",
+      "ad": "Eskişehir Anadolu Havalimanı",
+      "il_adi": "ESKİŞEHİR"
+    },
+    {
+      "kodu": "1322",
+      "il_kodu": "26",
+      "ad": "MERKEZ",
+      "il_adi": "ESKİŞEHİR"
+    },
+    {
+      "kodu": "99101",
+      "il_kodu": "27",
+      "ad": "Gaziantep Havalimanı",
+      "il_adi": "GAZİANTEP"
+    },
+    {
+      "kodu": "2700",
+      "il_kodu": "27",
+      "ad": "MERKEZ",
+      "il_adi": "GAZİANTEP"
+    },
+    {
+      "kodu": "1352",
+      "il_kodu": "28",
+      "ad": "MERKEZ",
+      "il_adi": "GİRESUN"
+    },
+    {
+      "kodu": "1369",
+      "il_kodu": "29",
+      "ad": "MERKEZ",
+      "il_adi": "GÜMÜŞHANE"
+    },
+    {
+      "kodu": "99110",
+      "il_kodu": "30",
+      "ad": "Hakkâri Yüksekova Selahaddin Eyyubi Havalimanı",
+      "il_adi": "HAKKARİ"
+    },
+    {
+      "kodu": "1377",
+      "il_kodu": "30",
+      "ad": "MERKEZ",
+      "il_adi": "HAKKARİ"
+    },
+    {
+      "kodu": "99161",
+      "il_kodu": "31",
+      "ad": "Hatay Havalimanı",
+      "il_adi": "HATAY"
+    }
+  ],
+  "policy": "validation_only",
+  "decision": "Do not use as canonical district crosswalk without a curated exclusion/mapping layer."
+}

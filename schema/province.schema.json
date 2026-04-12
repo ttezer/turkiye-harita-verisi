@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/turkiye_map/schema/province.schema.json",
+  "title": "Province",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "level",
+    "parent_id",
+    "region_id",
+    "region_name",
+    "name",
+    "name_ascii",
+    "slug",
+    "aliases",
+    "plate_code",
+    "district_local_code",
+    "iso_3166_2",
+    "nuts_code",
+    "tuik_id",
+    "icisleri_id",
+    "osm_relation_id",
+    "source_hdx_id",
+    "centroid",
+    "bbox"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^TR-P-[0-9]{2}$"
+    },
+    "level": {
+      "const": "province"
+    },
+    "parent_id": {
+      "type": "string",
+      "pattern": "^TR-R-[A-Z0-9]{3}$"
+    },
+    "region_id": {
+      "type": "string",
+      "pattern": "^TR-R-[A-Z0-9]{3}$"
+    },
+    "region_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_ascii": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "plate_code": {
+      "type": "string",
+      "pattern": "^[0-9]{2}$"
+    },
+    "district_local_code": {
+      "type": "null"
+    },
+    "iso_3166_2": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nuts_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tuik_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "icisleri_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "osm_relation_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "source_hdx_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "centroid": {
+      "$ref": "#/$defs/point"
+    },
+    "bbox": {
+      "$ref": "#/$defs/bbox"
+    }
+  },
+  "$defs": {
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        }
+      }
+    },
+    "bbox": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    }
+  }
+}

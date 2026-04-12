@@ -1,0 +1,244 @@
+[
+  {
+    "id": "TR-R-AKD",
+    "level": "region",
+    "parent_id": null,
+    "name": "Akdeniz",
+    "name_ascii": "akdeniz",
+    "slug": "akdeniz",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-01",
+      "TR-P-07",
+      "TR-P-15",
+      "TR-P-31",
+      "TR-P-32",
+      "TR-P-33",
+      "TR-P-46",
+      "TR-P-80"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-AKD",
+    "centroid": {
+      "lat": 37.227870575,
+      "lon": 33.9790496575
+    },
+    "bbox": [
+      29.26792088400009,
+      35.80841930000014,
+      37.747331023000186,
+      38.58785613900011
+    ]
+  },
+  {
+    "id": "TR-R-DOA",
+    "level": "region",
+    "parent_id": null,
+    "name": "Doğu Anadolu",
+    "name_ascii": "dogu anadolu",
+    "slug": "dogu-anadolu",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-04",
+      "TR-P-12",
+      "TR-P-13",
+      "TR-P-23",
+      "TR-P-24",
+      "TR-P-25",
+      "TR-P-30",
+      "TR-P-36",
+      "TR-P-44",
+      "TR-P-49",
+      "TR-P-62",
+      "TR-P-65",
+      "TR-P-75",
+      "TR-P-76"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-DOA",
+    "centroid": {
+      "lat": 39.248525362857144,
+      "lon": 41.633871750714285
+    },
+    "bbox": [
+      37.262016166000194,
+      36.96345880000018,
+      44.817931,
+      41.60092489900006
+    ]
+  },
+  {
+    "id": "TR-R-EGE",
+    "level": "region",
+    "parent_id": null,
+    "name": "Ege",
+    "name_ascii": "ege",
+    "slug": "ege",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-03",
+      "TR-P-09",
+      "TR-P-20",
+      "TR-P-35",
+      "TR-P-43",
+      "TR-P-45",
+      "TR-P-48",
+      "TR-P-64"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-EGE",
+    "centroid": {
+      "lat": 38.26172865625,
+      "lon": 28.81662782625
+    },
+    "bbox": [
+      26.205601499000124,
+      36.295160299000145,
+      31.733907972000168,
+      39.8755015700001
+    ]
+  },
+  {
+    "id": "TR-R-GDA",
+    "level": "region",
+    "parent_id": null,
+    "name": "Güneydoğu Anadolu",
+    "name_ascii": "guneydogu anadolu",
+    "slug": "guneydogu-anadolu",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-02",
+      "TR-P-21",
+      "TR-P-27",
+      "TR-P-47",
+      "TR-P-56",
+      "TR-P-63",
+      "TR-P-72",
+      "TR-P-73",
+      "TR-P-79"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-GDA",
+    "centroid": {
+      "lat": 37.54779370555556,
+      "lon": 39.821557350000006
+    },
+    "bbox": [
+      36.462183610000125,
+      36.63207709900007,
+      43.49455046500009,
+      38.71077873100006
+    ]
+  },
+  {
+    "id": "TR-R-ICA",
+    "level": "region",
+    "parent_id": null,
+    "name": "İç Anadolu",
+    "name_ascii": "ic anadolu",
+    "slug": "ic-anadolu",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-06",
+      "TR-P-18",
+      "TR-P-26",
+      "TR-P-38",
+      "TR-P-40",
+      "TR-P-42",
+      "TR-P-50",
+      "TR-P-51",
+      "TR-P-58",
+      "TR-P-66",
+      "TR-P-68",
+      "TR-P-70",
+      "TR-P-71"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-ICA",
+    "centroid": {
+      "lat": 39.000987752307694,
+      "lon": 34.01265506307693
+    },
+    "bbox": [
+      29.989581347000183,
+      36.435978217000184,
+      38.77219259800012,
+      41.074600141000076
+    ]
+  },
+  {
+    "id": "TR-R-KAR",
+    "level": "region",
+    "parent_id": null,
+    "name": "Karadeniz",
+    "name_ascii": "karadeniz",
+    "slug": "karadeniz",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-05",
+      "TR-P-08",
+      "TR-P-14",
+      "TR-P-19",
+      "TR-P-28",
+      "TR-P-29",
+      "TR-P-37",
+      "TR-P-52",
+      "TR-P-53",
+      "TR-P-55",
+      "TR-P-57",
+      "TR-P-60",
+      "TR-P-61",
+      "TR-P-67",
+      "TR-P-69",
+      "TR-P-74",
+      "TR-P-78",
+      "TR-P-81"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-KAR",
+    "centroid": {
+      "lat": 40.90129688333333,
+      "lon": 36.08692308666666
+    },
+    "bbox": [
+      30.55984669200012,
+      39.84381546900016,
+      42.61632268400018,
+      42.09799870000006
+    ]
+  },
+  {
+    "id": "TR-R-MAR",
+    "level": "region",
+    "parent_id": null,
+    "name": "Marmara",
+    "name_ascii": "marmara",
+    "slug": "marmara",
+    "aliases": [],
+    "region_kind": "geographic-7",
+    "member_ids": [
+      "TR-P-10",
+      "TR-P-11",
+      "TR-P-16",
+      "TR-P-17",
+      "TR-P-22",
+      "TR-P-34",
+      "TR-P-39",
+      "TR-P-41",
+      "TR-P-54",
+      "TR-P-59",
+      "TR-P-77"
+    ],
+    "source_hdx_id": "GEOGRAPHIC7:TR-R-MAR",
+    "centroid": {
+      "lat": 40.675950842727275,
+      "lon": 28.50176260090909
+    },
+    "bbox": [
+      25.66850899900004,
+      39.061350611000194,
+      31.010803923000026,
+      42.10478570000015
+    ]
+  }
+]

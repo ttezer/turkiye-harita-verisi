@@ -1,0 +1,30 @@
+{
+  "dataset_id": "cod-ab-tur",
+  "title": "Türkiye - Subnational Administrative Boundaries",
+  "license_id": "cc-by-igo",
+  "license_title": "Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)",
+  "metadata_modified": "2026-04-07T09:06:59.318844",
+  "fetched_at": "2026-04-10T10:14:35.720364+00:00",
+  "resources": [
+    {
+      "name": "tur_admin_boundaries.geojson.zip",
+      "format": "GeoJSON",
+      "resource_id": "470bd810-2240-4ce0-b5c4-17434112ce41",
+      "url": "https://data.humdata.org/dataset/d74086a0-f398-4474-9e12-1b9a70907bd0/resource/470bd810-2240-4ce0-b5c4-17434112ce41/download/tur_admin_boundaries.geojson.zip",
+      "path": "source/hdx/cod-ab-tur/tur_admin_boundaries.geojson.zip",
+      "sha256": "6d45f15de76d53da057312dfaedb60248141a1828ce6a5c7cbfeedc7f51714c3",
+      "bytes": 22618555,
+      "last_modified": "2026-01-26T16:26:43.518236"
+    },
+    {
+      "name": "tur_admin_boundaries.xlsx",
+      "format": "XLSX",
+      "resource_id": "152e1678-2bbc-4da4-9325-ba66b0717ad8",
+      "url": "https://data.humdata.org/dataset/d74086a0-f398-4474-9e12-1b9a70907bd0/resource/152e1678-2bbc-4da4-9325-ba66b0717ad8/download/tur_admin_boundaries.xlsx",
+      "path": "source/hdx/cod-ab-tur/tur_admin_boundaries.xlsx",
+      "sha256": "5a037724706c5ad2d186efb4938a05c94cd325bf5566532e0ba9d10b53f1d68b",
+      "bytes": 216147,
+      "last_modified": "2026-01-26T16:26:44.034131"
+    }
+  ]
+}

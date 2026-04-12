@@ -1,0 +1,72 @@
+[
+  {
+    "id": "TR-P-06",
+    "level": "province",
+    "parent_id": null,
+    "name": "Ankara",
+    "name_ascii": "ankara",
+    "slug": "ankara",
+    "aliases": [],
+    "plate_code": "06",
+    "district_local_code": null,
+    "iso_3166_2": "TR-06",
+    "nuts_code": "TR510",
+    "tuik_id": "6",
+    "icisleri_id": "6",
+    "osm_relation_id": 223474,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 39.925018,
+      "lon": 32.836956
+    },
+    "bbox": [39.12, 31.605, 40.25, 33.9]
+  },
+  {
+    "id": "TR-P-34",
+    "level": "province",
+    "parent_id": null,
+    "name": "Istanbul",
+    "name_ascii": "istanbul",
+    "slug": "istanbul",
+    "aliases": [
+      "Constantinople"
+    ],
+    "plate_code": "34",
+    "district_local_code": null,
+    "iso_3166_2": "TR-34",
+    "nuts_code": "TR100",
+    "tuik_id": "34",
+    "icisleri_id": "34",
+    "osm_relation_id": 2234742,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 41.008238,
+      "lon": 28.978359
+    },
+    "bbox": [40.8, 27.97, 41.7, 29.96]
+  },
+  {
+    "id": "TR-P-35",
+    "level": "province",
+    "parent_id": null,
+    "name": "Izmir",
+    "name_ascii": "izmir",
+    "slug": "izmir",
+    "aliases": [
+      "Smyrna"
+    ],
+    "plate_code": "35",
+    "district_local_code": null,
+    "iso_3166_2": "TR-35",
+    "nuts_code": "TR310",
+    "tuik_id": "35",
+    "icisleri_id": "35",
+    "osm_relation_id": 2234750,
+    "source_hdx_id": null,
+    "centroid": {
+      "lat": 38.4192,
+      "lon": 27.1287
+    },
+    "bbox": [37.9, 26.15, 39.4, 28.65]
+  }
+]
