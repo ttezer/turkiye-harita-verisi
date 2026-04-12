@@ -1,6 +1,6 @@
-# turkiye_map
+# Türkiye'mizin Bölge, İl ve İlçe İdari Sınırları
 
-**Türkiye'nin bölge, il ve ilçe idari sınırlarını deterministik kimliklerle, çoklu formatta sunan açık veri pipeline'ı.**
+**Türkiye'mizin bölge, il ve ilçe idari sınırlarını deterministik kimliklerle, çoklu formatta sunan açık veri pipeline'ı.**
 
 [![Lisans: MIT](https://img.shields.io/badge/Lisans-MIT-yellow.svg)](./LICENSE)
 [![Veri Kaynağı](https://img.shields.io/badge/Veri-HDX%20%2F%20OCHA-blue)](https://data.humdata.org/dataset/cod-ab-tur)
