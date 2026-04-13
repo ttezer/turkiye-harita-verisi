@@ -31,6 +31,7 @@ seçebilmeli ve aynı panelden neyin bugün hazır olduğunu görebilmelidir.
 - `kmz`
 - `svg`
 - `png`
+- `shp`
 - `pdf`
 
 Durum:
@@ -46,6 +47,7 @@ Durum:
 - `kmz`: available now
 - `svg`: available now
 - `png`: available now
+- `shp`: available now (ZIP olarak; `.shp + .shx + .dbf + .prj`)
 - `pdf`: planned
 
 ## `scope`

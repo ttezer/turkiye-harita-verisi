@@ -37,8 +37,8 @@ Notlar:
 - `geojson` geometri merkezlidir
 - `svg` veri bağlanabilir vektör asset olarak düşünülür
 - `png` ve `pdf` sunum / paylaşım / baskı odaklıdır
-- `kml`, `kmz`, `shp` zengin format hedefidir fakat ilk sürümde tam destek şart değildir
-  - **Mevcut Durum:** KML/KMZ üretimi aktiftir ancak filtreli (il/bölge bazlı) çıktılar manuel QA aşamasındadır.
+- `kml`, `kmz`, `shp` zengin format hedefidir
+  - **Mevcut Durum:** KML/KMZ ve SHP üretimi aktiftir. KML/KMZ tarayıcıda filtreli üretilir; SHP `dist/shp/` altında ZIP paketi olarak statik üretilir.
 ## User-Selectable Parameters
 
 İlk sözleşmede kullanıcı açısından temel parametreler:
@@ -532,7 +532,7 @@ Varsayılan kural:
 ### Planlanan Formatlar
 
 - `pdf` — planlandı
-- `shp` — planlandı (çok dosya yapısı nedeniyle ayrı ele alınacak)
+- `shp` — **aktif** (`dist/shp/` altında ZIP olarak üretiliyor; `.shp + .shx + .dbf + .prj` içeriği)
 
 ## Valid UI Logic
 

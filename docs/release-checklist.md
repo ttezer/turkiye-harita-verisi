@@ -19,6 +19,7 @@ Etiketli bir snapshot yayınlamadan veya repoyu başka bir ekibe teslim etmeden 
    - `xlsx`
    - `kml`
    - `kmz`
+   - `shp`
    - `svg`
    - `png`
 
@@ -34,6 +35,7 @@ Etiketli bir snapshot yayınlamadan veya repoyu başka bir ekibe teslim etmeden 
    - `dist/wkt/provinces.wkt`
    - `dist/kml/regions.kml`
    - `dist/kmz/regions.kmz`
+   - `dist/shp/regions.zip`
 2. Bölge geometrisinin dissolve edildiğini ve downstream viewer’larda iç il sınırlarını göstermediğini doğrula.
 
 ## Bağımlılık İncelemesi

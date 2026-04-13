@@ -58,10 +58,23 @@ Kural:
 
 ## Uzamsal
 
+JSON/GeoJSON metadata nesnesinde:
+
 - `centroid`: `{ "lat": number, "lon": number }`
 - `bbox`: `[min_lon, min_lat, max_lon, max_lat]`
+
+CSV/SQL/WKT tablosal çıktıda ayrı kolonlar olarak üretilir:
+
+- `centroid_lat` — merkez noktası enlemi
+- `centroid_lon` — merkez noktası boylamı
+- `bbox_min_lon` — batı sınırı
+- `bbox_min_lat` — güney sınırı
+- `bbox_max_lon` — doğu sınırı
+- `bbox_max_lat` — kuzey sınırı
+- `geometry_wkt` — tam sınır geometrisi (WKT formatında, yalnızca ileri düzey kullanım)
 
 Notlar:
 
 - GeoJSON geometrisi uzamsal çalışmalar için gerçek kaynak olmaya devam eder
 - `bbox`, `fitBounds` gibi harita görüntü alanı işlemleri için yardımcı bir alandır
+- `geometry_wkt` XLSX çıktısına dahil edilmez (boyut nedeniyle)
