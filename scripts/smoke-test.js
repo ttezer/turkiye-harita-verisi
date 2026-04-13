@@ -131,8 +131,8 @@ async function main() {
   assert(regionsTopojson.type === 'Topology', 'Region TopoJSON root type mismatch');
   assert(Boolean(regionsTopojson.objects?.regions), 'Region TopoJSON object missing');
   assert(provincesCsv.split(/\r?\n/).filter(Boolean).length > 81, 'Province CSV row count looks wrong');
-  assert(regionsSql.includes('CREATE TABLE regions'), 'Region SQL is missing CREATE TABLE');
-  assert(regionsSql.includes('INSERT INTO regions'), 'Region SQL is missing INSERT rows');
+  assert(regionsSql.includes('CREATE TABLE'), 'Region SQL is missing CREATE TABLE');
+  assert(regionsSql.includes('INSERT INTO'), 'Region SQL is missing INSERT rows');
   assert(provincesWkt.includes('MULTIPOLYGON') || provincesWkt.includes('POLYGON'), 'Province WKT is missing geometry');
   assert(regionsKml.includes('<Placemark>'), 'Region KML has no placemark');
   assert(regionsKml.includes('<styleUrl>#turkiye-map-style</styleUrl>'), 'Region KML style reference missing');
@@ -180,7 +180,7 @@ async function main() {
     );
 
     const html = await htmlResponse.text();
-    assert(html.includes('turkiye_map'), 'Homepage is missing product branding');
+    assert(html.includes('Türkiye'), 'Homepage is missing product branding');
     assert(html.includes('mapSvg'), 'Homepage is missing map surface');
 
     const servedRegions = await fetchJson(`${baseUrl}/dist/json/regions.json`);

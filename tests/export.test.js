@@ -142,7 +142,7 @@ describe('export helpers', () => {
     expect(shpZipBuffer).toBeDefined();
     const shpZip = new AdmZip(shpZipBuffer);
     const shpEntryNames = shpZip.getEntries().map((e) => e.entryName).sort();
-    expect(shpEntryNames).toEqual(['regions.dbf', 'regions.prj', 'regions.shp', 'regions.shx']);
+    expect(shpEntryNames).toEqual(['regions.cpg', 'regions.dbf', 'regions.prj', 'regions.shp', 'regions.shx']);
     // PRJ should contain WGS84
     expect(shpZip.readAsText('regions.prj')).toContain('GCS_WGS_1984');
     // SHP header: file code 9994 at byte 0 (big-endian)

@@ -16,7 +16,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from '../test-ui/download.js';
+} from '../download.js';
 
 afterEach(() => {
   vi.restoreAllMocks();

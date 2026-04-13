@@ -13,7 +13,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from '../test-ui/download.js';
+} from '../download.js';
 
 const rootDir = path.resolve('D:/turkiye_map');
 

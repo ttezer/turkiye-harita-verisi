@@ -18,7 +18,7 @@ Anlamı:
 Repodaki mevcut kullanım:
 
 - `scripts/export.js` içinde build sırasında workbook export
-- `test-ui` içinde browser taraflı workbook üretimi
+- tarayıcıda browser taraflı workbook üretimi
 
 Risk yönetimi önerisi:
 

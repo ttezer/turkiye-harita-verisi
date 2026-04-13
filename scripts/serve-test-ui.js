@@ -25,7 +25,7 @@ function send(res, statusCode, body, contentType = 'text/plain; charset=utf-8') 
 
 function safeResolve(urlPathname) {
   const normalized = decodeURIComponent(urlPathname.split('?')[0]);
-  const relativePath = normalized === '/' ? '/test-ui/index.html' : normalized;
+  const relativePath = normalized === '/' ? '/index.html' : normalized;
   const candidatePath = path.resolve(repoRoot, `.${relativePath}`);
   const relativeCandidate = path.relative(repoRoot, candidatePath);
 
