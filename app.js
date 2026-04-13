@@ -12,7 +12,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from './download.js?v=23';
+} from './download.js?v=25';
 
 const state = {
   format: 'geojson',

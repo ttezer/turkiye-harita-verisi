@@ -486,7 +486,7 @@ function buildDbf(rows) {
   dv.setInt32(4, rows.length, true);
   dv.setUint16(8, hdrSize, true);
   dv.setUint16(10, recSize, true);
-  dv.setUint8(29, 0xCA); // Windows Turkish (1254)
+  dv.setUint8(29, 0x62); // LDID Windows-1254 Turkish
   let off = 32;
   for (const field of SHP_FIELDS) {
     const nb = new TextEncoder().encode(field.name.slice(0, 10));
