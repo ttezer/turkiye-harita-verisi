@@ -2,6 +2,7 @@ import {
   buildGeojsonPayload as buildFilteredGeojsonPayload,
   buildJsonPayload as buildFilteredJsonPayload,
   buildKmzBlobFromKml,
+  buildShapefileZipBlob,
   buildTabularRows as buildFilteredTabularRows,
   buildTopojsonPayload as buildFilteredTopojsonPayload,
   buildXlsxArrayBuffer,
@@ -11,7 +12,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from './download.js?v=21';
+} from './download.js?v=22';
 
 const state = {
   format: 'geojson',
@@ -364,6 +365,7 @@ function bindEvents() {
     try {
       await triggerDownload(availability.filename);
     } catch (error) {
+      console.error('Download failed', state.format, error);
       button.textContent = 'Hata oluştu';
       window.setTimeout(() => {
         button.textContent = originalText;
