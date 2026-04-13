@@ -571,10 +571,21 @@ function getAvailableFieldDefinitions() {
 
   let options;
 
+  const spatialFields = [
+    fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktası enlemi', false),
+    fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktası boylamı', false),
+    fieldDef('bbox_min_lon', 'Sınır Kutusu Batı', 'Minimum boylam (bbox_min_lon)', false),
+    fieldDef('bbox_min_lat', 'Sınır Kutusu Güney', 'Minimum enlem (bbox_min_lat)', false),
+    fieldDef('bbox_max_lon', 'Sınır Kutusu Doğu', 'Maksimum boylam (bbox_max_lon)', false),
+    fieldDef('bbox_max_lat', 'Sınır Kutusu Kuzey', 'Maksimum enlem (bbox_max_lat)', false),
+    fieldDef('geometry_wkt', 'Tam Sınır (WKT)', 'Tam sınır geometrisi — yalnızca ileri düzey kullanım', false),
+  ];
+
   if (state.level === 'region') {
     options = [
       fieldDef('id', 'Bölge ID', 'Bölgenin Benzersiz Kimliği', true),
       fieldDef('name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...spatialFields,
     ];
   } else if (state.level === 'province') {
     options = [
@@ -582,6 +593,7 @@ function getAvailableFieldDefinitions() {
       fieldDef('name', 'İl Adı', 'İl Görünür Adı', true),
       fieldDef('region_id', 'Bölge ID', 'Bölge Benzersiz Kimliği', true),
       fieldDef('region_name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...spatialFields,
     ];
   } else {
     options = [
@@ -591,6 +603,7 @@ function getAvailableFieldDefinitions() {
       fieldDef('parent_name', 'İl Adı', 'İl Görünür Adı', true),
       fieldDef('region_id', 'Bölge ID', 'Bölge Benzersiz Kimliği', true),
       fieldDef('region_name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...spatialFields,
     ];
   }
 
@@ -719,6 +732,18 @@ function getFormatAvailability() {
       filename: getDownloadFilename('kmz', `${state.level}s`),
       summary(scopeLabel, detailLabel) {
         return `${scopeLabel} için ${getDetailLabel(detailLabel)} KMZ çıktısı indirilebilir. Payload seçili filtrelere göre tarayıcıda üretilir.`;
+      },
+    };
+  }
+
+  if (state.format === 'shp') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'Shapefile hazır',
+      filename: `${state.level}s.zip`,
+      summary(scopeLabel, detailLabel) {
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} Shapefile ZIP paketi indirilebilir (.shp + .shx + .dbf + .prj, WGS84).`;
       },
     };
   }
@@ -1215,6 +1240,13 @@ async function buildDownloadBlob() {
 
   if (state.format === 'kmz') {
     return buildKmzBlobFromKml(buildKmlDocument());
+  }
+
+  if (state.format === 'shp') {
+    const url = `./dist/shp/${state.level}s.zip`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`SHP dosyası alınamadı: ${response.status}`);
+    return response.blob();
   }
 
   throw new Error(`Unsupported download format: ${state.format}`);
