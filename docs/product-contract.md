@@ -111,7 +111,6 @@ Aktif olarak üretilen formatlar:
 Planlanan ama henüz üretilmeyen formatlar:
 
 - `pdf`
-- `shp`
 
 ## `scope`
 
@@ -528,11 +527,11 @@ Varsayılan kural:
 - `kmz` — aktif (JSZip ile tarayıcıda üretim)
 - `svg` — aktif
 - `png` — aktif (seçilebilir çözünürlük)
+- `shp` — aktif (`dist/shp/` altında ZIP olarak üretiliyor; `.shp + .shx + .dbf + .prj` içeriği)
 
 ### Planlanan Formatlar
 
-- `pdf` — planlandı
-- `shp` — **aktif** (`dist/shp/` altında ZIP olarak üretiliyor; `.shp + .shx + .dbf + .prj` içeriği)
+- `pdf` — planlandı (`dist/shp/` altında ZIP olarak üretiliyor; `.shp + .shx + .dbf + .prj` içeriği)
 
 ## Valid UI Logic
 

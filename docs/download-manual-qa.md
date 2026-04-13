@@ -120,12 +120,20 @@ Not:
 - Beklenen dosya adı: `marmara-provinces.png`
 - Beklenti: görsel boş değil, çözünürlük doğru
 
+### 12. SHP
+
+- Format: `SHP`
+- Scope: `region`
+- Detail: `province`
+- Region: `Marmara`
+- Beklenen dosya adı: `marmara-provinces.zip`
+- Beklenti: ZIP içinde `.shp + .shx + .dbf + .prj` dosyaları
+
 ## Planlanan Formatlar
 
 Şunlarda buton aktif olmamalı:
 
 - `gpkg`
-- `shp`
 - `pdf`
 - `react-component`
 - `ai`

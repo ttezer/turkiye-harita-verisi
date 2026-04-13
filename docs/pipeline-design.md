@@ -338,6 +338,7 @@ Dosyalar:
 - `dist/wkt/*.wkt`
 - `dist/kml/*.kml`
 - `dist/kmz/*.kmz`
+- `dist/shp/*.zip`
 
 ## Script Sözleşmesi
 

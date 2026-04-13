@@ -25,11 +25,12 @@ Piyasadaki statik GeoJSON dosyalarının aksine bu proje veriyi sadece sunmaz; i
 | :--- | :--- | :--- |
 | GeoJSON | CSV | SVG |
 | TopoJSON | XLSX | PNG |
-| KML | SQL | — |
-| KMZ | WKT | — |
+| SHP | SQL | — |
+| KML | WKT | — |
+| KMZ | — | — |
 | JSON | — | — |
 
-Planlanan formatlar: `SHP`, `GeoPackage`, `PDF`, `React Component`, `AI`, `EPS`, `OBJ`, `STL`, `GLB`, `GLTF`
+Planlanan formatlar: `GeoPackage`, `PDF`, `React Component`, `AI`, `EPS`, `OBJ`, `STL`, `GLB`, `GLTF`
 
 ---
 
@@ -78,7 +79,7 @@ Ham kaynak (HDX)
     → Crosswalk ile zenginleştir (TÜİK / NUTS / ISO / OSM)
     → Deterministik kimlik ata
     → Şema + hiyerarşi doğrulaması
-    → JSON / GeoJSON / TopoJSON / CSV / XLSX / SQL / WKT / KML / KMZ
+    → JSON / GeoJSON / TopoJSON / CSV / XLSX / SQL / WKT / KML / KMZ / SHP
 ```
 
 ---
@@ -103,7 +104,8 @@ turkiye_map/
 │   ├── sql/
 │   ├── wkt/
 │   ├── kml/
-│   └── kmz/
+│   ├── kmz/
+│   └── shp/
 ├── test-ui/         → görsel smoke test arayüzü
 ├── packages/        → JS tüketim paketi
 ├── examples/        → kullanım örnekleri
@@ -169,9 +171,9 @@ Tüm Python scriptleri `encoding='utf-8'` ile yazılmıştır; Windows ortamlar�
 - [x] KML, KMZ
 - [x] SVG, PNG (UI üzerinden)
 - [x] Alan seçimi (Fields) UI
+- [x] SHP (+ prj, cpg, zip paketleme)
 
 ### Planlanan — Faz 2
-- [ ] SHP (+ prj, cpg, zip paketleme)
 - [ ] GeoPackage (gpkg)
 - [ ] PDF
 

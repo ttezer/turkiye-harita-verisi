@@ -200,6 +200,7 @@ Karar:
   - `wkt`
   - `kml`
   - `kmz`
+- `shp` dist/shp/ altında ZIP olarak üretilmektedir.
 - `svg` ve `png` şu anda UI tabanlı export olarak hazırdır.
 - `pdf` ve diğer zengin formatlar sonraki ürünleşme katmanında ele alınacaktır.
 

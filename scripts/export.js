@@ -226,6 +226,27 @@ function buildShpAndShx(features) {
   return { shp, shx: Buffer.concat([shxHeader, shxBody]) };
 }
 
+// Windows-1254 (Turkish) karakter eşleme — ISO-8859-9 ile aynı üst yarı
+const WIN1254_OVERRIDES = new Map([
+  [0x11E, 0xD0], [0x11F, 0xF0], // Ğ ğ
+  [0x130, 0xDD], [0x131, 0xFD], // İ ı
+  [0x15E, 0xDE], [0x15F, 0xFE], // Ş ş
+]);
+
+function encodeWin1254(str, length) {
+  const out = Buffer.alloc(length, 0x20);
+  const s = str.slice(0, length);
+  for (let i = 0; i < s.length; i++) {
+    const code = s.charCodeAt(i);
+    if (WIN1254_OVERRIDES.has(code)) {
+      out[i] = WIN1254_OVERRIDES.get(code);
+    } else {
+      out[i] = code < 256 ? code : 0x3F;
+    }
+  }
+  return out;
+}
+
 function buildDbfFile(rows, fieldDefs) {
   const recordSize = 1 + fieldDefs.reduce((s, f) => s + f.length, 0);
   const headerSize = 32 + fieldDefs.length * 32 + 1;
@@ -238,6 +259,7 @@ function buildDbfFile(rows, fieldDefs) {
   buf.writeInt32LE(rows.length, 4);
   buf.writeUInt16LE(headerSize, 8);
   buf.writeUInt16LE(recordSize, 10);
+  buf[29] = 0x62; // LDID Windows-1254 Turkish
 
   let off = 32;
   for (const field of fieldDefs) {
@@ -254,8 +276,7 @@ function buildDbfFile(rows, fieldDefs) {
     buf[off++] = 0x20; // active record
     for (const field of fieldDefs) {
       const val = row[field.name] === null || row[field.name] === undefined ? '' : String(row[field.name]);
-      const padded = val.slice(0, field.length).padEnd(field.length, ' ');
-      Buffer.from(padded, 'latin1').copy(buf, off);
+      encodeWin1254(val, field.length).copy(buf, off);
       off += field.length;
     }
   }
@@ -302,6 +323,7 @@ function writeShapefile(outDir, name, geojsonCollection, rows) {
   zip.addFile(`${name}.shx`, shx);
   zip.addFile(`${name}.dbf`, dbf);
   zip.addFile(`${name}.prj`, Buffer.from(WGS84_PRJ, 'utf8'));
+  zip.addFile(`${name}.cpg`, Buffer.from('1254', 'utf8'));
   writeBinary(path.join(outDir, `${name}.zip`), zip.toBuffer());
 }
 
