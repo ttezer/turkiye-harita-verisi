@@ -448,8 +448,8 @@ function syncConfigurator() {
 }
 
 function syncFormatFields() {
-  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'kml', 'kmz'].includes(state.format);
-  const isTabularData = ['csv', 'xlsx', 'sql'].includes(state.format);
+  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz'].includes(state.format);
+  const isTabularData = ['csv', 'xlsx', 'sql', 'wkt'].includes(state.format);
   const isVectorVisual = state.format === 'svg';
   const isRasterVisual = state.format === 'png' || state.format === 'pdf';
   const isVisual = isVectorVisual || isRasterVisual;
@@ -564,7 +564,8 @@ function renderFieldChecklist(options) {
 }
 
 function getAvailableFieldDefinitions() {
-  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'kml', 'kmz', 'svg']);
+  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'svg']);
+  const tabularFormats = new Set(['csv', 'xlsx', 'sql', 'wkt']);
 
   if (!structuredFormats.has(state.format)) {
     return [];
@@ -572,7 +573,7 @@ function getAvailableFieldDefinitions() {
 
   let options;
 
-  const spatialFields = [
+  const spatialFields = tabularFormats.has(state.format) ? [
     fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktası enlemi', false),
     fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktası boylamı', false),
     fieldDef('bbox_min_lon', 'Sınır Kutusu Batı', 'Minimum boylam (bbox_min_lon)', false),
@@ -580,7 +581,7 @@ function getAvailableFieldDefinitions() {
     fieldDef('bbox_max_lon', 'Sınır Kutusu Doğu', 'Maksimum boylam (bbox_max_lon)', false),
     fieldDef('bbox_max_lat', 'Sınır Kutusu Kuzey', 'Maksimum enlem (bbox_max_lat)', false),
     fieldDef('geometry_wkt', 'Tam Sınır (WKT)', 'Tam sınır geometrisi — yalnızca ileri düzey kullanım', false),
-  ];
+  ] : [];
 
   if (state.level === 'region') {
     options = [
