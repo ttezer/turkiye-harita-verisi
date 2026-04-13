@@ -530,6 +530,7 @@ export async function buildShapefileZipBlob(features, metadataItems, levelName, 
   zip.file(`${levelName}.shx`, shx);
   zip.file(`${levelName}.dbf`, dbf);
   zip.file(`${levelName}.prj`, prj);
+  zip.file(`${levelName}.cpg`, new TextEncoder().encode('1254'));
   return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
 }
 
