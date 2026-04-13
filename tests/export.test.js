@@ -134,5 +134,26 @@ describe('export helpers', () => {
     const kmz = new AdmZip(kmzBuffer);
     expect(kmz.getEntries().map((entry) => entry.entryName)).toEqual(['doc.kml']);
     expect(kmz.readAsText('doc.kml')).toContain('<name>Marmara</name>');
+
+    // Shapefile ZIP
+    const shpZipBuffer = writeFileSyncSpy.mock.calls.find(([filePath, content]) => (
+      String(filePath).includes(`dist${sep}shp${sep}regions.zip`) && Buffer.isBuffer(content)
+    ))?.[1];
+    expect(shpZipBuffer).toBeDefined();
+    const shpZip = new AdmZip(shpZipBuffer);
+    const shpEntryNames = shpZip.getEntries().map((e) => e.entryName).sort();
+    expect(shpEntryNames).toEqual(['regions.dbf', 'regions.prj', 'regions.shp', 'regions.shx']);
+    // PRJ should contain WGS84
+    expect(shpZip.readAsText('regions.prj')).toContain('GCS_WGS_1984');
+    // SHP header: file code 9994 at byte 0 (big-endian)
+    const shpBuf = shpZip.readFile('regions.shp');
+    expect(shpBuf.readInt32BE(0)).toBe(9994);
+    // CSV: bbox columns present as separate fields
+    const regionCsv = textWrites.find(([filePath]) => filePath.includes(`dist${sep}csv${sep}regions.csv`))?.[1];
+    expect(regionCsv).toContain('bbox_min_lon');
+    expect(regionCsv).toContain('bbox_min_lat');
+    expect(regionCsv).toContain('centroid_lat');
+    expect(regionCsv).toContain('geometry_wkt');
+    expect(regionCsv).not.toContain('"bbox":');
   });
 });
