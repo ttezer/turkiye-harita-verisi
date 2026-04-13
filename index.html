@@ -12,7 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'G-H9QM1EV95K');
     </script>
-    <link rel="stylesheet" href="./styles.css?v=10">
+    <link rel="stylesheet" href="./styles.css?v=11">
   </head>
   <body>
     <div class="page-shell">
@@ -183,51 +183,57 @@
                   </select>
                 </label>
 
-                <label class="field">
-                  <span>Arama</span>
-                  <input id="searchInput" type="search" placeholder="örn. Ankara, Çankaya">
-                </label>
-
-                <div class="download-summary">
-                  <strong id="downloadTitle">GeoJSON hazır</strong>
-                  <p id="downloadSummary">Türkiye için bölge geometrisi indirilebilir. Özellik alanları: Bölge ID, Bölge Adı.</p>
-                </div>
-
-                <div class="action-row">
-                  <button id="resetButton" class="reset-button" type="button">Sıfırla</button>
-                  <button id="downloadButton" class="download-link" type="button">İndir</button>
-                </div>
-              </section>
-
-              <section class="mini-stats">
-                <article>
-                  <span>Bölge</span>
-                  <strong id="regionCount">0</strong>
-                </article>
-                <article>
-                  <span>İl</span>
-                  <strong id="provinceCount">0</strong>
-                </article>
-                <article>
-                  <span>İlçe</span>
-                  <strong id="districtCount">0</strong>
-                </article>
-                <article>
-                  <span>Görünür</span>
-                  <strong id="visibleCount">0</strong>
-                </article>
-              </section>
-
-              <section class="detail-panel" id="detailPanel">
-                <p class="detail-empty">Haritada bir öğe seç.</p>
               </section>
             </aside>
 
             <section class="map-column">
-              <div class="map-stage">
-                <div class="stage-grid"></div>
-                <svg id="mapSvg" viewBox="0 0 1200 760" role="img" aria-label="Türkiye idari sınırları"></svg>
-                <div id="mapOverlay" class="map-overlay">Yükleniyor…</div>
+              <div class="map-layout">
+                <div class="map-stage">
+                  <div class="stage-grid"></div>
+                  <svg id="mapSvg" viewBox="0 0 1200 760" role="img" aria-label="Türkiye idari sınırları"></svg>
+                  <div id="mapOverlay" class="map-overlay">Yükleniyor…</div>
+                </div>
+
+                <aside class="map-rail">
+                  <label class="field rail-search">
+                    <span>Arama</span>
+                    <input id="searchInput" type="search" placeholder="örn. Ankara, Çankaya">
+                  </label>
+
+                  <div class="download-summary">
+                    <strong id="downloadTitle">GeoJSON hazır</strong>
+                    <p id="downloadSummary">Türkiye için bölge geometrisi indirilebilir.</p>
+                    <span id="estimatedSize" class="size-badge"></span>
+                  </div>
+
+                  <div class="action-row">
+                    <button id="resetButton" class="reset-button" type="button">Sıfırla</button>
+                    <button id="downloadButton" class="download-link" type="button">İndir</button>
+                  </div>
+
+                  <section class="mini-stats">
+                    <article>
+                      <span>Bölge</span>
+                      <strong id="regionCount">0</strong>
+                    </article>
+                    <article>
+                      <span>İl</span>
+                      <strong id="provinceCount">0</strong>
+                    </article>
+                    <article>
+                      <span>İlçe</span>
+                      <strong id="districtCount">0</strong>
+                    </article>
+                    <article>
+                      <span>Görünür</span>
+                      <strong id="visibleCount">0</strong>
+                    </article>
+                  </section>
+
+                  <section class="detail-panel" id="detailPanel">
+                    <p class="detail-empty">Haritada bir öğe seç.</p>
+                  </section>
+                </aside>
               </div>
             </section>
           </section>

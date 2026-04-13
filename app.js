@@ -61,6 +61,7 @@ const els = {
   districtCount: document.querySelector('#districtCount'),
   visibleCount: document.querySelector('#visibleCount'),
   detailPanel: document.querySelector('#detailPanel'),
+  estimatedSize: document.querySelector('#estimatedSize'),
   mapSvg: document.querySelector('#mapSvg'),
   mapOverlay: document.querySelector('#mapOverlay'),
   pageShell: document.querySelector('.page-shell'),
@@ -78,7 +79,6 @@ const projections = {
 hydrateRegionSelect();
 hydrateProvinceSelect();
 normalizeInterfaceCopy();
-organizeWorkspaceLayout();
 bindEvents();
 bindParallax();
 syncConfigurator();
@@ -158,30 +158,6 @@ function normalizeInterfaceCopy() {
   }
 }
 
-function organizeWorkspaceLayout() {
-  const mapColumn = document.querySelector('.map-column');
-  const mapStage = document.querySelector('.map-stage');
-  const searchField = els.searchInput?.closest('.field');
-  const downloadSummary = document.querySelector('.download-summary');
-  const actionRow = document.querySelector('.action-row');
-  const miniStats = document.querySelector('.mini-stats');
-  const detailPanel = els.detailPanel;
-
-  if (!mapColumn || !mapStage || !searchField || !downloadSummary || !actionRow || !miniStats || !detailPanel) {
-    return;
-  }
-
-  const layout = document.createElement('div');
-  layout.className = 'map-layout';
-
-  const rail = document.createElement('aside');
-  rail.className = 'map-rail';
-
-  searchField.classList.add('rail-search');
-  rail.append(searchField, downloadSummary, actionRow, miniStats, detailPanel);
-  layout.append(mapStage, rail);
-  mapColumn.replaceChildren(layout);
-}
 
 function bindEvents() {
   els.heroFormatChips?.forEach((chip) => {
@@ -361,21 +337,32 @@ function bindEvents() {
     const originalText = button.textContent;
     button.disabled = true;
     button.textContent = 'Hazırlanıyor…';
+    button.classList.remove('is-ready', 'is-error', 'is-success');
+    button.classList.add('is-preparing');
 
     try {
       await triggerDownload(availability.filename);
+      button.classList.remove('is-preparing');
+      button.classList.add('is-success');
+      button.textContent = 'İndirildi';
+      window.setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+        button.classList.remove('is-success');
+        button.classList.add('is-ready');
+      }, 2000);
     } catch (error) {
       console.error('Download failed', state.format, error);
+      button.classList.remove('is-preparing');
+      button.classList.add('is-error');
       button.textContent = 'Hata oluştu';
       window.setTimeout(() => {
         button.textContent = originalText;
         button.disabled = false;
+        button.classList.remove('is-error');
+        button.classList.add('is-ready');
       }, 2500);
-      return;
     }
-
-    button.textContent = originalText;
-    button.disabled = false;
   });
 
   els.resetButton?.addEventListener('click', () => {
@@ -642,6 +629,47 @@ function syncDownloadState() {
     els.downloadButton.classList.toggle('is-planned', !availability.available);
     els.downloadButton.classList.toggle('is-ready', availability.available);
   }
+
+  if (els.estimatedSize) {
+    const size = estimateDownloadSize();
+    els.estimatedSize.textContent = size ? `~${size}` : '';
+  }
+}
+
+function estimateDownloadSize() {
+  const features = getVisibleFeatures();
+  const count = features.length;
+  if (count === 0) return '';
+
+  const totalCoords = features.reduce((sum, f) => {
+    const rings = f.geometry.type === 'MultiPolygon'
+      ? f.geometry.coordinates.flat(1)
+      : (f.geometry.type === 'Polygon' ? f.geometry.coordinates : []);
+    return sum + rings.reduce((s, r) => s + r.length, 0);
+  }, 0);
+
+  const geoBytes = totalCoords * 20;
+  const metaBytes = count * 200;
+  const fmt = state.format;
+
+  let bytes;
+  if (fmt === 'json') bytes = metaBytes;
+  else if (fmt === 'geojson') bytes = geoBytes + metaBytes * 0.3;
+  else if (fmt === 'topojson') bytes = (geoBytes + metaBytes * 0.3) * 0.4;
+  else if (fmt === 'csv') bytes = metaBytes * 0.8;
+  else if (fmt === 'xlsx') bytes = metaBytes * 0.6;
+  else if (fmt === 'sql') bytes = metaBytes * 1.2;
+  else if (fmt === 'wkt') bytes = geoBytes * 0.9;
+  else if (fmt === 'kml' || fmt === 'kmz') bytes = geoBytes * 1.1;
+  else if (fmt === 'shp') bytes = geoBytes * 0.7;
+  else if (fmt === 'svg' || fmt === 'png') bytes = geoBytes * 0.5;
+  else return '';
+
+  if (fmt === 'kmz' || fmt === 'shp' || fmt === 'xlsx') bytes *= 0.5;
+
+  if (bytes < 1024) return `${Math.round(bytes)} B`;
+  if (bytes < 1048576) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / 1048576).toFixed(1)} MB`;
 }
 
 function syncHeroFormatChips() {
