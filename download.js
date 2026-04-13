@@ -348,6 +348,191 @@ export function xmlEscape(value) {
     .replaceAll("'", '&#39;');
 }
 
+// --- Shapefile browser writer ---
+
+const WGS84_PRJ_STR = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]';
+
+// ISO-8859-9 (Latin-5 / Windows-1254) — Türkçe karakter eşleme tablosu
+const ISO88599_OVERRIDES = new Map([
+  [0x11E, 0xD0], [0x11F, 0xF0], // Ğ ğ
+  [0x130, 0xDD], [0x131, 0xFD], // İ ı
+  [0x15E, 0xDE], [0x15F, 0xFE], // Ş ş
+  // Ç ç Ö ö Ü ü → Latin-1 ile aynı, ek eşleme gerekmez
+]);
+
+function encodeISO88599Char(code) {
+  if (ISO88599_OVERRIDES.has(code)) return ISO88599_OVERRIDES.get(code);
+  return code < 256 ? code : 0x3F;
+}
+
+function writeISO88599Field(u8, off, value, length) {
+  const s = String(value ?? '').slice(0, length);
+  for (let i = 0; i < length; i++) {
+    u8[off + i] = i < s.length ? encodeISO88599Char(s.charCodeAt(i)) : 0x20;
+  }
+}
+
+function shpGeomRings(geometry) {
+  if (geometry.type === 'Polygon') return geometry.coordinates;
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates.flat(1);
+  return [];
+}
+
+function buildShpContent(geometry) {
+  const rings = shpGeomRings(geometry);
+  const numParts = rings.length;
+  const numPoints = rings.reduce((s, r) => s + r.length, 0);
+  const buf = new ArrayBuffer(4 + 32 + 4 + 4 + numParts * 4 + numPoints * 16);
+  const dv = new DataView(buf);
+  let off = 0;
+  dv.setInt32(off, 5, true); off += 4;
+  let xn = Infinity, yn = Infinity, xx = -Infinity, yx = -Infinity;
+  for (const ring of rings) for (const [x, y] of ring) {
+    if (x < xn) xn = x; if (y < yn) yn = y;
+    if (x > xx) xx = x; if (y > yx) yx = y;
+  }
+  dv.setFloat64(off, xn, true); off += 8;
+  dv.setFloat64(off, yn, true); off += 8;
+  dv.setFloat64(off, xx, true); off += 8;
+  dv.setFloat64(off, yx, true); off += 8;
+  dv.setInt32(off, numParts, true); off += 4;
+  dv.setInt32(off, numPoints, true); off += 4;
+  let pi = 0;
+  for (const ring of rings) { dv.setInt32(off, pi, true); off += 4; pi += ring.length; }
+  for (const ring of rings) for (const [x, y] of ring) {
+    dv.setFloat64(off, x, true); off += 8;
+    dv.setFloat64(off, y, true); off += 8;
+  }
+  return new Uint8Array(buf);
+}
+
+function concatUint8(...arrays) {
+  const total = arrays.reduce((s, a) => s + a.length, 0);
+  const out = new Uint8Array(total);
+  let off = 0;
+  for (const a of arrays) { out.set(a, off); off += a.length; }
+  return out;
+}
+
+function buildShpAndShx(features) {
+  const contents = features.map(f => buildShpContent(f.geometry));
+  let xn = Infinity, yn = Infinity, xx = -Infinity, yx = -Infinity;
+  for (const f of features) for (const ring of shpGeomRings(f.geometry)) for (const [x, y] of ring) {
+    if (x < xn) xn = x; if (y < yn) yn = y;
+    if (x > xx) xx = x; if (y > yx) yx = y;
+  }
+  if (!isFinite(xn)) { xn = yn = xx = yx = 0; }
+
+  function makeFileHeader(fileWords) {
+    const b = new ArrayBuffer(100);
+    const d = new DataView(b);
+    d.setInt32(0, 9994, false);
+    d.setInt32(24, fileWords, false);
+    d.setInt32(28, 1000, true);
+    d.setInt32(32, 5, true);
+    d.setFloat64(36, xn, true); d.setFloat64(44, yn, true);
+    d.setFloat64(52, xx, true); d.setFloat64(60, yx, true);
+    return new Uint8Array(b);
+  }
+
+  const recParts = [];
+  for (let i = 0; i < features.length; i++) {
+    const rh = new ArrayBuffer(8);
+    const rd = new DataView(rh);
+    rd.setInt32(0, i + 1, false);
+    rd.setInt32(4, contents[i].length / 2, false);
+    recParts.push(new Uint8Array(rh), contents[i]);
+  }
+  const totalRecBytes = recParts.reduce((s, a) => s + a.length, 0);
+  const shp = concatUint8(makeFileHeader((100 + totalRecBytes) / 2), ...recParts);
+
+  const shxBody = new ArrayBuffer(features.length * 8);
+  const shxDv = new DataView(shxBody);
+  let shpOff = 100;
+  for (let i = 0; i < features.length; i++) {
+    shxDv.setInt32(i * 8, shpOff / 2, false);
+    shxDv.setInt32(i * 8 + 4, contents[i].length / 2, false);
+    shpOff += 8 + contents[i].length;
+  }
+  const shx = concatUint8(makeFileHeader((100 + features.length * 8) / 2), new Uint8Array(shxBody));
+  return { shp, shx };
+}
+
+const SHP_FIELDS = [
+  { name: 'id',        length: 20 },
+  { name: 'name',      length: 100 },
+  { name: 'level',     length: 10 },
+  { name: 'parent_id', length: 20 },
+  { name: 'region_id', length: 20 },
+  { name: 'cntrd_lat', length: 20 },
+  { name: 'cntrd_lon', length: 20 },
+  { name: 'bbox_w',    length: 20 },
+  { name: 'bbox_s',    length: 20 },
+  { name: 'bbox_e',    length: 20 },
+  { name: 'bbox_n',    length: 20 },
+];
+
+function buildDbf(rows) {
+  const recSize = 1 + SHP_FIELDS.reduce((s, f) => s + f.length, 0);
+  const hdrSize = 32 + SHP_FIELDS.length * 32 + 1;
+  const buf = new ArrayBuffer(hdrSize + rows.length * recSize + 1);
+  const dv = new DataView(buf);
+  const u8 = new Uint8Array(buf);
+  const now = new Date();
+  dv.setUint8(0, 0x03);
+  dv.setUint8(1, now.getFullYear() % 100);
+  dv.setUint8(2, now.getMonth() + 1);
+  dv.setUint8(3, now.getDate());
+  dv.setInt32(4, rows.length, true);
+  dv.setUint16(8, hdrSize, true);
+  dv.setUint16(10, recSize, true);
+  dv.setUint8(29, 0x62); // Windows Turkish (1254)
+  let off = 32;
+  for (const field of SHP_FIELDS) {
+    const nb = new TextEncoder().encode(field.name.slice(0, 10));
+    u8.set(nb, off);
+    dv.setUint8(off + 11, 0x43); // 'C'
+    dv.setUint8(off + 16, field.length);
+    off += 32;
+  }
+  dv.setUint8(off++, 0x0D);
+  for (const row of rows) {
+    dv.setUint8(off++, 0x20);
+    for (const field of SHP_FIELDS) {
+      writeISO88599Field(u8, off, row[field.name], field.length);
+      off += field.length;
+    }
+  }
+  dv.setUint8(off, 0x1A);
+  return u8;
+}
+
+export async function buildShapefileZipBlob(features, metadataItems, levelName, JSZipImpl = globalThis.JSZip) {
+  if (!JSZipImpl) throw new Error('JSZip kullanılamıyor.');
+  const { shp, shx } = buildShpAndShx(features);
+  const dbfRows = metadataItems.map(item => ({
+    id: item.id ?? '',
+    name: item.name ?? '',
+    level: item.level ?? '',
+    parent_id: item.parent_id ?? '',
+    region_id: item.region_id ?? '',
+    cntrd_lat: item.centroid?.lat ?? '',
+    cntrd_lon: item.centroid?.lon ?? '',
+    bbox_w: item.bbox?.[0] ?? '',
+    bbox_s: item.bbox?.[1] ?? '',
+    bbox_e: item.bbox?.[2] ?? '',
+    bbox_n: item.bbox?.[3] ?? '',
+  }));
+  const dbf = buildDbf(dbfRows);
+  const prj = new TextEncoder().encode(WGS84_PRJ_STR);
+  const zip = new JSZipImpl();
+  zip.file(`${levelName}.shp`, shp);
+  zip.file(`${levelName}.shx`, shx);
+  zip.file(`${levelName}.dbf`, dbf);
+  zip.file(`${levelName}.prj`, prj);
+  return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+}
+
 export async function buildKmzBlobFromKml(kmlString, JSZipImpl = globalThis.JSZip) {
   if (!JSZipImpl) {
     throw new Error('JSZip kullanılamıyor.');

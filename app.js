@@ -11,7 +11,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from './download.js?v=20';
+} from './download.js?v=21';
 
 const state = {
   format: 'geojson',
@@ -1243,10 +1243,7 @@ async function buildDownloadBlob() {
   }
 
   if (state.format === 'shp') {
-    const url = `./dist/shp/${state.level}s.zip`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`SHP dosyası alınamadı: ${response.status}`);
-    return response.blob();
+    return buildShapefileZipBlob(getVisibleFeatures(), getVisibleMetadataItems(), `${state.level}s`);
   }
 
   throw new Error(`Unsupported download format: ${state.format}`);
