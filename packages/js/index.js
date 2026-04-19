@@ -1,6 +1,7 @@
 import regions from '../../dist/json/regions.json' with { type: 'json' };
 import provinces from '../../dist/json/provinces.json' with { type: 'json' };
 import districts from '../../dist/json/districts.json' with { type: 'json' };
+import yerlesimler from '../../dist/json/yerlesimler.json' with { type: 'json' };
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,6 +24,10 @@ export function getDistricts() {
   return districts;
 }
 
+export function getYerlesimler() {
+  return yerlesimler;
+}
+
 export function findRegionById(id) {
   return regions.find((item) => item.id === id) || null;
 }
@@ -41,6 +46,18 @@ export function findDistrictsByProvinceId(provinceId) {
 
 export function findDistrictsByRegionId(regionId) {
   return districts.filter((item) => item.region_id === regionId);
+}
+
+export function findYerlesimlerByProvinceId(provinceId) {
+  return yerlesimler.filter((item) => item.province_id === provinceId);
+}
+
+export function findYerlesimlerByDistrictId(districtId) {
+  return yerlesimler.filter((item) => item.district_id === districtId);
+}
+
+export function findYerlesimById(id) {
+  return yerlesimler.find((item) => item.id === id) || null;
 }
 
 export function getRegionGeometry() {

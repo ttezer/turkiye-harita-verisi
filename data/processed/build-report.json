@@ -1,8 +1,9 @@
 {
-  "validated_at": "2026-04-12T11:32:42.164Z",
+  "validated_at": "2026-04-18T21:21:48.452Z",
   "region_count": 7,
   "province_count": 81,
   "district_count": 973,
+  "settlement_count": 50517,
   "crosswalk_report": {
     "region_rows": 7,
     "province_region_memberships": 81,
@@ -12,6 +13,16 @@
     "district_display_name_overrides": 196,
     "matched_provinces": 81,
     "matched_districts": 0
+  },
+  "settlements_report": {
+    "source": "e-icisleri-mulki-idare-bolumleri",
+    "files": [
+      "Mahalle_Listesi.xls",
+      "Koy_Listesi.xls"
+    ],
+    "mahalle_count": 32303,
+    "koy_count": 18214,
+    "settlement_count": 50517
   },
   "status": "ok"
 }

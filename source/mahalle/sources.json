@@ -1,0 +1,58 @@
+[
+  {
+    "province_id": "TR-P-54",
+    "province_name": "Sakarya",
+    "source_name": "Sakarya Büyükşehir Belediyesi Açık Veri Portalı - Mahalle Sınırları",
+    "source_url": "https://veri.sakarya.bel.tr/",
+    "accessed_at": "2026-04-19",
+    "source_date": "2025-07-10",
+    "last_updated": "2025-09-09",
+    "format": "KMZ",
+    "local_path": "source/mahalle/sakarya/sakarya_mahalle.kmz",
+    "included_in_repo": false,
+    "license": "Sakarya Açık Veri Lisansı"
+  },
+  {
+    "province_id": "TR-P-48",
+    "province_name": "Muğla",
+    "source_name": "Muğla Büyükşehir Belediyesi CBS - Mahalleler (Vektör Veri)",
+    "source_url": "https://cbs.mugla.bel.tr/blog/cbs-acik-veri",
+    "accessed_at": "2026-04-19",
+    "source_date": "2025-11-05",
+    "format": "SHP",
+    "local_path": "source/mahalle/mugla/Mahalleler.shp",
+    "included_in_repo": false,
+    "note": "Sayfada verinin bilgi amaçlı sunulduğu ve resmi iş/işlemde kullanılmayacağı belirtilir."
+  },
+  {
+    "province_id": "TR-P-20",
+    "province_name": "Denizli",
+    "source_name": "Denizli Adres Bilgi Sistemi - MAHALLE",
+    "source_url": "https://adres.denizli.bel.tr/",
+    "accessed_at": "2026-04-19",
+    "format": "ArcGIS REST",
+    "local_path": null,
+    "included_in_repo": false
+  },
+  {
+    "province_id": "TR-P-41",
+    "province_name": "Kocaeli",
+    "source_name": "Kocaeli Büyükşehir Belediyesi Rehber - Mahalle",
+    "source_url": "https://rehber.kocaeli.bel.tr/",
+    "accessed_at": "2026-04-19",
+    "format": "Kocaeli Rehber API",
+    "local_path": null,
+    "included_in_repo": false
+  },
+  {
+    "province_id": "TR-P-27",
+    "province_name": "Gaziantep",
+    "source_name": "Gaziantep Açık Veri Platformu - Mahalle Sınır Alanları",
+    "source_url": "https://acikveri.gaziantep.bel.tr/",
+    "accessed_at": "2026-04-20",
+    "format": "KML",
+    "local_path": "source/mahalle/gaziantep/mahalle_sinirlari.kml",
+    "included_in_repo": false,
+    "license": "Gaziantep Açık Veri Lisansı"
+  }
+]

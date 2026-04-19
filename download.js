@@ -211,6 +211,8 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
     '<kml xmlns="http://www.opengis.net/kml/2.2">',
     '<Document>',
     `<name>${xmlEscape(name)}</name>`,
+    '<open>1</open>',
+    buildKmlLookAt(geometryCollection),
     ...styleDefinitions,
     placemarks,
     '</Document>',
@@ -242,11 +244,13 @@ export function buildKmlDescription(item, properties) {
 }
 
 export function geometryToKml(geometry) {
-  const ringToKml = (ring) => simplifyKmlRing(ring).map(([lon, lat]) => `${lon},${lat},0`).join(' ');
+  const ringToKml = (ring) => normalizeKmlRing(ring).map(([lon, lat]) => `${lon},${lat},0`).join(' ');
   const polygonToKml = (polygon) => {
     const [outerBoundary, ...innerBoundaries] = polygon;
     return [
       '<Polygon>',
+      '<tessellate>1</tessellate>',
+      '<altitudeMode>clampToGround</altitudeMode>',
       `<outerBoundaryIs><LinearRing><coordinates>${ringToKml(outerBoundary)}</coordinates></LinearRing></outerBoundaryIs>`,
       ...innerBoundaries.map((ring) => `<innerBoundaryIs><LinearRing><coordinates>${ringToKml(ring)}</coordinates></LinearRing></innerBoundaryIs>`),
       '</Polygon>',
@@ -264,24 +268,80 @@ export function geometryToKml(geometry) {
   return '';
 }
 
-function simplifyKmlRing(ring) {
+export function buildKmlLookAt(geometryCollection) {
+  const bbox = geometryCollectionBbox(geometryCollection);
+  if (!bbox) {
+    return '';
+  }
+
+  const [minLon, minLat, maxLon, maxLat] = bbox;
+  const centerLon = (minLon + maxLon) / 2;
+  const centerLat = (minLat + maxLat) / 2;
+  const lonSpanMeters = Math.abs(maxLon - minLon) * 111320 * Math.cos(centerLat * Math.PI / 180);
+  const latSpanMeters = Math.abs(maxLat - minLat) * 111320;
+  const range = Math.max(1000, Math.round(Math.max(lonSpanMeters, latSpanMeters) * 2.4));
+
+  return [
+    '<LookAt>',
+    `<longitude>${centerLon.toFixed(6)}</longitude>`,
+    `<latitude>${centerLat.toFixed(6)}</latitude>`,
+    '<altitude>0</altitude>',
+    '<heading>0</heading>',
+    '<tilt>0</tilt>',
+    `<range>${range}</range>`,
+    '<altitudeMode>clampToGround</altitudeMode>',
+    '</LookAt>',
+  ].join('');
+}
+
+function geometryCollectionBbox(geometryCollection) {
+  let minLon = Infinity;
+  let minLat = Infinity;
+  let maxLon = -Infinity;
+  let maxLat = -Infinity;
+
+  const visit = (coordinates) => {
+    if (!Array.isArray(coordinates)) {
+      return;
+    }
+
+    if (typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number') {
+      const [lon, lat] = coordinates;
+      if (!Number.isFinite(lon) || !Number.isFinite(lat)) {
+        return;
+      }
+      minLon = Math.min(minLon, lon);
+      minLat = Math.min(minLat, lat);
+      maxLon = Math.max(maxLon, lon);
+      maxLat = Math.max(maxLat, lat);
+      return;
+    }
+
+    coordinates.forEach(visit);
+  };
+
+  for (const feature of geometryCollection.features || []) {
+    visit(feature.geometry?.coordinates);
+  }
+
+  if (![minLon, minLat, maxLon, maxLat].every(Number.isFinite)) {
+    return null;
+  }
+
+  return [minLon, minLat, maxLon, maxLat];
+}
+
+function normalizeKmlRing(ring) {
   const cleaned = ring.filter((point) => Array.isArray(point) && Number.isFinite(point[0]) && Number.isFinite(point[1]));
-  if (cleaned.length <= 12) {
+  if (cleaned.length === 0) {
     return cleaned;
   }
 
   const isClosed = cleaned.length > 1
     && cleaned[0][0] === cleaned.at(-1)[0]
     && cleaned[0][1] === cleaned.at(-1)[1];
-  const openRing = isClosed ? cleaned.slice(0, -1) : cleaned;
-  const simplified = douglasPeucker(openRing, 0.0035);
-  const normalized = simplified.length >= 3 ? simplified : openRing;
 
-  if (normalized.length < 3) {
-    return cleaned;
-  }
-
-  return [...normalized, normalized[0]];
+  return isClosed ? cleaned : [...cleaned, cleaned[0]];
 }
 
 export function douglasPeucker(points, tolerance) {

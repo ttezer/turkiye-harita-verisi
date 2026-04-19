@@ -41,12 +41,28 @@ Planlanan formatlar: `GeoPackage`, `PDF`, `React Component`, `AI`, `EPS`, `OBJ`,
 | Bölge | `TR-R-XXX` | `TR-R-MAR` |
 | İl | `TR-P-XX` | `TR-P-34` |
 | İlçe | `TR-D-XX-YYY` | `TR-D-34-001` |
+| Yerleşim | `TR-Y-XX-YYY-M-ZZZZ` | `TR-Y-34-001-M-0001` |
 
 Kurallar:
 
 - `XX` il plaka kodudur (sıfır dolgulu, iki hane)
 - `YYY` il içindeki deterministik sıradır (aralıksız, üç hane)
 - ilçe sıralaması pipeline kurallarıyla sabitlenir ve sürümler arasında kararlı kalır
+- yerleşim kayıtları mahalle ve köy metadata'sı için kullanılır; geometri desteği kaynak bulunan illerle sınırlıdır
+
+---
+
+## Mahalle ve Köy Verisi
+
+Proje, il ve ilçe verilerine ek olarak e-İçişleri kaynaklı mahalle/köy metadata'sını ve açık belediye kaynaklarından derlenen sınırlı mahalle geometrilerini işler.
+
+- **Metadata** — mahalle ve köy kayıtları normalize edilir, il/ilçe hiyerarşisine bağlanır ve deterministik `TR-Y-*` kimlikleriyle yayınlanır.
+- **Mahalle geometrileri** — yalnızca kaynak bulunup kontrol edilen iller için üretilir; kalite notları UI'da görünür.
+- **Ham kaynaklar** — belediye KML/KMZ/SHP/Excel dosyaları repoya dahil edilmez. Kaynak URL'leri, erişim tarihleri ve yerel dosya beklentileri `source/mahalle/sources.json` ve ilgili README içinde tutulur.
+
+Bu veriler resmi işlem amacıyla değil, açık veri entegrasyonu ve yazılım geliştirme amaçlı kullanılmalıdır. Lisans ve kullanım koşulları için ilgili kurum kaynakları ayrıca kontrol edilmelidir.
+
+Mahalle geometri verileri sınırlı kaynaklardan derlenir ve kalite notlarıyla birlikte sunulur. Resmi, ticari veya hukuki sonuç doğuran kullanımlar için ilgili kurum kaynakları, güncellik ve lisans koşulları ayrıca doğrulanmalıdır.
 
 ---
 
@@ -106,7 +122,6 @@ turkiye_map/
 │   ├── kml/
 │   ├── kmz/
 │   └── shp/
-├── test-ui/         → görsel smoke test arayüzü
 ├── packages/        → JS tüketim paketi
 ├── examples/        → kullanım örnekleri
 └── docs/            → tasarım ve karar belgeleri

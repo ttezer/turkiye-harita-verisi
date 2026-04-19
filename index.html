@@ -70,7 +70,6 @@
                   <p class="eyebrow">İndirme Yapılandırıcısı</p>
                   <div id="formatStatus" class="status-pill">Hazır</div>
                 </div>
-
                 <label class="field">
                   <span>Dosya türü</span>
                   <select id="formatSelect">
@@ -113,6 +112,7 @@
                     <option value="region">Bölge</option>
                     <option value="province">İl</option>
                     <option value="district">İlçe</option>
+                    <option value="mahalle">Mahalle</option>
                   </select>
                 </label>
 
@@ -127,6 +127,13 @@
                   <span>İl filtresi</span>
                   <select id="provinceSelect">
                     <option value="">Tüm Türkiye</option>
+                  </select>
+                </label>
+
+                <label class="field is-hidden">
+                  <span>İlçe filtresi</span>
+                  <select id="districtSelect">
+                    <option value="">Tüm ilçeler</option>
                   </select>
                 </label>
 
@@ -192,6 +199,8 @@
                   <div class="stage-grid"></div>
                   <svg id="mapSvg" viewBox="0 0 1200 760" role="img" aria-label="Türkiye idari sınırları"></svg>
                   <div id="mapOverlay" class="map-overlay">Yükleniyor…</div>
+                  <button id="qualityButton" class="quality-button is-hidden" type="button" aria-expanded="false">Kalite %100</button>
+                  <div id="qualityPanel" class="quality-panel is-hidden"></div>
                 </div>
 
                 <aside class="map-rail">
@@ -246,6 +255,6 @@
     <script src="https://cdn.jsdelivr.net/npm/topojson-server@3/dist/topojson-server.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
-    <script type="module" src="./app.js?v=25"></script>
+    <script type="module" src="./app.js?v=26"></script>
   </body>
 </html>

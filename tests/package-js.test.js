@@ -5,12 +5,16 @@ import {
   findProvinceById,
   findProvincesByRegionId,
   findRegionById,
+  findYerlesimById,
+  findYerlesimlerByDistrictId,
+  findYerlesimlerByProvinceId,
   getDistricts,
   getDistrictGeometry,
   getProvinces,
   getProvinceGeometry,
   getRegions,
   getRegionGeometry,
+  getYerlesimler,
 } from '../packages/js/index.js';
 
 describe('packages/js public API', () => {
@@ -18,6 +22,7 @@ describe('packages/js public API', () => {
     expect(getRegions()).toHaveLength(7);
     expect(getProvinces()).toHaveLength(81);
     expect(getDistricts()).toHaveLength(973);
+    expect(getYerlesimler()).toHaveLength(50517);
   });
 
   it('finds a region and its province members', () => {
@@ -43,6 +48,18 @@ describe('packages/js public API', () => {
   it('returns null for unknown lookups', () => {
     expect(findRegionById('TR-R-XXX')).toBeNull();
     expect(findProvinceById('TR-P-99')).toBeNull();
+    expect(findYerlesimById('TR-Y-99-999-M-9999')).toBeNull();
+  });
+
+  it('finds yerlesimler through province and district relationships', () => {
+    const istanbulYerlesimler = findYerlesimlerByProvinceId('TR-P-34');
+    const adalarYerlesimler = findYerlesimlerByDistrictId('TR-D-34-001');
+    const firstAdalarYerlesim = findYerlesimById(adalarYerlesimler[0].id);
+
+    expect(istanbulYerlesimler.length).toBeGreaterThan(0);
+    expect(adalarYerlesimler.length).toBeGreaterThan(0);
+    expect(adalarYerlesimler.every((item) => item.type === 'mahalle')).toBe(true);
+    expect(firstAdalarYerlesim?.district_id).toBe('TR-D-34-001');
   });
 
   it('loads region, province and district geometry collections', () => {

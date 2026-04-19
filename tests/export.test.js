@@ -77,6 +77,9 @@ describe('export helpers', () => {
       if (file.includes('districts.metadata.json')) {
         return [{ id: 'TR-D-34-001', name: 'Adalar', aliases: [], member_ids: [] }];
       }
+      if (file.includes('yerlesimler.metadata.json')) {
+        return [{ id: 'TR-Y-34-001-M-0001', name: 'Maden', province_id: 'TR-P-34', district_id: 'TR-D-34-001' }];
+      }
       return {
         type: 'FeatureCollection',
         features: [{
@@ -97,9 +100,10 @@ describe('export helpers', () => {
 
     main();
 
-    expect(writeJsonSpy).toHaveBeenCalledTimes(3);
+    expect(writeJsonSpy).toHaveBeenCalledTimes(6);
     expect(writeJsonCompactSpy).toHaveBeenCalledTimes(6);
     expect(String(writeJsonSpy.mock.calls[0][0])).toContain('regions.json');
+    expect(String(writeJsonSpy.mock.calls[3][0])).toContain('yerlesimler.json');
     expect(String(writeJsonCompactSpy.mock.calls[2][0])).toContain('districts.geojson');
     expect(mkdirSyncSpy).toHaveBeenCalled();
     expect(xlsxWriteFileSpy).toHaveBeenCalledWith(

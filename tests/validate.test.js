@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { vi } from 'vitest';
-import { main, matchesType, validateCollection, validateRelationships, validateValue } from '../scripts/validate.js';
+import { main, matchesType, validateCollection, validateMetadataCollection, validateRelationships, validateValue } from '../scripts/validate.js';
 
 const region = {
   id: 'TR-R-MAR',
@@ -25,6 +25,16 @@ const district = {
   district_local_code: '001',
   slug: 'adalar-istanbul',
   source_hdx_id: 'TUR034001',
+};
+
+const settlement = {
+  id: 'TR-Y-34-001-M-0001',
+  level: 'yerlesim',
+  type: 'mahalle',
+  parent_id: 'TR-D-34-001',
+  province_id: 'TR-P-34',
+  district_id: 'TR-D-34-001',
+  slug: 'maden-mahalle-adalar-istanbul-0001',
 };
 
 describe('validateCollection', () => {
@@ -52,6 +62,22 @@ describe('validateCollection', () => {
     };
 
     expect(() => validateCollection(metadata, geometry, schema, 'unit')).toThrow('unit duplicate id A');
+  });
+});
+
+describe('validateMetadataCollection', () => {
+  it('validates metadata-only datasets', () => {
+    const schema = {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        slug: { type: 'string' },
+      },
+      required: ['id', 'slug'],
+      additionalProperties: true,
+    };
+
+    expect(() => validateMetadataCollection([{ id: 'A', slug: 'alpha' }], schema, 'unit')).not.toThrow();
   });
 });
 
@@ -93,7 +119,7 @@ describe('validateValue helpers', () => {
 
 describe('validateRelationships', () => {
   it('accepts a valid region-province-district chain', () => {
-    expect(() => validateRelationships([region], [province], [district])).not.toThrow();
+    expect(() => validateRelationships([region], [province], [district], [settlement])).not.toThrow();
   });
 
   it('rejects district region mismatch against parent province', () => {
@@ -158,12 +184,28 @@ describe('validateRelationships', () => {
       ...district,
       source_hdx_id: 'BAD034001',
     }])).toThrow('District TR-D-34-001 source_hdx_id does not match parent prefix');
+
+    expect(() => validateRelationships([region], [province], [district], [{
+      ...settlement,
+      province_id: 'TR-P-99',
+    }])).toThrow('Yerlesim TR-Y-34-001-M-0001 has missing province_id TR-P-99');
   });
 
   it('runs main and writes build report', async () => {
     const pipeline = await import('../scripts/lib/pipeline.js');
     vi.spyOn(pipeline, 'readJson').mockImplementation((filePath) => {
       const file = String(filePath);
+      if (file.includes('yerlesim.schema.json')) {
+        return {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            slug: { type: 'string' },
+          },
+          required: ['id', 'slug'],
+          additionalProperties: true,
+        };
+      }
       if (file.includes('region.schema.json') || file.includes('province.schema.json') || file.includes('district.schema.json')) {
         return {
           type: 'object',
@@ -190,8 +232,14 @@ describe('validateRelationships', () => {
       if (file.includes('districts.metadata.json')) {
         return [district];
       }
+      if (file.includes('yerlesimler.metadata.json')) {
+        return [settlement];
+      }
       if (file.includes('crosswalk-report.json')) {
         return { matched_provinces: 1, matched_districts: 0 };
+      }
+      if (file.includes('yerlesimler-report.json')) {
+        return { settlement_count: 1 };
       }
       return {
         type: 'FeatureCollection',
@@ -212,6 +260,7 @@ describe('validateRelationships', () => {
       region_count: 1,
       province_count: 1,
       district_count: 1,
+      settlement_count: 1,
       status: 'ok',
     });
   });

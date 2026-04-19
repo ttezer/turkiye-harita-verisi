@@ -691,6 +691,67 @@ button, input, select { font: inherit; }
   font-size: 14px;
 }
 
+.quality-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 226, 168, 0.36);
+  color: #dfffee;
+  background: rgba(7, 33, 26, 0.76);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+}
+
+.quality-button.has-warnings {
+  color: #ffe8ba;
+  border-color: rgba(255, 181, 99, 0.42);
+  background: rgba(70, 43, 12, 0.78);
+}
+
+.quality-button.is-hidden,
+.quality-panel.is-hidden {
+  display: none;
+}
+
+.quality-panel {
+  position: absolute;
+  top: 66px;
+  right: 20px;
+  z-index: 4;
+  width: min(320px, calc(100% - 40px));
+  padding: 14px;
+  border-radius: 18px;
+  color: var(--ink);
+  border: 1px solid rgba(255, 181, 99, 0.28);
+  background: rgba(7, 12, 28, 0.92);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+}
+
+.quality-panel h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.quality-panel p {
+  margin: 0 0 10px;
+  color: var(--muted-strong);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.quality-panel ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted-strong);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .format-section,
 .snippet-section {
   display: grid;

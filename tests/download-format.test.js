@@ -13,6 +13,7 @@ import {
   escapeCsvValue,
   escapeSqlValue,
   featureCollectionToKml,
+  geometryToKml,
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
@@ -260,6 +261,32 @@ describe('test-ui download helpers', () => {
         (item) => ({ id: item.id }),
       );
       expect(kml).toContain('<name>İstanbul</name>');
+    });
+
+    it('KML mahalle olceginde ara koordinatlari sadelestirmeden korur', () => {
+      const detailedRing = [
+        [0, 0],
+        [0.001, 0.0001],
+        [0.002, 0],
+        [0.003, 0.0001],
+        [0.004, 0],
+        [0.005, 0.0001],
+        [0.006, 0],
+        [0.007, 0.0001],
+        [0.008, 0],
+        [0.009, 0.0001],
+        [0.01, 0],
+        [0.011, 0.0001],
+        [0.012, 0],
+        [0.012, 0.01],
+        [0, 0.01],
+        [0, 0],
+      ];
+      const kml = geometryToKml({ type: 'Polygon', coordinates: [detailedRing] });
+
+      expect(kml).toContain('0.001,0.0001,0');
+      expect(kml).toContain('0.011,0.0001,0');
+      expect((kml.match(/,0 /g) || []).length).toBeGreaterThan(12);
     });
 
     it('KMZ, içinde doc.kml olan geçerli zip üretir', async () => {

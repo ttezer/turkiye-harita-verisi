@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/turkiye_map/schema/yerlesim.schema.json",
+  "title": "Yerlesim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "level",
+    "type",
+    "parent_id",
+    "province_id",
+    "district_id",
+    "province_name",
+    "district_name",
+    "name",
+    "name_ascii",
+    "slug",
+    "source",
+    "source_file",
+    "source_row"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^TR-Y-[0-9]{2}-[0-9]{3}-[MK]-[0-9]{4}$"
+    },
+    "level": {
+      "const": "yerlesim"
+    },
+    "type": {
+      "enum": [
+        "mahalle",
+        "koy"
+      ]
+    },
+    "parent_id": {
+      "type": "string",
+      "pattern": "^TR-D-[0-9]{2}-[0-9]{3}$"
+    },
+    "province_id": {
+      "type": "string",
+      "pattern": "^TR-P-[0-9]{2}$"
+    },
+    "district_id": {
+      "type": "string",
+      "pattern": "^TR-D-[0-9]{2}-[0-9]{3}$"
+    },
+    "province_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "district_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_ascii": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "source": {
+      "const": "e-icisleri-mulki-idare-bolumleri"
+    },
+    "source_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_row": {
+      "type": "integer"
+    }
+  }
+}

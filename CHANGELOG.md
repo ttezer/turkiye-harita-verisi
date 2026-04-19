@@ -3,6 +3,10 @@
 ## [Yayınlanmamış]
 
 ### Eklendi
+- Mahalle ve köy metadata pipeline'ı: e-İçişleri yerleşim listeleri normalize edilip `TR-Y-*` kimlikleriyle yayınlanıyor
+- Mahalle geometri desteği: kaynak bulunan iller için mahalle seviyesinde GeoJSON ve UI filtreleri
+- Mahalle kalite notları: bilinen kaynak/veri sorunları görünür filtreye göre UI'da özetleniyor
+- Mahalle kaynak referansları: ham dosyalar yerine kaynak URL, erişim tarihi ve yerel dosya beklentileri tutuluyor
 - Bölge (region) seviyesi: `TR-R-XXX` format ID'leri, `scope=region` desteği
 - 9 dışa aktarım formatı: GeoJSON, JSON, TopoJSON, CSV, XLSX, SQL, WKT, KML, KMZ
 - SVG ve PNG dışa aktarımı (seçilebilir stil, renk modu, çözünürlük)
@@ -11,6 +15,8 @@
 - Arama girişinde 160ms debounce
 
 ### Düzeltildi
+- Mahalle seviyesinde bölge seçildiğinde il filtresinin bölge dışındaki ilk kaynak ile otomatik değişmesi engellendi
+- KML/KMZ export'ta mahalle ölçeğinde sınırları bozan agresif koordinat sadeleştirme kaldırıldı
 - **Kritik:** KML ve KMZ indirmeleri artık kullanıcının kapsam, bölge, il ve alan seçimlerini yansıtıyor (önceden statik artifact indiriliyordu)
 - **Kritik:** `featureCollectionToKml` içinde metadata eşleşmesi bulunamayan feature için null crash düzeltildi
 - CSV escaping: `\r` (carriage return) artık doğru quote ediliyor (`download.js` ve `export.js`)
@@ -26,7 +32,7 @@
 - `triggerDirectDownload()` — gereksiz kaldı
 
 ### Teknik Notlar
-- `.gitignore`: `dist/`, `data/normalized/`, `data/processed/*.geojson`, `.env`, `.idea/`, OS dosyaları eklendi
+- `.gitignore`: ham mahalle geometri dosyaları, yerleşim Excel kaynakları, `dist/`, `data/normalized/`, `data/processed/*.geojson`, `.env`, `.idea/`, OS dosyaları eklendi
 - `test-ui/app.js?v=19` ve `download.js?v=19` cache-bust versiyonları eşitlendi
 - `:focus-visible` global stili eklendi (klavye erişilebilirliği)
 - `export.js` `toTabularRows`: eksik geometry için açıklayıcı hata mesajı

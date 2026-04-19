@@ -434,6 +434,24 @@ export function sortMetadata(items) {
   return sortedCopy(items, (a, b) => a.id.localeCompare(b.id));
 }
 
+function groupBy(items, keyFn) {
+  const groups = new Map();
+  for (const item of items) {
+    const key = keyFn(item);
+    const group = groups.get(key) || [];
+    group.push(item);
+    groups.set(key, group);
+  }
+  return groups;
+}
+
+function writeGroupedJson(outDir, groups) {
+  ensureDir(outDir);
+  for (const [key, items] of groups.entries()) {
+    writeJson(path.join(outDir, `${key}.json`), sortMetadata(items));
+  }
+}
+
 export function sortGeometry(collection) {
   return {
     ...collection,
@@ -451,6 +469,7 @@ export function main() {
   const regions = sortMetadata(readJson(path.join(paths.processedDir, 'regions.metadata.json')));
   const provinces = sortMetadata(readJson(path.join(paths.processedDir, 'provinces.metadata.json')));
   const districts = sortMetadata(readJson(path.join(paths.processedDir, 'districts.metadata.json')));
+  const settlements = sortMetadata(readJson(path.join(paths.processedDir, 'yerlesimler.metadata.json')));
   const regionGeometry = sortGeometry(readJson(path.join(paths.processedDir, 'regions.geometry.geojson')));
   const provinceGeometry = sortGeometry(readJson(path.join(paths.processedDir, 'provinces.geometry.geojson')));
   const districtGeometry = sortGeometry(readJson(path.join(paths.processedDir, 'districts.geometry.geojson')));
@@ -467,6 +486,15 @@ export function main() {
   writeJson(path.join(paths.distJsonDir, 'regions.json'), regions);
   writeJson(path.join(paths.distJsonDir, 'provinces.json'), provinces);
   writeJson(path.join(paths.distJsonDir, 'districts.json'), districts);
+  writeJson(path.join(paths.distJsonDir, 'yerlesimler.json'), settlements);
+  writeGroupedJson(
+    path.join(paths.distJsonDir, 'yerlesimler-by-province'),
+    groupBy(settlements, (item) => item.province_id),
+  );
+  writeGroupedJson(
+    path.join(paths.distJsonDir, 'yerlesimler-by-district'),
+    groupBy(settlements, (item) => item.district_id),
+  );
   writeJsonCompact(path.join(paths.distGeojsonDir, 'regions.geojson'), regionGeometry);
   writeJsonCompact(path.join(paths.distGeojsonDir, 'provinces.geojson'), provinceGeometry);
   writeJsonCompact(path.join(paths.distGeojsonDir, 'districts.geojson'), districtGeometry);
@@ -516,7 +544,7 @@ export function main() {
   writeShapefile(shpDir, 'provinces', provinceGeometry, provinceRows);
   writeShapefile(shpDir, 'districts', districtGeometry, districtRows);
 
-  logStep(`Exported ${regions.length} regions, ${provinces.length} provinces and ${districts.length} districts`);
+  logStep(`Exported ${regions.length} regions, ${provinces.length} provinces, ${districts.length} districts and ${settlements.length} yerlesimler`);
 }
 
 /* v8 ignore next -- CLI entrypoint guard */

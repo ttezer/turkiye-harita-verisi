@@ -19,7 +19,8 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "node scripts/serve-test-ui.js",
     "test:smoke": "node scripts/smoke-test.js",
-    "build:data": "node scripts/normalize.js && python scripts/generate-province-crosswalk.py && python scripts/generate-display-name-overrides.py && node scripts/assign-ids.js && node scripts/validate.js",
+    "build:mahalle-geometries": "node scripts/normalize-mahalle-geometrileri.js",
+    "build:data": "node scripts/normalize.js && python scripts/generate-province-crosswalk.py && python scripts/generate-display-name-overrides.py && node scripts/assign-ids.js && node scripts/normalize-yerlesimler.js && node scripts/validate.js",
     "build:dist": "node scripts/export.js",
     "build": "node scripts/clean.js && npm run build:data && npm run build:dist",
     "normalize": "node scripts/normalize.js",
@@ -28,9 +29,14 @@
     "export": "node scripts/export.js"
   },
   "dependencies": {
+    "@tmcw/togeojson": "^7.1.2",
+    "@xmldom/xmldom": "^0.9.10",
     "adm-zip": "^0.5.17",
     "d3-geo": "^3.1.1",
+    "iconv-lite": "^0.7.2",
     "jszip": "^3.10.1",
+    "proj4": "^2.20.8",
+    "shpjs": "^6.2.0",
     "topojson-client": "^3.1.0",
     "topojson-server": "^3.0.1",
     "xlsx": "^0.18.5"

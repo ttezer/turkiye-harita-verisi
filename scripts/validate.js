@@ -97,6 +97,28 @@ export function matchesType(value, type) {
 }
 
 export function validateCollection(metadataItems, geometryCollection, schema, label) {
+  validateMetadataCollection(metadataItems, schema, label);
+
+  if (geometryCollection.features.length !== metadataItems.length) {
+    throw new Error(`${label} metadata and geometry counts differ`);
+  }
+
+  const ids = new Set(metadataItems.map((item) => item.id));
+  const geometryIds = new Set();
+  for (const feature of geometryCollection.features) {
+    const id = feature.properties.id;
+    geometryIds.add(id);
+    if (!ids.has(id)) {
+      throw new Error(`${label} geometry id missing in metadata: ${id}`);
+    }
+  }
+
+  if (geometryIds.size !== ids.size) {
+    throw new Error(`${label} geometry ids are not unique`);
+  }
+}
+
+export function validateMetadataCollection(metadataItems, schema, label) {
   const ids = new Set();
   const slugs = new Set();
   const sourceIds = new Set();
@@ -118,28 +140,12 @@ export function validateCollection(metadataItems, geometryCollection, schema, la
       sourceIds.add(item.source_hdx_id);
     }
   }
-
-  if (geometryCollection.features.length !== metadataItems.length) {
-    throw new Error(`${label} metadata and geometry counts differ`);
-  }
-
-  const geometryIds = new Set();
-  for (const feature of geometryCollection.features) {
-    const id = feature.properties.id;
-    geometryIds.add(id);
-    if (!ids.has(id)) {
-      throw new Error(`${label} geometry id missing in metadata: ${id}`);
-    }
-  }
-
-  if (geometryIds.size !== ids.size) {
-    throw new Error(`${label} geometry ids are not unique`);
-  }
 }
 
-export function validateRelationships(regions, provinces, districts) {
+export function validateRelationships(regions, provinces, districts, settlements = []) {
   const regionIdSet = new Set(regions.map((item) => item.id));
   const provinceIdSet = new Set(provinces.map((item) => item.id));
+  const districtIdSet = new Set(districts.map((item) => item.id));
   const provinceSourceMap = new Map(provinces.map((item) => [item.source_hdx_id, item]));
   const provinceMap = new Map(provinces.map((item) => [item.id, item]));
   const seenDistrictLocalCodes = new Map();
@@ -197,6 +203,22 @@ export function validateRelationships(regions, provinces, districts) {
       }
     });
   }
+
+  for (const settlement of settlements) {
+    if (!provinceIdSet.has(settlement.province_id)) {
+      throw new Error(`Yerlesim ${settlement.id} has missing province_id ${settlement.province_id}`);
+    }
+    if (!districtIdSet.has(settlement.district_id)) {
+      throw new Error(`Yerlesim ${settlement.id} has missing district_id ${settlement.district_id}`);
+    }
+    if (settlement.parent_id !== settlement.district_id) {
+      throw new Error(`Yerlesim ${settlement.id} parent_id and district_id diverge`);
+    }
+    const district = districts.find((item) => item.id === settlement.district_id);
+    if (district.parent_id !== settlement.province_id) {
+      throw new Error(`Yerlesim ${settlement.id} province_id does not match parent district`);
+    }
+  }
 }
 
 export function main() {
@@ -205,29 +227,35 @@ export function main() {
   const provinceSchema = readJson(paths.provinceSchema);
   const districtSchema = readJson(paths.districtSchema);
   const regionSchema = readJson(paths.regionSchema);
+  const settlementSchema = readJson(paths.settlementSchema);
   const regions = readJson(path.join(paths.processedDir, 'regions.metadata.json'));
   const provinces = readJson(path.join(paths.processedDir, 'provinces.metadata.json'));
   const districts = readJson(path.join(paths.processedDir, 'districts.metadata.json'));
+  const settlements = readJson(path.join(paths.processedDir, 'yerlesimler.metadata.json'));
   const regionGeometry = readJson(path.join(paths.processedDir, 'regions.geometry.geojson'));
   const provinceGeometry = readJson(path.join(paths.processedDir, 'provinces.geometry.geojson'));
   const districtGeometry = readJson(path.join(paths.processedDir, 'districts.geometry.geojson'));
   const crosswalkReport = readJson(path.join(paths.processedDir, 'crosswalk-report.json'));
+  const settlementsReport = readJson(path.join(paths.processedDir, 'yerlesimler-report.json'));
 
   validateCollection(regions, regionGeometry, regionSchema, 'region');
   validateCollection(provinces, provinceGeometry, provinceSchema, 'province');
   validateCollection(districts, districtGeometry, districtSchema, 'district');
-  validateRelationships(regions, provinces, districts);
+  validateMetadataCollection(settlements, settlementSchema, 'yerlesim');
+  validateRelationships(regions, provinces, districts, settlements);
 
   writeJson(path.join(paths.processedDir, 'build-report.json'), {
     validated_at: new Date().toISOString(),
     region_count: regions.length,
     province_count: provinces.length,
     district_count: districts.length,
+    settlement_count: settlements.length,
     crosswalk_report: crosswalkReport,
+    settlements_report: settlementsReport,
     status: 'ok',
   });
 
-  logStep(`Validated ${regions.length} regions, ${provinces.length} provinces and ${districts.length} districts`);
+  logStep(`Validated ${regions.length} regions, ${provinces.length} provinces, ${districts.length} districts and ${settlements.length} yerlesimler`);
 }
 
 /* v8 ignore next -- CLI entrypoint guard */
