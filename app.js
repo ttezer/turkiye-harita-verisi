@@ -601,7 +601,7 @@ function syncProvinceOptions() {
     ? provinces.filter((item) => allowedMahalleProvinceIds.has(item.id))
     : provinces;
 
-  els.provinceSelect.innerHTML = '<option value="">Tüm Türkiye</option>';
+  els.provinceSelect.replaceChildren(new Option('Tüm Türkiye', ''));
 
   for (const province of visibleProvinces) {
     const option = document.createElement('option');
@@ -633,7 +633,7 @@ function syncDistrictOptions() {
       ? datasets.districts.filter((item) => item.region_id === state.regionId)
       : datasets.districts;
 
-  els.districtSelect.innerHTML = '<option value="">Tüm ilçeler</option>';
+  els.districtSelect.replaceChildren(new Option('Tüm ilçeler', ''));
 
   for (const district of districts) {
     const option = document.createElement('option');
@@ -654,15 +654,26 @@ function renderFieldChecklist(options) {
     return;
   }
 
-  els.fieldChecklist.innerHTML = options.map((option) => `
-    <label class="field-option">
-      <input type="checkbox" value="${escapeHtml(option.key)}" ${state.selectedFields.includes(option.key) ? 'checked' : ''}>
-      <span>
-        ${escapeHtml(option.label)}
-        <small>${escapeHtml(option.description)}</small>
-      </span>
-    </label>
-  `).join('');
+  els.fieldChecklist.replaceChildren();
+  for (const option of options) {
+    const label = document.createElement('label');
+    label.className = 'field-option';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = option.key;
+    checkbox.checked = state.selectedFields.includes(option.key);
+
+    const textWrapper = document.createElement('span');
+    textWrapper.append(document.createTextNode(option.label));
+
+    const description = document.createElement('small');
+    description.textContent = option.description;
+    textWrapper.append(description);
+
+    label.append(checkbox, textWrapper);
+    els.fieldChecklist.append(label);
+  }
 
   const checkboxes = els.fieldChecklist.querySelectorAll('input[type="checkbox"]');
   checkboxes.forEach((checkbox) => {
@@ -976,7 +987,7 @@ function syncQualityIndicator(visibleFeatures) {
   els.qualityButton.title = summary.warningCount
     ? `${summary.warningCount}/${summary.total} görünür kayıt veri notu içeriyor.`
     : 'Görünen kayıtlarda bilinen veri notu yok.';
-  els.qualityPanel.innerHTML = buildQualityPanelHtml(summary);
+  renderQualityPanel(summary);
 }
 
 function getQualitySummary(visibleFeatures) {
@@ -1001,12 +1012,18 @@ function getQualitySummary(visibleFeatures) {
   return { total, warningCount, score, warnings };
 }
 
-function buildQualityPanelHtml(summary) {
+function renderQualityPanel(summary) {
+  els.qualityPanel.replaceChildren();
+
+  const title = document.createElement('h3');
+  title.textContent = 'Veri Kalitesi';
+  els.qualityPanel.append(title);
+
   if (summary.warningCount === 0) {
-    return `
-      <h3>Veri Kalitesi</h3>
-      <p>Görünen ${numberFormat.format(summary.total)} kayıtta bilinen veri kalite notu yok.</p>
-    `;
+    const empty = document.createElement('p');
+    empty.textContent = `Görünen ${numberFormat.format(summary.total)} kayıtta bilinen veri kalite notu yok.`;
+    els.qualityPanel.append(empty);
+    return;
   }
 
   const firstWarning = summary.warnings[0];
@@ -1016,12 +1033,22 @@ function buildQualityPanelHtml(summary) {
     )))
     .sort((a, b) => a.localeCompare(b, 'tr'));
 
-  return `
-    <h3>Veri Kalitesi</h3>
-    <p>${numberFormat.format(summary.warningCount)} / ${numberFormat.format(summary.total)} görünür kayıt veri notu içeriyor.</p>
-    <p><strong>${escapeHtml(firstWarning.issue)}:</strong> ${escapeHtml(firstWarning.message)}</p>
-    <ul>${affectedNames.map((name) => `<li>${escapeHtml(name)}</li>`).join('')}</ul>
-  `;
+  const summaryText = document.createElement('p');
+  summaryText.textContent = `${numberFormat.format(summary.warningCount)} / ${numberFormat.format(summary.total)} görünür kayıt veri notu içeriyor.`;
+
+  const issue = document.createElement('p');
+  const issueTitle = document.createElement('strong');
+  issueTitle.textContent = `${firstWarning.issue}:`;
+  issue.append(issueTitle, document.createTextNode(` ${firstWarning.message}`));
+
+  const list = document.createElement('ul');
+  for (const name of affectedNames) {
+    const item = document.createElement('li');
+    item.textContent = name;
+    list.append(item);
+  }
+
+  els.qualityPanel.append(summaryText, issue, list);
 }
 
 function setQualityPanelOpen(isOpen) {
@@ -1088,7 +1115,7 @@ function renderMap(features) {
     return;
   }
 
-  els.mapSvg.innerHTML = '';
+  els.mapSvg.replaceChildren();
   applyPreviewTheme();
 
   if (features.length === 0) {
@@ -1294,14 +1321,14 @@ function renderDetail(forcedId = '') {
   const activeId = forcedId || state.hoveredId || state.selectedId;
 
   if (!activeId) {
-    els.detailPanel.innerHTML = '<p class="detail-empty">Haritada bir öğe seç.</p>';
+    renderDetailEmpty('Haritada bir öğe seç.');
     return;
   }
 
   const item = getActiveMetadataMap().get(activeId);
 
   if (!item) {
-    els.detailPanel.innerHTML = '<p class="detail-empty">Kayıt bulunamadı.</p>';
+    renderDetailEmpty('Kayıt bulunamadı.');
     return;
   }
 
@@ -1350,11 +1377,23 @@ function renderDetail(forcedId = '') {
     ? rows.filter(([label]) => label !== 'Bölge Türü')
     : rows;
 
-  els.detailPanel.innerHTML = `
-    <dl class="detail-grid">
-      ${visibleRows.map(([label, value]) => `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(String(value))}</dd>`).join('')}
-    </dl>
-  `;
+  const list = document.createElement('dl');
+  list.className = 'detail-grid';
+  for (const [label, value] of visibleRows) {
+    const term = document.createElement('dt');
+    term.textContent = label;
+    const description = document.createElement('dd');
+    description.textContent = String(value);
+    list.append(term, description);
+  }
+  els.detailPanel.replaceChildren(list);
+}
+
+function renderDetailEmpty(message) {
+  const empty = document.createElement('p');
+  empty.className = 'detail-empty';
+  empty.textContent = message;
+  els.detailPanel.replaceChildren(empty);
 }
 
 function buildProjection(featureCollection, viewport = defaultExportViewport) {
