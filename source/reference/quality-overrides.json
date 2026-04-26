@@ -1,223 +1,165 @@
-[
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-011",
-    "district_name": "Seydikemer",
-    "issue": "source_geometry_error",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Kaynak geometri karışık ve hatalı; veri üretme yok.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
+{
+  "issue_labels": {
+    "source_geometry_error": "Kaynak geometri sorunu",
+    "cross_district_geometry": "Çapraz ilçe şüphesi",
+    "unverified_geometry": "Elle doğrulama bekliyor",
+    "duplicate_geometry": "Mükerrer geometri şüphesi",
+    "same_name_overlap": "Aynı isimli çakışan kayıtlar",
+    "duplicate_name": "Mükerrer ad",
+    "count_mismatch": "Kayıt sayısı uyuşmazlığı",
+    "manual_quality_note": "Elle incelenmiş kalite notu",
+    "valid_far_multipolygon": "Doğrulanmış uzak veya parçalı geometri",
+    "osb_area": "OSB / Sanayi Alanı — Mahalle Listesi Dışı",
+    "geometry_repair": "İç İçe Polygon Düzeltildi",
+    "far_multipolygon": "Uzak Parçalı Polygon — Kaynak Hatası Olabilir"
   },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-004",
-    "district_name": "Fethiye",
-    "settlement_id": "TR-Y-48-004-M-0038",
-    "settlement_name": "Yakacık",
-    "issue": "cross_district_geometry",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "İkinci uzak polygon çapraz ilçe şüphesi taşıyor.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-004",
-    "district_name": "Fethiye",
-    "settlement_id": "TR-Y-48-004-M-0029",
-    "settlement_name": "Koruköy",
-    "issue": "valid_far_multipolygon",
-    "status": "verified_ok",
-    "reviewed_at": "2026-04-22",
-    "note": "Uzak çok parçalı geometri doğrulandı; doğru kabul edildi.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-004",
-    "district_name": "Fethiye",
-    "issue": "manual_quality_note",
-    "status": "verified_ok",
-    "reviewed_at": "2026-04-22",
-    "note": "Yeşilüzümlü-İncirköy, Çiftlik-Karagedik ve Menteşeoğlu-Karaçulha kontrol edildi; sorun yok.",
-    "settlements": [
-      { "settlement_id": "TR-Y-48-004-M-0041", "settlement_name": "Yeşilüzümlü" },
-      { "settlement_id": "TR-Y-48-004-M-0017", "settlement_name": "İncirköy" },
-      { "settlement_id": "TR-Y-48-004-M-0008", "settlement_name": "Çiftlik" },
-      { "settlement_id": "TR-Y-48-004-M-0022", "settlement_name": "Karagedik" },
-      { "settlement_id": "TR-Y-48-004-M-0030", "settlement_name": "Menteşeoğlu" },
-      { "settlement_id": "TR-Y-48-004-M-0021", "settlement_name": "Karaçulha" }
-    ],
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-003",
-    "district_name": "Datça",
-    "settlement_id": "TR-Y-48-003-M-0001",
-    "settlement_name": "Cumalı",
-    "issue": "valid_far_multipolygon",
-    "status": "verified_ok",
-    "reviewed_at": "2026-04-22",
-    "note": "Uzak ada parçaları doğru kabul edildi.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-009",
-    "district_name": "Milas",
-    "settlement_id": "TR-Y-48-009-M-0022",
-    "settlement_name": "Bozbük",
-    "issue": "valid_far_multipolygon",
-    "status": "verified_ok",
-    "reviewed_at": "2026-04-22",
-    "note": "Uzak ada parçaları doğru kabul edildi.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-001",
-    "district_name": "Bodrum",
-    "issue": "unverified_geometry",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Uzak ada parçaları doğal olabilir; elle doğrulama bekliyor.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-48",
-    "province_name": "Muğla",
-    "district_id": "TR-D-48-008",
-    "district_name": "Menteşe",
-    "issue": "manual_quality_note",
-    "status": "verified_ok",
-    "reviewed_at": "2026-04-22",
-    "note": "Kritik sorun görülmedi.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-30",
-    "province_name": "Hakkari",
-    "district_id": "TR-D-30-004",
-    "district_name": "Yüksekova",
-    "issue": "duplicate_geometry",
-    "status": "open",
-    "recommended_action": "exact_duplicate_removed",
-    "reviewed_at": "2026-04-22",
-    "note": "Aday kayıtlar aynı geometriyi tekrar ediyor; kesin kopyalar kaldırılabilir.",
-    "settlements": [
-      {
-        "settlement_id": "TR-Y-30-004-K-0021",
-        "settlement_name": "Dedeler",
-        "candidate_ids": [15332, 1015332]
-      },
-      {
-        "settlement_id": "TR-Y-30-004-K-0029",
-        "settlement_name": "Güçlü",
-        "candidate_ids": [15338, 1015338]
-      },
-      {
-        "settlement_id": "TR-Y-30-004-K-0035",
-        "settlement_name": "İnanlı",
-        "candidate_ids": [15369, 1015369]
-      },
-      {
-        "settlement_id": "TR-Y-30-004-K-0062",
-        "settlement_name": "Yoncalık",
-        "candidate_ids": [215517, 1015354]
-      }
-    ],
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-30",
-    "province_name": "Hakkari",
-    "district_id": "TR-D-30-004",
-    "district_name": "Yüksekova",
-    "issue": "same_name_overlap",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Aynı adla görünen kayıtlar birbiriyle örtüşen ya da çakışan gruplar oluşturuyor; elle kontrol gerekli.",
-    "settlements": [
-      {
-        "settlement_name": "Akalın",
-        "candidate_ids": [719880, 1015322]
-      },
-      {
-        "settlement_name": "Aksu",
-        "candidate_ids": [638171, 1015356]
-      },
-      {
-        "settlement_name": "Altınoluk",
-        "candidate_ids": [524215, 1015325]
-      },
-      {
-        "settlement_name": "Beşbulak",
-        "candidate_ids": [690453, 1049380]
-      },
-      {
-        "settlement_name": "Bölük",
-        "candidate_ids": [582940, 1037662]
-      },
-      {
-        "settlement_name": "Güllüce",
-        "candidate_ids": [844696, 1015329]
-      },
-      {
-        "settlement_name": "Vezirli",
-        "candidate_ids": [884551, 1015352]
-      }
-    ],
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-30",
-    "province_name": "Hakkari",
-    "district_id": "TR-D-30-004",
-    "district_name": "Yüksekova",
-    "issue": "duplicate_name",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Merkez adı iki kez geçiyor; ad çakışması olarak tutuldu.",
-    "settlements": [
-      {
-        "settlement_name": "Merkez",
-        "candidate_ids": [31041, 31047]
-      }
-    ],
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-30",
-    "province_name": "Hakkari",
-    "district_id": "TR-D-30-004",
-    "district_name": "Yüksekova",
-    "issue": "count_mismatch",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Kamu-kaynak 95 kayıt, Mülki İdare 81 kayıt; fark 14.",
-    "source_count": 95,
-    "mulki_count": 81,
-    "count_diff": 14,
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  },
-  {
-    "province_id": "TR-P-30",
-    "province_name": "Hakkari",
-    "district_id": "TR-D-30-004",
-    "district_name": "Yüksekova",
-    "issue": "source_geometry_error",
-    "status": "open",
-    "reviewed_at": "2026-04-22",
-    "note": "Kaynak geometri yapısı karışık; bu ilçede kaynak düzeltmesi gerekebilir.",
-    "source_report": "source/kamu-kaynak/yerlesim/quality-report.json"
-  }
-]
+  "notes": [
+    {
+      "province_id": "TR-P-16",
+      "province_name": "Bursa",
+      "issue": "manual_quality_note",
+      "status": "open",
+      "reviewed_at": "2026-04-24",
+      "note": "Bazi OSB veya ozel sanayi alani adlari resmi mahalle metadata'si ile birebir eslesmedigi icin mahalle polygonu olarak cizilmeyebilir. Bu not, gorunmeyen OSB benzeri alanlar icin genel veri kapsami uyarisidir."
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-004",
+      "district_name": "Fethiye",
+      "settlement_id": "TR-Y-48-004-M-0038",
+      "settlement_name": "Yakacık",
+      "issue": "cross_district_geometry",
+      "status": "open",
+      "reviewed_at": "2026-04-22",
+      "note": "İkinci uzak polygon çapraz ilçe şüphesi taşıyor.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-004",
+      "district_name": "Fethiye",
+      "settlement_id": "TR-Y-48-004-M-0029",
+      "settlement_name": "Koruköy",
+      "issue": "valid_far_multipolygon",
+      "status": "verified_ok",
+      "reviewed_at": "2026-04-22",
+      "note": "Uzak çok parçalı geometri doğrulandı; doğru kabul edildi.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-004",
+      "district_name": "Fethiye",
+      "issue": "manual_quality_note",
+      "status": "verified_ok",
+      "reviewed_at": "2026-04-22",
+      "note": "Yeşilüzümlü-İncirköy, Çiftlik-Karagedik ve Menteşeoğlu-Karaçulha kontrol edildi; sorun yok.",
+      "settlements": [
+        {
+          "settlement_id": "TR-Y-48-004-M-0041",
+          "settlement_name": "Yeşilüzümlü"
+        },
+        {
+          "settlement_id": "TR-Y-48-004-M-0017",
+          "settlement_name": "İncirköy"
+        },
+        {
+          "settlement_id": "TR-Y-48-004-M-0008",
+          "settlement_name": "Çiftlik"
+        },
+        {
+          "settlement_id": "TR-Y-48-004-M-0022",
+          "settlement_name": "Karagedik"
+        },
+        {
+          "settlement_id": "TR-Y-48-004-M-0030",
+          "settlement_name": "Menteşeoğlu"
+        },
+        {
+          "settlement_id": "TR-Y-48-004-M-0021",
+          "settlement_name": "Karaçulha"
+        }
+      ],
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-003",
+      "district_name": "Datça",
+      "settlement_id": "TR-Y-48-003-M-0001",
+      "settlement_name": "Cumalı",
+      "issue": "valid_far_multipolygon",
+      "status": "verified_ok",
+      "reviewed_at": "2026-04-22",
+      "note": "Uzak ada parçaları doğru kabul edildi.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-009",
+      "district_name": "Milas",
+      "settlement_id": "TR-Y-48-009-M-0022",
+      "settlement_name": "Bozbük",
+      "issue": "valid_far_multipolygon",
+      "status": "verified_ok",
+      "reviewed_at": "2026-04-22",
+      "note": "Uzak ada parçaları doğru kabul edildi.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-001",
+      "district_name": "Bodrum",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-04-22",
+      "note": "Uzak ada parçaları doğal olabilir; elle doğrulama bekliyor.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-008",
+      "district_name": "Menteşe",
+      "issue": "manual_quality_note",
+      "status": "verified_ok",
+      "reviewed_at": "2026-04-22",
+      "note": "Kritik sorun görülmedi.",
+      "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
+    },
+    {
+      "province_id": "TR-P-30",
+      "province_name": "Hakkari",
+      "issue": "manual_quality_note",
+      "status": "open",
+      "reviewed_at": "2026-04-25",
+      "note": "Hakkari için mahalle geometri verisi henüz mevcut değil; ilçe verisi de yayınlanmamıştır."
+    },
+    {
+      "province_id": "TR-P-22",
+      "province_name": "Edirne",
+      "district_id": "TR-D-22-005",
+      "district_name": "Keşan",
+      "issue": "manual_quality_note",
+      "status": "open",
+      "reviewed_at": "2026-04-27",
+      "note": "Keşan / Yenimescit: KML kaynağında mevcut ancak resmi yerleşim listesinde (e-icisleri) karşılığı bulunmadığından geometri çizilmemektedir."
+    },
+    {
+      "province_id": "TR-P-22",
+      "province_name": "Edirne",
+      "district_id": "TR-D-22-008",
+      "district_name": "Süloğlu",
+      "issue": "osb_area",
+      "status": "open",
+      "reviewed_at": "2026-04-27",
+      "note": "Süloğlu / Organize Sanayi Bölgesi: Mahalle kaydı değil, OSB alanı. Geometri kasıtlı olarak çizilmemektedir."
+    }
+  ]
+}
