@@ -38,15 +38,17 @@
     "province_id": "TR-P-22",
     "district_id": "TR-D-22-005",
     "raw_key": "yenimescit",
-    "action": "skip",
-    "reason": "Kesan ilcesinde yerlesimler.json kaydı yok"
+    "action": "include",
+    "id": "TR-Y-22-005-M-SRC-YENIMESCIT",
+    "name": "Yenimescit",
+    "note": "Kesan ilcesinde yerlesimler.json kaydi yok; kaynak geometri dahil edildi"
   },
   {
     "province_id": "TR-P-22",
     "district_id": "TR-D-22-008",
     "raw_key": "organizesanayibolgesi",
-    "action": "skip",
-    "reason": "Mahalle kaydi degil - OSB"
+    "action": "include_as_osb",
+    "note": "Suloglu OSB - mahalle degil ama geometri istendi"
   },
   {
     "province_id": "TR-P-48",

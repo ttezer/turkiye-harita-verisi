@@ -247,6 +247,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     format: 'local_kml',
     file_path: path.join(paths.manualMahalleRawDir, '22-edirne', 'edirne-mahalleler.kml'),
     pre_matched_id_field: 'mahalle_id',
+    district_field: 'ilce_adi',
   },
 ];
 
@@ -960,7 +961,67 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
   // Pre-matched source: settlement ID is directly in the feature properties
   if (source.pre_matched_id_field) {
     const id = feature.properties[source.pre_matched_id_field];
-    if (!id) return { status: 'skipped', reason: 'no_pre_matched_id' };
+    if (!id) {
+      // No pre-matched ID — check for an explicit override by name+district before skipping
+      const fallbackName = feature.properties.name;
+      const fallbackDistrictName = source.district_field && feature.properties[source.district_field];
+      if (fallbackName && fallbackDistrictName) {
+        const fallbackDistrict = resolveDistrictByName(source, fallbackDistrictName, indexes.districts);
+        if (fallbackDistrict) {
+          const fallbackKey = compactKey(fallbackName);
+          const fallbackOverride =
+            indexes.overrides.byDistrictAndRaw.get(`${source.province_id}|${fallbackDistrict.id}|${fallbackKey}`) ||
+            indexes.overrides.byProvinceAndRaw.get(`${source.province_id}|${fallbackKey}`);
+          if (fallbackOverride?.action === 'include_as_osb' || fallbackOverride?.action === 'include') {
+            const geometry = normalizePolygonalGeometry(feature.geometry, source.repair_disjoint_rings);
+            if (fallbackOverride.action === 'include_as_osb') {
+              const osbName = normalizeDisplayText(fallbackName);
+              const nameKey = compactKey(fallbackName).toUpperCase();
+              const distSeq = fallbackDistrict.id.split('-').pop();
+              const provincePlate = source.province_id.replace('TR-P-', '');
+              const osbId = `TR-Y-${provincePlate}-${distSeq}-OSB-${nameKey}`;
+              return {
+                status: 'osb',
+                raw_name: fallbackName,
+                district_id: fallbackDistrict.id,
+                district_name: fallbackDistrict.name,
+                osb_id: osbId,
+                feature: {
+                  type: 'Feature',
+                  properties: {
+                    id: osbId,
+                    level: 'yerlesim',
+                    type: 'osb',
+                    parent_id: fallbackDistrict.id,
+                    province_id: source.province_id,
+                    district_id: fallbackDistrict.id,
+                    name: osbName,
+                    source_raw_name: osbName,
+                    source: source.source_label || '',
+                    source_label: source.source_label || '',
+                    source_name: source.source_name,
+                    source_only: true,
+                  },
+                  geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
+                },
+              };
+            }
+            return {
+              status: 'matched',
+              feature: {
+                type: 'Feature',
+                properties: buildGeometryProperties(source, fallbackDistrict, fallbackName, fallbackOverride),
+                geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
+              },
+            };
+          }
+          if (fallbackOverride?.action === 'skip') {
+            return { status: 'skipped', raw_name: fallbackName, district_id: fallbackDistrict.id, district_name: fallbackDistrict.name, reason: fallbackOverride.reason || 'manual_skip' };
+          }
+        }
+      }
+      return { status: 'skipped', reason: 'no_pre_matched_id' };
+    }
     const settlement = indexes.settlementsById.get(id);
     if (!settlement) return { status: 'unmatched', raw_name: id, district_id: null, district_name: null };
     const district = indexes.districts.byId.get(settlement.district_id);

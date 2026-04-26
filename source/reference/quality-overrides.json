@@ -160,6 +160,18 @@
       "status": "open",
       "reviewed_at": "2026-04-27",
       "note": "Süloğlu / Organize Sanayi Bölgesi: Mahalle kaydı değil, OSB alanı. Geometri kasıtlı olarak çizilmemektedir."
+    },
+    {
+      "province_id": "TR-P-06",
+      "province_name": "Ankara",
+      "district_id": "TR-D-06-003",
+      "district_name": "Ayaş",
+      "settlement_id": "TR-Y-06-003-M-0014",
+      "settlement_name": "Gençali",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-04-27",
+      "note": "Gençali geometrisinin centroidi ~31.99° lon, diğer Ayaş mahallelerinden ~14km batıda. Oltan mahallesiyle komşu olması bekleniyor ancak geometri uzakta görünüyor. Kaynak: Seffaf Ankara. Manuel doğrulama gerekli."
     }
   ]
 }
