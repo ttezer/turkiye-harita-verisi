@@ -245,10 +245,10 @@ const LOCAL_MUNICIPAL_SOURCES = [
     province_id: 'TR-P-41',
     province_name: 'Kocaeli',
     slug: '41-kocaeli',
-    source_name: 'Kocaeli Rehber KML - kullanıcı tarafından sağlandı',
+    source_name: 'Kocaeli Mahalle KML - kullanıcı tarafından sağlandı',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '41-kocaeli', 'kocaeli-rehber.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '41-kocaeli', 'kocaeli-mahalle.kml'),
     district_field: 'ilce_adi',
   },
   {
