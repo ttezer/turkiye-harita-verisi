@@ -1,0 +1,32 @@
+{
+  "dataset_id": "gaziantep-mahalle-sinir-alanlari",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 27,
+  "province_name": "Gaziantep",
+  "admin_levels": ["settlement"],
+  "source_name": "Gaziantep Acik Veri Platformu - Mahalle Sinir Alanlari",
+  "source_url": "https://acikveri.gaziantep.bel.tr/dataset/mahalle-sinir-alanlari",
+  "resource_url": "https://acikveri.gaziantep.bel.tr/dataset/mahalle-sinir-alanlari/resource/df82c9ce-f69d-4cc2-bf57-d4a36ed1c144/download/mahalle_sinirlari.kml",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Gaziantep Acik Veri Lisansi",
+  "license_id": "ulasav-license",
+  "publishability_status": "publishable",
+  "primary_for": ["gaziantep_settlement_geometry"],
+  "feature_count": 786,
+  "geometry_types": ["KML Polygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/27-gaziantep/mahalle/raw/gaziantep-mahalle-sinir-alanlari.kml",
+      "format": "KML",
+      "bytes": 7439237,
+      "sha256": "f145ae9edd2db7a341634e14d59060a535258461794d361c3f49bdec2bcbfa9a"
+    }
+  ],
+  "notes": [
+    "Gaziantep CKAN API yerel terminalden 418 dondurdu; resource dosyasi dogrudan indirildi.",
+    "Ilce sinir alanlari sayfasi tespit edildi ancak dogru resource id henuz yakalanamadi; yanlis mahalle kaynagi tekrar indirilmesin diye district/raw bos birakildi."
+  ]
+}

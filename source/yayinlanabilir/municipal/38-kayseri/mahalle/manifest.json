@@ -1,0 +1,46 @@
+{
+  "dataset_id": "kayseri-mahalle-siniri",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 38,
+  "province_name": "Kayseri",
+  "admin_levels": ["settlement"],
+  "source_name": "Kayseri Buyuksehir Belediyesi Acik Veri Platformu - Kayseri Mahalle Siniri",
+  "source_url": "https://acikveri.kayseri.bel.tr/veri-seti/kayseri-mahalle-siniri/1064",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Creative Commons Attribution 4.0 International",
+  "license_id": "cc-by-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "publishability_status": "publishable",
+  "primary_for": ["kayseri_settlement_geometry"],
+  "feature_count": 711,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/38-kayseri/mahalle/raw/kayseri-mahalle-siniri.geojson",
+      "url": "https://acikveri.kayseri.bel.tr/uploads/data/2026/4/15/mahalle_siniri-1829771.geojson",
+      "format": "GeoJSON",
+      "bytes": 13507356,
+      "sha256": "c30cf8ec3058514d51f3928c84029e2473a437a747251bd46686a65c2eb452ac"
+    },
+    {
+      "path": "source/yayinlanabilir/municipal/38-kayseri/mahalle/raw/kayseri-mahalle-siniri-shp.zip",
+      "url": "https://acikveri.kayseri.bel.tr/uploads/data/2026/4/15/mahalle_siniri_shp-1840229.zip",
+      "format": "SHP ZIP",
+      "bytes": 4869256,
+      "sha256": "38c00e1dc6e73f928544b74252ce69a2235428e9708d1b259db2a0c7fca3fcfb"
+    },
+    {
+      "path": "source/yayinlanabilir/municipal/38-kayseri/mahalle/raw/kayseri-mahalle-siniri.csv",
+      "url": "https://acikveri.kayseri.bel.tr/uploads/data/2026/4/15/mahalle_siniri-1817839.csv",
+      "format": "CSV",
+      "bytes": 53158,
+      "sha256": "3b952a6eb34c78066ecafd27f4488be9dbb6eea19c234234bbd1e097827fd948"
+    }
+  ],
+  "notes": [
+    "GeoJSON, SHP zip ve CSV kaynaklari birlikte indirildi. Ana donusum icin GeoJSON tercih edilmeli."
+  ]
+}

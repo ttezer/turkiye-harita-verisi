@@ -20,31 +20,75 @@ export function buildTopojsonPayload(featureCollection, topologyFn, objectName) 
 }
 
 export function buildTabularRows(items, geometryById) {
-  return items.map((item) => ({
-    id: item.id,
-    name: item.name ?? '',
-    parent_id: item.parent_id ?? '',
-    parent_name: item.parent_name ?? '',
-    region_id: item.region_id ?? '',
-    region_name: item.region_name ?? '',
-    level: item.level ?? '',
-    name_ascii: item.name_ascii ?? '',
-    slug: item.slug ?? '',
-    plate_code: item.plate_code ?? '',
-    district_local_code: item.district_local_code ?? '',
-    nuts_code: item.nuts_code ?? '',
-    tuik_id: item.tuik_id ?? '',
-    icisleri_id: item.icisleri_id ?? '',
-    aliases: JSON.stringify(item.aliases || []),
-    member_ids: JSON.stringify(item.member_ids || []),
-    bbox_min_lon: item.bbox?.[0] ?? '',
-    bbox_min_lat: item.bbox?.[1] ?? '',
-    bbox_max_lon: item.bbox?.[2] ?? '',
-    bbox_max_lat: item.bbox?.[3] ?? '',
-    centroid_lat: item.centroid?.lat ?? '',
-    centroid_lon: item.centroid?.lon ?? '',
-    geometry_wkt: geometryToWkt(geometryById.get(item.id)),
-  }));
+  return items.map((item) => {
+    const geometry = geometryById.get(item.id);
+    const bbox = item.bbox || geometryBbox(geometry);
+    const centroid = item.centroid || centroidFromBbox(bbox);
+
+    return {
+      id: item.id,
+      name: item.name ?? '',
+      parent_id: item.parent_id ?? '',
+      parent_name: item.parent_name ?? '',
+      region_id: item.region_id ?? '',
+      region_name: item.region_name ?? '',
+      level: item.level ?? '',
+      name_ascii: item.name_ascii ?? '',
+      slug: item.slug ?? '',
+      plate_code: item.plate_code ?? '',
+      district_local_code: item.district_local_code ?? '',
+      nuts_code: item.nuts_code ?? '',
+      tuik_id: item.tuik_id ?? '',
+      icisleri_id: item.icisleri_id ?? '',
+      source_label: item.source_label ?? item.source ?? '',
+      aliases: JSON.stringify(item.aliases || []),
+      member_ids: JSON.stringify(item.member_ids || []),
+      bbox_min_lon: bbox?.[0] ?? '',
+      bbox_min_lat: bbox?.[1] ?? '',
+      bbox_max_lon: bbox?.[2] ?? '',
+      bbox_max_lat: bbox?.[3] ?? '',
+      centroid_lat: centroid?.lat ?? '',
+      centroid_lon: centroid?.lon ?? '',
+      x: centroid?.lon ?? '',
+      y: centroid?.lat ?? '',
+      coordinate_system: centroid ? 'EPSG:4326' : '',
+      geometry_wkt: geometryToWkt(geometry),
+    };
+  });
+}
+
+function geometryBbox(geometry) {
+  if (!geometry?.coordinates) {
+    return null;
+  }
+
+  const bbox = [Infinity, Infinity, -Infinity, -Infinity];
+  const visit = (coordinates) => {
+    if (!Array.isArray(coordinates)) {
+      return;
+    }
+    if (typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number') {
+      bbox[0] = Math.min(bbox[0], coordinates[0]);
+      bbox[1] = Math.min(bbox[1], coordinates[1]);
+      bbox[2] = Math.max(bbox[2], coordinates[0]);
+      bbox[3] = Math.max(bbox[3], coordinates[1]);
+      return;
+    }
+    coordinates.forEach(visit);
+  };
+
+  visit(geometry.coordinates);
+  return bbox.every(Number.isFinite) ? bbox : null;
+}
+
+function centroidFromBbox(bbox) {
+  if (!bbox) {
+    return null;
+  }
+  return {
+    lat: (bbox[1] + bbox[3]) / 2,
+    lon: (bbox[0] + bbox[2]) / 2,
+  };
 }
 
 export function geometryToWkt(geometry) {
@@ -190,7 +234,10 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
     const properties = propertyBuilder(item);
     const extendedData = Object.entries(properties)
       .filter(([, value]) => value !== null && value !== undefined && value !== '')
-      .map(([key, value]) => `<Data name="${xmlEscape(key)}"><value>${xmlEscape(value)}</value></Data>`)
+      .map(([key, value]) => {
+        const label = getKmlFieldLabel(key, item);
+        return `<Data name="${xmlEscape(key)}"><displayName>${xmlEscape(label)}</displayName><value>${xmlEscape(value)}</value></Data>`;
+      })
       .join('');
     const description = buildKmlDescription(item, properties);
     const resolvedStyleId = featureStyleIds.get(feature.properties.id) || defaultStyleId;
@@ -223,24 +270,41 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
 
 export function buildKmlDescription(item, properties) {
   const lines = [];
-  const labels = {
-    id: 'ID',
-    name: 'Ad',
-    parent_id: 'İl ID',
-    parent_name: 'İl Adı',
-    region_id: 'Bölge ID',
-    region_name: 'Bölge Adı',
-    level: 'Seviye',
-  };
 
   for (const [key, value] of Object.entries(properties)) {
     if (value === null || value === undefined || value === '') {
       continue;
     }
-    lines.push(`${labels[key] || key}: ${value}`);
+    lines.push(`${getKmlFieldLabel(key, item)}: ${value}`);
   }
 
   return lines.length > 0 ? lines.join('\n') : item.id;
+}
+
+function getKmlFieldLabel(key, item) {
+  const labels = {
+    id: 'ID',
+    name: 'Ad',
+    region_id: 'Bölge ID',
+    region_name: 'Bölge Adı',
+    province_id: 'İl ID',
+    province_name: 'İl Adı',
+    source_label: 'Kaynak',
+    slug: 'Kısa Ad',
+    name_ascii: 'ASCII Ad',
+    plate_code: 'Plaka Kodu',
+    level: 'Seviye',
+  };
+
+  if (key === 'parent_id') {
+    return item.level === 'yerlesim' ? 'İlçe ID' : 'İl ID';
+  }
+
+  if (key === 'parent_name') {
+    return item.level === 'yerlesim' ? 'İlçe Adı' : 'İl Adı';
+  }
+
+  return labels[key] || key;
 }
 
 export function geometryToKml(geometry) {

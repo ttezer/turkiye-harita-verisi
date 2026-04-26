@@ -1,0 +1,317 @@
+{
+  "description": "Yayinlanabilir acik veri adaylari. Ham veri yerine kaynak ve karar manifesti tutulur.",
+  "last_reviewed": "2026-04-23",
+  "policy": {
+    "publishable": "Acik veri portali/lisansli indirilebilir kaynak olarak teyit edilen veri.",
+    "verification_only": "Goruntulenebilir veya teknik olarak erisilebilir ama yeniden yayim izni net olmayan kaynak.",
+    "not_recommended": "Lisans yeniden dagitima uygun degil veya kullanim kosulu proje ile uyumsuz."
+  },
+  "national_admin_candidates": [
+    {
+      "name": "HDX Türkiye - Subnational Administrative Boundaries",
+      "url": "https://data.humdata.org/dataset/cod-ab-tur",
+      "levels": {
+        "province": true,
+        "district": true,
+        "settlement": false
+      },
+      "license": "CC BY-IGO",
+      "status": "candidate",
+      "note": "Repo icinde zaten snapshot var. Ancak mahalle/kamu kaynak verileriyle tam ortusmedigi icin il/ilce ana kaynagi olarak kalite kontrol gerekir."
+    },
+    {
+      "name": "geoBoundaries gbOpen Turkey",
+      "url": "https://www.geoboundaries.org/api.html",
+      "levels": {
+        "province": true,
+        "district": true,
+        "settlement": false
+      },
+      "license": "CC BY 4.0",
+      "status": "candidate",
+      "note": "Acik lisansli genel kaynak adayi. Turkiye il/ilce guncelligi ve isim esleme kalitesi test edilmeli."
+    },
+    {
+      "name": "OpenStreetMap administrative boundaries",
+      "url": "https://www.openstreetmap.org/",
+      "levels": {
+        "province": true,
+        "district": true,
+        "settlement": "partial"
+      },
+      "license": "ODbL",
+      "status": "candidate_with_license_obligations",
+      "note": "Teknik olarak genis kapsama sahip olabilir; ODbL atif ve share-alike yukumlulukleri proje dokumaninda acik yazilmali."
+    },
+    {
+      "name": "GADM",
+      "url": "https://gadm.org/license.html",
+      "levels": {
+        "province": true,
+        "district": true,
+        "settlement": false
+      },
+      "license": "Academic/non-commercial only",
+      "status": "not_recommended",
+      "note": "Yeniden dagitim ve ticari kullanim kisitli oldugu icin bu proje icin ana kaynak olmamali."
+    }
+  ],
+  "province_sources": [
+    {
+      "province": "Kocaeli",
+      "province_code": 41,
+      "source_name": "Kocaeli Buyuksehir Belediyesi Rehber Uygulamasi",
+      "source_url": "https://rehber.kocaeli.bel.tr/",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "12 ilce, 472 mahalle geometrisi. 472 eslesti (%100); ilce bilgisi KML ilce_adi alanindan okundu."
+    },
+    {
+      "province": "Edirne",
+      "province_code": 22,
+      "source_name": "Bulutkbs.gov.tr Rehber Uygulamasi",
+      "source_url": "https://bulutkbs.gov.tr/Rehber/#/app",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "9 ilce, 354 mahalle/koy geometrisi. 347 eslesti (%98.0); 7 eslesmeyenin tamami yerlesimler.json'da karsiligi olmayan objeler."
+    },
+    {
+      "province": "Sakarya",
+      "province_code": 54,
+      "source_name": "Sakarya Buyuksehir Belediyesi Acik Veri Portali",
+      "source_url": "https://acikveri.sakarya.bel.tr/",
+      "license": "Sakarya Acik Veri Lisansi",
+      "province_geometry": true,
+      "district_geometry": true,
+      "settlement_geometry": true,
+      "formats": ["KMZ", "SHP", "XLS", "XLSX", "JSON", "GEOJSON"],
+      "publishable": true,
+      "note": "Il, ilce ve mahalle veri setleri acik veri portalinda gorunuyor."
+    },
+    {
+      "province": "Ankara",
+      "province_code": 6,
+      "source_name": "Ankara Buyuksehir Belediyesi Seffaf Ankara Acik Veri Platformu",
+      "source_url": "https://seffaf.ankara.bel.tr/",
+      "license": "Seffaf Ankara Acik Veri Lisansi / Creative Commons Attribution 4.0 International",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/06-ankara/mahalle/manifest.json"
+      ],
+      "note": "Mahalle siniri, lisans metni kapsaminda resmi Seffaf Ankara platform servisindeki teo_maks_mahalle katmanindan alindi. Il/ilce HDX ana kaynaktan gelecek."
+    },
+    {
+      "province": "Bursa",
+      "province_code": 16,
+      "source_name": "Bursa Acik Yesil Platformu",
+      "source_url": "https://acikyesil.bursa.bel.tr/",
+      "license": "Bursa Acik Yesil Lisansi",
+      "province_geometry": false,
+      "district_geometry": true,
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/16-bursa/district/manifest.json",
+        "source/yayinlanabilir/municipal/16-bursa/mahalle/manifest.json"
+      ],
+      "note": "Ilce ve mahalle sinirlari acik veri portalinda GeoJSON olarak gorunuyor; il siniri ayrica bulunamadi."
+    },
+    {
+      "province": "Gaziantep",
+      "province_code": 27,
+      "source_name": "Gaziantep Acik Veri Platformu",
+      "source_url": "https://acikveri.gaziantep.bel.tr/",
+      "license": "Gaziantep Acik Veri Lisansi",
+      "province_geometry": true,
+      "district_geometry": true,
+      "settlement_geometry": true,
+      "formats": ["API", "PDF", "KML"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/27-gaziantep/mahalle/manifest.json"
+      ],
+      "note": "Il, ilce, mahalle sinirlari ve mahalle sinir alanlari acik veri portalinda gorunuyor."
+    },
+    {
+      "province": "Denizli",
+      "province_code": 20,
+      "source_name": "Denizli Acik Veri Platformu",
+      "source_url": "https://acikveri.denizli.bel.tr/dataset/denizli-ili-mahalle-sinirlari",
+      "license": "Denizli Acik Veri Lisansi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML", "SHP"],
+      "publishable": true,
+      "note": "Mahalle sinirlari acik lisansli. Il/ilce siniri acik portalda bu taramada bulunamadi."
+    },
+    {
+      "province": "Kayseri",
+      "province_code": 38,
+      "source_name": "Kayseri Buyuksehir Belediyesi Acik Veri Platformu",
+      "source_url": "https://acikveri.kayseri.bel.tr/veri-seti/kayseri-mahalle-siniri/1064",
+      "license": "Creative Commons Attribution 4.0 International",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["CSV", "GeoJSON", "SHP ZIP"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/38-kayseri/mahalle/manifest.json"
+      ],
+      "note": "Mahalle siniri GeoJSON, SHP ve CSV olarak indirildi. Il/ilce HDX ana kaynaktan gelecek."
+    },
+    {
+      "province": "Konya",
+      "province_code": 42,
+      "source_name": "Konya Buyuksehir Belediyesi Acik Veri Platformu",
+      "source_url": "https://acikveri.konya.bel.tr/dataset/konya-mahalleler/resource/789b5ee0-ee73-4ddc-8f4d-5b637ecfc5d7",
+      "license": "Creative Commons Attribution",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/42-konya/mahalle/manifest.json"
+      ],
+      "note": "Mahalleler 2024 GeoJSON indirildi. Kaynak lisans notunda CC BY 3.0/4.0 farki oldugu icin DATA-LICENSE tarafinda ayrica belirtilmeli."
+    },
+    {
+      "province": "Ordu",
+      "province_code": 52,
+      "source_name": "Ordu Buyuksehir Belediyesi Akilli Sehir Acik Veri Platformu",
+      "source_url": "https://acikveri.ordu.bel.tr/dataset/ordu-mahalleri-yapi-sayisina-gore-sirali",
+      "license": "Ordu Acik Veri Lisansi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/52-ordu/mahalle/manifest.json"
+      ],
+      "note": "Dataset adi yapi sayisi siralamasi olsa da GeoJSON 772 MultiPolygon mahalle geometrisi iceriyor. Il/ilce HDX ana kaynaktan gelecek."
+    },
+    {
+      "province": "Sivas",
+      "province_code": 58,
+      "source_name": "Sivas Belediyesi Acik Veri Platformu",
+      "source_url": "https://acikveri.sivas.bel.tr/dataset/c0caa4ec-c071-4759-9873-7a945fc8d673",
+      "license": "Sivas Acik Veri Lisansi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["SHP", "PDF", "PNG"],
+      "publishable": true,
+      "note": "Mahalle siniri verisi var; kapsam Sivas merkez olabilir, il geneli kontrol edilmeli."
+    },
+    {
+      "province": "Trabzon",
+      "province_code": 61,
+      "source_name": "Trabzon Buyuksehir Belediyesi Acik Veri Portali",
+      "source_url": "https://acikveri.trabzon.bel.tr/",
+      "license": "Trabzon Acik Veri Portali kaynak lisansi kontrol edildi, yeniden yayim icin uygun kabul edildi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": true,
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/61-trabzon/mahalle/manifest.json"
+      ],
+      "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
+    },
+    {
+      "province": "Mugla",
+      "province_code": 48,
+      "source_name": "Mugla Buyuksehir Belediyesi CBS Acik Veri",
+      "source_url": "https://cbs.mugla.bel.tr/blog/cbs-acik-veri",
+      "license": "Kurum kaynak notu mevcut; kullanici onayi ile yayin adayi",
+      "province_geometry": true,
+      "district_geometry": true,
+      "settlement_geometry": true,
+      "formats": ["SHP", "RAR"],
+      "publishable": true,
+      "note": "Kullanici onayi ile yayin adayi. Kaynak sayfada resmi is ve islemlerde kullanilmaz notu var; kalite uyarisi gosterilmeli."
+    }
+  ],
+  "partial_sources": [
+    {
+      "province": "Istanbul",
+      "district": "Kadikoy",
+      "source_url": "https://acikveri.kadikoy.bel.tr/",
+      "settlement_geometry": true,
+      "formats": ["SHP"],
+      "publishable": "partial",
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/34-istanbul/kadikoy/mahalle/manifest.json"
+      ],
+      "note": "Il geneli degil, sadece ilce kapsami. Kaynak tek .shp dosyasi olarak indi; yan shapefile dosyalari eksik."
+    },
+    {
+      "province": "Istanbul",
+      "district": "Uskudar",
+      "source_url": "https://ulasav.csb.gov.tr/dataset/34-7-uskudar-mahalle-bilgi-hairtasi",
+      "settlement_geometry": true,
+      "formats": ["GeoJSON"],
+      "publishable": "partial",
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/34-istanbul/uskudar/mahalle/manifest.json"
+      ],
+      "note": "Il geneli degil, sadece ilce kapsami. GeoJSON icinde mahalle adi ve kimlik numarasi var."
+    },
+    {
+      "province": "Osmaniye",
+      "district": "Merkez",
+      "source_url": "https://ulasav.csb.gov.tr/dataset/osmaniye-merkez-mahalle-sinirlari/resource/2537c8d1-a311-45a0-9bc5-cfee8ea6923d",
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": "partial",
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/80-osmaniye/merkez/mahalle/manifest.json"
+      ],
+      "note": "Il geneli degil, sadece Osmaniye Merkez ilcesi kapsami. KML mahalle adlarini iceriyor."
+    },
+    {
+      "province": "Gumushane",
+      "district": "Merkez",
+      "source_url": "https://ulasav.csb.gov.tr/dataset/gumushane-ili-merkez-mahalle-sinirlari/resource/6db673a5-770f-4dd3-bc36-7ffa005574d8",
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": "partial",
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/29-gumushane/merkez/mahalle/manifest.json"
+      ],
+      "note": "Il geneli degil, sadece Gumushane Merkez ilcesi kapsami. Ham KML 14 mahalle polygonu disinda point/line objeleri de iceriyor; donusumde filtre gerekli."
+    },
+    {
+      "province": "Mersin",
+      "district": "Yenisehir",
+      "source_url": "https://ulasav.csb.gov.tr/dataset/331-mersin-yenisehir-ilcesi-mahalle-sinirlari",
+      "settlement_geometry": true,
+      "formats": ["SHP ZIP"],
+      "publishable": "partial",
+      "local_manifests": [
+        "source/yayinlanabilir/municipal/33-mersin/yenisehir/mahalle/manifest.json"
+      ],
+      "note": "Il geneli degil, sadece ilce kapsami. Zip tam shapefile paketi iceriyor ve DBF icinde mahalle adlari var."
+    }
+  ],
+  "permission_pending_or_verification_only": []
+}

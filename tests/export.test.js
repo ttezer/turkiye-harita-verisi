@@ -157,6 +157,7 @@ describe('export helpers', () => {
     expect(regionCsv).toContain('bbox_min_lon');
     expect(regionCsv).toContain('bbox_min_lat');
     expect(regionCsv).toContain('centroid_lat');
+    expect(regionCsv).toContain('coordinate_system');
     expect(regionCsv).toContain('geometry_wkt');
     expect(regionCsv).not.toContain('"bbox":');
   });

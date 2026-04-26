@@ -1,0 +1,32 @@
+{
+  "dataset_id": "bursa-ilce-sinirlari",
+  "source_role": "municipal_district_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 16,
+  "province_name": "Bursa",
+  "admin_levels": ["district"],
+  "source_name": "Bursa Acik Yesil Platformu - Ilce Sinirlari",
+  "source_url": "https://acikyesil.bursa.bel.tr/dataset/ilce-sinirlari",
+  "resource_url": "https://bapi.bursa.bel.tr/apigateway/bbbAcikVeri_Cbs/ILCE",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Bursa Acik Yesil Lisansi",
+  "license_id": "ulasav-license",
+  "license_url": "https://acikyesil.bursa.bel.tr/license",
+  "publishability_status": "publishable",
+  "primary_for": ["bursa_district_geometry_candidate"],
+  "feature_count": 17,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/16-bursa/district/raw/bursa-ilce-sinirlari.geojson",
+      "format": "GeoJSON",
+      "bytes": 998259,
+      "sha256": "0476699ddc6f7450b6949cde6e8289d957d71a1086f3bc5c8a95657fc579caec"
+    }
+  ],
+  "notes": [
+    "Ulusal il/ilce ana kaynak HDX olacaksa bu veri Bursa icin belediye kaynakli karsilastirma/override adayi olarak tutulur."
+  ]
+}

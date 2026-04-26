@@ -19,6 +19,7 @@ const scriptPath = fileURLToPath(import.meta.url);
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
 
 export const SETTLEMENT_SOURCE = 'e-icisleri-mulki-idare-bolumleri';
+export const SETTLEMENT_SOURCE_LABEL = 'Kamuya açık kaynaklar';
 export const MAHALLE_FILE = 'Mahalle_Listesi.xls';
 export const KOY_FILE = 'Koy_Listesi.xls';
 
@@ -60,7 +61,8 @@ export function resolveProvince(rawProvinceName, provinceIndex) {
 }
 
 export function resolveDistrict(rawDistrictName, province, districtIndex) {
-  let districtKey = compactKey(rawDistrictName)
+  const originalDistrictKey = compactKey(rawDistrictName);
+  let districtKey = originalDistrictKey
     .replace(/ilcemerkezi$/, '')
     .replace(/ilmerkezi$/, '');
 
@@ -68,7 +70,15 @@ export function resolveDistrict(rawDistrictName, province, districtIndex) {
     districtKey = compactKey(province.name);
   }
 
-  const district = districtIndex.get(`${province.id}|${districtKey}`);
+  const candidates = [
+    districtKey,
+    `${districtKey}merkez`,
+    `${compactKey(province.name)}merkez`,
+    originalDistrictKey,
+  ];
+  const district = candidates
+    .map((candidate) => districtIndex.get(`${province.id}|${candidate}`))
+    .find(Boolean);
   if (!district) {
     throw new Error(`Yerlesim district not found: ${province.name} -> ${rawDistrictName}`);
   }
@@ -103,7 +113,8 @@ export function parseMahalleRows(rows, provinceIndex, districtIndex) {
     .filter(({ row }) => /^\d+$/.test(cell(row, 0)))
     .map(({ row, source_row }) => {
       const rawName = cell(row, 3);
-      const [rawProvinceName, rawDistrictName] = cell(row, 5)
+      const [rawProvinceName, rawDistrictName, rawAdministrativeUnitName = '']
+        = cell(row, 5)
         .split('->')
         .map((part) => normalizeDisplayText(part));
       const province = resolveProvince(rawProvinceName, provinceIndex);
@@ -112,6 +123,7 @@ export function parseMahalleRows(rows, provinceIndex, districtIndex) {
       return createSettlement({
         type: 'mahalle',
         rawName,
+        rawAdministrativeUnitName,
         province,
         district,
         source_file: MAHALLE_FILE,
@@ -120,10 +132,14 @@ export function parseMahalleRows(rows, provinceIndex, districtIndex) {
     });
 }
 
-export function createSettlement({ type, rawName, province, district, source_file, source_row }) {
+export function createSettlement({ type, rawName, rawAdministrativeUnitName = '', province, district, source_file, source_row }) {
   const name = titleCaseTurkish(rawName);
+  const administrativeUnitName = rawAdministrativeUnitName
+    ? titleCaseTurkish(rawAdministrativeUnitName)
+    : '';
+  const districtCenterUnitName = `${district.name}-İlçe Merkezi`;
 
-  return {
+  const settlement = {
     id: null,
     level: 'yerlesim',
     type,
@@ -136,9 +152,18 @@ export function createSettlement({ type, rawName, province, district, source_fil
     name_ascii: toNameAscii(name),
     slug: `${toSlug(name)}-${type}-${district.slug}`,
     source: SETTLEMENT_SOURCE,
+    source_label: SETTLEMENT_SOURCE_LABEL,
     source_file,
     source_row,
   };
+
+  if (administrativeUnitName) {
+    settlement.administrative_unit_name = administrativeUnitName;
+    settlement.administrative_unit_name_ascii = toNameAscii(administrativeUnitName);
+    settlement.is_district_center_unit = toNameAscii(administrativeUnitName) === toNameAscii(districtCenterUnitName);
+  }
+
+  return settlement;
 }
 
 export function assignSettlementIds(settlements) {
@@ -190,6 +215,7 @@ export function main() {
   writeJson(path.join(paths.processedDir, 'yerlesimler.metadata.json'), settlements);
   writeJson(path.join(paths.processedDir, 'yerlesimler-report.json'), {
     source: SETTLEMENT_SOURCE,
+    source_label: SETTLEMENT_SOURCE_LABEL,
     files: [MAHALLE_FILE, KOY_FILE],
     mahalle_count: settlements.filter((item) => item.type === 'mahalle').length,
     koy_count: settlements.filter((item) => item.type === 'koy').length,

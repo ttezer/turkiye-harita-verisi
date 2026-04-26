@@ -1,0 +1,33 @@
+{
+  "dataset_id": "ordu-mahalleri-yapi-sayisina-gore-sirali",
+  "source_role": "municipal_settlement_geometry_with_statistics",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 52,
+  "province_name": "Ordu",
+  "admin_levels": ["settlement"],
+  "source_name": "Ordu Buyuksehir Belediyesi Akilli Sehir Acik Veri Platformu - Ordu Mahalleleri Yapi Sayisina Gore Sirali",
+  "source_url": "https://acikveri.ordu.bel.tr/dataset/ordu-mahalleri-yapi-sayisina-gore-sirali",
+  "resource_url": "https://acikveri.ordu.bel.tr/dataset/d923a0bb-5d76-4f56-89fd-c4343c01bf2a/resource/61110aa2-a3cb-4ba6-a913-14e15f18270e/download/ordu-mahalleri-yapi-sayisina-gore-sirali.geojson",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Ordu Acik Veri Lisansi",
+  "license_id": "ulasav-license",
+  "license_url": "https://acikveri.ordu.bel.tr/license",
+  "publishability_status": "publishable",
+  "primary_for": ["ordu_settlement_geometry"],
+  "feature_count": 772,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/52-ordu/mahalle/raw/ordu-mahalleri-yapi-sayisina-gore-sirali.geojson",
+      "format": "GeoJSON",
+      "bytes": 17558414,
+      "sha256": "f8e4e721105857cdeef9defd51ef46bf1018262ba2ca1b17f1f3eb5d004f2237"
+    }
+  ],
+  "notes": [
+    "Dataset adi yapi sayisi istatistigi iceriyor; indirilen GeoJSON yine de 772 MultiPolygon mahalle geometrisi tasiyor.",
+    "Niteliklerde ilce adi, mahalle adi, mahalle kodu, yapi sayisi ve siralama alanlari var."
+  ]
+}

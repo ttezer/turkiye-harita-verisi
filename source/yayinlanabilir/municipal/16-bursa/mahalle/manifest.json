@@ -1,0 +1,33 @@
+{
+  "dataset_id": "bursa-mahalle-sinirlari",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 16,
+  "province_name": "Bursa",
+  "admin_levels": ["settlement"],
+  "source_name": "Bursa Acik Yesil Platformu - Mahalle Sinirlari",
+  "source_url": "https://acikyesil.bursa.bel.tr/dataset/mahalle-sinirlari",
+  "resource_url": "https://bapi.bursa.bel.tr/apigateway/bbbAcikVeri_Cbs/Mahalle",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Bursa Acik Yesil Lisansi",
+  "license_id": "ulasav-license",
+  "license_url": "https://acikyesil.bursa.bel.tr/license",
+  "publishability_status": "publishable",
+  "primary_for": ["bursa_settlement_geometry"],
+  "feature_count": 1074,
+  "unique_name_count": 924,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/16-bursa/mahalle/raw/bursa-mahalle-sinirlari.geojson",
+      "format": "GeoJSON",
+      "bytes": 7812408,
+      "sha256": "434d29d5e921d37b6dc3eee7bcaa9b65927d2d40c216c2c878a34e8237f797a0"
+    }
+  ],
+  "notes": [
+    "Kaynak MAKS alanlari ve belediye CBS niteliklerini icerir. Ilce esleme icin ILCEID/KIMLIKNO alanlari kullanilabilir."
+  ]
+}

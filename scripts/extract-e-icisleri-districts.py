@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_PATH = ROOT / "source" / "reference" / "e-icisleri-provinces.snapshot.json"
+OUTPUT_PATH = ROOT / "source" / "mulki-idare" / "e-icisleri-provinces.snapshot.json"
 URL = "https://www.e-icisleri.gov.tr/Anasayfa/MulkiIdariBolumleri.aspx"
 USER_AGENT = "Mozilla/5.0"
 

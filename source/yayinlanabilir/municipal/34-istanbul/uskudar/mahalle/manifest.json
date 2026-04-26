@@ -1,0 +1,34 @@
+{
+  "dataset_id": "istanbul-uskudar-mahalle-bilgi-haritasi",
+  "source_role": "municipal_partial_settlement_geometry",
+  "scope": "district",
+  "country": "TR",
+  "province_code": 34,
+  "province_name": "Istanbul",
+  "district_name": "Uskudar",
+  "admin_levels": ["settlement"],
+  "source_name": "Uskudar Acik Veri Platformu - Uskudar Mahalle Bilgi Haritasi",
+  "source_url": "https://ulasav.csb.gov.tr/dataset/34-7-uskudar-mahalle-bilgi-hairtasi",
+  "resource_url": "https://acikveri.uskudar.bel.tr/dataset/f4c0dc03-54b9-4e6f-9052-cb7d03aeadee/resource/13254b3b-90f9-49ad-868d-33c2cc2ad2b0/download/uskudar_mahalle_bilgi.json",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Creative Commons Attribution 4.0 International / Uskudar Acik Veri Lisansi",
+  "license_id": "cc-by-4.0",
+  "license_url": "https://acikveri.uskudar.bel.tr/license",
+  "publishability_status": "partial",
+  "primary_for": ["istanbul_uskudar_settlement_geometry_candidate"],
+  "feature_count": 33,
+  "geometry_types": ["Polygon", "MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/34-istanbul/uskudar/mahalle/raw/uskudar-mahalle-bilgi.geojson",
+      "format": "GeoJSON",
+      "bytes": 357910,
+      "sha256": "19d20c46033eb14e9c695d963c1199d098e7f7e151f5cb37c16581518915d9b0"
+    }
+  ],
+  "notes": [
+    "Il geneli degil, yalnizca Uskudar ilcesi kapsaminda partial kaynak.",
+    "GeoJSON icinde MAHALLE_ADI ve MAHALLE_KIMLIKNO alanlari var."
+  ]
+}

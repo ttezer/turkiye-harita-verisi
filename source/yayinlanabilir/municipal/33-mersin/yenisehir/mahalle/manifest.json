@@ -1,0 +1,36 @@
+{
+  "dataset_id": "mersin-yenisehir-mahalle-sinirlari",
+  "source_role": "municipal_partial_settlement_geometry",
+  "scope": "district",
+  "country": "TR",
+  "province_code": 33,
+  "province_name": "Mersin",
+  "district_name": "Yenisehir",
+  "admin_levels": ["settlement"],
+  "source_name": "Yenisehir Acik Veri Portali - Mersin Yenisehir Ilcesi Mahalle Sinirlari",
+  "source_url": "https://ulasav.csb.gov.tr/dataset/331-mersin-yenisehir-ilcesi-mahalle-sinirlari",
+  "resource_url": "https://acikveri.yenisehir.bel.tr/dataset/83912f6a-bdc4-41a1-bf77-077aa786b0cd/resource/ab3de488-a153-4b33-9b81-926257b090e7/download/yenisehir_mahalle.zip",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Yenisehir Acik Veri Lisansi",
+  "license_id": "ulasav-license",
+  "license_url": "https://acikveri.yenisehir.bel.tr/license",
+  "publishability_status": "partial",
+  "primary_for": ["mersin_yenisehir_settlement_geometry_candidate"],
+  "feature_count": 32,
+  "geometry_types": ["SHP Polygon"],
+  "attribute_fields": ["Mahalle", "Ilce", "Nufus2023"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/33-mersin/yenisehir/mahalle/raw/yenisehir-mahalle.zip",
+      "format": "SHP ZIP",
+      "bytes": 21910,
+      "sha256": "7e9de2de783eeb4277614c557fee713f91330cd637b7cec1857eb12f422181e5"
+    }
+  ],
+  "notes": [
+    "Il geneli degil, yalnizca Mersin Yenisehir ilcesi kapsaminda partial kaynak.",
+    "Zip tam shapefile paketi iceriyor: shp, dbf, shx, prj, cpg ve qmd.",
+    "DBF icinde Mahalle, Ilce ve Nufus2023 alanlari var."
+  ]
+}

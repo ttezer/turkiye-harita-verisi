@@ -1,229 +1,120 @@
-# Türkiye'mizin Bölge, İl ve İlçe İdari Sınırları
+# Her Formatta Türkiye Haritası
 
-**Türkiye'mizin bölge, il ve ilçe idari sınırlarını deterministik kimliklerle, çoklu formatta sunan açık veri pipeline'ı.**
+Türkiye'nin bölge, il, ilçe ve sınırlı kapsamdaki mahalle verilerini çoklu formatta sunan açık kaynak projedir.
 
 [![Lisans: MIT](https://img.shields.io/badge/Lisans-MIT-yellow.svg)](./LICENSE)
-[![Veri Kaynağı](https://img.shields.io/badge/Veri-HDX%20%2F%20OCHA-blue)](https://data.humdata.org/dataset/cod-ab-tur)
+[![Veri Politikasi](https://img.shields.io/badge/Veri-Acik%20Kaynak%20Politikasi-blue)](./DATA-LICENSE.md)
 [![Node.js](https://img.shields.io/badge/Node.js-24.x-brightgreen)](https://nodejs.org)
 
----
+## Projenin kapsamı
 
-## Neden Bu Proje?
+- Bölge, il ve ilçe katmanları web arayüzünde çoklu formatta indirilebilir.
+- Mahalle katmanı yalnızca yayınlanabilir açık veri kaynağı teyit edilen iller için gösterilir.
+- Yerleşim kimlikleri deterministiktir: `TR-R-*`, `TR-P-*`, `TR-D-*`, `TR-Y-*`.
+- İndirme formatları: `GeoJSON`, `JSON`, `TopoJSON`, `CSV`, `XLSX`, `SQL`, `WKT`, `KML`, `KMZ`, `SHP`, ayrıca arayüzden `SVG` ve `PNG`.
 
-Piyasadaki statik GeoJSON dosyalarının aksine bu proje veriyi sadece sunmaz; işler, doğrular ve projenize özel hale getirir.
+## Mahalle politikası
 
-- **Deterministik kimlikler** — Plaka kodları ve ISO standartlarıyla uyumlu, kararlı ID yapısı (`TR-P-34`, `TR-D-34-001`)
-- **Hatasız geometri** — Tüm veriler `validate.js` ile topolojik ve hiyerarşik kontrolden geçer
-- **Esnek export hattı** — Tek komutla 10+ farklı formatta çıktı üretimi
-- **Kendi verina inşa et** — Repoyu fork ederek özel filtreleme, alan seçimi ve veri zenginleştirme yapabilirsin
+Mahalle verisi bu repoda ikiye ayrılır:
 
----
+- Yayınlanabilir açık veri kaynakları: `source/yayinlanabilir/`
+- Doğrulama, karşılaştırma veya izin bekleyen kaynaklar: repo içi çalışma alanlarında tutulur, yayın kaynağı sayılmaz
 
-## Desteklenen Formatlar
+Web arayüzünde mahalle görünümü şu an yalnızca `source/yayinlanabilir/sources.json` içinde `publishable: true` olarak işaretli il setleriyle sınırlandırılmıştır.
 
-| Vektör / CBS | Tabular / Veri | Görsel / Web |
-| :--- | :--- | :--- |
-| GeoJSON | CSV | SVG |
-| TopoJSON | XLSX | PNG |
-| SHP | SQL | — |
-| KML | WKT | — |
-| KMZ | — | — |
-| JSON | — | — |
+İlk açık veri mahalle kapsamı:
 
-Planlanan formatlar: `GeoPackage`, `PDF`, `React Component`, `AI`, `EPS`, `OBJ`, `STL`, `GLB`, `GLTF`
+- Ankara
+- Bursa
+- Denizli
+- Gaziantep
+- Kayseri
+- Konya
+- Muğla
+- Ordu
+- Sakarya
+- Sivas
 
----
+Kısmi açık veri ilçe kapsamlari ayrıca `source/yayinlanabilir/sources.json` içinde tutulur.
 
-## Kimlik Standardı
+## Yayın ve lisans yaklaşımı
 
-| Seviye | Format | Örnek |
-| :--- | :--- | :--- |
-| Bölge | `TR-R-XXX` | `TR-R-MAR` |
-| İl | `TR-P-XX` | `TR-P-34` |
-| İlçe | `TR-D-XX-YYY` | `TR-D-34-001` |
-| Yerleşim | `TR-Y-XX-YYY-M-ZZZZ` | `TR-Y-34-001-M-0001` |
+- Kod lisansı `MIT`'tir.
+- Veri MIT ile yeniden lisanslanmaz.
+- Her veri kaynağı kendi lisans ve kullanım koşuluyla değerlendirilir.
+- Açık lisansı net olmayan kent rehberi, ArcGIS, TUCBS, TKGM ve benzeri servisler yayın kaynağı olarak kullanılmaz.
+- Ticari veya resmi kullanımdan doğacak sorumluluk kullanıcıya aittir; kaynak kurumun güncel şartları ayrıca kontrol edilmelidir.
 
-Kurallar:
+Detay için: [DATA-LICENSE.md](./DATA-LICENSE.md)
 
-- `XX` il plaka kodudur (sıfır dolgulu, iki hane)
-- `YYY` il içindeki deterministik sıradır (aralıksız, üç hane)
-- ilçe sıralaması pipeline kurallarıyla sabitlenir ve sürümler arasında kararlı kalır
-- yerleşim kayıtları mahalle ve köy metadata'sı için kullanılır; geometri desteği kaynak bulunan illerle sınırlıdır
+## Klasör yapısı
 
----
-
-## Mahalle ve Köy Verisi
-
-Proje, il ve ilçe verilerine ek olarak e-İçişleri kaynaklı mahalle/köy metadata'sını ve açık belediye kaynaklarından derlenen sınırlı mahalle geometrilerini işler.
-
-- **Metadata** — mahalle ve köy kayıtları normalize edilir, il/ilçe hiyerarşisine bağlanır ve deterministik `TR-Y-*` kimlikleriyle yayınlanır.
-- **Mahalle geometrileri** — yalnızca kaynak bulunup kontrol edilen iller için üretilir; kalite notları UI'da görünür.
-- **Ham kaynaklar** — belediye KML/KMZ/SHP/Excel dosyaları repoya dahil edilmez. Kaynak URL'leri, erişim tarihleri ve yerel dosya beklentileri `source/mahalle/sources.json` ve ilgili README içinde tutulur.
-
-Bu veriler resmi işlem amacıyla değil, açık veri entegrasyonu ve yazılım geliştirme amaçlı kullanılmalıdır. Lisans ve kullanım koşulları için ilgili kurum kaynakları ayrıca kontrol edilmelidir.
-
-Mahalle geometri verileri sınırlı kaynaklardan derlenir ve kalite notlarıyla birlikte sunulur. Resmi, ticari veya hukuki sonuç doğuran kullanımlar için ilgili kurum kaynakları, güncellik ve lisans koşulları ayrıca doğrulanmalıdır.
-
----
-
-## Veri Modeli
-
-### Temel Kimlik
-- `id`, `level`, `parent_id`
-
-### İnsan Okunur Alanlar
-- `name`, `name_ascii`, `slug`, `aliases`
-
-### İdari Referanslar
-- `plate_code`, `district_local_code`, `iso_3166_2`
-- iller için `nuts_code`, uygunsa ilçeler için `lau_code`
-
-### Dış Eşleştirme Alanları
-- `tuik_id`, `icisleri_id`, `osm_relation_id`, `source_hdx_id`
-
-### Mekansal Alanlar
-- `centroid` → `{ lat, lon }`
-- `bbox` → `[min_lon, min_lat, max_lon, max_lat]`
-
----
-
-## Pipeline Akışı
-
-```
-Ham kaynak (HDX)
-    → Normalize et ve temizle
-    → Crosswalk ile zenginleştir (TÜİK / NUTS / ISO / OSM)
-    → Deterministik kimlik ata
-    → Şema + hiyerarşi doğrulaması
-    → JSON / GeoJSON / TopoJSON / CSV / XLSX / SQL / WKT / KML / KMZ / SHP
-```
-
----
-
-## Klasör Yapısı
-
-```
+```text
 turkiye_map/
-├── source/          → ham ve referans veriler (HDX snapshot, crosswalk)
-├── schema/          → JSON Schema tanımları
-├── scripts/         → normalize, assign-ids, validate, export pipeline
-├── data/
-│   ├── raw/
-│   ├── normalized/
-│   └── processed/
-├── dist/            → npm run build:dist ile üretilen çıktılar
-│   ├── json/
-│   ├── geojson/
-│   ├── topojson/
-│   ├── csv/
-│   ├── xlsx/
-│   ├── sql/
-│   ├── wkt/
-│   ├── kml/
-│   ├── kmz/
-│   └── shp/
-├── packages/        → JS tüketim paketi
-├── examples/        → kullanım örnekleri
-└── docs/            → tasarım ve karar belgeleri
+├── source/
+│   ├── yayinlanabilir/   -> Yayınlanabilir açık veri kaynakları ve manifestler
+│   ├── kamu-kaynak/      -> Çalışma / doğrulama verileri (repoda yayın hattı değil)
+│   ├── mulki-idare/      -> Referans listeler ve sayısal kontrol kaynakları
+│   ├── hdx/              -> Fallback ve karşılaştırma snapshotları
+│   └── reference/        -> Crosswalk, override ve kalite tabloları
+├── scripts/              -> Normalize, validate, export adımları
+├── dist/                 -> Web ve indirilebilir çıktılar
+├── docs/                 -> Tasarım ve karar notları
+└── tests/                -> Otomatik testler
 ```
 
----
+## Kullanıcıdan gelecek mahalle dosyaları
 
-## Kurulum ve Kullanım
+Senin sonradan vereceğin ham mahalle dosyaları için ayrılmış klasör:
+
+- [source/yayinlanabilir/incoming-mahalle/README.md](D:/turkiye_map/source/yayinlanabilir/incoming-mahalle/README.md)
+
+Bu klasör, yayın kararı verilmemiş ama ileride açık veri olarak değerlendirilecek kullanıcı sağladığı mahalle dosyaları için bekleme alanıdır.
+
+## GitHub Pages notu
+
+Bu proje şu an GitHub Pages mantığıyla çalışan statik dağıtım hedefini koruduğu için çıktı boyutu kritik önemdedir.
+
+- `dist/` altında gerçekten gereken dosyalar tutulur.
+- Büyük tekrar dosyaları mümkün olduğunca kaldırılır veya lazy-load edilir.
+- Mahalle görünümünde tüm Türkiye önizlemesi sınırlanabilir; bu indirme kapsamını değil, sadece tarayıcıdaki canlı önizlemeyi etkiler.
+
+## Kurulum
 
 ```bash
-# Bağımlılıkları yükle
 npm install
-
-# Veri pipeline'ını çalıştır (normalize → assign-ids → validate)
 npm run build:data
-
-# Tüm formatlarda çıktı üret (dist/ klasörüne)
 npm run build:dist
+```
 
-# Tam build (data + dist birlikte)
+Tam build:
+
+```bash
 npm run build
 ```
 
-Görsel smoke test:
+Yerel test arayüzü:
 
 ```bash
-npm run build:dist   # gerekirse
-npm run test:ui      # geliştirme sunucusunu başlatır
-# → http://127.0.0.1:4173
+npm run test:ui
 ```
 
-Otomatik testler:
+Otomatik kontroller:
 
 ```bash
-npm test             # unit testler
-npm run test:smoke   # dist artifact kontratlarını doğrular
-npm run example:js   # JS paket örneği
+npm test
+npm run test:smoke
 ```
-
----
-
-## Kendi Verini İnşa Et
-
-Repoyu fork ettikten sonra:
-
-- **Özel filtreleme** — belirli bir bölge veya ili içeren özel paketler
-- **Hassasiyet ayarı** — `pipeline.js` üzerinden koordinat yuvarlama ile dosya boyutu optimizasyonu
-- **Veri zenginleştirme** — kendi özel sütunlarını `crosswalk` dosyalarına ekle; sistem tüm formatlara otomatik dağıtır
-
-Python bağımlılığı: `build:data` adımı `generate-province-crosswalk.py` için Python gerektirir.  
-Tüm Python scriptleri `encoding='utf-8'` ile yazılmıştır; Windows ortamlarında Türkçe karakter güvenlidir.
-
----
-
-## Yol Haritası
-
-### Tamamlanan
-- [x] Bölge, il, ilçe sınırları (HDX tabanlı)
-- [x] Deterministik kimlik sistemi (`TR-R-*`, `TR-P-*`, `TR-D-*`)
-- [x] GeoJSON, JSON, TopoJSON
-- [x] CSV, XLSX, SQL, WKT
-- [x] KML, KMZ
-- [x] SVG, PNG (UI üzerinden)
-- [x] Alan seçimi (Fields) UI
-- [x] SHP (+ prj, cpg, zip paketleme)
-
-### Planlanan — Faz 2
-- [ ] GeoPackage (gpkg)
-- [ ] PDF
-
-### Planlanan — Faz 3
-- [ ] React Component
-- [ ] AI (Adobe Illustrator)
-- [ ] EPS
-
-### Planlanan — Faz 4
-- [ ] OBJ / STL (3D baskı ve oyun motoru)
-- [ ] GLB / GLTF (web 3D)
-
----
 
 ## Dokümanlar
 
-- [Veri Modeli](./docs/data-model.md)
-- [Pipeline Tasarımı](./docs/pipeline-design.md)
-- [Kimlik Politikası](./docs/id-policy.md)
-- [Bölge Modeli](./docs/region-model.md)
-- [Format Yol Haritası](./docs/format-roadmap.md)
-- [İndirme Yapılandırıcısı](./docs/download-configurator.md)
-- [İndirme Manuel QA](./docs/download-manual-qa.md)
-- [Ürün Sözleşmesi](./docs/product-contract.md)
-- [Karar Günlüğü](./docs/decision-log.md)
-- [Release Kontrol Listesi](./docs/release-checklist.md)
-- [XLSX Bağımlılık Notu](./docs/xlsx-dependency-note.md)
-- [Katkı Rehberi](./CONTRIBUTING.md)
-
----
+- [DATA-LICENSE.md](./DATA-LICENSE.md)
+- [source/yayinlanabilir/README.md](./source/yayinlanabilir/README.md)
+- [docs/pipeline-design.md](./docs/pipeline-design.md)
+- [docs/release-checklist.md](./docs/release-checklist.md)
+- [ISPLANI.md](./ISPLANI.md)
 
 ## Lisans
 
-Kaynak kod: **MIT** — ayrıntı için [LICENSE](./LICENSE)
-
-Vendored sınır verisi: **CC BY-IGO** (HDX / OCHA) — ayrıntı için [DATA-LICENSE.md](./DATA-LICENSE.md)
-
-Veri kaynağı: [HDX COD-AB Türkiye](https://data.humdata.org/dataset/cod-ab-tur)
+- Kod: [LICENSE](./LICENSE)
+- Veri politikası ve kaynak ayrımı: [DATA-LICENSE.md](./DATA-LICENSE.md)

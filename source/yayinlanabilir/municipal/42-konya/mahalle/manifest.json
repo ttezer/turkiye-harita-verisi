@@ -1,0 +1,32 @@
+{
+  "dataset_id": "konya-mahalleler-2024",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 42,
+  "province_name": "Konya",
+  "admin_levels": ["settlement"],
+  "source_name": "Konya Buyuksehir Belediyesi Acik Veri Platformu - Konya Mahalleleri",
+  "source_url": "https://acikveri.konya.bel.tr/dataset/konya-mahalleler/resource/789b5ee0-ee73-4ddc-8f4d-5b637ecfc5d7",
+  "resource_url": "https://acikveri.konya.bel.tr/tr/dataset/6c6b99b9-3a54-413f-9053-e354db0a47e1/resource/789b5ee0-ee73-4ddc-8f4d-5b637ecfc5d7/download/mahalleler-2024.geojson",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Creative Commons Attribution 3.0",
+  "license_id": "cc-by-3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/au/",
+  "publishability_status": "publishable",
+  "primary_for": ["konya_settlement_geometry"],
+  "feature_count": 1143,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/42-konya/mahalle/raw/konya-mahalleler-2024.geojson",
+      "format": "GeoJSON",
+      "bytes": 27450903,
+      "sha256": "12d6fa00bc66058b84c17a1927c833d9273da2b2578af421f0d3d452d9faf723"
+    }
+  ],
+  "notes": [
+    "Kaynak sayfasinda resource lisansi Creative Commons Attribution 3.0, site geneli footer lisansi CC BY 4.0 gorunuyor; DATA-LICENSE tarafinda kaynak ozel lisans notu korunmali."
+  ]
+}

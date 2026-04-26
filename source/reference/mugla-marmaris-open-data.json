@@ -1,0 +1,25 @@
+{
+  "province_id": "TR-P-48",
+  "province_name": "Muğla",
+  "district_id": "TR-D-48-007",
+  "district_name": "Marmaris",
+  "source_name": "Muğla Büyükşehir Belediyesi CBS - Mahalleler (Vektör Veri)",
+  "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+  "source_url": "https://cbs.mugla.bel.tr/blog/cbs-acik-veri",
+  "source_date": "2025-11-05",
+  "accessed_at": "2026-04-22",
+  "format": "SHP",
+  "included_in_repo": false,
+  "note": "Muğla CBS ham arşivi bu depoda vendored değil. Daha sonra source/legacy-mahalle/mugla/ altında eklenirse tercih edilen kaynak olarak kullanın; o zamana kadar mevcut geometry-repair yedeğini koruyun.",
+  "settlements": [
+    { "id": "TR-Y-48-007-M-0002", "name": "Armutalan", "role": "outer" },
+    { "id": "TR-Y-48-007-M-0007", "name": "Camiavlu", "role": "inner" },
+    { "id": "TR-Y-48-007-M-0022", "name": "Sinan", "role": "inner" },
+    { "id": "TR-Y-48-007-M-0004", "name": "Beldibi", "role": "outer" },
+    { "id": "TR-Y-48-007-M-0016", "name": "Karşıyaka", "role": "inner" },
+    { "id": "TR-Y-48-007-M-0005", "name": "Bozburun", "role": "outer" },
+    { "id": "TR-Y-48-007-M-0030", "name": "Yeşilova", "role": "inner" },
+    { "id": "TR-Y-48-007-M-0014", "name": "İçmeler", "role": "outer" },
+    { "id": "TR-Y-48-007-M-0011", "name": "Gölenye", "role": "inner" }
+  ]
+}

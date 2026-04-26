@@ -1,0 +1,33 @@
+{
+  "dataset_id": "istanbul-kadikoy-mahalle-sinirlari",
+  "source_role": "municipal_partial_settlement_geometry",
+  "scope": "district",
+  "country": "TR",
+  "province_code": 34,
+  "province_name": "Istanbul",
+  "district_name": "Kadikoy",
+  "admin_levels": ["settlement"],
+  "source_name": "Kadikoy Acik Veri Portali - Kadikoy Ilcesindeki Mahalle Sinirlari",
+  "source_url": "https://ulasav.csb.gov.tr/dataset/34-2-kadikoy-ilcesindeki-mahalle-sinirlari",
+  "resource_url": "https://acikveri.kadikoy.bel.tr/dataset/1f49bf03-cea5-40b9-9604-5f71c6f71e22/resource/c7a8a9dc-c78f-417a-9e2c-42ec4d3436e7/download/mahalle_sinir.shp",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Creative Commons Attribution 4.0 International / Kadikoy Acik Veri Lisansi",
+  "license_id": "cc-by-4.0",
+  "license_url": "https://acikveri.kadikoy.bel.tr/tr/license",
+  "publishability_status": "partial",
+  "primary_for": ["istanbul_kadikoy_settlement_geometry_candidate"],
+  "geometry_types": ["SHP Polygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/34-istanbul/kadikoy/mahalle/raw/kadikoy-mahalle-sinir.shp",
+      "format": "SHP",
+      "bytes": 103260,
+      "sha256": "4967957a2801fe70dbc565c030eae24d66e750762f06f247dc2d2fdb9e3c8946"
+    }
+  ],
+  "notes": [
+    "Il geneli degil, yalnizca Kadikoy ilcesi kapsaminda partial kaynak.",
+    "Kaynak sadece .shp dosyasi olarak indi; .dbf, .shx ve .prj yan dosyalari bulunmuyor. Mahalle adlari ve tam shapefile okuma icin kaynak tekrar kontrol edilmeli."
+  ]
+}

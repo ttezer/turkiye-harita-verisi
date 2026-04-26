@@ -54,6 +54,17 @@
       "type": "string",
       "minLength": 1
     },
+    "administrative_unit_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "administrative_unit_name_ascii": {
+      "type": "string",
+      "minLength": 1
+    },
+    "is_district_center_unit": {
+      "type": "boolean"
+    },
     "name": {
       "type": "string",
       "minLength": 1

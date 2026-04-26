@@ -1,0 +1,45 @@
+{
+  "dataset_id": "ankara-seffaf-mahalle-sinirlari",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 6,
+  "province_name": "Ankara",
+  "admin_levels": ["settlement"],
+  "source_name": "Ankara Buyuksehir Belediyesi Seffaf Ankara Acik Veri Platformu - MAKS Mahalle Katmani",
+  "source_url": "https://seffaf.ankara.bel.tr/",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "official_platform_service_extract",
+  "service_layer": "teo_maks_mahalle",
+  "license_name": "Ankara Buyuksehir Belediyesi Seffaf Ankara Acik Veri Lisansi / CC BY 4.0",
+  "license_id": "cc-by-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "publishability_status": "publishable",
+  "primary_for": ["ankara_settlement_geometry"],
+  "feature_count": 1434,
+  "unique_settlement_name_count": 1264,
+  "district_reference_count": 25,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/06-ankara/mahalle/raw/ankara-mahalle-sinirlari.geojson",
+      "url": "https://seffafservice.ankara.bel.tr/TeoServerCoreSeffaf/DataService/TeoDataService.svc/rest/json/SearchByQueryFilter",
+      "format": "GeoJSON",
+      "bytes": 6914307,
+      "sha256": "be8f205611011d267ef385d0e49a5e4eea97d82a70066053529da137c97d0789"
+    },
+    {
+      "path": "source/yayinlanabilir/municipal/06-ankara/mahalle/raw/ankara-ilce-referans.json",
+      "url": "https://seffafservice.ankara.bel.tr/TeoServerCoreSeffaf/DataService/TeoDataService.svc/rest/json/SearchByQueryDef",
+      "format": "JSON",
+      "bytes": 3082,
+      "sha256": "a5e064189da1a6074d1480b2e0479cf6f7a653c6844469d83ee70fdf359b9df4"
+    }
+  ],
+  "notes": [
+    "Seffaf Ankara lisans metni, aksi belirtilmedikce site altindaki veri ve materyallerin CC BY 4.0 kapsaminda kullanilabilecegini belirtir.",
+    "Acik veri kartlarinda indirilebilir mahalle siniri paketi bulunamadi; veri resmi platform servisindeki teo_maks_mahalle katmanindan GeoJSON olarak alindi.",
+    "Ham mahalle katmani ilce adini degil ilceid alanini icerir; ankara-ilce-referans.json esleme icin ayni resmi platformdan alindi.",
+    "Kaynak veri oldugu gibi saglanir; dogruluk ve guncellik garantisi yoktur."
+  ]
+}

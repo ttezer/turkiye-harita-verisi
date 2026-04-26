@@ -1,0 +1,36 @@
+{
+  "dataset_id": "gumushane-merkez-mahalle-sinirlari",
+  "source_role": "municipal_partial_settlement_geometry",
+  "scope": "district",
+  "country": "TR",
+  "province_code": 29,
+  "province_name": "Gumushane",
+  "district_name": "Merkez",
+  "admin_levels": ["settlement"],
+  "source_name": "ULASAV - Gumushane Ili Merkez Mahalle Sinirlari",
+  "source_url": "https://ulasav.csb.gov.tr/dataset/gumushane-ili-merkez-mahalle-sinirlari/resource/6db673a5-770f-4dd3-bc36-7ffa005574d8",
+  "resource_url": "https://ulasav.csb.gov.tr/dataset/0f7ab818-3620-4d71-96ca-092eb4a058da/resource/6db673a5-770f-4dd3-bc36-7ffa005574d8/download/mahalleler.kml",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Acik Veri ULASAV",
+  "license_id": "ulasav-license",
+  "license_url": "https://ulasav.csb.gov.tr/license",
+  "publishability_status": "partial",
+  "primary_for": ["gumushane_merkez_settlement_geometry_candidate"],
+  "feature_count": 14,
+  "raw_placemark_count": 187,
+  "geometry_types": ["KML Polygon", "KML Point", "KML LineString"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/29-gumushane/merkez/mahalle/raw/gumushane-merkez-mahalleler.kml",
+      "format": "KML",
+      "bytes": 165068,
+      "sha256": "42e06f673d9273b268935573448d35360197565057ec00254e5430973e6486a4"
+    }
+  ],
+  "notes": [
+    "Il geneli degil, yalnizca Gumushane Merkez ilcesi kapsaminda partial kaynak.",
+    "Ham KML 187 Placemark iceriyor; 14 Polygon, 14 Point ve 159 LineString tespit edildi. Donusumde yalnizca MAH_ ile baslayan Polygon kayitlari kullanilmali.",
+    "Mahalle adlari MAH_ prefix'i ile geliyor; normalize ederken prefix temizlenmeli."
+  ]
+}

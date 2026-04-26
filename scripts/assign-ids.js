@@ -130,6 +130,34 @@ export function provinceRecord(item) {
   };
 }
 
+export function createMunicipalityTypeIndex(payload) {
+  const types = payload?.types || {};
+  return new Map((payload?.provinces || []).map((row) => {
+    const type = types[row.municipality_type];
+    if (!type) {
+      throw new Error(`Unknown municipality type for province ${row.plate_code}: ${row.municipality_type}`);
+    }
+
+    return [row.plate_code, {
+      municipality_type: row.municipality_type,
+      municipality_type_label: type.label,
+      is_metropolitan_municipality: Boolean(type.is_metropolitan_municipality),
+    }];
+  }));
+}
+
+export function applyMunicipalityType(record, municipalityTypeIndex) {
+  const municipalityType = municipalityTypeIndex.get(record.plate_code);
+  if (!municipalityType) {
+    throw new Error(`Missing municipality type for province ${record.id}`);
+  }
+
+  return {
+    ...record,
+    ...municipalityType,
+  };
+}
+
 export function districtRecord(item, provinceMap) {
   const parentProvince = provinceMap.get(item.source_parent_hdx_id);
   if (!parentProvince) {
@@ -178,6 +206,9 @@ export function withGeometryProperties(collection, metadataMap) {
           parent_id: metadata.parent_id,
           region_id: metadata.region_id ?? null,
           level: metadata.level,
+          municipality_type: metadata.municipality_type ?? null,
+          municipality_type_label: metadata.municipality_type_label ?? null,
+          is_metropolitan_municipality: metadata.is_metropolitan_municipality ?? null,
         },
         geometry: feature.geometry,
       };
@@ -290,10 +321,7 @@ export function createRegionRecords(reference, provinces, provinceGeometryCollec
         }
         return feature;
       });
-      const geometry = dissolveRegionGeometry(region.member_ids, {
-        ...provinceGeometryCollection,
-        features: memberFeatures,
-      });
+      const geometry = aggregateRegionGeometry(memberFeatures);
 
       const centroid = memberProvinces.reduce((acc, province) => ({
         lat: acc.lat + province.centroid.lat,
@@ -339,7 +367,15 @@ export function createRegionGeometryCollection(regions, reference, provinceGeome
           region_id: region.id,
           level: region.level,
         },
-        geometry: dissolveRegionGeometry(referenceRow.member_ids, provinceGeometryCollection),
+        geometry: aggregateRegionGeometry(
+          referenceRow.member_ids.map((id) => {
+            const feature = provinceGeometryCollection.features.find((item) => item.properties.id === id);
+            if (!feature) {
+              throw new Error(`Region ${region.id} missing province geometry ${id}`);
+            }
+            return feature;
+          }),
+        ),
       };
     }),
   };
@@ -354,11 +390,13 @@ export function main() {
   const districtGeometry = readJson(path.join(paths.normalizedDir, 'districts.geometry.geojson'));
   const provinceCrosswalkRows = readOptionalJson(paths.provinceCrosswalk, []);
   const districtCrosswalkRows = readOptionalJson(paths.districtCrosswalk, []);
+  const municipalityTypes = readJson(paths.provinceMunicipalityTypes);
   const regionReference = readJson(paths.regionsGeographic7);
   const displayNameOverrides = readOptionalJson(paths.displayNameOverrides, null);
 
   const provinceCrosswalkIndex = createCrosswalkIndex(provinceCrosswalkRows);
   const districtCrosswalkIndex = createCrosswalkIndex(districtCrosswalkRows);
+  const municipalityTypeIndex = createMunicipalityTypeIndex(municipalityTypes);
   const regionIndex = createRegionIndex(regionReference);
   const overrideIndex = createOverrideIndex(displayNameOverrides);
 
@@ -367,6 +405,7 @@ export function main() {
       .map((item) => applyDisplayOverride(item, overrideIndex, 'province'))
       .map(provinceRecord)
       .map((record) => applyRegionMembershipToProvince(record, regionIndex))
+      .map((record) => applyMunicipalityType(record, municipalityTypeIndex))
       .map((record) => applyProvinceCrosswalk(record, findCrosswalk(record, provinceCrosswalkIndex))),
     (a, b) => a.id.localeCompare(b.id),
   );

@@ -1,0 +1,34 @@
+{
+  "dataset_id": "osmaniye-merkez-mahalle-sinirlari",
+  "source_role": "municipal_partial_settlement_geometry",
+  "scope": "district",
+  "country": "TR",
+  "province_code": 80,
+  "province_name": "Osmaniye",
+  "district_name": "Merkez",
+  "admin_levels": ["settlement"],
+  "source_name": "ULASAV - Osmaniye Merkez Mahalle Sinirlari",
+  "source_url": "https://ulasav.csb.gov.tr/dataset/osmaniye-merkez-mahalle-sinirlari/resource/2537c8d1-a311-45a0-9bc5-cfee8ea6923d",
+  "resource_url": "https://ulasav.csb.gov.tr/dataset/c0b02353-1cae-40c8-b6b0-097fef0d4aa9/resource/2537c8d1-a311-45a0-9bc5-cfee8ea6923d/download/mahalle_sinirlari.kml",
+  "accessed_at": "2026-04-23",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Acik Veri ULASAV",
+  "license_id": "ulasav-license",
+  "license_url": "https://ulasav.csb.gov.tr/license",
+  "publishability_status": "partial",
+  "primary_for": ["osmaniye_merkez_settlement_geometry_candidate"],
+  "feature_count": 39,
+  "geometry_types": ["KML Polygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/80-osmaniye/merkez/mahalle/raw/osmaniye-merkez-mahalle-sinirlari.kml",
+      "format": "KML",
+      "bytes": 127179,
+      "sha256": "f30c69b36a0e24d6a9605bb5c048b2334d4e59301ca50fa04c782ab05e11095d"
+    }
+  ],
+  "notes": [
+    "Il geneli degil, yalnizca Osmaniye Merkez ilcesi kapsaminda partial kaynak.",
+    "KML Placemark ad alanlari mahalle adlarini iceriyor."
+  ]
+}

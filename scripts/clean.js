@@ -19,6 +19,8 @@ export const targets = [
   path.join(paths.processedDir, 'districts.metadata.json'),
   path.join(paths.processedDir, 'yerlesimler.metadata.json'),
   path.join(paths.processedDir, 'yerlesimler-report.json'),
+  path.join(paths.processedDir, 'bagli-yerlesimler.metadata.json'),
+  path.join(paths.processedDir, 'bagli-yerlesimler-report.json'),
   path.join(paths.processedDir, 'mahalle-geometrileri.geojson'),
   path.join(paths.processedDir, 'mahalle-geometrileri-report.json'),
   path.join(paths.processedDir, 'regions.geometry.geojson'),

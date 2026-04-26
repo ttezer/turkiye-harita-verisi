@@ -21,7 +21,7 @@ describe('packages/js public API', () => {
   it('returns base collections', () => {
     expect(getRegions()).toHaveLength(7);
     expect(getProvinces()).toHaveLength(81);
-    expect(getDistricts()).toHaveLength(973);
+    expect(getDistricts()).toHaveLength(974);
     expect(getYerlesimler()).toHaveLength(50517);
   });
 
@@ -65,6 +65,6 @@ describe('packages/js public API', () => {
   it('loads region, province and district geometry collections', () => {
     expect(getRegionGeometry().features).toHaveLength(7);
     expect(getProvinceGeometry().features).toHaveLength(81);
-    expect(getDistrictGeometry().features).toHaveLength(973);
+    expect(getDistrictGeometry().features).toHaveLength(974);
   });
 });

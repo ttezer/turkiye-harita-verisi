@@ -1,0 +1,152 @@
+[
+  {
+    "oid": "7",
+    "id": "{D677FBE6-2EB1-4B41-87CF-A577F9B646E0}",
+    "kimlikno": "1872",
+    "ad": "AKYURT"
+  },
+  {
+    "oid": "23",
+    "id": "{202313A8-EE61-416A-A19B-D29CDCAD1E3F}",
+    "kimlikno": "1130",
+    "ad": "ALTINDAĞ"
+  },
+  {
+    "oid": "17",
+    "id": "{C79E3F72-F97C-4A75-AD61-76AFE53236EC}",
+    "kimlikno": "1157",
+    "ad": "AYAŞ"
+  },
+  {
+    "oid": "14",
+    "id": "{6451D141-350A-4A76-A508-DA6BAB9E5C9D}",
+    "kimlikno": "1167",
+    "ad": "BALA"
+  },
+  {
+    "oid": "13",
+    "id": "{584125AB-0C44-4063-924E-4F4533DC6135}",
+    "kimlikno": "1187",
+    "ad": "BEYPAZARI"
+  },
+  {
+    "oid": "12",
+    "id": "{7C92C3CF-4D45-4228-A79A-03910D3639F3}",
+    "kimlikno": "1227",
+    "ad": "ÇAMLIDERE"
+  },
+  {
+    "oid": "6",
+    "id": "{AE0268C4-85B4-4FA2-97CF-24775ADDAAB8}",
+    "kimlikno": "1231",
+    "ad": "ÇANKAYA"
+  },
+  {
+    "oid": "3",
+    "id": "{1CE0E71F-17CC-47FA-BFD7-B9AB27A0EF98}",
+    "kimlikno": "1260",
+    "ad": "ÇUBUK"
+  },
+  {
+    "oid": "18",
+    "id": "{A6209D35-F636-48D5-80A6-706F53368B0D}",
+    "kimlikno": "1302",
+    "ad": "ELMADAĞ"
+  },
+  {
+    "oid": "8",
+    "id": "{BAA3DE4D-DC7A-4B32-97D3-F19B42EF4673}",
+    "kimlikno": "1922",
+    "ad": "ETİMESGUT"
+  },
+  {
+    "oid": "9",
+    "id": "{EF270D26-6D19-47B4-8E1F-9199CDF1D368}",
+    "kimlikno": "1924",
+    "ad": "EVREN"
+  },
+  {
+    "oid": "22",
+    "id": "{F8D21011-5D1E-43B3-A44F-74382676C3FA}",
+    "kimlikno": "1744",
+    "ad": "GÖLBAŞI"
+  },
+  {
+    "oid": "11",
+    "id": "{37EA8652-2096-4A9E-9011-3E73EA6BA017}",
+    "kimlikno": "1365",
+    "ad": "GÜDÜL"
+  },
+  {
+    "oid": "20",
+    "id": "{F414CC4A-AE79-4B2B-8513-E357FA34A7E3}",
+    "kimlikno": "1387",
+    "ad": "HAYMANA"
+  },
+  {
+    "oid": "2",
+    "id": "{1A802D55-C2CE-4971-BF7E-9F40D0C63DCA}",
+    "kimlikno": "1815",
+    "ad": "KAHRAMANKAZAN"
+  },
+  {
+    "oid": "16",
+    "id": "{F5A55F12-A8EF-4F3F-BB5F-80557EEF3276}",
+    "kimlikno": "1427",
+    "ad": "KALECİK"
+  },
+  {
+    "oid": "5",
+    "id": "{F21FDE8A-BA07-447F-9B9A-2FA4B7E81978}",
+    "kimlikno": "1745",
+    "ad": "KEÇİÖREN"
+  },
+  {
+    "oid": "10",
+    "id": "{A9DCA18E-3B43-4DF6-8C21-8771A2ABBA85}",
+    "kimlikno": "1473",
+    "ad": "KIZILCAHAMAM"
+  },
+  {
+    "oid": "21",
+    "id": "{044CFFDB-62AD-4B7A-B091-6525436388CC}",
+    "kimlikno": "1746",
+    "ad": "MAMAK"
+  },
+  {
+    "oid": "19",
+    "id": "{06532E0A-DEF6-4903-926E-D5B2992683C1}",
+    "kimlikno": "1539",
+    "ad": "NALLIHAN"
+  },
+  {
+    "oid": "24",
+    "id": "{CBA7ADBC-447D-4B48-B1DB-FD9806BD46D6}",
+    "kimlikno": "1578",
+    "ad": "POLATLI"
+  },
+  {
+    "oid": "15",
+    "id": "{377295E8-DFCF-4CF4-A584-563F2903F8DB}",
+    "kimlikno": "2034",
+    "ad": "PURSAKLAR"
+  },
+  {
+    "oid": "4",
+    "id": "{D9E026F1-091D-44DF-93FF-34890796BB26}",
+    "kimlikno": "1658",
+    "ad": "ŞEREFLİKOÇHİSAR"
+  },
+  {
+    "oid": "25",
+    "id": "{C8F69DEC-30EE-47E7-B1B8-E9EDB03322D0}",
+    "kimlikno": "1747",
+    "ad": "SİNCAN"
+  },
+  {
+    "oid": "1",
+    "id": "{A5F42D43-0118-4381-8C52-6831CB6DA302}",
+    "kimlikno": "1723",
+    "ad": "YENİMAHALLE"
+  }
+]

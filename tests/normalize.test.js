@@ -139,7 +139,7 @@ describe('normalize helpers', () => {
 
     const writeJsonSpy = vi.spyOn(pipeline, 'writeJson').mockImplementation(() => {});
 
-    main();
+    main({ source: 'hdx' });
 
     expect(ensureDirSpy).toHaveBeenCalledWith(pipeline.paths.normalizedDir);
     expect(writeJsonSpy).toHaveBeenCalledTimes(5);

@@ -22,6 +22,9 @@
     "icisleri_id",
     "osm_relation_id",
     "source_hdx_id",
+    "municipality_type",
+    "municipality_type_label",
+    "is_metropolitan_municipality",
     "centroid",
     "bbox"
   ],
@@ -106,6 +109,21 @@
         "string",
         "null"
       ]
+    },
+    "municipality_type": {
+      "enum": [
+        "buyuksehir_belediyesi",
+        "il_belediyesi"
+      ]
+    },
+    "municipality_type_label": {
+      "enum": [
+        "Büyükşehir Belediyesi",
+        "İl Belediyesi"
+      ]
+    },
+    "is_metropolitan_municipality": {
+      "type": "boolean"
     },
     "centroid": {
       "$ref": "#/$defs/point"

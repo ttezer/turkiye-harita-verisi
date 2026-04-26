@@ -18,15 +18,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR001",
     "centroid": {
-      "lat": 37.47297957,
-      "lon": 35.36894826
+      "lat": 37.47144565,
+      "lon": 35.58171049
     },
     "bbox": [
-      34.74864841099998,
-      36.54294559900018,
-      36.400914286000045,
-      38.402474510000104
-    ]
+      34.75429268,
+      36.53828938,
+      36.4091283,
+      38.40460192
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-02",
@@ -47,15 +50,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR002",
     "centroid": {
-      "lat": 37.80796082,
-      "lon": 38.2163118
+      "lat": 37.80985672,
+      "lon": 38.35128017
     },
     "bbox": [
-      37.439587212000106,
-      37.408784707999985,
-      39.262586504000126,
-      38.206316926
-    ]
+      37.4397462,
+      37.4097062,
+      39.26281413,
+      38.21000723
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-03",
@@ -76,15 +82,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR003",
     "centroid": {
-      "lat": 38.52741234,
-      "lon": 30.59938896
+      "lat": 38.52734749,
+      "lon": 30.6805931
     },
     "bbox": [
-      29.672708583000144,
-      37.788266654000154,
-      31.733907972000168,
-      39.272306628000194
-    ]
+      29.62908804,
+      37.77715599,
+      31.73209817,
+      39.27753899
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-04",
@@ -105,15 +114,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR004",
     "centroid": {
-      "lat": 39.48145345,
-      "lon": 43.4392706
+      "lat": 39.44787727,
+      "lon": 43.37592899
     },
     "bbox": [
-      42.28493469500006,
-      38.9417897460001,
-      44.48476663500003,
-      40.020467950000125
-    ]
+      42.26412628,
+      38.88515818,
+      44.48773171,
+      40.01059636
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-05",
@@ -134,15 +146,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR005",
     "centroid": {
-      "lat": 40.65665512,
-      "lon": 35.8619352
+      "lat": 40.65579795,
+      "lon": 35.74890368
     },
     "bbox": [
-      34.99251262800004,
-      40.233825166000145,
-      36.50924922900015,
-      41.082004583000014
-    ]
+      34.98770137,
+      40.234023,
+      36.51010599,
+      41.07757291
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-06",
@@ -163,15 +178,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR006",
     "centroid": {
-      "lat": 39.70064999,
-      "lon": 32.52458625
+      "lat": 39.71046471,
+      "lon": 32.36155987
     },
     "bbox": [
-      30.817284719000043,
-      38.648238538000044,
-      33.895137723000175,
-      40.75233570600005
-    ]
+      30.83437557,
+      38.66466818,
+      33.88874416,
+      40.75626124
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-07",
@@ -192,15 +210,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR007",
     "centroid": {
-      "lat": 36.76356695,
-      "lon": 31.89856688
+      "lat": 36.77507148,
+      "lon": 30.94733623
     },
     "bbox": [
-      29.26792088400009,
-      36.08964068400019,
-      32.660331829000086,
-      37.43757236500011
-    ]
+      29.26727949,
+      36.09259301,
+      32.62739296,
+      37.45754995
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-08",
@@ -221,15 +242,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR008",
     "centroid": {
-      "lat": 41.04367875,
-      "lon": 41.86673604
+      "lat": 41.03824416,
+      "lon": 41.87308601
     },
     "bbox": [
-      41.15316604800012,
-      40.56192543200012,
-      42.61632268400018,
-      41.52485609900009
-    ]
+      41.13319942,
+      40.55161498,
+      42.61297261,
+      41.52487334
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-09",
@@ -250,15 +274,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR009",
     "centroid": {
-      "lat": 37.73041114,
-      "lon": 28.04832544
+      "lat": 37.72592679,
+      "lon": 27.95293154
     },
     "bbox": [
-      27.00564120000007,
-      37.33510449900007,
-      28.867372111000122,
-      38.12572643200019
-    ]
+      27.00000001,
+      37.32255224,
+      28.90586307,
+      38.12930135
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-10",
@@ -279,15 +306,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR010",
     "centroid": {
-      "lat": 39.79493285,
-      "lon": 27.96922716
+      "lat": 39.86951752,
+      "lon": 27.76214487
     },
     "bbox": [
-      26.52799790000006,
-      39.061350611000194,
-      28.997964721000187,
-      40.66692590000008
-    ]
+      26.52539421,
+      39.07055886,
+      28.99889553,
+      40.66847618
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-11",
@@ -308,15 +338,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR011",
     "centroid": {
-      "lat": 40.08827707,
-      "lon": 30.13385279
+      "lat": 40.09412502,
+      "lon": 30.186419
     },
     "bbox": [
-      29.699101362000135,
-      39.65383475400017,
-      30.6529429900001,
-      40.52095455000017
-    ]
+      29.70889606,
+      39.64873365,
+      30.66394194,
+      40.53951638
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-12",
@@ -337,15 +370,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR012",
     "centroid": {
-      "lat": 39.01098033,
-      "lon": 40.72033149
+      "lat": 39.00851758,
+      "lon": 40.62808537
     },
     "bbox": [
-      39.92666736800015,
-      38.48693170900003,
-      41.28704446900019,
-      39.53288541200004
-    ]
+      39.92658262,
+      38.48695232,
+      41.32958813,
+      39.53008285
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-13",
@@ -366,15 +402,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR013",
     "centroid": {
-      "lat": 38.498246,
-      "lon": 42.194924
+      "lat": 38.49629417,
+      "lon": 42.35628813
     },
     "bbox": [
-      41.50842045200011,
-      37.96827240300013,
-      43.245918156000016,
-      39.02594880300006
-    ]
+      41.48736791,
+      37.95994917,
+      43.22520835,
+      39.03263916
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-14",
@@ -395,15 +434,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR014",
     "centroid": {
-      "lat": 40.58950002,
-      "lon": 31.65587505
+      "lat": 40.61621605,
+      "lon": 31.57227205
     },
     "bbox": [
-      30.55984669200012,
-      40.1444039540001,
-      32.57158688100003,
-      41.03328034800012
-    ]
+      30.562463,
+      40.13435604,
+      32.58208111,
+      41.09807606
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-15",
@@ -424,15 +466,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR015",
     "centroid": {
-      "lat": 37.33675913,
-      "lon": 30.57977065
+      "lat": 37.31570434,
+      "lon": 30.15328172
     },
     "bbox": [
-      29.327962389000106,
-      36.839041998000084,
-      30.946250684000063,
-      37.83287658600011
-    ]
+      29.32562803,
+      36.80264575,
+      30.98093542,
+      37.82876292
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-16",
@@ -453,15 +498,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR016",
     "centroid": {
-      "lat": 40.09870099,
-      "lon": 28.94342606
+      "lat": 40.09806205,
+      "lon": 29.00456103
     },
     "bbox": [
-      28.095460057000025,
-      39.581714702000056,
-      29.938233136,
-      40.61641332100015
-    ]
+      28.08718759,
+      39.5817145,
+      29.92193446,
+      40.6144096
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-17",
@@ -482,15 +530,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR017",
     "centroid": {
-      "lat": 39.96412502,
-      "lon": 26.83952695
+      "lat": 40.10528381,
+      "lon": 26.60198822
     },
     "bbox": [
-      25.66850899900004,
-      39.45330010000009,
-      27.526179065000065,
-      40.738414625000075
-    ]
+      25.6655581,
+      39.45330751,
+      27.53841835,
+      40.75726012
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-18",
@@ -511,15 +562,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR018",
     "centroid": {
-      "lat": 40.65873316,
-      "lon": 33.45241638
+      "lat": 40.67263354,
+      "lon": 33.37207436
     },
     "bbox": [
-      32.56559906400014,
-      40.24802762400003,
-      34.16416416700014,
-      41.074600141000076
-    ]
+      32.56794483,
+      40.24908567,
+      34.17620388,
+      41.09618141
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-19",
@@ -540,15 +594,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR019",
     "centroid": {
-      "lat": 40.63024861,
-      "lon": 34.7547841
+      "lat": 40.64207816,
+      "lon": 34.73245438
     },
     "bbox": [
-      33.97019682000018,
-      39.92790191600017,
-      35.53391357400011,
-      41.331807726000136
-    ]
+      33.93133056,
+      39.93114966,
+      35.53357819,
+      41.35300666
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-20",
@@ -569,15 +626,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR020",
     "centroid": {
-      "lat": 37.66634782,
-      "lon": 29.23210818
+      "lat": 37.66687151,
+      "lon": 29.33316853
     },
     "bbox": [
-      28.59821844200013,
-      36.85135387300011,
-      30.115848758000027,
-      38.480223207999984
-    ]
+      28.58220809,
+      36.86428599,
+      30.08412898,
+      38.46945702
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-21",
@@ -598,15 +658,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR021",
     "centroid": {
-      "lat": 38.10897681,
-      "lon": 40.22487147
+      "lat": 38.11659837,
+      "lon": 40.24139474
     },
     "bbox": [
-      39.107343040000046,
-      37.50713354600009,
-      41.372080499000106,
-      38.71077873100006
-    ]
+      39.10735246,
+      37.48974502,
+      41.37543702,
+      38.74345173
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-22",
@@ -627,15 +690,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR022",
     "centroid": {
-      "lat": 41.2960932,
-      "lon": 26.69661239
+      "lat": 41.29455352,
+      "lon": 26.52363451
     },
     "bbox": [
-      26.03523680000012,
-      40.59022960000004,
-      26.99860965800019,
-      42.00195529900003
-    ]
+      26.03407331,
+      40.58941637,
+      27.01319571,
+      41.99969066
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-23",
@@ -656,15 +722,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR023",
     "centroid": {
-      "lat": 38.71912328,
-      "lon": 39.36376598
+      "lat": 38.72363902,
+      "lon": 39.35813923
     },
     "bbox": [
-      38.35501270600014,
-      38.26033355500016,
-      40.339587611000184,
-      39.177338178000184
-    ]
+      38.33972749,
+      38.26035548,
+      40.37655098,
+      39.18692256
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-24",
@@ -685,15 +754,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR024",
     "centroid": {
-      "lat": 39.54337038,
-      "lon": 39.03332335
+      "lat": 39.53967082,
+      "lon": 39.52752208
     },
     "bbox": [
-      38.27690655400016,
-      39.00615109000006,
-      40.755261893000124,
-      40.08071460200017
-    ]
+      38.28151137,
+      39.009049,
+      40.77353279,
+      40.07029264
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-25",
@@ -714,15 +786,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR025",
     "centroid": {
-      "lat": 40.06156408,
-      "lon": 41.48815124
+      "lat": 40.06323957,
+      "lon": 41.43519025
     },
     "bbox": [
-      40.249198136000075,
-      39.15422387600012,
-      42.57308791500003,
-      40.96657656400015
-    ]
+      40.23840274,
+      39.14494313,
+      42.63197775,
+      40.98153601
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-26",
@@ -743,15 +818,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR026",
     "centroid": {
-      "lat": 39.6048571,
-      "lon": 31.05417915
+      "lat": 39.60812553,
+      "lon": 30.99725314
     },
     "bbox": [
-      29.989581347000183,
-      39.05385542900018,
-      32.020225744000186,
-      40.15504896200014
-    ]
+      29.97818426,
+      39.02902401,
+      32.01632201,
+      40.18722704
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-27",
@@ -772,15 +850,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR027",
     "centroid": {
-      "lat": 37.11890775,
-      "lon": 37.24418633
+      "lat": 37.12059351,
+      "lon": 37.26654007
     },
     "bbox": [
-      36.462183610000125,
-      36.703010901000084,
-      38.08122415500003,
-      37.536542972
-    ]
+      36.44796013,
+      36.70388398,
+      38.08512,
+      37.53730303
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-28",
@@ -801,15 +882,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR028",
     "centroid": {
-      "lat": 40.5626407,
-      "lon": 38.42116141
+      "lat": 40.5618269,
+      "lon": 38.57132849
     },
     "bbox": [
-      37.970181535000165,
-      40.045213045000025,
-      39.17552799400016,
-      41.08121979900011
-    ]
+      37.95966575,
+      40.04434427,
+      39.18299123,
+      41.07930952
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-29",
@@ -830,15 +914,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR029",
     "centroid": {
-      "lat": 40.32547506,
-      "lon": 39.41116768
+      "lat": 40.34747308,
+      "lon": 39.42828301
     },
     "bbox": [
-      38.789944695000145,
-      39.84381546900016,
-      40.12883512700006,
-      40.810027640000044
-    ]
+      38.75105886,
+      39.85699096,
+      40.10550716,
+      40.8379552
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-30",
@@ -859,15 +946,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR030",
     "centroid": {
-      "lat": 37.38494554,
-      "lon": 43.99797666
+      "lat": 37.38552535,
+      "lon": 44.06189296
     },
     "bbox": [
-      43.30777084400006,
-      36.96345880000018,
-      44.817931,
-      37.80624218600008
-    ]
+      43.30771837,
+      36.96450671,
+      44.81606756,
+      37.806544
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-31",
@@ -888,15 +978,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR031",
     "centroid": {
-      "lat": 36.40784375,
-      "lon": 36.22553144
+      "lat": 36.42122441,
+      "lon": 36.23880309
     },
     "bbox": [
-      35.78212040000005,
-      35.80841930000014,
-      36.697888200000136,
-      37.006716979000146
-    ]
+      35.78004085,
+      35.80883453,
+      36.69756534,
+      37.0336143
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-32",
@@ -917,15 +1010,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR032",
     "centroid": {
-      "lat": 37.92140792,
-      "lon": 30.79682421
+      "lat": 37.91335624,
+      "lon": 30.83095145
     },
     "bbox": [
-      30.110768411000038,
-      37.33428830200012,
-      31.57325350500014,
-      38.50991501700008
-    ]
+      30.10634134,
+      37.3215445,
+      31.55556157,
+      38.50516798
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-33",
@@ -946,15 +1042,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR033",
     "centroid": {
-      "lat": 36.72829219,
-      "lon": 33.7450973
+      "lat": 36.72627361,
+      "lon": 33.84496093
     },
     "bbox": [
-      32.55750007500012,
-      36.02006150000017,
-      35.151431205000165,
-      37.43563918299998
-    ]
+      32.53844677,
+      36.01680895,
+      35.15147509,
+      37.43573827
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-34",
@@ -975,15 +1074,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR034",
     "centroid": {
-      "lat": 41.26903135,
-      "lon": 28.49665556
+      "lat": 41.18668027,
+      "lon": 28.96506017
     },
     "bbox": [
-      27.97431182100013,
-      40.8027336990001,
-      29.92172864500003,
-      41.58346809600016
-    ]
+      27.97139249,
+      40.7900491,
+      29.95872785,
+      41.58331144
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-35",
@@ -1004,15 +1106,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR035",
     "centroid": {
-      "lat": 38.60961231,
-      "lon": 27.02130045
+      "lat": 38.60034222,
+      "lon": 27.34357326
     },
     "bbox": [
-      26.205601499000124,
-      37.82533016600007,
-      28.50225037700011,
-      39.39361303800018
-    ]
+      26.19409509,
+      37.81523832,
+      28.49305144,
+      39.38544612
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-36",
@@ -1033,15 +1138,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR036",
     "centroid": {
-      "lat": 40.5081214,
-      "lon": 43.06011509
+      "lat": 40.50924038,
+      "lon": 42.93204553
     },
     "bbox": [
-      42.12942919700015,
-      39.92100762299998,
-      43.75004610000008,
-      41.09499056700014
-    ]
+      42.11418844,
+      39.91373625,
+      43.74990262,
+      41.1047445
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-37",
@@ -1062,15 +1170,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR037",
     "centroid": {
-      "lat": 41.42389604,
-      "lon": 33.80402036
+      "lat": 41.41984319,
+      "lon": 33.65757297
     },
     "bbox": [
-      32.746943290000104,
-      40.82664302500018,
-      34.608019170000034,
-      42.0198722990001
-    ]
+      32.70682554,
+      40.81972869,
+      34.60832041,
+      42.0199577
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-38",
@@ -1091,15 +1202,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR038",
     "centroid": {
-      "lat": 38.49690102,
-      "lon": 35.85938057
+      "lat": 38.50688362,
+      "lon": 35.90334763
     },
     "bbox": [
-      34.894653611000024,
-      37.686197922000076,
-      36.971598738000125,
-      39.30999544000019
-    ]
+      34.84692555,
+      37.69144076,
+      36.9597697,
+      39.32232648
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-39",
@@ -1120,15 +1234,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR039",
     "centroid": {
-      "lat": 41.66452505,
-      "lon": 27.51401917
+      "lat": 41.66244676,
+      "lon": 27.50795469
     },
     "bbox": [
-      26.880642577000174,
-      41.222973501000126,
-      28.146823300000165,
-      42.10478570000015
-    ]
+      26.86895034,
+      41.22010633,
+      28.14695903,
+      42.1047872
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-40",
@@ -1149,15 +1266,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR040",
     "centroid": {
-      "lat": 39.29582366,
-      "lon": 34.07130003
+      "lat": 39.3041191,
+      "lon": 34.0520822
     },
     "bbox": [
-      33.419478908000144,
-      38.79905682800012,
-      34.69229752000018,
-      39.79225343000007
-    ]
+      33.39922658,
+      38.8098825,
+      34.70493782,
+      39.79835571
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-41",
@@ -1178,15 +1298,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR041",
     "centroid": {
-      "lat": 40.85522391,
-      "lon": 29.80542193
+      "lat": 40.8706802,
+      "lon": 29.85090453
     },
     "bbox": [
-      29.33302900000018,
-      40.49995786700009,
-      30.367419740000116,
-      41.2098449990001
-    ]
+      29.33313949,
+      40.52369657,
+      30.36866956,
+      41.21766383
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-42",
@@ -1207,15 +1330,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR042",
     "centroid": {
-      "lat": 38.01256549,
-      "lon": 32.45731449
+      "lat": 38.02946305,
+      "lon": 32.85091797
     },
     "bbox": [
-      31.239389058000086,
-      36.73398320400008,
-      34.45047368000013,
-      39.29150348200011
-    ]
+      31.23742666,
+      36.75293427,
+      34.46440927,
+      39.30599183
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-43",
@@ -1236,15 +1362,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR043",
     "centroid": {
-      "lat": 39.32785094,
-      "lon": 29.60211178
+      "lat": 39.33303341,
+      "lon": 29.53438707
     },
     "bbox": [
-      28.612331925000035,
-      38.781243164000045,
-      30.438375613000062,
-      39.8755015700001
-    ]
+      28.60524956,
+      38.79115632,
+      30.46352458,
+      39.8749105
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-44",
@@ -1265,15 +1394,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR044",
     "centroid": {
-      "lat": 38.52390445,
-      "lon": 37.83670531
+      "lat": 38.51469806,
+      "lon": 38.21583574
     },
     "bbox": [
-      37.262016166000194,
-      37.89124514700006,
-      39.15148304500008,
-      39.156165378000026
-    ]
+      37.26435661,
+      37.88660383,
+      39.16731488,
+      39.14279229
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-45",
@@ -1294,15 +1426,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR045",
     "centroid": {
-      "lat": 38.74895457,
-      "lon": 28.08507603
+      "lat": 38.7544189,
+      "lon": 28.1125544
     },
     "bbox": [
-      27.099368364000043,
-      38.08566228200016,
-      29.113901700000042,
-      39.41030379400007
-    ]
+      27.11207313,
+      38.08511027,
+      29.11303566,
+      39.42372752
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-46",
@@ -1323,15 +1458,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR046",
     "centroid": {
-      "lat": 37.88382422,
-      "lon": 36.952599
+      "lat": 37.90435998,
+      "lon": 36.97702007
     },
     "bbox": [
-      36.18040377700015,
-      37.17952864900019,
-      37.747331023000186,
-      38.58785613900011
-    ]
+      36.20151293,
+      37.19887389,
+      37.75252722,
+      38.60984608
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-47",
@@ -1352,15 +1490,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR047",
     "centroid": {
-      "lat": 37.32846898,
-      "lon": 40.77546934
+      "lat": 37.32611214,
+      "lon": 40.88573454
     },
     "bbox": [
-      39.859104409000054,
-      36.91246463300001,
-      41.89738862600018,
-      37.74442179100015
-    ]
+      39.87499988,
+      36.91146526,
+      41.8964692,
+      37.74075901
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-48",
@@ -1381,15 +1522,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR048",
     "centroid": {
-      "lat": 36.92655179,
-      "lon": 28.63314924
+      "lat": 36.94391635,
+      "lon": 28.46568089
     },
     "bbox": [
-      27.196555000000103,
-      36.295160299000145,
-      29.81192417900013,
-      37.55790738900015
-    ]
+      27.14430855,
+      36.29219042,
+      29.78705323,
+      37.59564228
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-49",
@@ -1410,15 +1554,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR049",
     "centroid": {
-      "lat": 38.99543401,
-      "lon": 41.93947668
+      "lat": 39.01653173,
+      "lon": 41.90799412
     },
     "bbox": [
-      41.11144024900017,
-      38.47847018700003,
-      42.718325789,
-      39.512274987000126
-    ]
+      41.10305651,
+      38.49235312,
+      42.71293172,
+      39.54071034
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-50",
@@ -1439,15 +1586,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR050",
     "centroid": {
-      "lat": 38.86215466,
-      "lon": 34.67928597
+      "lat": 38.83251949,
+      "lon": 34.70198717
     },
     "bbox": [
-      34.24162937800014,
-      38.31007557800007,
-      35.10939797700007,
-      39.414154101000065
-    ]
+      34.23757367,
+      38.28259089,
+      35.16640068,
+      39.38244809
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-51",
@@ -1468,15 +1618,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR051",
     "centroid": {
-      "lat": 37.85240416,
-      "lon": 34.77731672
+      "lat": 37.88206172,
+      "lon": 34.64394403
     },
     "bbox": [
-      33.990645353,
-      37.33938822300013,
-      35.32323218500011,
-      38.36405540200013
-    ]
+      33.9597188,
+      37.37423475,
+      35.32816926,
+      38.3898887
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-52",
@@ -1497,15 +1650,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR052",
     "centroid": {
-      "lat": 40.73726506,
-      "lon": 37.39695672
+      "lat": 40.73956008,
+      "lon": 37.39890683
     },
     "bbox": [
-      36.68517215000014,
-      40.32266096200004,
-      38.11675633000016,
-      41.14940121300009
-    ]
+      36.68148586,
+      40.33103135,
+      38.1163278,
+      41.14808881
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-53",
@@ -1526,15 +1682,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR053",
     "centroid": {
-      "lat": 40.9222267,
-      "lon": 40.81580698
+      "lat": 40.92481798,
+      "lon": 40.87955176
     },
     "bbox": [
-      40.32723302199997,
-      40.51688586400013,
-      41.39557662200008,
-      41.32746639900017
-    ]
+      40.32950106,
+      40.51654608,
+      41.42960246,
+      41.33308988
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-54",
@@ -1555,15 +1714,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR054",
     "centroid": {
-      "lat": 40.73852352,
-      "lon": 30.56627076
+      "lat": 40.73343506,
+      "lon": 30.47352805
     },
     "bbox": [
-      29.99231228000008,
-      40.2924069660001,
-      31.010803923000026,
-      41.18428960000011
-    ]
+      29.93465162,
+      40.28811287,
+      31.01240447,
+      41.17875725
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-55",
@@ -1584,15 +1746,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR055",
     "centroid": {
-      "lat": 41.2826156,
-      "lon": 35.86819541
+      "lat": 41.28645655,
+      "lon": 36.02529037
     },
     "bbox": [
-      34.90874495600008,
-      40.828245048000156,
-      37.16931792899999,
-      41.73710249900006
-    ]
+      34.88107036,
+      40.83529246,
+      37.16951038,
+      41.73762063
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-56",
@@ -1613,15 +1778,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR056",
     "centroid": {
-      "lat": 37.92096447,
-      "lon": 42.0990372
+      "lat": 37.93464264,
+      "lon": 42.14117726
     },
     "bbox": [
-      41.37256082800019,
-      37.577083918000085,
-      42.88713241500017,
-      38.26105606900006
-    ]
+      41.35957157,
+      37.60715529,
+      42.92278296,
+      38.26212999
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-57",
@@ -1642,15 +1810,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR057",
     "centroid": {
-      "lat": 41.65297204,
-      "lon": 34.99577438
+      "lat": 41.65022375,
+      "lon": 34.83167911
     },
     "bbox": [
-      34.22430191000012,
-      41.20827275200014,
-      35.45068519500006,
-      42.09799870000006
-    ]
+      34.22300821,
+      41.20264495,
+      35.44035,
+      42.09780256
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-58",
@@ -1671,15 +1842,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR058",
     "centroid": {
-      "lat": 39.52489164,
-      "lon": 37.19869453
+      "lat": 39.53193978,
+      "lon": 37.30505722
     },
     "bbox": [
-      35.851443696,
-      38.542435331000036,
-      38.77219259800012,
-      40.50673606300012
-    ]
+      35.83860611,
+      38.53708512,
+      38.77150834,
+      40.52679445
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-59",
@@ -1700,15 +1874,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR059",
     "centroid": {
-      "lat": 41.06321291,
-      "lon": 27.33880988
+      "lat": 41.07714959,
+      "lon": 27.42340539
     },
     "bbox": [
-      26.68316605600012,
-      40.55037854900013,
-      28.124339149000093,
-      41.57562708300003
-    ]
+      26.69146465,
+      40.53808146,
+      28.15534614,
+      41.61621772
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-60",
@@ -1729,15 +1906,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR060",
     "centroid": {
-      "lat": 40.39877407,
-      "lon": 36.65451605
+      "lat": 40.38791059,
+      "lon": 36.52809013
     },
     "bbox": [
-      35.44836301700013,
-      39.888552105000144,
-      37.626283288000025,
-      40.90957960800006
-    ]
+      35.433902,
+      39.86476026,
+      37.62227826,
+      40.91106093
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-61",
@@ -1758,15 +1938,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR061",
     "centroid": {
-      "lat": 40.81136405,
-      "lon": 39.78487175
+      "lat": 40.81018008,
+      "lon": 39.81410356
     },
     "bbox": [
-      39.125879981000026,
-      40.51322954200015,
-      40.50658062400015,
-      41.10983530000016
-    ]
+      39.12044156,
+      40.51278089,
+      40.50776555,
+      41.10757926
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-62",
@@ -1787,15 +1970,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR062",
     "centroid": {
-      "lat": 39.18952423,
-      "lon": 39.34462969
+      "lat": 39.18784294,
+      "lon": 39.58350843
     },
     "bbox": [
-      38.729804349,
-      38.76306747800004,
-      40.42184783200008,
-      39.61688726100016
-    ]
+      38.73187062,
+      38.76417,
+      40.43514624,
+      39.61151588
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-63",
@@ -1816,15 +2002,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR063",
     "centroid": {
-      "lat": 37.34458247,
-      "lon": 38.92281021
+      "lat": 37.3453092,
+      "lon": 39.03662809
     },
     "bbox": [
-      37.83443475300015,
-      36.66888289899998,
-      40.23754498400007,
-      38.02055680400008
-    ]
+      37.83530818,
+      36.66904444,
+      40.23794801,
+      38.02157397
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-64",
@@ -1845,15 +2034,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR064",
     "centroid": {
-      "lat": 38.55668834,
-      "lon": 29.31156253
+      "lat": 38.55716063,
+      "lon": 29.39317221
     },
     "bbox": [
-      28.775980101000073,
-      38.16195440300004,
-      30.013497740000048,
-      38.95164095700011
-    ]
+      28.76409229,
+      38.16571956,
+      30.02225214,
+      38.9486017
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-65",
@@ -1874,15 +2066,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR065",
     "centroid": {
-      "lat": 38.55875163,
-      "lon": 43.53860764
+      "lat": 38.55327718,
+      "lon": 43.58913344
     },
     "bbox": [
-      42.654155367000044,
-      37.73153068500005,
-      44.51197330000019,
-      39.385953939
-    ]
+      42.66631385,
+      37.72105193,
+      44.51195302,
+      39.38550243
+    ],
+    "municipality_type": "buyuksehir_belediyesi",
+    "municipality_type_label": "Büyükşehir Belediyesi",
+    "is_metropolitan_municipality": true
   },
   {
     "id": "TR-P-66",
@@ -1903,15 +2098,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR066",
     "centroid": {
-      "lat": 39.60448348,
-      "lon": 35.32582847
+      "lat": 39.63614304,
+      "lon": 35.11137393
     },
     "bbox": [
-      34.06487969900007,
-      38.954197556,
-      36.158774873000084,
-      40.25458460400006
-    ]
+      34.05803236,
+      38.98655116,
+      36.1647155,
+      40.28573493
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-67",
@@ -1932,15 +2130,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR067",
     "centroid": {
-      "lat": 41.2964984,
-      "lon": 31.8426509
+      "lat": 41.29386357,
+      "lon": 31.79040261
     },
     "bbox": [
-      31.27789942000004,
-      41.004186981000146,
-      32.32295080400007,
-      41.58877747900004
-    ]
+      31.28241887,
+      40.9970748,
+      32.29838634,
+      41.59065234
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-68",
@@ -1961,15 +2162,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR068",
     "centroid": {
-      "lat": 38.51094277,
-      "lon": 33.86387666
+      "lat": 38.51616359,
+      "lon": 33.83327225
     },
     "bbox": [
-      33.17513074800013,
-      37.96948991300013,
-      34.48308408700012,
-      39.052508548
-    ]
+      33.1710487,
+      37.97697141,
+      34.49549581,
+      39.05535577
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-69",
@@ -1990,15 +2194,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR069",
     "centroid": {
-      "lat": 40.24768791,
-      "lon": 40.21956663
+      "lat": 40.26144788,
+      "lon": 40.18920721
     },
     "bbox": [
-      39.65152550200003,
-      39.922991629000194,
-      40.712643686000035,
-      40.57384353900005
-    ]
+      39.65348363,
+      39.95217516,
+      40.7249308,
+      40.57072059
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-70",
@@ -2019,15 +2226,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR070",
     "centroid": {
-      "lat": 37.02499726,
-      "lon": 33.20882169
+      "lat": 37.00080557,
+      "lon": 33.37236205
     },
     "bbox": [
-      32.40666647600017,
-      36.435978217000184,
-      34.29189081100003,
-      37.61305620400003
-    ]
+      32.48470308,
+      36.43588177,
+      34.26002102,
+      37.56572936
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-71",
@@ -2048,15 +2258,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR071",
     "centroid": {
-      "lat": 39.86343639,
-      "lon": 33.69151491
+      "lat": 39.86950818,
+      "lon": 33.70566939
     },
     "bbox": [
-      33.232975232000115,
-      39.395836691000056,
-      34.24476229700008,
-      40.332835605000184
-    ]
+      33.18538143,
+      39.40650757,
+      34.22595734,
+      40.33250879
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-72",
@@ -2077,15 +2290,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR072",
     "centroid": {
-      "lat": 38.0282075,
-      "lon": 41.31693229
+      "lat": 38.01992569,
+      "lon": 41.40527989
     },
     "bbox": [
-      40.98653742000005,
-      37.5012462680001,
-      41.72452668000017,
-      38.555169544000194
-    ]
+      40.98844657,
+      37.49516506,
+      41.82211322,
+      38.54468631
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-73",
@@ -2106,15 +2322,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR073",
     "centroid": {
-      "lat": 37.44552074,
-      "lon": 42.57953772
+      "lat": 37.43244755,
+      "lon": 42.5237792
     },
     "bbox": [
-      41.55508184400014,
-      37.10667160000014,
-      43.49455046500009,
-      37.7843169950001
-    ]
+      41.54549541,
+      37.10052809,
+      43.502063,
+      37.764367
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-74",
@@ -2135,15 +2354,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR074",
     "centroid": {
-      "lat": 41.58283096,
-      "lon": 32.47488186
+      "lat": 41.56015104,
+      "lon": 32.52023997
     },
     "bbox": [
-      32.088992352000105,
-      41.31643719100015,
-      32.9345153110001,
-      41.84934040000013
-    ]
+      32.09561254,
+      41.27073253,
+      32.94486739,
+      41.84956956
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-75",
@@ -2164,15 +2386,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR075",
     "centroid": {
-      "lat": 41.1209665,
-      "lon": 42.93878151
+      "lat": 41.11228316,
+      "lon": 42.87656756
     },
     "bbox": [
-      42.340493270000024,
-      40.639259009,
-      43.48909,
-      41.60092489900006
-    ]
+      42.27772328,
+      40.62374443,
+      43.47541184,
+      41.60082189
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-76",
@@ -2193,15 +2418,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR076",
     "centroid": {
-      "lat": 39.8829698,
-      "lon": 43.97814527
+      "lat": 39.88665846,
+      "lon": 44.03309771
     },
     "bbox": [
-      43.2812892660001,
-      39.62774140000016,
-      44.81774850000005,
-      40.1383709160001
-    ]
+      43.24836181,
+      39.62927554,
+      44.8178336,
+      40.14404137
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-77",
@@ -2222,15 +2450,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR077",
     "centroid": {
-      "lat": 40.6028134,
-      "lon": 29.21556596
+      "lat": 40.599649,
+      "lon": 29.16894906
     },
     "bbox": [
-      28.779533500000184,
-      40.455121799000096,
-      29.563661100000047,
-      40.7502268990001
-    ]
+      28.779544,
+      40.456189,
+      29.55835412,
+      40.743109
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-78",
@@ -2251,15 +2482,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR078",
     "centroid": {
-      "lat": 41.1904546,
-      "lon": 32.53911977
+      "lat": 41.19411831,
+      "lon": 32.62409937
     },
     "bbox": [
-      32.10216882400016,
-      40.79737408400007,
-      33.15822656200015,
-      41.58301102800016
-    ]
+      32.08801593,
+      40.7974612,
+      33.16018281,
+      41.59077543
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-79",
@@ -2280,15 +2514,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR079",
     "centroid": {
-      "lat": 36.82655381,
-      "lon": 37.01485979
+      "lat": 36.82666072,
+      "lon": 37.13710686
     },
     "bbox": [
-      36.71361288500009,
-      36.63207709900007,
-      37.56707226500015,
-      37.02089203700007
-    ]
+      36.70149447,
+      36.63205995,
+      37.57271925,
+      37.0212615
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-80",
@@ -2309,15 +2546,18 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR080",
     "centroid": {
-      "lat": 37.30829087,
-      "lon": 36.26505952
+      "lat": 37.33287326,
+      "lon": 36.3000612
     },
     "bbox": [
-      35.879526796000164,
-      36.90665892500016,
-      36.70541747500005,
-      37.709226376000174
-    ]
+      35.87613543,
+      36.91738812,
+      36.72398697,
+      37.7483584
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   },
   {
     "id": "TR-P-81",
@@ -2338,14 +2578,17 @@
     "osm_relation_id": null,
     "source_hdx_id": "TUR081",
     "centroid": {
-      "lat": 40.86856021,
-      "lon": 31.19659527
+      "lat": 40.86735594,
+      "lon": 31.31394155
     },
     "bbox": [
-      30.81189194300009,
-      40.62102369800016,
-      31.76927973100004,
-      41.11487111800011
-    ]
+      30.77798591,
+      40.62166004,
+      31.8498972,
+      41.11305183
+    ],
+    "municipality_type": "il_belediyesi",
+    "municipality_type_label": "İl Belediyesi",
+    "is_metropolitan_municipality": false
   }
 ]

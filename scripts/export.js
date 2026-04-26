@@ -56,6 +56,9 @@ function toTabularRows(metadata, geometryCollection, propertyBuilder = null) {
       bbox_max_lat: bbox?.[3] ?? null,
       aliases: JSON.stringify(aliases || []),
       member_ids: JSON.stringify(member_ids || []),
+      x: centroid?.lon ?? null,
+      y: centroid?.lat ?? null,
+      coordinate_system: centroid ? 'EPSG:4326' : null,
       geometry_wkt: geometryToWkt(geometry),
     };
   });
@@ -487,14 +490,6 @@ export function main() {
   writeJson(path.join(paths.distJsonDir, 'provinces.json'), provinces);
   writeJson(path.join(paths.distJsonDir, 'districts.json'), districts);
   writeJson(path.join(paths.distJsonDir, 'yerlesimler.json'), settlements);
-  writeGroupedJson(
-    path.join(paths.distJsonDir, 'yerlesimler-by-province'),
-    groupBy(settlements, (item) => item.province_id),
-  );
-  writeGroupedJson(
-    path.join(paths.distJsonDir, 'yerlesimler-by-district'),
-    groupBy(settlements, (item) => item.district_id),
-  );
   writeJsonCompact(path.join(paths.distGeojsonDir, 'regions.geojson'), regionGeometry);
   writeJsonCompact(path.join(paths.distGeojsonDir, 'provinces.geojson'), provinceGeometry);
   writeJsonCompact(path.join(paths.distGeojsonDir, 'districts.geojson'), districtGeometry);
@@ -503,9 +498,9 @@ export function main() {
   writeJsonCompact(path.join(distRoot, 'topojson', 'provinces.topojson'), topology({ provinces: provinceGeometry }));
   writeJsonCompact(path.join(distRoot, 'topojson', 'districts.topojson'), topology({ districts: districtGeometry }));
 
-  writeText(path.join(distRoot, 'csv', 'regions.csv'), `\ufeff${rowsToCsv(regionRows)}`);
-  writeText(path.join(distRoot, 'csv', 'provinces.csv'), `\ufeff${rowsToCsv(provinceRows)}`);
-  writeText(path.join(distRoot, 'csv', 'districts.csv'), `\ufeff${rowsToCsv(districtRows)}`);
+  writeText(path.join(distRoot, 'csv', 'regions.csv'), `\ufeff${rowsToCsv(withoutGeometryWkt(regionRows))}`);
+  writeText(path.join(distRoot, 'csv', 'provinces.csv'), `\ufeff${rowsToCsv(withoutGeometryWkt(provinceRows))}`);
+  writeText(path.join(distRoot, 'csv', 'districts.csv'), `\ufeff${rowsToCsv(withoutGeometryWkt(districtRows))}`);
 
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(regionWorkbookRows), 'regions');
@@ -514,9 +509,9 @@ export function main() {
   ensureDir(path.join(distRoot, 'xlsx'));
   XLSX.writeFile(workbook, path.join(distRoot, 'xlsx', 'turkiye-map.xlsx'));
 
-  writeText(path.join(distRoot, 'sql', 'regions.sql'), rowsToSql('regions', regionRows));
-  writeText(path.join(distRoot, 'sql', 'provinces.sql'), rowsToSql('provinces', provinceRows));
-  writeText(path.join(distRoot, 'sql', 'districts.sql'), rowsToSql('districts', districtRows));
+  writeText(path.join(distRoot, 'sql', 'regions.sql'), rowsToSql('regions', withoutGeometryWkt(regionRows)));
+  writeText(path.join(distRoot, 'sql', 'provinces.sql'), rowsToSql('provinces', withoutGeometryWkt(provinceRows)));
+  writeText(path.join(distRoot, 'sql', 'districts.sql'), rowsToSql('districts', withoutGeometryWkt(districtRows)));
 
   writeText(path.join(distRoot, 'wkt', 'regions.wkt'), rowsToWkt(regionRows));
   writeText(path.join(distRoot, 'wkt', 'provinces.wkt'), rowsToWkt(provinceRows));

@@ -121,6 +121,9 @@ describe('test-ui download helpers', () => {
       expect(rows[0].geometry_wkt).toBe('POLYGON ((28 40, 29 40, 29 41, 28 40))');
       expect(rows[0].centroid_lat).toBe(40.5);
       expect(rows[0].centroid_lon).toBe(28.5);
+      expect(rows[0].x).toBe(28.5);
+      expect(rows[0].y).toBe(40.5);
+      expect(rows[0].coordinate_system).toBe('EPSG:4326');
       expect(rows[0].aliases).toBe('["İstanbul","Constantinople"]');
     });
 
@@ -141,6 +144,7 @@ describe('test-ui download helpers', () => {
 
       expect(lines[0]).toContain('id');
       expect(lines[0]).toContain('geometry_wkt');
+      expect(lines[0]).toContain('coordinate_system');
       expect(csv).toContain('İstanbul');
       expect(csv).toContain('Samsun');
       expect(csv).toContain('TR-P-34');

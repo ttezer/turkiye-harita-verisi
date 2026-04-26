@@ -3,9 +3,11 @@ import {
   aggregateRegionGeometry,
   applyDisplayOverride,
   applyDistrictCrosswalk,
+  applyMunicipalityType,
   applyProvinceCrosswalk,
   applyRegionMembershipToProvince,
   createCrosswalkIndex,
+  createMunicipalityTypeIndex,
   createOverrideIndex,
   createRegionGeometryCollection,
   createRegionIndex,
@@ -165,6 +167,27 @@ describe('assign-ids helpers', () => {
     });
   });
 
+  it('applies province municipality type metadata', () => {
+    const index = createMunicipalityTypeIndex({
+      types: {
+        buyuksehir_belediyesi: {
+          label: 'Büyükşehir Belediyesi',
+          is_metropolitan_municipality: true,
+        },
+      },
+      provinces: [{
+        plate_code: '34',
+        municipality_type: 'buyuksehir_belediyesi',
+      }],
+    });
+
+    expect(applyMunicipalityType({ id: 'TR-P-34', plate_code: '34' }, index)).toMatchObject({
+      municipality_type: 'buyuksehir_belediyesi',
+      municipality_type_label: 'Büyükşehir Belediyesi',
+      is_metropolitan_municipality: true,
+    });
+  });
+
   it('binds geometry properties from metadata', () => {
     const collection = {
       type: 'FeatureCollection',
@@ -190,6 +213,9 @@ describe('assign-ids helpers', () => {
       parent_id: 'TR-R-MAR',
       region_id: 'TR-R-MAR',
       level: 'province',
+      municipality_type: null,
+      municipality_type_label: null,
+      is_metropolitan_municipality: null,
     });
   });
 
@@ -357,7 +383,7 @@ describe('assign-ids helpers', () => {
       [{ id: 'TR-R-MAR', level: 'region' }],
       { regions: [{ id: 'TR-R-MAR', member_ids: ['TR-P-34'] }] },
       { type: 'FeatureCollection', features: [] },
-    )).toThrow('Region geometry missing member province feature TR-P-34');
+    )).toThrow('Region TR-R-MAR missing province geometry TR-P-34');
   });
 
   it('runs main and writes processed outputs', async () => {
@@ -451,6 +477,23 @@ describe('assign-ids helpers', () => {
             source_hdx_id: 'TUR034',
             region_id: 'TR-R-MAR',
             region_name: 'Marmara',
+          }],
+        };
+      }
+      if (file.includes('province-municipality-types.json')) {
+        return {
+          types: {
+            buyuksehir_belediyesi: {
+              label: 'Büyükşehir Belediyesi',
+              is_metropolitan_municipality: true,
+            },
+          },
+          provinces: [{
+            plate_code: '34',
+            municipality_type: 'buyuksehir_belediyesi',
+          }, {
+            plate_code: '35',
+            municipality_type: 'buyuksehir_belediyesi',
           }],
         };
       }

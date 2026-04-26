@@ -112,9 +112,6 @@ async function main() {
     'dist/kmz/regions.kmz',
     'dist/kmz/provinces.kmz',
     'dist/kmz/districts.kmz',
-    'data/processed/regions.metadata.json',
-    'data/processed/provinces.metadata.json',
-    'data/processed/districts.metadata.json',
   ];
 
   for (const file of expectedFiles) {
@@ -148,7 +145,7 @@ async function main() {
 
   assert(regions.length === 7, `Expected 7 regions, received ${regions.length}`);
   assert(provinces.length === 81, `Expected 81 provinces, received ${provinces.length}`);
-  assert(districts.length === 973, `Expected 973 districts, received ${districts.length}`);
+  assert(districts.length === 974, `Expected 974 districts, received ${districts.length}`);
   assert(regionGeometry.features.length === regions.length, 'Region geometry count mismatch');
   assert(provinceGeometry.features.length === provinces.length, 'Province geometry count mismatch');
   assert(districtGeometry.features.length === districts.length, 'District geometry count mismatch');

@@ -13,7 +13,7 @@ Pipeline steps:
 5. `inspect-nvi-surface.py`
    Records public-surface discovery findings for the NVI address system without feeding canonical outputs.
 6. `normalize.js`
-   Normalizes raw source fields into the canonical partial metadata model.
+   Normalizes raw source fields into the canonical partial metadata model. Default build input is `kamu-kaynak`; HDX remains available with `node scripts/normalize.js --source hdx`.
 7. `assign-ids.js`
    Produces deterministic canonical ids from normalized data and attaches region membership.
 8. `validate.js`
@@ -22,3 +22,12 @@ Pipeline steps:
    Writes consumer-facing outputs into `dist/`.
 10. `smoke-test.js`
    Verifies built artifacts, JavaScript package access, static test UI serving, and traversal blocking.
+
+Quality reports:
+
+- `report-kamu-kaynak-coverage.js`
+  Compares fetched kamu-kaynak settlement coverage with the canonical settlement metadata.
+- `report-kamu-kaynak-quality.js`
+  Reports count/name mismatches and targeted geometry warnings such as far multipolygons.
+- `report-kamu-kaynak-overlaps.js`
+  Scans all kamu-kaynak settlement geometries for suspicious polygon overlaps and writes `source/kamu-kaynak/yerlesim/overlap-report.json`.

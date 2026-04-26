@@ -12,7 +12,7 @@ import {
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
-} from './download.js?v=26';
+} from './download.js?v=31';
 
 const state = {
   format: 'geojson',
@@ -23,6 +23,7 @@ const state = {
   style: 'filled',
   colorMode: 'single',
   palette: 'blue',
+  baseLayer: 'none',
   resolution: '1920x1080',
   regionId: '',
   provinceId: '',
@@ -66,6 +67,11 @@ const els = {
   estimatedSize: document.querySelector('#estimatedSize'),
   mapSvg: document.querySelector('#mapSvg'),
   mapOverlay: document.querySelector('#mapOverlay'),
+  mapLoadStatus: document.querySelector('#mapLoadStatus'),
+  mapLoadText: document.querySelector('#mapLoadText'),
+  mapLoadBar: document.querySelector('#mapLoadBar'),
+  baseLayerSelect: document.querySelector('#baseLayerSelect'),
+  baseMapAttribution: document.querySelector('#baseMapAttribution'),
   qualityButton: document.querySelector('#qualityButton'),
   qualityPanel: document.querySelector('#qualityPanel'),
   pageShell: document.querySelector('.page-shell'),
@@ -73,21 +79,27 @@ const els = {
 
 const numberFormat = new Intl.NumberFormat('tr-TR');
 const defaultExportViewport = { width: 1200, height: 760, padding: 28 };
+const maxPreviewFeatureCount = 8000;
+const dataLoadProgress = {
+  resources: new Map(),
+  phase: 'idle',
+};
+let renderRequestId = 0;
 const dataQualityNotes = [
   {
     provinceId: 'TR-P-48',
     districtId: 'TR-D-48-011',
     level: 'mahalle',
     issue: 'Seydikemer ilçesinde kaynakta çok parçalı/ayrık geometri',
-    message: 'Bu mahalle sınırları Muğla Kent Rehberi kaynak verisinde çok parçalı/ayrık poligonlar halinde geliyor. Sınırlar kaynak veriye sadık gösterilir.',
+    message: 'Bu mahalle sınırları kamuya acik kaynak verisinde çok parçalı/ayrık poligonlar halinde geliyor. Sınırlar kaynak veriye sadık gösterilir.',
     affectedIds: [
+      'TR-Y-48-011-M-0001',
       'TR-Y-48-011-M-0004',
       'TR-Y-48-011-M-0013',
       'TR-Y-48-011-M-0030',
       'TR-Y-48-011-M-0037',
       'TR-Y-48-011-M-0043',
       'TR-Y-48-011-M-0053',
-      'TR-Y-48-011-M-0059',
       'TR-Y-48-011-M-0065',
     ],
   },
@@ -97,7 +109,7 @@ const projections = {
   region: buildProjection(datasets.regionsGeojson),
   province: buildProjection(datasets.provincesGeojson),
   district: buildProjection(datasets.districtsGeojson),
-  mahalle: buildProjection(datasets.mahalleGeometrileri),
+  mahalle: null,
 };
 
 hydrateRegionSelect();
@@ -109,27 +121,42 @@ syncConfigurator();
 render();
 
 async function loadDatasets() {
-  const [regions, provinces, districts, yerlesimler, regionsGeojson, provincesGeojson, districtsGeojson, mahalleGeometrileri] = await Promise.all([
-    fetchJson('./dist/json/regions.json'),
-    fetchJson('./dist/json/provinces.json'),
-    fetchJson('./dist/json/districts.json'),
-    fetchJson('./dist/json/yerlesimler.json'),
-    fetchJson('./dist/geojson/regions.geojson'),
-    fetchJson('./dist/geojson/provinces.geojson'),
-    fetchJson('./dist/geojson/districts.geojson'),
-    fetchJson('./dist/geojson/mahalle-geometrileri.geojson'),
-  ]);
+  const requests = [
+    ['./dist/json/regions.json', 'B????lgeler'],
+    ['./dist/json/provinces.json', '????ller'],
+    ['./dist/json/districts.json', '????l????eler'],
+    ['./dist/json/yerlesimler.json', 'Yerle????imler'],
+    ['./source/reference/source-labels.json', 'Kaynak etiketleri'],
+    ['./source/yayinlanabilir/sources.json', 'Yayinlanabilir kaynaklar'],
+    ['./dist/geojson/regions.geojson', 'B????lge geometrisi'],
+    ['./dist/geojson/provinces.geojson', '????l geometrisi'],
+    ['./dist/geojson/districts.geojson', '????l????e geometrisi'],
+  ];
+  initDataLoadProgress(requests);
+
+  const [
+    regions,
+    provinces,
+    districts,
+    yerlesimler,
+    sourceLabels,
+    publishableSources,
+    regionsGeojson,
+    provincesGeojson,
+    districtsGeojson,
+  ] = await Promise.all(requests.map(([url, label]) => fetchJson(url, label)));
+
+  updateDataLoadStatus('processing');
 
   const yerlesimlerById = new Map(yerlesimler.map((item) => [item.id, item]));
   const mahalleMetadataById = new Map(yerlesimlerById);
-  for (const feature of mahalleGeometrileri.features) {
-    if (!mahalleMetadataById.has(feature.properties.id)) {
-      mahalleMetadataById.set(feature.properties.id, {
-        ...feature.properties,
-        slug: feature.properties.id.toLowerCase(),
-      });
-    }
-  }
+  const publishableProvinceIds = new Set(
+    (publishableSources?.province_sources || [])
+      .filter((item) => item.publishable)
+      .map((item) => `TR-P-${String(item.province_code).padStart(2, '0')}`),
+  );
+
+  updateDataLoadStatus('ready');
 
   return {
     regions,
@@ -139,7 +166,12 @@ async function loadDatasets() {
     regionsGeojson,
     provincesGeojson,
     districtsGeojson,
-    mahalleGeometrileri,
+    mahalleGeometrileri: { type: 'FeatureCollection', features: [] },
+    mahalleGeometryCache: new Map(),
+    loadedMahalleGeometryKey: '',
+    sourceLabels,
+    publishableSources,
+    publishableProvinceIds,
     regionsById: new Map(regions.map((item) => [item.id, item])),
     provincesById: new Map(provinces.map((item) => [item.id, item])),
     districtsById: new Map(districts.map((item) => [item.id, item])),
@@ -148,12 +180,194 @@ async function loadDatasets() {
   };
 }
 
-async function fetchJson(url) {
+function initDataLoadProgress(requests) {
+  dataLoadProgress.resources = new Map(requests.map(([url, label]) => [
+    url,
+    {
+      label,
+      loaded: 0,
+      total: 0,
+      done: false,
+      processing: false,
+    },
+  ]));
+  updateDataLoadStatus('loading');
+}
+
+function updateResourceProgress(url, patch) {
+  const current = dataLoadProgress.resources.get(url) || {};
+  dataLoadProgress.resources.set(url, {
+    ...current,
+    ...patch,
+  });
+  updateDataLoadStatus(patch.processing ? 'processing' : 'loading');
+}
+
+function updateDataLoadStatus(phase) {
+  dataLoadProgress.phase = phase || dataLoadProgress.phase;
+  if (!els.mapLoadStatus || !els.mapLoadText || !els.mapLoadBar) {
+    return;
+  }
+
+  const resources = [...dataLoadProgress.resources.values()];
+  const hasResources = resources.length > 0;
+  const allDone = hasResources && resources.every((resource) => resource.done);
+  const allKnown = hasResources && resources.every((resource) => resource.total > 0);
+  const total = resources.reduce((sum, resource) => sum + resource.total, 0);
+  const loaded = resources.reduce((sum, resource) => sum + Math.min(resource.loaded, resource.total || resource.loaded), 0);
+  const percent = allKnown && total > 0
+    ? Math.min(100, Math.round((loaded / total) * 100))
+    : null;
+
+  els.mapLoadStatus.classList.toggle('is-ready', phase === 'ready' || allDone);
+  els.mapLoadStatus.classList.toggle('is-error', phase === 'error');
+  els.mapLoadStatus.classList.toggle('is-indeterminate', percent === null && phase !== 'ready' && phase !== 'error');
+
+  if (phase === 'ready' || allDone) {
+    els.mapLoadText.textContent = 'Veri haz\u0131r';
+    els.mapLoadBar.style.width = '100%';
+    return;
+  }
+
+  if (phase === 'error') {
+    els.mapLoadText.textContent = 'Veri y\u00fcklenemedi';
+    els.mapLoadBar.style.width = '100%';
+    return;
+  }
+
+  if (phase === 'processing') {
+    els.mapLoadText.textContent = 'Veri i\u015fleniyor...';
+    els.mapLoadBar.style.width = percent === null ? '' : `${Math.max(percent, 96)}%`;
+    return;
+  }
+
+  els.mapLoadText.textContent = percent === null
+    ? 'Veri y\u00fckleniyor...'
+    : `Veri y\u00fckleniyor: %${percent}`;
+  els.mapLoadBar.style.width = percent === null ? '' : `${percent}%`;
+}
+
+async function fetchJson(url, label = url) {
+  updateResourceProgress(url, { label });
   const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) {
+    updateDataLoadStatus('error');
     throw new Error(`Yüklenemedi: ${url}`);
   }
-  return response.json();
+  const total = Number(response.headers.get('Content-Length')) || 0;
+  updateResourceProgress(url, { total });
+
+  if (!response.body?.getReader) {
+    const text = await response.text();
+    updateResourceProgress(url, { loaded: total || text.length, total: total || text.length, processing: true });
+    const payload = JSON.parse(text);
+    updateResourceProgress(url, { done: true, processing: false });
+    return payload;
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let loaded = 0;
+  let text = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      break;
+    }
+
+    loaded += value.byteLength;
+    text += decoder.decode(value, { stream: true });
+    updateResourceProgress(url, { loaded, total });
+  }
+
+  text += decoder.decode();
+  updateResourceProgress(url, { loaded: total || loaded, total: total || loaded, processing: true });
+  const payload = JSON.parse(text);
+  updateResourceProgress(url, { done: true, processing: false });
+  return payload;
+}
+
+function getMahalleGeometryUrlsForState() {
+  if (state.level !== 'mahalle') {
+    return [];
+  }
+
+  const districtIds = state.districtId
+    ? [state.districtId]
+    : datasets.districts
+      .filter((district) => {
+        if (!datasets.publishableProvinceIds.has(district.parent_id)) return false;
+        if (state.provinceId && district.parent_id !== state.provinceId) return false;
+        if (!state.provinceId && state.regionId && district.region_id !== state.regionId) return false;
+        return true;
+      })
+      .map((district) => district.id);
+
+  return districtIds.map((districtId) => ({
+    key: `district:${districtId}`,
+    url: `./dist/geojson/mahalle-geometrileri-by-district/${districtId}.geojson`,
+    label: `Mahalle geometrisi: ${datasets.districtsById.get(districtId)?.name || districtId}`,
+  }));
+}
+
+async function ensureActiveMahalleGeometries() {
+  if (state.level !== 'mahalle') {
+    return;
+  }
+
+  const resources = getMahalleGeometryUrlsForState();
+  const activeKey = resources.map((resource) => resource.key).join('|');
+  if (datasets.loadedMahalleGeometryKey === activeKey) {
+    return;
+  }
+
+  for (const resource of resources) {
+    if (!dataLoadProgress.resources.has(resource.url)) {
+      dataLoadProgress.resources.set(resource.url, {
+        label: resource.label,
+        loaded: 0,
+        total: 0,
+        done: false,
+        processing: false,
+      });
+    }
+  }
+
+  const collections = await Promise.all(resources.map(async (resource) => {
+    if (!datasets.mahalleGeometryCache.has(resource.key)) {
+      datasets.mahalleGeometryCache.set(resource.key, fetchJson(resource.url, resource.label));
+    }
+    return datasets.mahalleGeometryCache.get(resource.key);
+  }));
+
+  const featuresById = new Map();
+  for (const collection of collections) {
+    for (const feature of collection.features || []) {
+      featuresById.set(feature.properties.id, feature);
+      mergeMahalleFeatureMetadata(feature);
+    }
+  }
+
+  datasets.mahalleGeometrileri = {
+    type: 'FeatureCollection',
+    features: [...featuresById.values()],
+  };
+  datasets.loadedMahalleGeometryKey = activeKey;
+  projections.mahalle = datasets.mahalleGeometrileri.features.length > 0
+    ? buildProjection(datasets.mahalleGeometrileri)
+    : null;
+}
+
+function mergeMahalleFeatureMetadata(feature) {
+  const existing = datasets.mahalleMetadataById.get(feature.properties.id);
+  datasets.mahalleMetadataById.set(feature.properties.id, {
+    ...(existing || {}),
+    ...feature.properties,
+    name: existing?.name || feature.properties.name || feature.properties.source_raw_name || feature.properties.id,
+    parent_id: existing?.parent_id || feature.properties.parent_id || feature.properties.district_id || '',
+    slug: existing?.slug || feature.properties.slug || feature.properties.id.toLowerCase(),
+  });
 }
 
 function hydrateRegionSelect() {
@@ -227,11 +441,11 @@ function bindEvents() {
     state.scope = event.target.value;
 
     if (state.scope === 'turkey') {
-      state.level = 'region';
+      state.level = state.level === 'mahalle' ? 'mahalle' : 'region';
       state.regionId = '';
       state.provinceId = '';
       state.districtId = '';
-      if (els.detailSelect) els.detailSelect.value = 'region';
+      if (els.detailSelect) els.detailSelect.value = state.level;
       if (els.regionSelect) els.regionSelect.value = '';
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
@@ -253,6 +467,7 @@ function bindEvents() {
   });
 
   els.detailSelect?.addEventListener('change', (event) => {
+    const previousLevel = state.level;
     state.level = event.target.value;
 
     if (state.level === 'region') {
@@ -276,6 +491,33 @@ function bindEvents() {
       state.districtId = '';
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
+    } else if (state.level === 'mahalle') {
+      if (state.districtId) {
+        const district = datasets.districtsById.get(state.districtId);
+        state.provinceId = district?.parent_id || state.provinceId;
+        state.regionId = district?.region_id || state.regionId;
+        state.scope = 'province';
+        if (els.scopeSelect) els.scopeSelect.value = 'province';
+        if (els.provinceSelect) els.provinceSelect.value = state.provinceId;
+        if (els.regionSelect) els.regionSelect.value = state.regionId;
+      } else if (state.provinceId) {
+        state.scope = 'province';
+        state.regionId = datasets.provincesById.get(state.provinceId)?.region_id || state.regionId;
+        if (els.scopeSelect) els.scopeSelect.value = 'province';
+        if (els.regionSelect) els.regionSelect.value = state.regionId;
+      } else if (state.regionId) {
+        state.scope = 'region';
+        if (els.scopeSelect) els.scopeSelect.value = 'region';
+      } else if (previousLevel !== 'mahalle') {
+        state.scope = 'turkey';
+        state.regionId = '';
+        state.provinceId = '';
+        state.districtId = '';
+        if (els.scopeSelect) els.scopeSelect.value = 'turkey';
+        if (els.regionSelect) els.regionSelect.value = '';
+        if (els.provinceSelect) els.provinceSelect.value = '';
+        if (els.districtSelect) els.districtSelect.value = '';
+      }
     } else {
       if (state.scope === 'region' || state.regionId) {
         state.scope = 'region';
@@ -328,6 +570,11 @@ function bindEvents() {
   els.csvDelimiterSelect?.addEventListener('change', (event) => {
     state.csvDelimiter = event.target.value;
     syncConfigurator();
+  });
+
+  els.baseLayerSelect?.addEventListener('change', (event) => {
+    state.baseLayer = event.target.value;
+    render();
   });
 
   els.regionSelect?.addEventListener('change', (event) => {
@@ -592,7 +839,7 @@ function syncProvinceOptions() {
 
   const currentValue = state.provinceId;
   const allowedMahalleProvinceIds = state.level === 'mahalle'
-    ? new Set(datasets.mahalleGeometrileri.features.map((feature) => feature.properties.province_id))
+    ? datasets.publishableProvinceIds
     : null;
   const provinces = state.regionId
     ? datasets.provinces.filter((item) => item.region_id === state.regionId)
@@ -614,9 +861,11 @@ function syncProvinceOptions() {
     els.provinceSelect.value = currentValue;
   } else {
     state.provinceId = '';
-    if (state.level === 'mahalle' && visibleProvinces.length > 0 && !state.regionId) {
+    if (state.level === 'mahalle' && visibleProvinces.length > 0 && state.scope === 'province' && !state.regionId) {
       state.provinceId = visibleProvinces[0].id;
       els.provinceSelect.value = state.provinceId;
+    } else {
+      els.provinceSelect.value = '';
     }
   }
 }
@@ -627,11 +876,14 @@ function syncDistrictOptions() {
   }
 
   const currentValue = state.districtId;
+  const allDistricts = state.level === 'mahalle'
+    ? datasets.districts.filter((item) => datasets.publishableProvinceIds.has(item.parent_id))
+    : datasets.districts;
   const districts = state.provinceId
-    ? datasets.districts.filter((item) => item.parent_id === state.provinceId)
+    ? allDistricts.filter((item) => item.parent_id === state.provinceId)
     : state.regionId
-      ? datasets.districts.filter((item) => item.region_id === state.regionId)
-      : datasets.districts;
+      ? allDistricts.filter((item) => item.region_id === state.regionId)
+      : allDistricts;
 
   els.districtSelect.replaceChildren(new Option('Tüm ilçeler', ''));
 
@@ -710,6 +962,9 @@ function getAvailableFieldDefinitions() {
   const spatialFields = tabularFormats.has(state.format) ? [
     fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktası enlemi', false),
     fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktası boylamı', false),
+    fieldDef('x', 'X / Boylam', 'EPSG:4326 boylam değeri; CSV için sayısal noktalı format', false),
+    fieldDef('y', 'Y / Enlem', 'EPSG:4326 enlem değeri; CSV için sayısal noktalı format', false),
+    fieldDef('coordinate_system', 'Koordinat Sistemi', 'Koordinat referans sistemi', false),
     fieldDef('bbox_min_lon', 'Sınır Kutusu Batı', 'Minimum boylam (bbox_min_lon)', false),
     fieldDef('bbox_min_lat', 'Sınır Kutusu Güney', 'Minimum enlem (bbox_min_lat)', false),
     fieldDef('bbox_max_lon', 'Sınır Kutusu Doğu', 'Maksimum boylam (bbox_max_lon)', false),
@@ -745,6 +1000,7 @@ function getAvailableFieldDefinitions() {
     options = [
       fieldDef('id', 'Mahalle ID', 'Mahalle Benzersiz Kimliği', true),
       fieldDef('name', 'Mahalle Adı', 'Mahalle Görünür Adı', true),
+      fieldDef('source_label', 'Kaynak', 'Kamuya açık kaynak grubu', true),
       fieldDef('parent_id', 'İlçe ID', 'İlçe Benzersiz Kimliği', true),
       fieldDef('parent_name', 'İlçe Adı', 'İlçe Görünür Adı', true),
       fieldDef('province_id', 'İl ID', 'İl Benzersiz Kimliği', true),
@@ -946,9 +1202,20 @@ function getFormatAvailability() {
     };
   }
 
-function render() {
+async function render() {
+  const requestId = ++renderRequestId;
+  try {
+    await ensureActiveMahalleGeometries();
+  } catch (error) {
+    console.error('Mahalle geometrisi yüklenemedi', error);
+    updateDataLoadStatus('error');
+  }
+  if (requestId !== renderRequestId) {
+    return;
+  }
+
   const visibleFeatures = getVisibleFeatures();
-  const renderableFeatures = getRenderableFeatures();
+  const renderableFeatures = limitPreviewFeatures(getRenderableFeatures());
 
   setText(els.regionCount, numberFormat.format(datasets.regions.length));
   setText(els.provinceCount, numberFormat.format(datasets.provinces.length));
@@ -958,6 +1225,25 @@ function render() {
   renderMap(renderableFeatures);
   syncQualityIndicator(visibleFeatures);
   renderDetail();
+}
+
+function limitPreviewFeatures(features) {
+  if (features.length <= maxPreviewFeatureCount) {
+    return features;
+  }
+
+  if (state.level !== 'mahalle' || state.districtId || state.provinceId) {
+    return features;
+  }
+
+  return features.slice(0, maxPreviewFeatureCount);
+}
+
+function isPreviewLimited(renderedCount = getRenderableFeatures().length) {
+  return state.level === 'mahalle'
+    && !state.districtId
+    && !state.provinceId
+    && renderedCount > maxPreviewFeatureCount;
 }
 
 function getVisibleFeatures() {
@@ -1070,6 +1356,7 @@ function getRenderableFeatures() {
     if (state.level === 'district' && state.regionId && item.region_id !== state.regionId) return false;
     if (state.level === 'district' && state.provinceId && item.parent_id !== state.provinceId) return false;
     if (state.level === 'district' && state.districtId && item.id !== state.districtId) return false;
+    if (state.level === 'mahalle' && !datasets.publishableProvinceIds.has(item.province_id)) return false;
     if (state.level === 'mahalle' && state.regionId && datasets.provincesById.get(item.province_id)?.region_id !== state.regionId) return false;
     if (state.level === 'mahalle' && state.provinceId && item.province_id !== state.provinceId) return false;
     if (state.level === 'mahalle' && state.districtId && item.district_id !== state.districtId) return false;
@@ -1119,15 +1406,20 @@ function renderMap(features) {
   applyPreviewTheme();
 
   if (features.length === 0) {
+    renderBaseLayer([], null);
+    els.mapOverlay.title = '';
     els.mapOverlay.textContent = 'Filtreyle eşleşen geometri yok.';
     return;
   }
 
-  updateMapOverlay();
+  const allRenderableCount = getRenderableFeatures().length;
+  updateMapOverlay(features.length, allRenderableCount);
   const matchedIds = new Set(getVisibleFeatures().map((feature) => feature.properties.id));
 
   const projection = getActiveProjection(features);
+  renderBaseLayer(features, projection);
   const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  group.setAttribute('class', 'feature-layer');
 
   for (const feature of features) {
     const id = feature.properties.id;
@@ -1198,6 +1490,123 @@ function renderMap(features) {
   els.mapSvg.append(group);
 }
 
+function renderBaseLayer(features, projection) {
+  if (!els.mapSvg || !els.baseMapAttribution) {
+    return;
+  }
+
+  const enabled = state.baseLayer.startsWith('osm') && features.length > 0 && projection?.projection;
+  els.baseMapAttribution.classList.toggle('is-hidden', !enabled);
+  if (!enabled) {
+    return;
+  }
+
+  const tiles = buildOsmTiles(features, projection.projection);
+  if (tiles.length === 0) {
+    els.baseMapAttribution.classList.add('is-hidden');
+    return;
+  }
+
+  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  group.setAttribute('class', `basemap-tile-layer is-${state.baseLayer}`);
+  for (const tile of tiles) {
+    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+    image.setAttribute('class', 'basemap-tile');
+    image.setAttribute('href', `https://tile.openstreetmap.org/${tile.z}/${tile.x}/${tile.y}.png`);
+    image.setAttribute('x', String(tile.xPos));
+    image.setAttribute('y', String(tile.yPos));
+    image.setAttribute('width', String(tile.width));
+    image.setAttribute('height', String(tile.height));
+    image.setAttribute('preserveAspectRatio', 'none');
+    group.append(image);
+  }
+
+  els.mapSvg.append(group);
+}
+
+function buildOsmTiles(features, projection) {
+  const collection = { type: 'FeatureCollection', features };
+  const bounds = window.d3.geoBounds(collection);
+  if (!Number.isFinite(bounds[0][0]) || !Number.isFinite(bounds[1][0])) {
+    return [];
+  }
+
+  const zoom = chooseOsmZoom(projection, bounds);
+  const [[minLon, minLat], [maxLon, maxLat]] = bounds;
+  const northWest = lonLatToTile(minLon, maxLat, zoom);
+  const southEast = lonLatToTile(maxLon, minLat, zoom);
+  const maxTile = (2 ** zoom) - 1;
+  const xStart = clampNumber(Math.min(northWest.x, southEast.x) - 1, 0, maxTile);
+  const xEnd = clampNumber(Math.max(northWest.x, southEast.x) + 1, 0, maxTile);
+  const yStart = clampNumber(Math.min(northWest.y, southEast.y) - 1, 0, maxTile);
+  const yEnd = clampNumber(Math.max(northWest.y, southEast.y) + 1, 0, maxTile);
+  const tiles = [];
+
+  for (let x = xStart; x <= xEnd; x += 1) {
+    for (let y = yStart; y <= yEnd; y += 1) {
+      const [west, north] = tileToLonLat(x, y, zoom);
+      const [east, south] = tileToLonLat(x + 1, y + 1, zoom);
+      const topLeft = projection([west, north]);
+      const bottomRight = projection([east, south]);
+      if (!topLeft || !bottomRight) {
+        continue;
+      }
+
+      tiles.push({
+        z: zoom,
+        x,
+        y,
+        xPos: Number(topLeft[0].toFixed(2)),
+        yPos: Number(topLeft[1].toFixed(2)),
+        width: Number((bottomRight[0] - topLeft[0]).toFixed(2)),
+        height: Number((bottomRight[1] - topLeft[1]).toFixed(2)),
+      });
+    }
+  }
+
+  return tiles;
+}
+
+function chooseOsmZoom(projection, bounds) {
+  const scale = projection.scale?.() || 1;
+  let zoom = Math.round(Math.log2((scale * 2 * Math.PI) / 256));
+  zoom = clampNumber(zoom, 4, 12);
+
+  while (zoom > 4 && estimateTileCount(bounds, zoom) > 72) {
+    zoom -= 1;
+  }
+
+  return zoom;
+}
+
+function estimateTileCount(bounds, zoom) {
+  const [[minLon, minLat], [maxLon, maxLat]] = bounds;
+  const northWest = lonLatToTile(minLon, maxLat, zoom);
+  const southEast = lonLatToTile(maxLon, minLat, zoom);
+  return (Math.abs(southEast.x - northWest.x) + 3) * (Math.abs(southEast.y - northWest.y) + 3);
+}
+
+function lonLatToTile(lon, lat, zoom) {
+  const n = 2 ** zoom;
+  const safeLat = clampNumber(lat, -85.05112878, 85.05112878);
+  const latRad = (safeLat * Math.PI) / 180;
+  return {
+    x: clampNumber(Math.floor(((lon + 180) / 360) * n), 0, n - 1),
+    y: clampNumber(Math.floor(((1 - Math.log(Math.tan(latRad) + (1 / Math.cos(latRad))) / Math.PI) / 2) * n), 0, n - 1),
+  };
+}
+
+function tileToLonLat(x, y, zoom) {
+  const n = 2 ** zoom;
+  const lon = (x / n) * 360 - 180;
+  const latRad = Math.atan(Math.sinh(Math.PI * (1 - (2 * y) / n)));
+  return [lon, (latRad * 180) / Math.PI];
+}
+
+function clampNumber(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
 function getActiveProjection(features, viewport = defaultExportViewport) {
   if (features.length === 0) {
     return projections[state.level];
@@ -1257,7 +1666,7 @@ function normalizeSearchText(value) {
     .toLocaleLowerCase('tr-TR');
 }
 
-function updateMapOverlay() {
+function updateMapOverlay(previewCount = null, totalRenderableCount = null) {
   if (!els.mapOverlay) {
     return;
   }
@@ -1273,6 +1682,13 @@ function updateMapOverlay() {
     return;
   }
 
+  if (totalRenderableCount !== null && previewCount !== null && isPreviewLimited(totalRenderableCount)) {
+    els.mapOverlay.textContent = `Mahalle önizlemesi: ${numberFormat.format(previewCount)} / ${numberFormat.format(totalRenderableCount)} gösteriliyor`;
+    els.mapOverlay.title = 'Siteyi dondurmamak için ekrandaki önizleme sınırlandı. İndirme tam görünür veri kapsamıyla yapılır.';
+    return;
+  }
+
+  els.mapOverlay.title = '';
   els.mapOverlay.textContent = state.level === 'province'
     ? (state.regionId ? 'İl görünümü: bölge filtreli' : 'İl görünümü')
     : state.level === 'mahalle'
@@ -1294,11 +1710,21 @@ function applyPreviewFeatureStyle(path, item) {
   const fill = resolveFeatureFill(item, theme);
   path.style.setProperty('--feature-fill', fill || '');
   path.style.setProperty('--feature-stroke', theme.stroke || '');
+  path.style.setProperty('--feature-stroke-width', theme.strokeWidth || '');
 }
 
 function getCurrentVisualTheme() {
   if (state.format === 'svg' || state.format === 'png') {
     return getSvgTheme();
+  }
+
+  if (state.level === 'region') {
+    return {
+      background: 'transparent',
+      fill: '',
+      stroke: 'transparent',
+      strokeWidth: '0',
+    };
   }
 
   return {
@@ -1373,6 +1799,13 @@ function renderDetail(forcedId = '') {
         ['İlçe', parentName],
       ];
 
+  const sourceLabel = state.level === 'mahalle'
+    ? (item.source_label || datasets.sourceLabels?.public_sources || item.source || '')
+    : (item.source_label || item.source || '');
+  if (sourceLabel) {
+    rows.push(['Kaynak', sourceLabel]);
+  }
+
   const visibleRows = state.level === 'region'
     ? rows.filter(([label]) => label !== 'Bölge Türü')
     : rows;
@@ -1416,21 +1849,25 @@ function buildProjection(featureCollection, viewport = defaultExportViewport) {
 }
 
 function getDownloadFilename(format, baseName) {
+  const suffix = ['kml', 'kmz'].includes(format)
+    ? `-${new Date().toISOString().replaceAll(/[-:]/g, '').replace(/\.\d{3}Z$/, '')}`
+    : '';
+
   if (state.scope === 'region' && state.regionId) {
     const slug = datasets.regionsById.get(state.regionId)?.slug || 'region';
-    return `${slug}-${baseName}.${format}`;
+    return `${slug}-${baseName}${suffix}.${format}`;
   }
 
   if (state.scope === 'province' && state.provinceId) {
     const slug = datasets.provincesById.get(state.provinceId)?.slug || 'province';
     if (state.districtId) {
       const districtSlug = datasets.districtsById.get(state.districtId)?.slug || 'district';
-      return `${districtSlug}-${baseName}.${format}`;
+      return `${districtSlug}-${baseName}${suffix}.${format}`;
     }
-    return `${slug}-${baseName}.${format}`;
+    return `${slug}-${baseName}${suffix}.${format}`;
   }
 
-  return `turkiye-${baseName}.${format}`;
+  return `turkiye-${baseName}${suffix}.${format}`;
 }
 
 function getDetailLabel(detail) {
@@ -1490,6 +1927,10 @@ function getPaletteLabel(palette) {
 
 async function triggerDownload(filename) {
   const blob = await buildDownloadBlob();
+  if (!blob || blob.size === 0) {
+    throw new Error('Boş indirme çıktısı üretildi.');
+  }
+
   const objectUrl = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = objectUrl;
@@ -1620,7 +2061,11 @@ function buildSelectedTabularRows() {
 
 function buildKmlDocument() {
   const metadata = getVisibleMetadataItems();
-  const geometryCollection = buildGeojsonPayload();
+  // KML joins geometry to metadata by feature.properties.id; selected fields must not strip it.
+  const geometryCollection = {
+    type: 'FeatureCollection',
+    features: getVisibleFeatures(),
+  };
   const name = state.scope === 'region' && currentRegionName()
     ? `${currentRegionName()} ${state.level}`
     : state.scope === 'province' && currentProvinceName()
@@ -1775,6 +2220,7 @@ function buildExportProperties(item) {
     parent_name: parentName,
     province_id: item.province_id,
     province_name: item.province_name,
+    source_label: item.source_label || datasets.sourceLabels?.public_sources || item.source || '',
     slug: item.slug,
     plate_code: item.plate_code,
     district_local_code: item.district_local_code,
@@ -1799,6 +2245,10 @@ function getSvgTheme() {
 function resolveFeatureFill(item, theme) {
   if (state.style !== 'filled' && state.style !== 'transparent') {
     return theme.fill;
+  }
+
+  if (state.level === 'region' && state.colorMode === 'single') {
+    return stableColorForId(item.id, getPaletteColors('contrast'));
   }
 
   if (state.colorMode === 'palette') {
@@ -1933,7 +2383,7 @@ function currentProvinceName() {
 }
 
 function firstMahalleProvinceId() {
-  return datasets.mahalleGeometrileri.features[0]?.properties?.province_id || '';
+  return [...datasets.publishableProvinceIds][0] || '';
 }
 
 function currentRegionName() {
