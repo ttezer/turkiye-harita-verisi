@@ -9,7 +9,9 @@ import {
   buildTabularRows,
   buildTopojsonPayload,
   buildXlsxArrayBuffer,
+  featureCollectionToGml,
   featureCollectionToKml,
+  featureCollectionToOsm,
   rowsToCsv,
   rowsToSql,
   rowsToWkt,
@@ -23,6 +25,10 @@ function readJson(relativePath) {
 
 function countPlacemark(kml) {
   return (kml.match(/<Placemark>/g) || []).length;
+}
+
+function countFeatureMembers(gml) {
+  return (gml.match(/<gml:featureMember>/g) || []).length;
 }
 
 describe('ui download integration with real datasets', () => {
@@ -57,6 +63,19 @@ describe('ui download integration with real datasets', () => {
       geojsonPayload,
       (item) => ({ id: item.id, name: item.name, region_name: item.region_name }),
     );
+    const gml = featureCollectionToGml(
+      'marmara provinces',
+      marmaraProvinces,
+      geojsonPayload,
+      (item) => ({ id: item.id, name: item.name, region_name: item.region_name }),
+      { featureTypeName: 'province' },
+    );
+    const osm = featureCollectionToOsm(
+      'marmara provinces',
+      marmaraProvinces,
+      geojsonPayload,
+      (item) => ({ id: item.id, name: item.name, region_name: item.region_name }),
+    );
     const workbookBuffer = buildXlsxArrayBuffer(rows, 'provinces', XLSX);
     const workbook = XLSX.read(workbookBuffer, { type: 'array' });
     const xlsxRows = XLSX.utils.sheet_to_json(workbook.Sheets.provinces, { defval: null });
@@ -70,6 +89,9 @@ describe('ui download integration with real datasets', () => {
     expect(sql.match(/INSERT INTO "provinces"/g)?.length).toBe(11);
     expect(wkt.split('\n')).toHaveLength(11);
     expect(countPlacemark(kml)).toBe(11);
+    expect(countFeatureMembers(gml)).toBe(11);
+    expect((osm.match(/<way id="/g) || []).length).toBeGreaterThan(0);
+    expect(osm).toContain('<tag k="name"');
     expect(xlsxRows).toHaveLength(11);
     expect(xlsxRows[0].geometry_wkt).toBeUndefined();
   });

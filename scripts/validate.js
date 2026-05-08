@@ -131,13 +131,13 @@ export function validateMetadataCollection(metadataItems, schema, label) {
     if (slugs.has(item.slug)) {
       throw new Error(`${label} duplicate slug ${item.slug}`);
     }
-    if (item.source_hdx_id !== null && item.source_hdx_id !== undefined && sourceIds.has(item.source_hdx_id)) {
-      throw new Error(`${label} duplicate source_hdx_id ${item.source_hdx_id}`);
+    if (item.hdx_id !== null && item.hdx_id !== undefined && sourceIds.has(item.hdx_id)) {
+      throw new Error(`${label} duplicate hdx_id ${item.hdx_id}`);
     }
     ids.add(item.id);
     slugs.add(item.slug);
-    if (item.source_hdx_id !== null && item.source_hdx_id !== undefined) {
-      sourceIds.add(item.source_hdx_id);
+    if (item.hdx_id !== null && item.hdx_id !== undefined) {
+      sourceIds.add(item.hdx_id);
     }
   }
 }
@@ -146,7 +146,7 @@ export function validateRelationships(regions, provinces, districts, settlements
   const regionIdSet = new Set(regions.map((item) => item.id));
   const provinceIdSet = new Set(provinces.map((item) => item.id));
   const districtIdSet = new Set(districts.map((item) => item.id));
-  const provinceSourceMap = new Map(provinces.map((item) => [item.source_hdx_id, item]));
+  const provinceSourceMap = new Map(provinces.map((item) => [item.hdx_id, item]));
   const provinceMap = new Map(provinces.map((item) => [item.id, item]));
   const seenDistrictLocalCodes = new Map();
   const regionMembershipCoverage = new Set();
@@ -180,10 +180,10 @@ export function validateRelationships(regions, provinces, districts, settlements
     const parentSourceId = `TUR${district.plate_code.padStart(3, '0')}`;
     const parentProvince = provinceSourceMap.get(parentSourceId);
     if (!parentProvince) {
-      throw new Error(`District ${district.id} cannot resolve parent source_hdx_id ${parentSourceId}`);
+      throw new Error(`District ${district.id} cannot resolve parent hdx_id ${parentSourceId}`);
     }
-    if (!district.source_hdx_id.startsWith(parentProvince.source_hdx_id)) {
-      throw new Error(`District ${district.id} source_hdx_id does not match parent prefix`);
+    if (!district.hdx_id.startsWith(parentProvince.hdx_id)) {
+      throw new Error(`District ${district.id} hdx_id does not match parent prefix`);
     }
     if (district.region_id !== parentProvince.region_id) {
       throw new Error(`District ${district.id} region_id does not match parent province`);

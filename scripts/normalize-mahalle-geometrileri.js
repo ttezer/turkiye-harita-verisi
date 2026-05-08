@@ -249,6 +249,17 @@ const LOCAL_MUNICIPAL_SOURCES = [
     pre_matched_id_field: 'mahalle_id',
     district_field: 'ilce_adi',
   },
+  {
+    province_id: 'TR-P-17',
+    province_name: 'Canakkale',
+    slug: '17-canakkale',
+    source_name: 'Canakkale Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '17-canakkale', 'canakkale-mahalle-manual.kml'),
+    pre_matched_id_field: 'canonical_id',
+    district_field: 'source_ilce_adi',
+  },
 ];
 
 export function compactKey(value) {
@@ -842,6 +853,19 @@ function buildSettlementIndexes(settlements) {
   return { byDistrictAndName, byProvinceAndName };
 }
 
+function uniqueMatchingSettlements(districtId, nameKeys, settlementIndexes) {
+  const seen = new Set();
+  const results = [];
+  for (const nameKey of nameKeys) {
+    for (const settlement of settlementIndexes.byDistrictAndName.get(`${districtId}|${nameKey}`) || []) {
+      if (seen.has(settlement.id)) continue;
+      seen.add(settlement.id);
+      results.push(settlement);
+    }
+  }
+  return results;
+}
+
 function buildOverrideIndex(overrides) {
   const byDistrictAndRaw = new Map();
   const byProvinceAndRaw = new Map();
@@ -968,6 +992,19 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
       if (fallbackName && fallbackDistrictName) {
         const fallbackDistrict = resolveDistrictByName(source, fallbackDistrictName, indexes.districts);
         if (fallbackDistrict) {
+          const fallbackNameKeys = nameMatchKeys(fallbackName);
+          const fallbackMatches = uniqueMatchingSettlements(fallbackDistrict.id, fallbackNameKeys, indexes.settlements);
+          if (fallbackMatches.length === 1) {
+            const geometry = normalizePolygonalGeometry(feature.geometry, source.repair_disjoint_rings);
+            return {
+              status: 'matched',
+              feature: {
+                type: 'Feature',
+                properties: buildGeometryProperties(source, fallbackDistrict, fallbackName, null, fallbackMatches[0]),
+                geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
+              },
+            };
+          }
           const fallbackKey = compactKey(fallbackName);
           const fallbackOverride =
             indexes.overrides.byDistrictAndRaw.get(`${source.province_id}|${fallbackDistrict.id}|${fallbackKey}`) ||
@@ -1254,6 +1291,37 @@ function writeGroupedGeojson(outDir, groups, namePrefix) {
   for (const [key, features] of groups.entries()) {
     writeJsonCompact(path.join(outDir, `${key}.geojson`), featureCollection(features, `${namePrefix}.${key}`));
   }
+}
+
+function buildGeometryCoverage(features) {
+  const provinceToDistricts = new Map();
+  for (const feature of features) {
+    const provinceId = feature.properties.province_id;
+    const districtId = feature.properties.district_id;
+    if (!provinceId || !districtId) {
+      continue;
+    }
+    if (!provinceToDistricts.has(provinceId)) {
+      provinceToDistricts.set(provinceId, new Set());
+    }
+    provinceToDistricts.get(provinceId).add(districtId);
+  }
+
+  const districtsByProvince = Object.fromEntries(
+    [...provinceToDistricts.entries()]
+      .sort(([a], [b]) => a.localeCompare(b, 'en'))
+      .map(([provinceId, districtIds]) => [
+        provinceId,
+        [...districtIds].sort((a, b) => a.localeCompare(b, 'en')),
+      ]),
+  );
+
+  const districtIds = Object.values(districtsByProvince).flat();
+  return {
+    province_ids: Object.keys(districtsByProvince),
+    district_ids: districtIds,
+    districts_by_province: districtsByProvince,
+  };
 }
 
 function toMultiPolygonCoordinates(geometry) {
@@ -1688,6 +1756,9 @@ export async function main() {
     groupBy(repairedFeatures, (feature) => feature.properties.district_id),
     'turkiye_map.dist.mahalle_geometrileri_by_district',
   );
+  const coverage = buildGeometryCoverage(repairedFeatures);
+  writeJson(path.join(paths.processedDir, 'mahalle-geometrileri-coverage.json'), coverage);
+  writeJsonCompact(path.join(distGeojsonDir, 'mahalle-geometrileri-coverage.json'), coverage);
 
   logStep(`Normalized ${repairedFeatures.length} mahalle geometries from ${sourceReports.length} sources`);
 }

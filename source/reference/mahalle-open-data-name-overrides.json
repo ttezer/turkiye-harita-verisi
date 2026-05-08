@@ -1,5 +1,12 @@
 [
   {
+    "province_id": "TR-P-17",
+    "district_id": "TR-D-17-008",
+    "raw_key": "sarisogut",
+    "settlement_id": "TR-Y-17-008-M-0007",
+    "note": "Ezine / Sarisogut manuel KML kaydi canonical_id bos geldigi icin dogrudan mahalle kaydina baglandi"
+  },
+  {
     "province_id": "TR-P-22",
     "district_id": "TR-D-22-007",
     "raw_key": "bdoganca",

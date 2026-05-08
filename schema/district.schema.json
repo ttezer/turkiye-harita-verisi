@@ -21,7 +21,7 @@
     "tuik_id",
     "icisleri_id",
     "osm_relation_id",
-    "source_hdx_id",
+    "hdx_id",
     "centroid",
     "bbox"
   ],
@@ -104,7 +104,7 @@
         "null"
       ]
     },
-    "source_hdx_id": {
+    "hdx_id": {
       "type": [
         "string",
         "null"

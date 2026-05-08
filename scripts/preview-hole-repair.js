@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,17 +14,17 @@ import {
 const repairs = [
   {
     province_id: 'TR-P-48',
-    province: 'Muğla',
+    province: 'MuÄŸla',
     district: 'Marmaris',
     outer_name: 'Bozburun',
-    inner_name: 'Yeşilova',
+    inner_name: 'YeÅŸilova',
     outer_id: 'TR-Y-48-007-M-0005',
     inner_id: 'TR-Y-48-007-M-0030',
-    note: 'User-provided check pair; Yeşilova is inside/overlapping Bozburun in current geometry.',
+    note: 'User-provided check pair; YeÅŸilova is inside/overlapping Bozburun in current geometry.',
   },
   {
     province_id: 'TR-P-48',
-    province: 'Muğla',
+    province: 'MuÄŸla',
     district: 'Marmaris',
     outer_name: 'Armutalan',
     inner_name: 'Sinan',
@@ -36,8 +36,8 @@ const repairs = [
     province_id: 'TR-P-54',
     province: 'Sakarya',
     district: 'Hendek',
-    outer_name: 'Çamlıca',
-    inner_name: 'Yeşiller',
+    outer_name: 'Ã‡amlÄ±ca',
+    inner_name: 'YeÅŸiller',
     outer_id: 'TR-Y-54-007-M-0018',
     inner_id: 'KK-Y-54-007-566299',
   },
@@ -45,9 +45,9 @@ const repairs = [
 
 const inputPath = path.join(paths.distGeojsonDir, 'mahalle-geometrileri.geojson');
 const districtsPath = path.join(paths.distJsonDir, 'districts.json');
-const outputPath = path.join(paths.rootDir, 'source', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview.geojson');
-const reportPath = path.join(paths.rootDir, 'source', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview-report.json');
-const byDistrictDir = path.join(paths.rootDir, 'source', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview-by-district');
+const outputPath = path.join(paths.rootDir, 'archive', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview.geojson');
+const reportPath = path.join(paths.rootDir, 'archive', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview-report.json');
+const byDistrictDir = path.join(paths.rootDir, 'archive', 'kamu-kaynak', 'yerlesim', 'hole-repair-preview-by-district');
 
 function toMultiPolygonCoordinates(geometry) {
   if (geometry.type === 'Polygon') {

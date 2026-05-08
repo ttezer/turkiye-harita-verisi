@@ -268,6 +268,268 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
   ].join('');
 }
 
+export function featureCollectionToGml(
+  name,
+  metadata,
+  geometryCollection,
+  propertyBuilder,
+  options = {},
+) {
+  const metadataById = new Map(metadata.map((item) => [item.id, item]));
+  const featureTypeName = sanitizeXmlTagName(options.featureTypeName || 'feature');
+  const namespacePrefix = options.namespacePrefix || 'tm';
+  const namespaceUri = options.namespaceUri || 'https://turkiye-map.local/gml';
+  const geometryPropertyName = sanitizeXmlTagName(options.geometryPropertyName || 'geometry');
+  const srsName = options.srsName || 'urn:ogc:def:crs:OGC::CRS84';
+
+  const members = geometryCollection.features.map((feature) => {
+    const item = metadataById.get(feature.properties.id);
+    if (!item) {
+      return '';
+    }
+
+    const properties = propertyBuilder(item) || {};
+    const propertyNodes = Object.entries(properties)
+      .filter(([, value]) => value !== null && value !== undefined && value !== '')
+      .map(([key, value]) => {
+        const tagName = sanitizeXmlTagName(key);
+        return `<${namespacePrefix}:${tagName}>${xmlEscape(value)}</${namespacePrefix}:${tagName}>`;
+      })
+      .join('');
+
+    return [
+      '<gml:featureMember>',
+      `<${namespacePrefix}:${featureTypeName} gml:id="${xmlEscape(item.id)}">`,
+      propertyNodes,
+      `<${namespacePrefix}:${geometryPropertyName}>${geometryToGml(feature.geometry, { srsName })}</${namespacePrefix}:${geometryPropertyName}>`,
+      `</${namespacePrefix}:${featureTypeName}>`,
+      '</gml:featureMember>',
+    ].join('');
+  }).join('');
+
+  const bbox = geometryCollectionBbox(geometryCollection);
+  const boundedBy = bbox
+    ? [
+        '<gml:boundedBy>',
+        `<gml:Envelope srsName="${xmlEscape(srsName)}">`,
+        `<gml:lowerCorner>${bbox[0]} ${bbox[1]}</gml:lowerCorner>`,
+        `<gml:upperCorner>${bbox[2]} ${bbox[3]}</gml:upperCorner>`,
+        '</gml:Envelope>',
+        '</gml:boundedBy>',
+      ].join('')
+    : '';
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    `<gml:FeatureCollection xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:${namespacePrefix}="${xmlEscape(namespaceUri)}">`,
+    `<gml:name>${xmlEscape(name)}</gml:name>`,
+    boundedBy,
+    members,
+    '</gml:FeatureCollection>',
+    '',
+  ].join('');
+}
+
+function sanitizeOsmTagKey(key) {
+  return String(key)
+    .trim()
+    .toLowerCase()
+    .replaceAll(/[^a-z0-9:_-]+/g, '_')
+    .replaceAll(/^_+|_+$/g, '');
+}
+
+function normalizeOsmTagValue(value) {
+  if (value === null || value === undefined || value === '') {
+    return '';
+  }
+  if (Array.isArray(value)) {
+    return value.join(';');
+  }
+  if (typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+  return String(value);
+}
+
+function ensureClosedRing(ring) {
+  if (!Array.isArray(ring) || ring.length === 0) {
+    return [];
+  }
+  const first = ring[0];
+  const last = ring[ring.length - 1];
+  if (first[0] === last[0] && first[1] === last[1]) {
+    return ring;
+  }
+  return [...ring, first];
+}
+
+function geometryBounds(geometry) {
+  if (!geometry?.coordinates) {
+    return null;
+  }
+
+  const bounds = [Infinity, Infinity, -Infinity, -Infinity];
+  const visit = (coordinates) => {
+    if (!Array.isArray(coordinates)) {
+      return;
+    }
+    if (typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number') {
+      bounds[0] = Math.min(bounds[0], coordinates[0]);
+      bounds[1] = Math.min(bounds[1], coordinates[1]);
+      bounds[2] = Math.max(bounds[2], coordinates[0]);
+      bounds[3] = Math.max(bounds[3], coordinates[1]);
+      return;
+    }
+    coordinates.forEach(visit);
+  };
+
+  visit(geometry.coordinates);
+  return bounds.every(Number.isFinite) ? bounds : null;
+}
+
+function mergeBounds(left, right) {
+  if (!left) return right;
+  if (!right) return left;
+  return [
+    Math.min(left[0], right[0]),
+    Math.min(left[1], right[1]),
+    Math.max(left[2], right[2]),
+    Math.max(left[3], right[3]),
+  ];
+}
+
+function getOsmBoundaryType(level) {
+  if (level === 'region') {
+    return 'statistical';
+  }
+  return 'administrative';
+}
+
+function getOsmAdminLevel(level) {
+  const levels = {
+    province: '4',
+    district: '6',
+    mahalle: '10',
+    yerlesim: '10',
+  };
+  return levels[level] || '';
+}
+
+export function featureCollectionToOsm(name, metadata, geometryCollection, propertyBuilder) {
+  const metadataById = new Map(metadata.map((item) => [item.id, item]));
+  const nodes = [];
+  const ways = [];
+  const relations = [];
+  let nextNodeId = -1;
+  let nextWayId = -1;
+  let nextRelationId = -1;
+  let bounds = null;
+
+  const createNodeRefs = (ring) => ensureClosedRing(ring).map(([lon, lat]) => {
+    const id = nextNodeId--;
+    nodes.push({ id, lon, lat });
+    return id;
+  });
+
+  const buildTags = (item) => {
+    const rawTags = {
+      name: item.name || item.id,
+      boundary: getOsmBoundaryType(item.level),
+      admin_level: getOsmAdminLevel(item.level),
+      source: item.source_label || item.source || 'turkiye_map',
+      'turkiye_map:id': item.id,
+      'turkiye_map:level': item.level || '',
+      ...(propertyBuilder ? propertyBuilder(item) : {}),
+    };
+
+    return Object.entries(rawTags)
+      .map(([key, value]) => [sanitizeOsmTagKey(key), normalizeOsmTagValue(value)])
+      .filter(([key, value]) => key && value);
+  };
+
+  for (const feature of geometryCollection.features) {
+    const item = metadataById.get(feature.properties.id);
+    if (!item) {
+      continue;
+    }
+
+    bounds = mergeBounds(bounds, geometryBounds(feature.geometry));
+    const tags = buildTags(item);
+    const polygonSets = feature.geometry.type === 'Polygon'
+      ? [feature.geometry.coordinates]
+      : feature.geometry.type === 'MultiPolygon'
+        ? feature.geometry.coordinates
+        : [];
+
+    const members = [];
+
+    for (const polygon of polygonSets) {
+      polygon.forEach((ring, ringIndex) => {
+        const wayId = nextWayId--;
+        const nodeRefs = createNodeRefs(ring);
+        ways.push({
+          id: wayId,
+          nodeRefs,
+          tags: [],
+        });
+        members.push({
+          type: 'way',
+          ref: wayId,
+          role: ringIndex === 0 ? 'outer' : 'inner',
+        });
+      });
+    }
+
+    if (members.length === 1 && feature.geometry.type === 'Polygon') {
+      ways[ways.length - 1].tags = tags;
+      continue;
+    }
+
+    relations.push({
+      id: nextRelationId--,
+      members,
+      tags: [['type', 'multipolygon'], ...tags],
+    });
+  }
+
+  const boundsMarkup = bounds
+    ? `<bounds minlon="${bounds[0]}" minlat="${bounds[1]}" maxlon="${bounds[2]}" maxlat="${bounds[3]}"/>`
+    : '';
+
+  const nodeMarkup = nodes
+    .map((node) => `<node id="${node.id}" lon="${node.lon}" lat="${node.lat}"/>`)
+    .join('');
+
+  const wayMarkup = ways
+    .map((way) => [
+      `<way id="${way.id}">`,
+      ...way.nodeRefs.map((ref) => `<nd ref="${ref}"/>`),
+      ...way.tags.map(([key, value]) => `<tag k="${xmlEscape(key)}" v="${xmlEscape(value)}"/>`),
+      '</way>',
+    ].join(''))
+    .join('');
+
+  const relationMarkup = relations
+    .map((relation) => [
+      `<relation id="${relation.id}">`,
+      ...relation.members.map((member) => `<member type="${member.type}" ref="${member.ref}" role="${member.role}"/>`),
+      ...relation.tags.map(([key, value]) => `<tag k="${xmlEscape(key)}" v="${xmlEscape(value)}"/>`),
+      '</relation>',
+    ].join(''))
+    .join('');
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    `<osm version="0.6" generator="${xmlEscape(name)}">`,
+    boundsMarkup,
+    nodeMarkup,
+    wayMarkup,
+    relationMarkup,
+    '</osm>',
+    '',
+  ].join('');
+}
+
 export function buildKmlDescription(item, properties) {
   const lines = [];
 
@@ -327,6 +589,46 @@ export function geometryToKml(geometry) {
 
   if (geometry.type === 'MultiPolygon') {
     return `<MultiGeometry>${geometry.coordinates.map(polygonToKml).join('')}</MultiGeometry>`;
+  }
+
+  return '';
+}
+
+export function geometryToGml(geometry, options = {}) {
+  const srsName = options.srsName || 'urn:ogc:def:crs:OGC::CRS84';
+  const ringToPosList = (ring) => normalizeKmlRing(ring)
+    .map(([lon, lat]) => `${lon} ${lat}`)
+    .join(' ');
+  const polygonToGml = (polygon, includeSrsName = true) => {
+    const [outerBoundary, ...innerBoundaries] = polygon;
+    return [
+      `<gml:Polygon${includeSrsName ? ` srsName="${xmlEscape(srsName)}"` : ''}>`,
+      '<gml:exterior>',
+      '<gml:LinearRing>',
+      `<gml:posList srsDimension="2">${ringToPosList(outerBoundary)}</gml:posList>`,
+      '</gml:LinearRing>',
+      '</gml:exterior>',
+      ...innerBoundaries.map((ring) => [
+        '<gml:interior>',
+        '<gml:LinearRing>',
+        `<gml:posList srsDimension="2">${ringToPosList(ring)}</gml:posList>`,
+        '</gml:LinearRing>',
+        '</gml:interior>',
+      ].join('')),
+      '</gml:Polygon>',
+    ].join('');
+  };
+
+  if (geometry.type === 'Polygon') {
+    return polygonToGml(geometry.coordinates);
+  }
+
+  if (geometry.type === 'MultiPolygon') {
+    return [
+      `<gml:MultiSurface srsName="${xmlEscape(srsName)}">`,
+      ...geometry.coordinates.map((polygon) => `<gml:surfaceMember>${polygonToGml(polygon, false)}</gml:surfaceMember>`),
+      '</gml:MultiSurface>',
+    ].join('');
   }
 
   return '';
@@ -470,6 +772,657 @@ export function xmlEscape(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function sanitizeXmlTagName(value) {
+  const normalized = String(value || 'field')
+    .trim()
+    .replaceAll(/[^A-Za-z0-9_.-]+/g, '_')
+    .replaceAll(/_{2,}/g, '_')
+    .replaceAll(/^_+|_+$/g, '');
+  const base = normalized || 'field';
+  return /^[A-Za-z_]/.test(base) ? base : `_${base}`;
+}
+
+function formatPdfNumber(value) {
+  return Number(value.toFixed(2)).toString();
+}
+
+function toAsciiText(value) {
+  return String(value ?? '')
+    .normalize('NFKD')
+    .replace(/[^\x20-\x7E]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function escapePdfLiteral(value) {
+  return String(value).replaceAll('\\', '\\\\').replaceAll('(', '\\(').replaceAll(')', '\\)');
+}
+
+function parseCssColor(value, fallback = { r: 255, g: 255, b: 255, a: 1 }) {
+  if (!value || value === 'none' || value === 'transparent') {
+    return null;
+  }
+
+  const hexMatch = /^#([0-9a-fA-F]{6})$/.exec(value);
+  if (hexMatch) {
+    const hex = hexMatch[1];
+    return {
+      r: parseInt(hex.slice(0, 2), 16),
+      g: parseInt(hex.slice(2, 4), 16),
+      b: parseInt(hex.slice(4, 6), 16),
+      a: 1,
+    };
+  }
+
+  const rgbMatch = /^rgba?\(([^)]+)\)$/.exec(value);
+  if (rgbMatch) {
+    const parts = rgbMatch[1].split(',').map((part) => Number(part.trim()));
+    if (parts.length >= 3 && parts.slice(0, 3).every(Number.isFinite)) {
+      return {
+        r: parts[0],
+        g: parts[1],
+        b: parts[2],
+        a: Number.isFinite(parts[3]) ? parts[3] : 1,
+      };
+    }
+  }
+
+  return fallback;
+}
+
+function blendOnWhite(color) {
+  if (!color) {
+    return null;
+  }
+
+  const alpha = Number.isFinite(color.a) ? Math.max(0, Math.min(1, color.a)) : 1;
+  return {
+    r: Math.round((color.r * alpha) + (255 * (1 - alpha))),
+    g: Math.round((color.g * alpha) + (255 * (1 - alpha))),
+    b: Math.round((color.b * alpha) + (255 * (1 - alpha))),
+  };
+}
+
+function pdfRgb(color) {
+  return [
+    formatPdfNumber(color.r / 255),
+    formatPdfNumber(color.g / 255),
+    formatPdfNumber(color.b / 255),
+  ].join(' ');
+}
+
+function svgPathDataToPdfCommands(pathData, pageHeight) {
+  if (!pathData) {
+    return '';
+  }
+
+  const subpaths = pathData
+    .split('Z')
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+
+  const commands = [];
+
+  for (const subpath of subpaths) {
+    const matches = [...subpath.matchAll(/([ML])(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g)];
+    if (matches.length === 0) {
+      continue;
+    }
+
+    for (const [, verb, xRaw, yRaw] of matches) {
+      const x = Number(xRaw);
+      const y = pageHeight - Number(yRaw);
+      commands.push(`${formatPdfNumber(x)} ${formatPdfNumber(y)} ${verb === 'M' ? 'm' : 'l'}`);
+    }
+    commands.push('h');
+  }
+
+  return commands.join('\n');
+}
+
+function buildPdfObjects(documentBody, infoTitle) {
+  const objects = [];
+  objects.push('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+  objects.push('2 0 obj\n<< /Type /Pages /Count 1 /Kids [3 0 R] >>\nendobj\n');
+  objects.push(documentBody.pageObject);
+  objects.push(documentBody.contentObject);
+  objects.push('5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n');
+  objects.push(
+    `6 0 obj\n<< /Producer (${escapePdfLiteral('turkiye_map')}) /Creator (${escapePdfLiteral('turkiye_map export')}) /Title (${escapePdfLiteral(infoTitle)}) >>\nendobj\n`,
+  );
+  return objects;
+}
+
+export function buildPdfDocumentBlob(
+  {
+    width = 1920,
+    height = 1080,
+    title = 'Turkiye Haritasi',
+    subtitle = '',
+    backgroundColor = '#ffffff',
+    paths = [],
+  } = {},
+) {
+  const safeWidth = Number.isFinite(width) && width > 0 ? width : 1920;
+  const safeHeight = Number.isFinite(height) && height > 0 ? height : 1080;
+  const titleText = toAsciiText(title) || 'Turkiye Haritasi';
+  const subtitleText = toAsciiText(subtitle);
+
+  const contentLines = ['q'];
+  const pageColor = blendOnWhite(parseCssColor(backgroundColor));
+  if (pageColor) {
+    contentLines.push(`${pdfRgb(pageColor)} rg`);
+    contentLines.push(`0 0 ${formatPdfNumber(safeWidth)} ${formatPdfNumber(safeHeight)} re f`);
+  }
+  contentLines.push('Q');
+
+  if (titleText) {
+    contentLines.push('BT');
+    contentLines.push('/F1 22 Tf');
+    contentLines.push(`36 ${formatPdfNumber(safeHeight - 34)} Td`);
+    contentLines.push(`(${escapePdfLiteral(titleText)}) Tj`);
+    if (subtitleText) {
+      contentLines.push('0 -18 Td');
+      contentLines.push('/F1 11 Tf');
+      contentLines.push(`(${escapePdfLiteral(subtitleText)}) Tj`);
+    }
+    contentLines.push('ET');
+  }
+
+  for (const path of paths) {
+    const pathCommands = svgPathDataToPdfCommands(path.d, safeHeight);
+    if (!pathCommands) {
+      continue;
+    }
+
+    const fillColor = blendOnWhite(parseCssColor(path.fill));
+    const strokeColor = blendOnWhite(parseCssColor(path.stroke, { r: 66, g: 83, b: 143, a: 1 }));
+    const lineWidth = Number.isFinite(path.lineWidth) ? Math.max(0.1, path.lineWidth) : 1;
+
+    contentLines.push('q');
+    if (fillColor) {
+      contentLines.push(`${pdfRgb(fillColor)} rg`);
+    }
+    if (strokeColor) {
+      contentLines.push(`${pdfRgb(strokeColor)} RG`);
+    }
+    contentLines.push(`${formatPdfNumber(lineWidth)} w`);
+    contentLines.push('1 j');
+    contentLines.push('1 J');
+    contentLines.push(pathCommands);
+    contentLines.push(fillColor && strokeColor ? 'B' : fillColor ? 'f' : 'S');
+    contentLines.push('Q');
+  }
+
+  const content = `${contentLines.join('\n')}\n`;
+  const encoder = new TextEncoder();
+  const contentBytes = encoder.encode(content);
+  const pageObject = [
+    '3 0 obj',
+    `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${formatPdfNumber(safeWidth)} ${formatPdfNumber(safeHeight)}] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>`,
+    'endobj',
+    '',
+  ].join('\n');
+  const contentObject = [
+    '4 0 obj',
+    `<< /Length ${contentBytes.length} >>`,
+    'stream',
+    content,
+    'endstream',
+    'endobj',
+    '',
+  ].join('\n');
+
+  const objects = buildPdfObjects({ pageObject, contentObject }, titleText);
+  const header = '%PDF-1.4\n%\xE2\xE3\xCF\xD3\n';
+  let body = header;
+  let currentOffset = encoder.encode(header).length;
+  const offsets = [0];
+
+  for (const object of objects) {
+    offsets.push(currentOffset);
+    body += object;
+    currentOffset += encoder.encode(object).length;
+  }
+
+  const xrefOffset = currentOffset;
+  const xrefLines = [
+    `xref`,
+    `0 ${objects.length + 1}`,
+    '0000000000 65535 f ',
+    ...offsets.slice(1).map((offset) => `${String(offset).padStart(10, '0')} 00000 n `),
+    'trailer',
+    `<< /Size ${objects.length + 1} /Root 1 0 R /Info 6 0 R >>`,
+    'startxref',
+    String(xrefOffset),
+    '%%EOF',
+    '',
+  ];
+
+  const pdfBytes = encoder.encode(body + xrefLines.join('\n'));
+  return new Blob([pdfBytes], { type: 'application/pdf' });
+}
+
+export const GPKG_CRS_OPTIONS = [
+  {
+    code: 'EPSG:4326',
+    label: 'EPSG:4326 · WGS 84',
+    srsId: 4326,
+    organization: 'EPSG',
+    organizationCoordsysId: 4326,
+    definition: 'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]]',
+    proj4: '+proj=longlat +datum=WGS84 +no_defs +type=crs',
+  },
+  {
+    code: 'EPSG:3857',
+    label: 'EPSG:3857 · Web Mercator',
+    srsId: 3857,
+    organization: 'EPSG',
+    organizationCoordsysId: 3857,
+    definition: 'PROJCS["WGS 84 / Pseudo-Mercator",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Mercator_1SP"],PARAMETER["central_meridian",0],PARAMETER["scale_factor",1],PARAMETER["false_easting",0],PARAMETER["false_northing",0],UNIT["metre",1]]',
+    proj4: '+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs +type=crs',
+  },
+  {
+    code: 'EPSG:32635',
+    label: 'EPSG:32635 · WGS 84 / UTM zone 35N',
+    srsId: 32635,
+    organization: 'EPSG',
+    organizationCoordsysId: 32635,
+    definition: 'PROJCS["WGS 84 / UTM zone 35N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",27],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1]]',
+    proj4: '+proj=utm +zone=35 +datum=WGS84 +units=m +no_defs +type=crs',
+  },
+  {
+    code: 'EPSG:32636',
+    label: 'EPSG:32636 · WGS 84 / UTM zone 36N',
+    srsId: 32636,
+    organization: 'EPSG',
+    organizationCoordsysId: 32636,
+    definition: 'PROJCS["WGS 84 / UTM zone 36N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",33],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1]]',
+    proj4: '+proj=utm +zone=36 +datum=WGS84 +units=m +no_defs +type=crs',
+  },
+  {
+    code: 'EPSG:5254',
+    label: 'EPSG:5254 · Türkiye yerel',
+    srsId: 5254,
+    organization: 'EPSG',
+    organizationCoordsysId: 5254,
+    definition: 'PROJCS["TUREF / TM30",GEOGCS["TUREF",DATUM["Turkish_National_Reference_Frame",SPHEROID["GRS 1980",6378137,298.257222101]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",30],PARAMETER["scale_factor",1],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1]]',
+    proj4: '+proj=tmerc +lat_0=0 +lon_0=30 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0.023,0.036,-0.068,0.00176,0.00912,-0.01136,0.00439 +units=m +no_defs +type=crs',
+  },
+];
+
+const GPKG_CRS_BY_CODE = new Map(GPKG_CRS_OPTIONS.map((item) => [item.code, item]));
+
+function getGpkgCrsDefinition(code) {
+  return GPKG_CRS_BY_CODE.get(code) || GPKG_CRS_BY_CODE.get('EPSG:4326');
+}
+
+function ensureProjDefinition(proj4Api, crsCode) {
+  const definition = getGpkgCrsDefinition(crsCode);
+  if (!definition || !proj4Api?.defs) {
+    return;
+  }
+  if (!proj4Api.defs(crsCode)) {
+    proj4Api.defs(crsCode, definition.proj4);
+  }
+}
+
+function transformCoordinateArray(coordinates, sourceCrs, targetCrs, proj4Api) {
+  if (!Array.isArray(coordinates)) {
+    return coordinates;
+  }
+
+  if (typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number') {
+    return proj4Api(sourceCrs, targetCrs, [coordinates[0], coordinates[1]]);
+  }
+
+  return coordinates.map((item) => transformCoordinateArray(item, sourceCrs, targetCrs, proj4Api));
+}
+
+function transformGeometryToCrs(geometry, targetCrs, proj4Api) {
+  if (!geometry || targetCrs === 'EPSG:4326') {
+    return geometry;
+  }
+  if (!proj4Api) {
+    throw new Error(`CRS dönüşümü için proj4 yüklenemedi: ${targetCrs}`);
+  }
+
+  ensureProjDefinition(proj4Api, 'EPSG:4326');
+  ensureProjDefinition(proj4Api, targetCrs);
+
+  return {
+    ...geometry,
+    coordinates: transformCoordinateArray(geometry.coordinates, 'EPSG:4326', targetCrs, proj4Api),
+  };
+}
+
+function geometryToMultiPolygon(geometry) {
+  if (!geometry) {
+    return geometry;
+  }
+  if (geometry.type === 'MultiPolygon') {
+    return geometry;
+  }
+  if (geometry.type === 'Polygon') {
+    return {
+      type: 'MultiPolygon',
+      coordinates: [geometry.coordinates],
+    };
+  }
+  return geometry;
+}
+
+function normalizePolygonalGeometry(geometry, mode = 'auto') {
+  if (!geometry) {
+    return geometry;
+  }
+
+  if (mode === 'auto') {
+    return geometry;
+  }
+
+  if (mode === 'multiPolygon') {
+    return geometryToMultiPolygon(geometry);
+  }
+
+  if (mode === 'polygon') {
+    if (geometry.type === 'Polygon') {
+      return geometry;
+    }
+    if (geometry.type === 'MultiPolygon' && geometry.coordinates.length === 1) {
+      return {
+        type: 'Polygon',
+        coordinates: geometry.coordinates[0],
+      };
+    }
+    throw new Error('Polygon geometri tipi seçildi ama görünür veri çok parçalı MultiPolygon içeriyor.');
+  }
+
+  return geometry;
+}
+
+function inferSqlType(rows, key) {
+  for (const row of rows) {
+    const value = row[key];
+    if (value === null || value === undefined || value === '') {
+      continue;
+    }
+    if (typeof value === 'boolean' || Number.isInteger(value)) return 'INTEGER';
+    if (typeof value === 'number') return 'REAL';
+    return 'TEXT';
+  }
+  return 'TEXT';
+}
+
+function normalizeGpkgValue(value) {
+  if (value === null || value === undefined || value === '') return null;
+  if (typeof value === 'boolean') return value ? 1 : 0;
+  if (typeof value === 'number' || typeof value === 'string') return value;
+  return JSON.stringify(value);
+}
+
+function writeUint32Little(bytes, offset, value) {
+  bytes[offset] = value & 0xFF;
+  bytes[offset + 1] = (value >>> 8) & 0xFF;
+  bytes[offset + 2] = (value >>> 16) & 0xFF;
+  bytes[offset + 3] = (value >>> 24) & 0xFF;
+}
+
+function writeFloat64Little(bytes, offset, value) {
+  const view = new DataView(new ArrayBuffer(8));
+  view.setFloat64(0, value, true);
+  for (let index = 0; index < 8; index += 1) {
+    bytes[offset + index] = view.getUint8(index);
+  }
+}
+
+function packPointBytes(point) {
+  const bytes = new Uint8Array(16);
+  writeFloat64Little(bytes, 0, point[0]);
+  writeFloat64Little(bytes, 8, point[1]);
+  return bytes;
+}
+
+function concatBytes(parts) {
+  const total = parts.reduce((sum, part) => sum + part.length, 0);
+  const result = new Uint8Array(total);
+  let offset = 0;
+  for (const part of parts) {
+    result.set(part, offset);
+    offset += part.length;
+  }
+  return result;
+}
+
+function polygonToWkbBytes(geometry) {
+  const rings = geometry.coordinates;
+  const parts = [];
+  const header = new Uint8Array(5);
+  header[0] = 1;
+  writeUint32Little(header, 1, 3);
+  parts.push(header);
+
+  const ringCount = new Uint8Array(4);
+  writeUint32Little(ringCount, 0, rings.length);
+  parts.push(ringCount);
+
+  for (const ring of rings) {
+    const ringHeader = new Uint8Array(4);
+    writeUint32Little(ringHeader, 0, ring.length);
+    parts.push(ringHeader);
+    parts.push(...ring.map(packPointBytes));
+  }
+
+  return concatBytes(parts);
+}
+
+function multiPolygonToWkbBytes(geometry) {
+  const polygons = geometry.coordinates;
+  const parts = [];
+  const header = new Uint8Array(5);
+  header[0] = 1;
+  writeUint32Little(header, 1, 6);
+  parts.push(header);
+
+  const polygonCount = new Uint8Array(4);
+  writeUint32Little(polygonCount, 0, polygons.length);
+  parts.push(polygonCount);
+
+  for (const polygon of polygons) {
+    parts.push(polygonToWkbBytes({ type: 'Polygon', coordinates: polygon }));
+  }
+
+  return concatBytes(parts);
+}
+
+function geometryToWkbBytes(geometry) {
+  if (geometry.type === 'Polygon') {
+    return polygonToWkbBytes(geometry);
+  }
+  if (geometry.type === 'MultiPolygon') {
+    return multiPolygonToWkbBytes(geometry);
+  }
+  throw new Error(`Unsupported GeoPackage geometry type: ${geometry.type}`);
+}
+
+function geometryToGpkgBlob(geometry, srsId) {
+  const header = new Uint8Array(8);
+  header[0] = 0x47;
+  header[1] = 0x50;
+  header[2] = 0;
+  header[3] = 1;
+  writeUint32Little(header, 4, srsId);
+  return concatBytes([header, geometryToWkbBytes(geometry)]);
+}
+
+function geometryTypeNameForFeatures(features) {
+  return features.some((feature) => feature.geometry.type === 'MultiPolygon') ? 'MULTIPOLYGON' : 'POLYGON';
+}
+
+function featuresBbox(features) {
+  const bbox = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const feature of features) {
+    const geomBbox = geometryBbox(feature.geometry);
+    if (!geomBbox) continue;
+    bbox[0] = Math.min(bbox[0], geomBbox[0]);
+    bbox[1] = Math.min(bbox[1], geomBbox[1]);
+    bbox[2] = Math.max(bbox[2], geomBbox[2]);
+    bbox[3] = Math.max(bbox[3], geomBbox[3]);
+  }
+  return bbox.every(Number.isFinite) ? bbox : null;
+}
+
+async function loadSqlJsModule(initSqlJsFn) {
+  if (!initSqlJsFn) {
+    throw new Error('GeoPackage üretimi için sql.js yüklenemedi.');
+  }
+
+  if (!globalThis.__turkiyeMapSqlJsPromise) {
+    globalThis.__turkiyeMapSqlJsPromise = initSqlJsFn({
+      locateFile: (file) => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/${file}`,
+    });
+  }
+
+  return globalThis.__turkiyeMapSqlJsPromise;
+}
+
+export async function buildGeoPackageBlob(
+  features,
+  metadataItems,
+  layerName,
+  {
+    selectedFields = [],
+    crs = 'EPSG:4326',
+    geometryMode = 'auto',
+    initSqlJsFn = globalThis.initSqlJs,
+    proj4Api = globalThis.proj4,
+  } = {},
+) {
+  const crsDef = getGpkgCrsDefinition(crs);
+  const visibleFeatures = features.map((feature) => ({
+    ...feature,
+    geometry: normalizePolygonalGeometry(
+      transformGeometryToCrs(feature.geometry, crs, proj4Api),
+      geometryMode,
+    ),
+  }));
+  const featureById = new Map(visibleFeatures.map((feature) => [feature.properties.id, feature]));
+  const missingIds = metadataItems.filter((item) => !featureById.has(item.id)).map((item) => item.id);
+  if (missingIds.length > 0) {
+    throw new Error(`GeoPackage üretilemedi; geometri bulunamayan kayıtlar var: ${missingIds.slice(0, 10).join(', ')}`);
+  }
+
+  const transformedGeometryById = new Map(visibleFeatures.map((feature) => [feature.properties.id, feature.geometry]));
+  const normalizedItems = metadataItems.map((item) => ({
+    ...item,
+    bbox: null,
+    centroid: null,
+  }));
+  const rows = buildTabularRows(normalizedItems, transformedGeometryById)
+    .map((row) => ({ ...row, coordinate_system: crs }));
+  const finalFields = selectedFields.length > 0 ? selectedFields.filter((field) => field !== 'geometry_wkt') : ['id', 'name'];
+  const tableRows = rows.map((row) => pickFields(row, finalFields));
+  const geometryTypeName = geometryTypeNameForFeatures(visibleFeatures);
+  const bbox = featuresBbox(visibleFeatures);
+
+  const SQL = await loadSqlJsModule(initSqlJsFn);
+  const db = new SQL.Database();
+
+  db.exec(`
+    PRAGMA application_id = 1196444487;
+    PRAGMA user_version = 10300;
+    CREATE TABLE gpkg_spatial_ref_sys (
+      srs_name TEXT NOT NULL,
+      srs_id INTEGER NOT NULL PRIMARY KEY,
+      organization TEXT NOT NULL,
+      organization_coordsys_id INTEGER NOT NULL,
+      definition TEXT NOT NULL,
+      description TEXT
+    );
+    CREATE TABLE gpkg_contents (
+      table_name TEXT NOT NULL PRIMARY KEY,
+      data_type TEXT NOT NULL,
+      identifier TEXT UNIQUE,
+      description TEXT DEFAULT '',
+      last_change DATETIME NOT NULL,
+      min_x DOUBLE,
+      min_y DOUBLE,
+      max_x DOUBLE,
+      max_y DOUBLE,
+      srs_id INTEGER
+    );
+    CREATE TABLE gpkg_geometry_columns (
+      table_name TEXT NOT NULL,
+      column_name TEXT NOT NULL,
+      geometry_type_name TEXT NOT NULL,
+      srs_id INTEGER NOT NULL,
+      z TINYINT NOT NULL,
+      m TINYINT NOT NULL,
+      PRIMARY KEY (table_name, column_name)
+    );
+  `);
+
+  db.run(
+    'INSERT INTO gpkg_spatial_ref_sys (srs_name, srs_id, organization, organization_coordsys_id, definition, description) VALUES (?, ?, ?, ?, ?, ?)',
+    [
+      crsDef.label,
+      crsDef.srsId,
+      crsDef.organization,
+      crsDef.organizationCoordsysId,
+      crsDef.definition,
+      `Export CRS ${crsDef.code}`,
+    ],
+  );
+
+  const columns = tableRows.length > 0 ? Object.keys(tableRows[0]) : ['id', 'name'];
+  const columnDefinitions = columns.map((column) => `${quoteSqlIdentifier(column)} ${inferSqlType(tableRows, column)}`);
+  db.exec(`CREATE TABLE ${quoteSqlIdentifier(layerName)} (fid INTEGER PRIMARY KEY AUTOINCREMENT, geom BLOB NOT NULL, ${columnDefinitions.join(', ')})`);
+
+  const insertColumns = ['geom', ...columns];
+  const placeholders = insertColumns.map(() => '?').join(', ');
+  const insertStatement = db.prepare(
+    `INSERT INTO ${quoteSqlIdentifier(layerName)} (${insertColumns.map(quoteSqlIdentifier).join(', ')}) VALUES (${placeholders})`,
+  );
+
+  for (let index = 0; index < tableRows.length; index += 1) {
+    const row = tableRows[index];
+    const feature = featureById.get(rows[index].id);
+    insertStatement.run([
+      geometryToGpkgBlob(feature.geometry, crsDef.srsId),
+      ...columns.map((column) => normalizeGpkgValue(row[column])),
+    ]);
+  }
+  insertStatement.free();
+
+  const now = new Date().toISOString().replace(/\.\d{3}Z$/, '.000Z');
+  db.run(
+    `INSERT INTO gpkg_contents (table_name, data_type, identifier, description, last_change, min_x, min_y, max_x, max_y, srs_id)
+     VALUES (?, 'features', ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      layerName,
+      layerName,
+      `${layerName} export`,
+      now,
+      bbox?.[0] ?? null,
+      bbox?.[1] ?? null,
+      bbox?.[2] ?? null,
+      bbox?.[3] ?? null,
+      crsDef.srsId,
+    ],
+  );
+  db.run(
+    'INSERT INTO gpkg_geometry_columns (table_name, column_name, geometry_type_name, srs_id, z, m) VALUES (?, ?, ?, ?, 0, 0)',
+    [layerName, 'geom', geometryTypeName, crsDef.srsId],
+  );
+
+  const bytes = db.export();
+  db.close();
+
+  return new Blob([bytes], {
+    type: 'application/geopackage+sqlite3',
+  });
 }
 
 // --- Shapefile browser writer ---

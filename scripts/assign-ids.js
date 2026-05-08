@@ -30,8 +30,8 @@ export function createCrosswalkIndex(rows) {
   const byId = new Map();
 
   for (const row of rows) {
-    if (row.source_hdx_id) {
-      bySourceHdxId.set(row.source_hdx_id, row);
+    if (row.hdx_id) {
+      bySourceHdxId.set(row.hdx_id, row);
     }
     if (row.id) {
       byId.set(row.id, row);
@@ -47,13 +47,13 @@ export function mergeAliases(baseAliases, incomingAliases) {
 
 export function createOverrideIndex(payload) {
   return {
-    province: new Map((payload?.province_overrides || []).map((row) => [row.source_hdx_id, row])),
-    district: new Map((payload?.district_overrides || []).map((row) => [row.source_hdx_id, row])),
+    province: new Map((payload?.province_overrides || []).map((row) => [row.hdx_id, row])),
+    district: new Map((payload?.district_overrides || []).map((row) => [row.hdx_id, row])),
   };
 }
 
 export function applyDisplayOverride(item, overrideIndex, level) {
-  const override = overrideIndex[level].get(item.source_hdx_id);
+  const override = overrideIndex[level].get(item.hdx_id);
 
   if (!override || !override.name) {
     return item;
@@ -99,14 +99,14 @@ export function applyDistrictCrosswalk(record, crosswalk) {
 
 export function findCrosswalk(record, crosswalkIndex) {
   return (
-    crosswalkIndex.bySourceHdxId.get(record.source_hdx_id) ||
+    crosswalkIndex.bySourceHdxId.get(record.hdx_id) ||
     crosswalkIndex.byId.get(record.id) ||
     null
   );
 }
 
 export function provinceRecord(item) {
-  const plateCode = plateCodeFromHdxPcode(item.source_hdx_id);
+  const plateCode = plateCodeFromHdxPcode(item.hdx_id);
   return {
     id: provinceIdFromPlate(plateCode),
     level: 'province',
@@ -124,7 +124,7 @@ export function provinceRecord(item) {
     tuik_id: null,
     icisleri_id: null,
     osm_relation_id: null,
-    source_hdx_id: item.source_hdx_id,
+    hdx_id: item.hdx_id,
     centroid: item.centroid,
     bbox: item.bbox,
   };
@@ -159,12 +159,12 @@ export function applyMunicipalityType(record, municipalityTypeIndex) {
 }
 
 export function districtRecord(item, provinceMap) {
-  const parentProvince = provinceMap.get(item.source_parent_hdx_id);
+  const parentProvince = provinceMap.get(item.parent_hdx_id);
   if (!parentProvince) {
-    throw new Error(`Missing parent province for district ${item.source_hdx_id}`);
+    throw new Error(`Missing parent province for district ${item.hdx_id}`);
   }
 
-  const districtLocalCode = districtCodeFromHdxPcode(item.source_hdx_id);
+  const districtLocalCode = districtCodeFromHdxPcode(item.hdx_id);
 
   return {
     id: districtIdFromParts(parentProvince.plate_code, districtLocalCode),
@@ -183,7 +183,7 @@ export function districtRecord(item, provinceMap) {
     tuik_id: null,
     icisleri_id: null,
     osm_relation_id: null,
-    source_hdx_id: item.source_hdx_id,
+    hdx_id: item.hdx_id,
     centroid: item.centroid,
     bbox: item.bbox,
   };
@@ -194,9 +194,9 @@ export function withGeometryProperties(collection, metadataMap) {
     type: 'FeatureCollection',
     name: collection.name.replace('normalized', 'processed'),
     features: collection.features.map((feature) => {
-      const metadata = metadataMap.get(feature.properties.source_hdx_id);
+      const metadata = metadataMap.get(feature.properties.hdx_id);
       if (!metadata) {
-        throw new Error(`Missing metadata for geometry feature ${feature.properties.source_hdx_id}`);
+        throw new Error(`Missing metadata for geometry feature ${feature.properties.hdx_id}`);
       }
 
       return {
@@ -278,14 +278,14 @@ export function createRegionIndex(reference) {
 
   for (const row of reference.province_membership || []) {
     byProvinceId.set(row.id, row);
-    byProvinceSourceHdxId.set(row.source_hdx_id, row);
+    byProvinceSourceHdxId.set(row.hdx_id, row);
   }
 
   return { byProvinceId, byProvinceSourceHdxId };
 }
 
 export function applyRegionMembershipToProvince(record, regionIndex) {
-  const membership = regionIndex.byProvinceId.get(record.id) || regionIndex.byProvinceSourceHdxId.get(record.source_hdx_id);
+  const membership = regionIndex.byProvinceId.get(record.id) || regionIndex.byProvinceSourceHdxId.get(record.hdx_id);
   if (!membership) {
     throw new Error(`Missing region membership for province ${record.id}`);
   }
@@ -338,7 +338,7 @@ export function createRegionRecords(reference, provinces, provinceGeometryCollec
         aliases: [],
         region_kind: region.region_kind,
         member_ids: region.member_ids,
-        source_hdx_id: `GEOGRAPHIC7:${region.id}`,
+        hdx_id: `GEOGRAPHIC7:${region.id}`,
         centroid: {
           lat: centroid.lat / memberProvinces.length,
           lon: centroid.lon / memberProvinces.length,
@@ -409,7 +409,7 @@ export function main() {
       .map((record) => applyProvinceCrosswalk(record, findCrosswalk(record, provinceCrosswalkIndex))),
     (a, b) => a.id.localeCompare(b.id),
   );
-  const provinceMap = new Map(provinces.map((item) => [item.source_hdx_id, item]));
+  const provinceMap = new Map(provinces.map((item) => [item.hdx_id, item]));
 
   const districts = sortedCopy(
     districtPartial
@@ -419,8 +419,8 @@ export function main() {
     (a, b) => a.id.localeCompare(b.id),
   );
 
-  const provinceMetadataMap = new Map(provinces.map((item) => [item.source_hdx_id, item]));
-  const districtMetadataMap = new Map(districts.map((item) => [item.source_hdx_id, item]));
+  const provinceMetadataMap = new Map(provinces.map((item) => [item.hdx_id, item]));
+  const districtMetadataMap = new Map(districts.map((item) => [item.hdx_id, item]));
   const processedProvinceGeometry = withGeometryProperties(provinceGeometry, provinceMetadataMap);
   const regions = createRegionRecords(regionReference, provinces, processedProvinceGeometry);
   const regionGeometry = createRegionGeometryCollection(regions, regionReference, processedProvinceGeometry);

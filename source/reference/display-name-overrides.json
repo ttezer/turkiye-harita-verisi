@@ -1,138 +1,1273 @@
 {
   "source": "UAB ilce-listesi.xlsx validation-only display name overrides",
-  "generated_at": "2026-04-22T21:10:41.985226+00:00",
+  "generated_at": "2026-05-07T13:02:32.474476+00:00",
   "stats": {
     "uab_rows": 1052,
-    "province_overrides": 0,
-    "district_overrides": 21
+    "province_overrides": 14,
+    "district_overrides": 196
   },
-  "province_overrides": [],
+  "province_overrides": [
+    {
+      "hdx_id": "TUR002",
+      "plate_code": "02",
+      "name": "Adıyaman",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR004",
+      "plate_code": "04",
+      "name": "Ağrı",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR009",
+      "plate_code": "09",
+      "name": "Aydın",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR010",
+      "plate_code": "10",
+      "name": "Balıkesir",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR074",
+      "plate_code": "74",
+      "name": "Bartın",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR018",
+      "plate_code": "18",
+      "name": "Çankırı",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR021",
+      "plate_code": "21",
+      "name": "Diyarbakır",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR023",
+      "plate_code": "23",
+      "name": "Elazığ",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR076",
+      "plate_code": "76",
+      "name": "Iğdır",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR071",
+      "plate_code": "71",
+      "name": "Kırıkkale",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR039",
+      "plate_code": "39",
+      "name": "Kırklareli",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR040",
+      "plate_code": "40",
+      "name": "Kırşehir",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR063",
+      "plate_code": "63",
+      "name": "Şanlıurfa",
+      "source": "uab_validation_only_exact_province_code"
+    },
+    {
+      "hdx_id": "TUR073",
+      "plate_code": "73",
+      "name": "Şırnak",
+      "source": "uab_validation_only_exact_province_code"
+    }
+  ],
   "district_overrides": [
     {
-      "source_hdx_id": "TUR001006",
+      "hdx_id": "TUR001006",
       "plate_code": "01",
       "name": "Karaisalı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR002008",
-      "plate_code": "02",
-      "name": "Sincik",
+      "hdx_id": "TUR001009",
+      "plate_code": "01",
+      "name": "Pozantı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR006020",
+      "hdx_id": "TUR001011",
+      "plate_code": "01",
+      "name": "Sarıçam",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR001014",
+      "plate_code": "01",
+      "name": "Yumurtalık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR002005",
+      "plate_code": "02",
+      "name": "Gölbaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR003002",
+      "plate_code": "03",
+      "name": "Başmakçı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR003007",
+      "plate_code": "03",
+      "name": "Dazkırı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR003014",
+      "plate_code": "03",
+      "name": "Kızılören",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR003015",
+      "plate_code": "03",
+      "name": "Sandıklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR003017",
+      "plate_code": "03",
+      "name": "Sultandağı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR004003",
+      "plate_code": "04",
+      "name": "Doğubayazıt",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR004007",
+      "plate_code": "04",
+      "name": "Taşlıçay",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR005003",
+      "plate_code": "05",
+      "name": "Gümüşhacıköy",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006002",
+      "plate_code": "06",
+      "name": "Altındağ",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006005",
+      "plate_code": "06",
+      "name": "Beypazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006006",
+      "plate_code": "06",
+      "name": "Çamlıdere",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006012",
+      "plate_code": "06",
+      "name": "Gölbaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006018",
+      "plate_code": "06",
+      "name": "Kızılcahamam",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR006020",
       "plate_code": "06",
       "name": "Nallıhan",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR007010",
+      "hdx_id": "TUR006021",
+      "plate_code": "06",
+      "name": "Polatlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR007005",
+      "plate_code": "07",
+      "name": "Döşemealtı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR007006",
+      "plate_code": "07",
+      "name": "Elmalı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR007010",
       "plate_code": "07",
       "name": "İbradı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR012005",
+      "hdx_id": "TUR007014",
+      "plate_code": "07",
+      "name": "Konyaaltı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR009010",
+      "plate_code": "09",
+      "name": "Koçarlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR009012",
+      "plate_code": "09",
+      "name": "Kuşadası",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR010001",
+      "plate_code": "10",
+      "name": "Altıeylül",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR010002",
+      "plate_code": "10",
+      "name": "Ayvalık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR010004",
+      "plate_code": "10",
+      "name": "Bandırma",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR010019",
+      "plate_code": "10",
+      "name": "Sındırgı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR011003",
+      "plate_code": "11",
+      "name": "Gölpazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR012001",
+      "plate_code": "12",
+      "name": "Adaklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR012004",
+      "plate_code": "12",
+      "name": "Karlıova",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR012005",
       "plate_code": "12",
       "name": "Kiğı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR023004",
-      "plate_code": "23",
-      "name": "Baskil",
+      "hdx_id": "TUR014005",
+      "plate_code": "14",
+      "name": "Kıbrıscık",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR025004",
+      "hdx_id": "TUR015002",
+      "plate_code": "15",
+      "name": "Altınyayla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR015005",
+      "plate_code": "15",
+      "name": "Çavdır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR015008",
+      "plate_code": "15",
+      "name": "Karamanlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR016004",
+      "plate_code": "16",
+      "name": "Harmancık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR016017",
+      "plate_code": "16",
+      "name": "Yıldırım",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR017001",
+      "plate_code": "17",
+      "name": "Ayvacık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR018007",
+      "plate_code": "18",
+      "name": "Kızılırmak",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR018012",
+      "plate_code": "18",
+      "name": "Yapraklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR019007",
+      "plate_code": "19",
+      "name": "Kargı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR019012",
+      "plate_code": "19",
+      "name": "Osmancık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR020001",
+      "plate_code": "20",
+      "name": "Acıpayam",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR021004",
+      "plate_code": "21",
+      "name": "Çınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR021011",
+      "plate_code": "21",
+      "name": "Kayapınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR023001",
+      "plate_code": "23",
+      "name": "Ağın",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR023003",
+      "plate_code": "23",
+      "name": "Arıcak",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR023008",
+      "plate_code": "23",
+      "name": "Kovancılar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR024001",
+      "plate_code": "24",
+      "name": "Çayırlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR025004",
       "plate_code": "25",
       "name": "Hınıs",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR033003",
+      "hdx_id": "TUR025008",
+      "plate_code": "25",
+      "name": "Karayazı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR026009",
+      "plate_code": "26",
+      "name": "Mihalıççık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR026010",
+      "plate_code": "26",
+      "name": "Odunpazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR026011",
+      "plate_code": "26",
+      "name": "Sarıcakaya",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR026014",
+      "plate_code": "26",
+      "name": "Tepebaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR027003",
+      "plate_code": "27",
+      "name": "Karkamış",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR027005",
+      "plate_code": "27",
+      "name": "Nurdağı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR028004",
+      "plate_code": "28",
+      "name": "Çanakçı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR028016",
+      "plate_code": "28",
+      "name": "Yağlıdere",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR031001",
+      "plate_code": "31",
+      "name": "Altınözü",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR031010",
+      "plate_code": "31",
+      "name": "Kırıkhan",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR031013",
+      "plate_code": "31",
+      "name": "Reyhanlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR031015",
+      "plate_code": "31",
+      "name": "Yayladağı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR033003",
       "plate_code": "33",
       "name": "Aydıncık",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR037016",
+      "hdx_id": "TUR033004",
+      "plate_code": "33",
+      "name": "Bozyazı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR033005",
+      "plate_code": "33",
+      "name": "Çamlıyayla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034004",
+      "plate_code": "34",
+      "name": "Avcılar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034005",
+      "plate_code": "34",
+      "name": "Bağcılar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034007",
+      "plate_code": "34",
+      "name": "Bakırköy",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034023",
+      "plate_code": "34",
+      "name": "Kadıköy",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034024",
+      "plate_code": "34",
+      "name": "Kağıthane",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR034030",
+      "plate_code": "34",
+      "name": "Sarıyer",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035003",
+      "plate_code": "35",
+      "name": "Bayındır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035004",
+      "plate_code": "35",
+      "name": "Bayraklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035017",
+      "plate_code": "35",
+      "name": "Karşıyaka",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035019",
+      "plate_code": "35",
+      "name": "Kınık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035024",
+      "plate_code": "35",
+      "name": "Narlıdere",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR035029",
+      "plate_code": "35",
+      "name": "Torbalı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR036004",
+      "plate_code": "36",
+      "name": "Kağızman",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR036006",
+      "plate_code": "36",
+      "name": "Sarıkamış",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR037002",
+      "plate_code": "37",
+      "name": "Ağlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR037016",
       "plate_code": "37",
       "name": "Pınarbaşı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR038010",
+      "hdx_id": "TUR038001",
+      "plate_code": "38",
+      "name": "Akkışla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR038005",
+      "plate_code": "38",
+      "name": "Hacılar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR038010",
       "plate_code": "38",
       "name": "Pınarbaşı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR039007",
+      "hdx_id": "TUR038011",
+      "plate_code": "38",
+      "name": "Sarıoğlan",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR038012",
+      "plate_code": "38",
+      "name": "Sarız",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR038015",
+      "plate_code": "38",
+      "name": "Yahyalı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR039007",
       "plate_code": "39",
       "name": "Pınarhisar",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR050005",
+      "hdx_id": "TUR040002",
+      "plate_code": "40",
+      "name": "Akpınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR040004",
+      "plate_code": "40",
+      "name": "Çiçekdağı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR041002",
+      "plate_code": "41",
+      "name": "Çayırova",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR041003",
+      "plate_code": "41",
+      "name": "Darıca",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR041005",
+      "plate_code": "41",
+      "name": "Dilovası",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR041009",
+      "plate_code": "41",
+      "name": "Kandıra",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042001",
+      "plate_code": "42",
+      "name": "Ahırlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042004",
+      "plate_code": "42",
+      "name": "Altınekin",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042006",
+      "plate_code": "42",
+      "name": "Bozkır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042015",
+      "plate_code": "42",
+      "name": "Güneysınır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042017",
+      "plate_code": "42",
+      "name": "Halkapınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042019",
+      "plate_code": "42",
+      "name": "Ilgın",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042020",
+      "plate_code": "42",
+      "name": "Kadınhanı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042021",
+      "plate_code": "42",
+      "name": "Karapınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR042030",
+      "plate_code": "42",
+      "name": "Yalıhüyük",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR043001",
+      "plate_code": "43",
+      "name": "Altıntaş",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR043005",
+      "plate_code": "43",
+      "name": "Dumlupınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR043008",
+      "plate_code": "43",
+      "name": "Hisarcık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR043013",
+      "plate_code": "43",
+      "name": "Tavşanlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR044012",
+      "plate_code": "44",
+      "name": "Yazıhan",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR045007",
+      "plate_code": "45",
+      "name": "Kırkağaç",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR045008",
+      "plate_code": "45",
+      "name": "Köprübaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR045011",
+      "plate_code": "45",
+      "name": "Sarıgöl",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR045012",
+      "plate_code": "45",
+      "name": "Saruhanlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR046002",
+      "plate_code": "46",
+      "name": "Andırın",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR046010",
+      "plate_code": "46",
+      "name": "Pazarcık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR047004",
+      "plate_code": "47",
+      "name": "Kızıltepe",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR047005",
+      "plate_code": "47",
+      "name": "Mazıdağı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR048005",
+      "plate_code": "48",
+      "name": "Kavaklıdere",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR049001",
+      "plate_code": "49",
+      "name": "Bulanık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR050001",
+      "plate_code": "50",
+      "name": "Acıgöl",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR050005",
       "plate_code": "50",
       "name": "Hacıbektaş",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR052009",
+      "hdx_id": "TUR050006",
+      "plate_code": "50",
+      "name": "Kozaklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR051003",
+      "plate_code": "51",
+      "name": "Çamardı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR051006",
+      "plate_code": "51",
+      "name": "Ulukışla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR052002",
+      "plate_code": "52",
+      "name": "Altınordu",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR052003",
+      "plate_code": "52",
+      "name": "Aybastı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR052005",
+      "plate_code": "52",
+      "name": "Çatalpınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR052006",
+      "plate_code": "52",
+      "name": "Çaybaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR052009",
       "plate_code": "52",
       "name": "Gülyalı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR053002",
+      "hdx_id": "TUR053002",
       "plate_code": "53",
       "name": "Çamlıhemşin",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR058001",
+      "hdx_id": "TUR053004",
+      "plate_code": "53",
+      "name": "Derepazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR053005",
+      "plate_code": "53",
+      "name": "Fındıklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR054001",
+      "plate_code": "54",
+      "name": "Adapazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR054002",
+      "plate_code": "54",
+      "name": "Akyazı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR054016",
+      "plate_code": "54",
+      "name": "Taraklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR055001",
+      "plate_code": "55",
+      "name": "19 Mayıs",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR055003",
+      "plate_code": "55",
+      "name": "Asarcık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR055005",
+      "plate_code": "55",
+      "name": "Ayvacık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR055010",
+      "plate_code": "55",
+      "name": "İlkadım",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR055013",
+      "plate_code": "55",
+      "name": "Salıpazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR057001",
+      "plate_code": "57",
+      "name": "Ayancık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR058001",
       "plate_code": "58",
       "name": "Akıncılar",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR061017",
+      "hdx_id": "TUR058002",
+      "plate_code": "58",
+      "name": "Altınyayla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR058009",
+      "plate_code": "58",
+      "name": "İmranlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR058014",
+      "plate_code": "58",
+      "name": "Şarkışla",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR058016",
+      "plate_code": "58",
+      "name": "Yıldızeli",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR059005",
+      "plate_code": "59",
+      "name": "Kapaklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR059008",
+      "plate_code": "59",
+      "name": "Muratlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061002",
+      "plate_code": "61",
+      "name": "Araklı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061005",
+      "plate_code": "61",
+      "name": "Çarşıbaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061007",
+      "plate_code": "61",
+      "name": "Dernekpazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061010",
+      "plate_code": "61",
+      "name": "Köprübaşı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061015",
+      "plate_code": "61",
+      "name": "Şalpazarı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR061017",
       "plate_code": "61",
       "name": "Vakfıkebir",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR062004",
+      "hdx_id": "TUR062004",
       "plate_code": "62",
       "name": "Nazımiye",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR064003",
+      "hdx_id": "TUR062005",
+      "plate_code": "62",
+      "name": "Ovacık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR063004",
+      "plate_code": "63",
+      "name": "Ceylanpınar",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR064003",
       "plate_code": "64",
       "name": "Karahallı",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR065008",
+      "hdx_id": "TUR064004",
+      "plate_code": "64",
+      "name": "Sivaslı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR065003",
+      "plate_code": "65",
+      "name": "Çaldıran",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR065008",
       "plate_code": "65",
       "name": "Gürpınar",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR068007",
+      "hdx_id": "TUR066002",
+      "plate_code": "66",
+      "name": "Aydıncık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066003",
+      "plate_code": "66",
+      "name": "Boğazlıyan",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066004",
+      "plate_code": "66",
+      "name": "Çandır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066005",
+      "plate_code": "66",
+      "name": "Çayıralan",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066007",
+      "plate_code": "66",
+      "name": "Kadışehri",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066009",
+      "plate_code": "66",
+      "name": "Sarıkaya",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR066012",
+      "plate_code": "66",
+      "name": "Yenifakılı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR067001",
+      "plate_code": "67",
+      "name": "Alaplı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR068007",
       "plate_code": "68",
       "name": "Sarıyahşi",
       "source": "uab_validation_only_exact_name_match"
     },
     {
-      "source_hdx_id": "TUR068008",
+      "hdx_id": "TUR068008",
       "plate_code": "68",
       "name": "Sultanhanı",
       "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR069001",
+      "plate_code": "69",
+      "name": "Aydıntepe",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR070001",
+      "plate_code": "70",
+      "name": "Ayrancı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR070005",
+      "plate_code": "70",
+      "name": "Kazımkarabekir",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR070006",
+      "plate_code": "70",
+      "name": "Sarıveliler",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR071002",
+      "plate_code": "71",
+      "name": "Balışeyh",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR075002",
+      "plate_code": "75",
+      "name": "Çıldır",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR076001",
+      "plate_code": "76",
+      "name": "Aralık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR077001",
+      "plate_code": "77",
+      "name": "Altınova",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR077004",
+      "plate_code": "77",
+      "name": "Çınarcık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR078004",
+      "plate_code": "78",
+      "name": "Ovacık",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR081007",
+      "plate_code": "81",
+      "name": "Kaynaşlı",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR081008",
+      "plate_code": "81",
+      "name": "Yığılca",
+      "source": "uab_validation_only_exact_name_match"
+    },
+    {
+      "hdx_id": "TUR002001",
+      "plate_code": "02",
+      "name": "Adıyaman",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR004001",
+      "plate_code": "04",
+      "name": "Ağrı",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR018003",
+      "plate_code": "18",
+      "name": "Çankırı",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR023005",
+      "plate_code": "23",
+      "name": "Elazığ",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR039003",
+      "plate_code": "39",
+      "name": "Kırklareli",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR040006",
+      "plate_code": "40",
+      "name": "Kırşehir",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR071007",
+      "plate_code": "71",
+      "name": "Kırıkkale",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR073006",
+      "plate_code": "73",
+      "name": "Şırnak",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR074002",
+      "plate_code": "74",
+      "name": "Bartın",
+      "source": "derived_from_parent_province_display_name"
+    },
+    {
+      "hdx_id": "TUR076002",
+      "plate_code": "76",
+      "name": "Iğdır",
+      "source": "derived_from_parent_province_display_name"
     }
   ]
 }

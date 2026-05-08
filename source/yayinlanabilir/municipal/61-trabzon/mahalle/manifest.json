@@ -1,0 +1,32 @@
+{
+  "dataset_id": "trabzon-mahalle-sinirlari",
+  "source_role": "municipal_settlement_geometry",
+  "scope": "province",
+  "country": "TR",
+  "province_code": 61,
+  "province_name": "Trabzon",
+  "admin_levels": ["settlement"],
+  "source_name": "Trabzon Buyuksehir Belediyesi Acik Veri Portali - Adrese Dayali Mahalle Sinirlari",
+  "source_url": "https://acikveri.trabzon.bel.tr/dataset/adrese-dayali-mahalle-sinirlari/resource/1957c719-5c32-4bf9-874d-e9769c2d0ef9",
+  "resource_url": "https://acikveri.trabzon.bel.tr/dataset/85e19bec-3d71-4531-96ee-0fca5f6a3f87/resource/1957c719-5c32-4bf9-874d-e9769c2d0ef9/download/mahalle.geojson",
+  "accessed_at": "2026-04-24",
+  "retrieval_method": "direct_resource_download",
+  "license_name": "Veri Portali kaynak lisansi kontrol edilmeli",
+  "license_id": "review-required",
+  "license_url": "https://acikveri.trabzon.bel.tr/",
+  "publishability_status": "review_required",
+  "primary_for": ["trabzon_settlement_geometry"],
+  "feature_count": 716,
+  "geometry_types": ["MultiPolygon"],
+  "resources": [
+    {
+      "path": "source/yayinlanabilir/municipal/61-trabzon/mahalle/raw/trabzon-mahalle.geojson",
+      "format": "GeoJSON",
+      "bytes": 16570476,
+      "sha256": "9a6b1c5a177ded18e5449ad55ab915716e9dbeb259114835912715ea40e25a8f"
+    }
+  ],
+  "notes": [
+    "Kaynakta ilce alani yok; normalize asamasinda ilce geometri kesistirmesi ile ilce atamasi yapilir."
+  ]
+}

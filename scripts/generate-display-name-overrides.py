@@ -6,7 +6,7 @@ import json
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, List
 
 from openpyxl import load_workbook
 
@@ -86,7 +86,7 @@ def tr_upper_char(value: str) -> str:
 
 def tr_title_word(word: str) -> str:
     if not word:
-      return word
+        return word
     lowered = tr_lower(word)
     return tr_upper_char(lowered[0]) + lowered[1:]
 
@@ -135,7 +135,7 @@ def main():
     provinces = read_json(PROVINCES_PATH)
     districts = read_json(DISTRICTS_PATH)
     uab_rows = load_uab_rows()
-    provinces_by_source = {item["source_hdx_id"]: item for item in provinces}
+    provinces_by_source = {item["hdx_id"]: item for item in provinces}
 
     province_name_by_code: Dict[str, str] = {}
     province_buckets = defaultdict(set)
@@ -154,14 +154,14 @@ def main():
         if corrected_name and corrected_name != item["name"]:
             province_overrides.append(
                 {
-                    "source_hdx_id": item["source_hdx_id"],
+                    "hdx_id": item["hdx_id"],
                     "plate_code": canonical_plate_code(item["plate_code"]),
                     "name": corrected_name,
                     "source": "uab_validation_only_exact_province_code",
                 }
             )
 
-        province_name_map[item["source_hdx_id"]] = corrected_name or item["name"]
+        province_name_map[item["hdx_id"]] = corrected_name or item["name"]
 
     district_uab_name_map = defaultdict(set)
     for row in uab_rows:
@@ -170,7 +170,7 @@ def main():
 
     district_hdx_map = defaultdict(list)
     for item in districts:
-        key = (canonical_plate_code(item["source_parent_hdx_id"][-3:]), normalize_key(item["name"]))
+        key = (canonical_plate_code(item["parent_hdx_id"][-3:]), normalize_key(item["name"]))
         district_hdx_map[key].append(item)
 
     district_overrides = []
@@ -185,38 +185,38 @@ def main():
         if corrected_name != hdx_item["name"]:
             district_overrides.append(
                 {
-                    "source_hdx_id": hdx_item["source_hdx_id"],
-                    "plate_code": canonical_plate_code(hdx_item["source_parent_hdx_id"][-3:]),
+                    "hdx_id": hdx_item["hdx_id"],
+                    "plate_code": canonical_plate_code(hdx_item["parent_hdx_id"][-3:]),
                     "name": corrected_name,
                     "source": "uab_validation_only_exact_name_match",
                 }
             )
-            district_override_ids.add(hdx_item["source_hdx_id"])
+            district_override_ids.add(hdx_item["hdx_id"])
 
     for item in districts:
-        if item["source_hdx_id"] in district_override_ids:
+        if item["hdx_id"] in district_override_ids:
             continue
 
-        parent = provinces_by_source.get(item["source_parent_hdx_id"])
+        parent = provinces_by_source.get(item["parent_hdx_id"])
         if not parent:
             continue
 
         if normalize_key(item["name"]) != normalize_key(parent["name"]):
             continue
 
-        corrected_name = province_name_map.get(parent["source_hdx_id"], parent["name"])
+        corrected_name = province_name_map.get(parent["hdx_id"], parent["name"])
         if corrected_name == item["name"]:
             continue
 
         district_overrides.append(
             {
-                "source_hdx_id": item["source_hdx_id"],
-                "plate_code": canonical_plate_code(item["source_parent_hdx_id"][-3:]),
+                "hdx_id": item["hdx_id"],
+                "plate_code": canonical_plate_code(item["parent_hdx_id"][-3:]),
                 "name": corrected_name,
                 "source": "derived_from_parent_province_display_name",
             }
         )
-        district_override_ids.add(item["source_hdx_id"])
+        district_override_ids.add(item["hdx_id"])
 
     payload = {
         "source": "UAB ilce-listesi.xlsx validation-only display name overrides",

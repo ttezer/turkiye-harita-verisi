@@ -21,7 +21,7 @@
     "tuik_id",
     "icisleri_id",
     "osm_relation_id",
-    "source_hdx_id",
+    "hdx_id",
     "municipality_type",
     "municipality_type_label",
     "is_metropolitan_municipality",
@@ -104,7 +104,7 @@
         "null"
       ]
     },
-    "source_hdx_id": {
+    "hdx_id": {
       "type": [
         "string",
         "null"
@@ -118,8 +118,8 @@
     },
     "municipality_type_label": {
       "enum": [
-        "Büyükşehir Belediyesi",
-        "İl Belediyesi"
+        "BÃ¼yÃ¼kÅŸehir Belediyesi",
+        "Ä°l Belediyesi"
       ]
     },
     "is_metropolitan_municipality": {

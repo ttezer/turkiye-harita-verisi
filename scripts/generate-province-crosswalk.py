@@ -72,7 +72,7 @@ def build_crosswalk(hdx_provinces: list[dict], nuts_rows: list[dict]) -> list[di
     crosswalk = []
 
     for province in hdx_provinces:
-        plate_code = plate_code_from_hdx_pcode(province["source_hdx_id"])
+        plate_code = plate_code_from_hdx_pcode(province["hdx_id"])
         province_id = f"TR-P-{plate_code}"
         lookup_key = normalize_name(province["name"])
         nuts_row = nuts_by_name.get(lookup_key)
@@ -81,7 +81,7 @@ def build_crosswalk(hdx_provinces: list[dict], nuts_rows: list[dict]) -> list[di
 
         crosswalk.append(
             {
-                "source_hdx_id": province["source_hdx_id"],
+                "hdx_id": province["hdx_id"],
                 "id": province_id,
                 "plate_code": plate_code,
                 "iso_3166_2": f"TR-{plate_code}",

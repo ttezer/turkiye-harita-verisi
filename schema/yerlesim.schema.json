@@ -80,6 +80,10 @@
     "source": {
       "const": "e-icisleri-mulki-idare-bolumleri"
     },
+    "source_label": {
+      "type": "string",
+      "minLength": 1
+    },
     "source_file": {
       "type": "string",
       "minLength": 1

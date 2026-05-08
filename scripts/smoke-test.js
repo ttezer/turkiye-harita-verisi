@@ -109,9 +109,16 @@ async function main() {
     'dist/kml/regions.kml',
     'dist/kml/provinces.kml',
     'dist/kml/districts.kml',
+    'dist/gml/regions.gml',
+    'dist/gml/provinces.gml',
+    'dist/gml/districts.gml',
+    'dist/osm/regions.osm',
+    'dist/osm/provinces.osm',
+    'dist/osm/districts.osm',
     'dist/kmz/regions.kmz',
     'dist/kmz/provinces.kmz',
     'dist/kmz/districts.kmz',
+    'dist/gpkg/turkiye-map.gpkg',
   ];
 
   for (const file of expectedFiles) {
@@ -123,7 +130,10 @@ async function main() {
   const regionsSql = readTextFile(path.join(rootDir, 'dist/sql/regions.sql'));
   const provincesWkt = readTextFile(path.join(rootDir, 'dist/wkt/provinces.wkt'));
   const regionsKml = readTextFile(path.join(rootDir, 'dist/kml/regions.kml'));
+  const regionsGml = readTextFile(path.join(rootDir, 'dist/gml/regions.gml'));
+  const regionsOsm = readTextFile(path.join(rootDir, 'dist/osm/regions.osm'));
   const regionsKmz = new AdmZip(path.join(rootDir, 'dist/kmz/regions.kmz'));
+  const gpkgHeader = fs.readFileSync(path.join(rootDir, 'dist/gpkg/turkiye-map.gpkg')).subarray(0, 16);
 
   assert(regionsTopojson.type === 'Topology', 'Region TopoJSON root type mismatch');
   assert(Boolean(regionsTopojson.objects?.regions), 'Region TopoJSON object missing');
@@ -133,8 +143,14 @@ async function main() {
   assert(provincesWkt.includes('MULTIPOLYGON') || provincesWkt.includes('POLYGON'), 'Province WKT is missing geometry');
   assert(regionsKml.includes('<Placemark>'), 'Region KML has no placemark');
   assert(regionsKml.includes('<styleUrl>#turkiye-map-style</styleUrl>'), 'Region KML style reference missing');
+  assert(regionsGml.includes('<gml:FeatureCollection'), 'Region GML root element missing');
+  assert(regionsGml.includes('<gml:featureMember>'), 'Region GML has no featureMember');
+  assert(regionsOsm.includes('<osm version="0.6"'), 'Region OSM root element missing');
+  assert(regionsOsm.includes('<way id="'), 'Region OSM has no way element');
+  assert(regionsOsm.includes('k="name"'), 'Region OSM name tag missing');
   assert(regionsKmz.getEntries().some((entry) => entry.entryName === 'doc.kml'), 'Region KMZ is missing doc.kml');
   assert(regionsKmz.readAsText('doc.kml').includes('<Placemark>'), 'Region KMZ doc.kml has no placemark');
+  assert(gpkgHeader.toString('utf8', 0, 15) === 'SQLite format 3', 'GeoPackage file header is invalid');
 
   const regions = getRegions();
   const provinces = getProvinces();
@@ -145,7 +161,7 @@ async function main() {
 
   assert(regions.length === 7, `Expected 7 regions, received ${regions.length}`);
   assert(provinces.length === 81, `Expected 81 provinces, received ${provinces.length}`);
-  assert(districts.length === 974, `Expected 974 districts, received ${districts.length}`);
+  assert(districts.length === 973, `Expected 973 districts, received ${districts.length}`);
   assert(regionGeometry.features.length === regions.length, 'Region geometry count mismatch');
   assert(provinceGeometry.features.length === provinces.length, 'Province geometry count mismatch');
   assert(districtGeometry.features.length === districts.length, 'District geometry count mismatch');

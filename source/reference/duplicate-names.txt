@@ -1,0 +1,324 @@
+Toplam: 322 aynı ilçe+isim çifti
+
+[Adıyaman] Adıyaman / Bahçelievler: TR-Y-02-001-M-0004, TR-Y-02-001-M-0005
+[Adıyaman] Adıyaman / Cumhuriyet: TR-Y-02-001-M-0009, TR-Y-02-001-M-0010
+[Adıyaman] Adıyaman / Esence: TR-Y-02-001-K-0054, TR-Y-02-001-M-0011
+[Adıyaman] Adıyaman / Kuyucak: TR-Y-02-001-K-0095, TR-Y-02-001-K-0096
+[Adıyaman] Adıyaman / Varlık: TR-Y-02-001-K-0125, TR-Y-02-001-M-0040
+[Adıyaman] Adıyaman / Yeşilyurt: TR-Y-02-001-M-0046, TR-Y-02-001-M-0047
+[Adıyaman] Besni / Cumhuriyet: TR-Y-02-002-M-0013, TR-Y-02-002-M-0014, TR-Y-02-002-M-0015
+[Adıyaman] Besni / Fatih: TR-Y-02-002-M-0018, TR-Y-02-002-M-0019
+[Adıyaman] Besni / Hürriyet: TR-Y-02-002-M-0021, TR-Y-02-002-M-0022
+[Adıyaman] Besni / İnönü: TR-Y-02-002-M-0024, TR-Y-02-002-M-0025
+[Adıyaman] Besni / Pınarbaşı: TR-Y-02-002-K-0049, TR-Y-02-002-M-0031
+[Adıyaman] Çelikhan / Cami: TR-Y-02-003-M-0005, TR-Y-02-003-M-0006
+[Adıyaman] Çelikhan / Fatih: TR-Y-02-003-K-0006, TR-Y-02-003-M-0009
+[Adıyaman] Gölbaşı / Asfalt: TR-Y-02-005-M-0002, TR-Y-02-005-M-0003
+[Adıyaman] Gölbaşı / Cumhuriyet: TR-Y-02-005-M-0005, TR-Y-02-005-M-0006, TR-Y-02-005-M-0007, TR-Y-02-005-M-0008
+[Adıyaman] Gölbaşı / Yenimahalle: TR-Y-02-005-M-0017, TR-Y-02-005-M-0018
+[Adıyaman] Kâhta / Atatürk: TR-Y-02-006-M-0001, TR-Y-02-006-M-0002, TR-Y-02-006-M-0003
+[Adıyaman] Kâhta / Cumhuriyet: TR-Y-02-006-K-0033, TR-Y-02-006-M-0009, TR-Y-02-006-M-0010
+[Adıyaman] Kâhta / Çamlıca: TR-Y-02-006-K-0027, TR-Y-02-006-M-0007
+[Adıyaman] Kâhta / Fatih: TR-Y-02-006-M-0011, TR-Y-02-006-M-0012
+[Afyonkarahisar] Afyonkarahisar / Aliihsanpaşa: TR-Y-03-001-M-0005, TR-Y-03-001-M-0006
+[Afyonkarahisar] Afyonkarahisar / Atatürk: TR-Y-03-001-M-0009, TR-Y-03-001-M-0010
+[Afyonkarahisar] Afyonkarahisar / Cumhuriyet: TR-Y-03-001-M-0017, TR-Y-03-001-M-0018, TR-Y-03-001-M-0019, TR-Y-03-001-M-0020, TR-Y-03-001-M-0021
+[Afyonkarahisar] Afyonkarahisar / Erenler: TR-Y-03-001-M-0027, TR-Y-03-001-M-0028
+[Afyonkarahisar] Afyonkarahisar / Fatih: TR-Y-03-001-M-0033, TR-Y-03-001-M-0034, TR-Y-03-001-M-0035, TR-Y-03-001-M-0036, TR-Y-03-001-M-0037, TR-Y-03-001-M-0038
+[Afyonkarahisar] Afyonkarahisar / Hürriyet: TR-Y-03-001-M-0051, TR-Y-03-001-M-0052
+[Afyonkarahisar] Afyonkarahisar / İstiklal: TR-Y-03-001-M-0055, TR-Y-03-001-M-0056, TR-Y-03-001-M-0057, TR-Y-03-001-M-0058
+[Afyonkarahisar] Afyonkarahisar / Kocatepe: TR-Y-03-001-M-0065, TR-Y-03-001-M-0066, TR-Y-03-001-M-0067
+[Afyonkarahisar] Afyonkarahisar / Kurtuluş: TR-Y-03-001-M-0068, TR-Y-03-001-M-0069
+[Afyonkarahisar] Afyonkarahisar / Olucak: TR-Y-03-001-K-0018, TR-Y-03-001-M-0076
+[Afyonkarahisar] Afyonkarahisar / Selçuklu: TR-Y-03-001-M-0087, TR-Y-03-001-M-0088
+[Afyonkarahisar] Afyonkarahisar / Yavuzselim: TR-Y-03-001-M-0097, TR-Y-03-001-M-0098
+[Afyonkarahisar] Afyonkarahisar / Yeni: TR-Y-03-001-M-0099, TR-Y-03-001-M-0100
+[Afyonkarahisar] Afyonkarahisar / Zafer: TR-Y-03-001-M-0106, TR-Y-03-001-M-0107, TR-Y-03-001-M-0108
+[Afyonkarahisar] Bolvadin / Çaybaşı: TR-Y-03-004-M-0008, TR-Y-03-004-M-0009
+[Afyonkarahisar] Bolvadin / Malazgirt: TR-Y-03-004-M-0027, TR-Y-03-004-M-0028
+[Afyonkarahisar] Bolvadin / Taşağıl: TR-Y-03-004-K-0012, TR-Y-03-004-M-0036
+[Afyonkarahisar] Çay / Aşağı: TR-Y-03-005-M-0005, TR-Y-03-005-M-0006
+[Afyonkarahisar] Çay / Orta: TR-Y-03-005-M-0017, TR-Y-03-005-M-0018
+[Afyonkarahisar] Çay / Yukarı: TR-Y-03-005-M-0025, TR-Y-03-005-M-0026
+[Afyonkarahisar] Dinar / Cumhuriyet: TR-Y-03-008-K-0023, TR-Y-03-008-M-0009, TR-Y-03-008-M-0010, TR-Y-03-008-M-0011
+[Afyonkarahisar] Dinar / Çağlayan: TR-Y-03-008-K-0015, TR-Y-03-008-M-0006
+[Afyonkarahisar] Dinar / Fatih: TR-Y-03-008-M-0014, TR-Y-03-008-M-0015
+[Afyonkarahisar] Dinar / Hürriyet: TR-Y-03-008-M-0017, TR-Y-03-008-M-0018
+[Afyonkarahisar] Dinar / Yeni: TR-Y-03-008-M-0039, TR-Y-03-008-M-0040
+[Afyonkarahisar] Dinar / Yeşilyurt: TR-Y-03-008-K-0058, TR-Y-03-008-M-0041
+[Afyonkarahisar] İhsaniye / Cumhuriyet: TR-Y-03-012-M-0006, TR-Y-03-012-M-0007, TR-Y-03-012-M-0008
+[Afyonkarahisar] İhsaniye / Fatih: TR-Y-03-012-M-0010, TR-Y-03-012-M-0011, TR-Y-03-012-M-0012
+[Afyonkarahisar] İhsaniye / Yunusemre: TR-Y-03-012-M-0022, TR-Y-03-012-M-0023
+[Afyonkarahisar] İscehisar / Cumhuriyet: TR-Y-03-013-M-0002, TR-Y-03-013-M-0003
+[Afyonkarahisar] Sandıklı / Çiğiltepe: TR-Y-03-015-K-0015, TR-Y-03-015-M-0003
+[Afyonkarahisar] Sandıklı / Hisar: TR-Y-03-015-M-0008, TR-Y-03-015-M-0009
+[Afyonkarahisar] Sinanpaşa / Atatürk: TR-Y-03-016-M-0005, TR-Y-03-016-M-0006, TR-Y-03-016-M-0007
+[Afyonkarahisar] Sinanpaşa / Bahçelievler: TR-Y-03-016-M-0009, TR-Y-03-016-M-0010, TR-Y-03-016-M-0011
+[Afyonkarahisar] Sinanpaşa / Cumhuriyet: TR-Y-03-016-M-0017, TR-Y-03-016-M-0018, TR-Y-03-016-M-0019, TR-Y-03-016-M-0020, TR-Y-03-016-M-0021, TR-Y-03-016-M-0022
+[Afyonkarahisar] Sinanpaşa / Çiğiltepe: TR-Y-03-016-M-0014, TR-Y-03-016-M-0015
+[Afyonkarahisar] Sinanpaşa / Fatih: TR-Y-03-016-M-0024, TR-Y-03-016-M-0025, TR-Y-03-016-M-0026, TR-Y-03-016-M-0027, TR-Y-03-016-M-0028, TR-Y-03-016-M-0029
+[Afyonkarahisar] Sinanpaşa / Orta: TR-Y-03-016-M-0043, TR-Y-03-016-M-0044
+[Afyonkarahisar] Sinanpaşa / Yeni: TR-Y-03-016-M-0047, TR-Y-03-016-M-0048, TR-Y-03-016-M-0049
+[Afyonkarahisar] Sinanpaşa / Yıldırım Beyazıt: TR-Y-03-016-M-0050, TR-Y-03-016-M-0051
+[Afyonkarahisar] Sinanpaşa / Yukarı: TR-Y-03-016-M-0052, TR-Y-03-016-M-0053, TR-Y-03-016-M-0054
+[Afyonkarahisar] Sinanpaşa / Zafer: TR-Y-03-016-M-0055, TR-Y-03-016-M-0056, TR-Y-03-016-M-0057
+[Afyonkarahisar] Şuhut / Zafer: TR-Y-03-018-M-0016, TR-Y-03-018-M-0017
+[Ağrı] Ağrı / Murat: TR-Y-04-001-K-0064, TR-Y-04-001-M-0016
+[Ağrı] Diyadin / İsaağa: TR-Y-04-002-K-0026, TR-Y-04-002-M-0005
+[Ağrı] Eleşkirt / Esentepe: TR-Y-04-004-M-0005, TR-Y-04-004-M-0006
+[Ağrı] Eleşkirt / Hürriyet: TR-Y-04-004-K-0025, TR-Y-04-004-M-0009
+[Ağrı] Eleşkirt / Karşıyaka: TR-Y-04-004-M-0011, TR-Y-04-004-M-0012, TR-Y-04-004-M-0013
+[Ağrı] Patnos / Budak: TR-Y-04-006-K-0014, TR-Y-04-006-M-0008
+[Ağrı] Patnos / Cumhuriyet: TR-Y-04-006-M-0012, TR-Y-04-006-M-0013
+[Amasya] Amasya / Saraycık: TR-Y-05-001-K-0075, TR-Y-05-001-M-0029
+[Artvin] Murgul / Küre: TR-Y-08-007-K-0008, TR-Y-08-007-M-0002
+[Aydın] Efeler / Yeniköy: TR-Y-09-005-M-0077, TR-Y-09-005-M-0078
+[Bilecik] Bilecik / Ertuğrulgazi: TR-Y-11-001-M-0004, TR-Y-11-001-M-0005
+[Bilecik] Bilecik / İstasyon: TR-Y-11-001-M-0011, TR-Y-11-001-M-0012
+[Bingöl] Bingöl / Çay: TR-Y-12-002-M-0004, TR-Y-12-002-M-0005
+[Bingöl] Bingöl / Ilıca: TR-Y-12-002-M-0012, TR-Y-12-002-M-0013
+[Bingöl] Bingöl / İçpınar: TR-Y-12-002-M-0010, TR-Y-12-002-M-0011
+[Bingöl] Bingöl / Kamışlı: TR-Y-12-002-M-0016, TR-Y-12-002-M-0017
+[Bingöl] Bingöl / Kılıçlı: TR-Y-12-002-M-0020, TR-Y-12-002-M-0021
+[Bingöl] Bingöl / Uzundere: TR-Y-12-002-M-0031, TR-Y-12-002-M-0032
+[Bitlis] Adilcevaz / Atatürk: TR-Y-13-001-M-0002, TR-Y-13-001-M-0003
+[Bitlis] Mutki / Yeni: TR-Y-13-006-M-0008, TR-Y-13-006-M-0009
+[Burdur] Bucak / Pazar: TR-Y-15-003-M-0019, TR-Y-15-003-M-0020, TR-Y-15-003-M-0021
+[Burdur] Bucak / Yeni: TR-Y-15-003-M-0023, TR-Y-15-003-M-0024
+[Burdur] Çavdır / Pazar: TR-Y-15-005-M-0008, TR-Y-15-005-M-0009
+[Çanakkale] Biga / Cumhuriyet: TR-Y-17-003-M-0002, TR-Y-17-003-M-0003
+[Çanakkale] Ezine / Cumhuriyet: TR-Y-17-008-M-0002, TR-Y-17-008-M-0003
+[Çankırı] Çerkeş / Yeni: TR-Y-18-004-M-0012, TR-Y-18-004-M-0013
+[Çorum] Çorum / Karakeçili: TR-Y-19-004-K-0109, TR-Y-19-004-M-0013
+[Çorum] Çorum / Mimarsinan: TR-Y-19-004-M-0018, TR-Y-19-004-M-0019
+[Çorum] Ortaköy / Bahçelievler: TR-Y-19-011-M-0001, TR-Y-19-011-M-0002
+[Edirne] İpsala / Atatürk: TR-Y-22-004-M-0001, TR-Y-22-004-M-0002
+[Edirne] Keşan / Cumhuriyet: TR-Y-22-005-M-0006, TR-Y-22-005-M-0007
+[Edirne] Uzunköprü / Balaban: TR-Y-22-009-K-0004, TR-Y-22-009-M-0003
+[Edirne] Uzunköprü / Cumhuriyet: TR-Y-22-009-M-0006, TR-Y-22-009-M-0007
+[Elazığ] Elazığ / Cumhuriyet: TR-Y-23-005-M-0014, TR-Y-23-005-M-0015, TR-Y-23-005-M-0016
+[Elazığ] Elazığ / Gülpınar: TR-Y-23-005-K-0046, TR-Y-23-005-M-0022
+[Elazığ] Elazığ / Kültür: TR-Y-23-005-M-0039, TR-Y-23-005-M-0040
+[Elazığ] Elazığ / Merkez: TR-Y-23-005-M-0041, TR-Y-23-005-M-0042
+[Elazığ] Elazığ / Sanayi: TR-Y-23-005-M-0051, TR-Y-23-005-M-0052, TR-Y-23-005-M-0053
+[Erzincan] Erzincan / Atatürk: TR-Y-24-002-M-0006, TR-Y-24-002-M-0007, TR-Y-24-002-M-0008
+[Erzincan] Erzincan / Cumhuriyet: TR-Y-24-002-M-0023, TR-Y-24-002-M-0024, TR-Y-24-002-M-0025
+[Erzincan] Refahiye / Kalkancı: TR-Y-24-007-K-0060, TR-Y-24-007-K-0061
+[Erzincan] Tercan / Atatürk: TR-Y-24-008-M-0003, TR-Y-24-008-M-0004
+[Erzincan] Tercan / Fatih: TR-Y-24-008-M-0007, TR-Y-24-008-M-0008
+[Giresun] Bulancak / Merkez: TR-Y-28-002-M-0018, TR-Y-28-002-M-0019
+[Giresun] Espiye / Merkez: TR-Y-28-007-M-0011, TR-Y-28-007-M-0012
+[Giresun] Giresun / Osmaniye: TR-Y-28-009-K-0039, TR-Y-28-009-M-0026
+[Gümüşhane] Kelkit / Büyükcami: TR-Y-29-002-M-0004, TR-Y-29-002-M-0005
+[Gümüşhane] Kelkit / Cumhuriyet: TR-Y-29-002-M-0006, TR-Y-29-002-M-0007
+[Gümüşhane] Kelkit / Fatih: TR-Y-29-002-M-0009, TR-Y-29-002-M-0010, TR-Y-29-002-M-0011
+[Hakkari] Yüksekova / Merkez: TR-Y-30-004-M-0011, TR-Y-30-004-M-0012
+[Hatay] Kırıkhan / Aygırgölü: TR-Y-31-010-M-0011, TR-Y-31-010-M-0012
+[Hatay] Kırıkhan / Camuzkışlası: TR-Y-31-010-M-0022, TR-Y-31-010-M-0023
+[Hatay] Kırıkhan / Çamsarı: TR-Y-31-010-M-0019, TR-Y-31-010-M-0020
+[Hatay] Kırıkhan / Demirkonak: TR-Y-31-010-M-0032, TR-Y-31-010-M-0033
+[Hatay] Kırıkhan / Gültepe: TR-Y-31-010-M-0037, TR-Y-31-010-M-0038
+[Hatay] Kırıkhan / İncirli: TR-Y-31-010-M-0044, TR-Y-31-010-M-0045
+[Hatay] Kırıkhan / Kaletepe: TR-Y-31-010-M-0046, TR-Y-31-010-M-0047
+[Hatay] Kırıkhan / Yalangoz: TR-Y-31-010-M-0078, TR-Y-31-010-M-0079
+[Isparta] Eğirdir / Ağa: TR-Y-32-003-M-0001, TR-Y-32-003-M-0002
+[Isparta] Isparta / Fatih: TR-Y-32-006-M-0015, TR-Y-32-006-M-0016
+[Isparta] Keçiborlu / Cumhuriyet: TR-Y-32-007-M-0002, TR-Y-32-007-M-0003
+[Isparta] Keçiborlu / Orta: TR-Y-32-007-M-0009, TR-Y-32-007-M-0010
+[Isparta] Şarkikaraağaç / Orta: TR-Y-32-010-M-0012, TR-Y-32-010-M-0013
+[Kars] Kars / Cumhuriyet: TR-Y-36-005-K-0030, TR-Y-36-005-M-0008
+[Kastamonu] Ağlı / Selmanlı: TR-Y-37-002-K-0010, TR-Y-37-002-M-0008
+[Kastamonu] Kastamonu / Çavundur: TR-Y-37-014-K-0035, TR-Y-37-014-K-0036
+[Kastamonu] Kastamonu / Emirler: TR-Y-37-014-K-0056, TR-Y-37-014-K-0057
+[Kastamonu] Kastamonu / İsmailli: TR-Y-37-014-K-0098, TR-Y-37-014-K-0099
+[Kastamonu] Kastamonu / Kıyık: TR-Y-37-014-K-0119, TR-Y-37-014-K-0120
+[Kırklareli] Babaeski / Fevzi Çakmak: TR-Y-39-001-M-0006, TR-Y-39-001-M-0007
+[Kırklareli] Demirköy / Hamdibey: TR-Y-39-002-K-0007, TR-Y-39-002-M-0002
+[Kırklareli] Demirköy / Yeni: TR-Y-39-002-M-0005, TR-Y-39-002-M-0006
+[Kırklareli] Kırklareli / Kemalpaşa: TR-Y-39-003-M-0016, TR-Y-39-003-M-0017
+[Kırklareli] Kırklareli / Kocahıdır: TR-Y-39-003-K-0030, TR-Y-39-003-M-0018
+[Kırklareli] Lüleburgaz / Dere: TR-Y-39-005-M-0005, TR-Y-39-005-M-0006
+[Kırklareli] Lüleburgaz / Fatih: TR-Y-39-005-M-0008, TR-Y-39-005-M-0009
+[Kırklareli] Lüleburgaz / Gündoğdu: TR-Y-39-005-M-0011, TR-Y-39-005-M-0012, TR-Y-39-005-M-0013
+[Kırklareli] Lüleburgaz / Yeni: TR-Y-39-005-M-0027, TR-Y-39-005-M-0028
+[Kırklareli] Lüleburgaz / Yıldırım: TR-Y-39-005-M-0029, TR-Y-39-005-M-0030
+[Kırklareli] Vize / Cumhuriyet: TR-Y-39-008-M-0001, TR-Y-39-008-M-0002
+[Kırklareli] Vize / Kale: TR-Y-39-008-M-0008, TR-Y-39-008-M-0009
+[Kırşehir] Kaman / Bahçelievler: TR-Y-40-005-M-0001, TR-Y-40-005-M-0002
+[Kırşehir] Kaman / Darıözü: TR-Y-40-005-K-0011, TR-Y-40-005-M-0006
+[Kırşehir] Kaman / Orta: TR-Y-40-005-M-0010, TR-Y-40-005-M-0011
+[Kırşehir] Kaman / Yeni: TR-Y-40-005-M-0013, TR-Y-40-005-M-0014
+[Kütahya] Domaniç / Cumhuriyet: TR-Y-43-004-M-0001, TR-Y-43-004-M-0002
+[Kütahya] Kütahya / Ağaçköy: TR-Y-43-009-K-0001, TR-Y-43-009-M-0004
+[Kütahya] Kütahya / Gültepe: TR-Y-43-009-M-0028, TR-Y-43-009-M-0029
+[Kütahya] Simav / Cuma: TR-Y-43-011-M-0009, TR-Y-43-011-M-0010
+[Kütahya] Simav / Cumhuriyet: TR-Y-43-011-M-0011, TR-Y-43-011-M-0012
+[Kütahya] Simav / Fatih: TR-Y-43-011-M-0019, TR-Y-43-011-M-0020, TR-Y-43-011-M-0021
+[Kütahya] Simav / Yeni: TR-Y-43-011-M-0039, TR-Y-43-011-M-0040
+[Kütahya] Tavşanlı / Kavaklı: TR-Y-43-013-K-0057, TR-Y-43-013-M-0025
+[Kütahya] Tavşanlı / Merkez: TR-Y-43-013-M-0029, TR-Y-43-013-M-0030
+[Kütahya] Tavşanlı / Ören: TR-Y-43-013-K-0073, TR-Y-43-013-M-0033
+[Muş] Bulanık / Cumhuriyet: TR-Y-49-001-M-0007, TR-Y-49-001-M-0008, TR-Y-49-001-M-0009
+[Muş] Bulanık / Fatih: TR-Y-49-001-M-0010, TR-Y-49-001-M-0011
+[Muş] Bulanık / Gazi: TR-Y-49-001-M-0012, TR-Y-49-001-M-0013
+[Muş] Bulanık / İnönü: TR-Y-49-001-M-0018, TR-Y-49-001-M-0019
+[Muş] Bulanık / Yeni: TR-Y-49-001-M-0027, TR-Y-49-001-M-0028
+[Muş] Bulanık / Zafer: TR-Y-49-001-M-0029, TR-Y-49-001-M-0030
+[Muş] Hasköy / Bahçelievler: TR-Y-49-002-M-0002, TR-Y-49-002-M-0003
+[Muş] Hasköy / Kültür: TR-Y-49-002-M-0006, TR-Y-49-002-M-0007
+[Muş] Korkut / Bahçelievler: TR-Y-49-003-M-0003, TR-Y-49-003-M-0004
+[Muş] Malazgirt / Murat: TR-Y-49-004-M-0009, TR-Y-49-004-M-0010
+[Muş] Muş / Bağlar: TR-Y-49-005-M-0003, TR-Y-49-005-M-0004
+[Muş] Muş / Bahçelievler: TR-Y-49-005-M-0005, TR-Y-49-005-M-0006, TR-Y-49-005-M-0007, TR-Y-49-005-M-0008
+[Muş] Muş / Hürriyet: TR-Y-49-005-M-0017, TR-Y-49-005-M-0018, TR-Y-49-005-M-0019
+[Muş] Muş / Karşıyaka: TR-Y-49-005-M-0022, TR-Y-49-005-M-0023, TR-Y-49-005-M-0024
+[Muş] Muş / Kültür: TR-Y-49-005-M-0026, TR-Y-49-005-M-0027, TR-Y-49-005-M-0028, TR-Y-49-005-M-0029, TR-Y-49-005-M-0030, TR-Y-49-005-M-0031
+[Muş] Muş / Minare: TR-Y-49-005-M-0033, TR-Y-49-005-M-0034
+[Muş] Muş / Yeni: TR-Y-49-005-M-0042, TR-Y-49-005-M-0043, TR-Y-49-005-M-0044
+[Muş] Muş / Yeşilyurt: TR-Y-49-005-M-0048, TR-Y-49-005-M-0049
+[Nevşehir] Avanos / Orta: TR-Y-50-002-M-0011, TR-Y-50-002-M-0012, TR-Y-50-002-M-0013
+[Nevşehir] Avanos / Yeni: TR-Y-50-002-M-0015, TR-Y-50-002-M-0016
+[Nevşehir] Avanos / Yukarı: TR-Y-50-002-M-0017, TR-Y-50-002-M-0018
+[Nevşehir] Nevşehir / Cumhuriyet: TR-Y-50-007-M-0017, TR-Y-50-007-M-0018
+[Nevşehir] Nevşehir / Yeni: TR-Y-50-007-M-0040, TR-Y-50-007-M-0041
+[Nevşehir] Nevşehir / Yukarı: TR-Y-50-007-M-0043, TR-Y-50-007-M-0044
+[Nevşehir] Ürgüp / Bahçelievler: TR-Y-50-008-M-0005, TR-Y-50-008-M-0006, TR-Y-50-008-M-0007
+[Nevşehir] Ürgüp / Esentepe: TR-Y-50-008-M-0010, TR-Y-50-008-M-0011
+[Nevşehir] Ürgüp / Eski: TR-Y-50-008-M-0012, TR-Y-50-008-M-0013
+[Nevşehir] Ürgüp / Yeni: TR-Y-50-008-M-0018, TR-Y-50-008-M-0019
+[Niğde] Altunhisar / Cumhuriyet: TR-Y-51-001-M-0002, TR-Y-51-001-M-0003
+[Niğde] Bor / Cumhuriyet: TR-Y-51-002-M-0009, TR-Y-51-002-M-0010
+[Niğde] Çiftlik / Yeni: TR-Y-51-004-M-0009, TR-Y-51-004-M-0010, TR-Y-51-004-M-0011
+[Niğde] Niğde / Aşağı: TR-Y-51-005-M-0002, TR-Y-51-005-M-0003, TR-Y-51-005-M-0004
+[Niğde] Niğde / Cumhuriyet: TR-Y-51-005-M-0006, TR-Y-51-005-M-0007, TR-Y-51-005-M-0008, TR-Y-51-005-M-0009, TR-Y-51-005-M-0010, TR-Y-51-005-M-0011, TR-Y-51-005-M-0012, TR-Y-51-005-M-0013
+[Niğde] Niğde / Fatih: TR-Y-51-005-M-0018, TR-Y-51-005-M-0019, TR-Y-51-005-M-0020
+[Niğde] Niğde / Hürriyet: TR-Y-51-005-M-0023, TR-Y-51-005-M-0024, TR-Y-51-005-M-0025, TR-Y-51-005-M-0026, TR-Y-51-005-M-0027, TR-Y-51-005-M-0028
+[Niğde] Niğde / Yeni: TR-Y-51-005-M-0044, TR-Y-51-005-M-0045, TR-Y-51-005-M-0046, TR-Y-51-005-M-0047, TR-Y-51-005-M-0048, TR-Y-51-005-M-0049
+[Niğde] Niğde / Yukarı: TR-Y-51-005-M-0052, TR-Y-51-005-M-0053, TR-Y-51-005-M-0054
+[Niğde] Niğde / Zafer: TR-Y-51-005-M-0055, TR-Y-51-005-M-0056
+[Ordu] Altınordu / Güzelyalı: TR-Y-52-002-M-0036, TR-Y-52-002-M-0037
+[Ordu] Mesudiye / Kayadibi: TR-Y-52-016-M-0047, TR-Y-52-016-M-0048
+[Rize] Ardeşen / Merkez: TR-Y-53-001-M-0021, TR-Y-53-001-M-0022
+[Rize] Çayeli / Merkez: TR-Y-53-003-M-0025, TR-Y-53-003-M-0026
+[Rize] Kalkandere / Soğuksu: TR-Y-53-010-K-0015, TR-Y-53-010-M-0009
+[Rize] Rize / Boğaz: TR-Y-53-012-K-0010, TR-Y-53-012-M-0006
+[Rize] Rize / Yeşildere: TR-Y-53-012-K-0055, TR-Y-53-012-M-0067
+[Siirt] Siirt / Yenimahalle: TR-Y-56-005-M-0022, TR-Y-56-005-M-0023
+[Sinop] Boyabat / Esentepe: TR-Y-57-002-K-0045, TR-Y-57-002-M-0003
+[Sinop] Durağan / Yeşilyurt: TR-Y-57-004-K-0068, TR-Y-57-004-M-0006
+[Sivas] Divriği / Gözecik: TR-Y-58-003-K-0044, TR-Y-58-003-K-0045
+[Sivas] Hafik / Günyamaç: TR-Y-58-008-K-0040, TR-Y-58-008-M-0003
+[Sivas] Sivas / Dörteylül: TR-Y-58-012-K-0044, TR-Y-58-012-M-0017
+[Sivas] Sivas / Fatih: TR-Y-58-012-M-0024, TR-Y-58-012-M-0025
+[Sivas] Suşehri / Karaağaç: TR-Y-58-013-K-0038, TR-Y-58-013-K-0039
+[Sivas] Şarkışla / Yeni: TR-Y-58-014-M-0014, TR-Y-58-014-M-0015
+[Sivas] Yıldızeli / Cumhuriyet: TR-Y-58-016-K-0028, TR-Y-58-016-M-0004
+[Tokat] Almus / Cumhuriyet: TR-Y-60-001-M-0012, TR-Y-60-001-M-0013
+[Tokat] Almus / Hürriyet: TR-Y-60-001-M-0019, TR-Y-60-001-M-0020, TR-Y-60-001-M-0021
+[Tokat] Almus / Kurtuluş: TR-Y-60-001-M-0025, TR-Y-60-001-M-0026
+[Tokat] Başçiftlik / Cumhuriyet: TR-Y-60-003-M-0001, TR-Y-60-003-M-0002
+[Tokat] Başçiftlik / Gençosman: TR-Y-60-003-M-0004, TR-Y-60-003-M-0005
+[Tokat] Erbaa / Bahçelievler: TR-Y-60-004-M-0005, TR-Y-60-004-M-0006
+[Tokat] Erbaa / Fatih Sultan Mehmet: TR-Y-60-004-M-0013, TR-Y-60-004-M-0014
+[Tokat] Erbaa / Fevzipaşa: TR-Y-60-004-M-0015, TR-Y-60-004-M-0016
+[Tokat] Erbaa / Fındıcak: TR-Y-60-004-K-0031, TR-Y-60-004-K-0032
+[Tokat] Erbaa / Karşıyaka: TR-Y-60-004-M-0025, TR-Y-60-004-M-0026
+[Tokat] Erbaa / Yeşilyurt: TR-Y-60-004-M-0040, TR-Y-60-004-M-0041
+[Tokat] Niksar / Bahçelievler: TR-Y-60-005-M-0007, TR-Y-60-005-M-0008
+[Tokat] Niksar / Fatih: TR-Y-60-005-M-0018, TR-Y-60-005-M-0019
+[Tokat] Niksar / Gazi Osman Paşa: TR-Y-60-005-M-0020, TR-Y-60-005-M-0021
+[Tokat] Niksar / Kültür: TR-Y-60-005-M-0033, TR-Y-60-005-M-0034
+[Tokat] Niksar / Yeni: TR-Y-60-005-M-0043, TR-Y-60-005-M-0044
+[Tokat] Niksar / Yeşilyurt: TR-Y-60-005-K-0083, TR-Y-60-005-M-0046
+[Tokat] Reşadiye / Kayalık: TR-Y-60-007-M-0024, TR-Y-60-007-M-0025
+[Tokat] Reşadiye / Kurtuluş: TR-Y-60-007-M-0028, TR-Y-60-007-M-0029
+[Tokat] Reşadiye / Orta: TR-Y-60-007-M-0033, TR-Y-60-007-M-0034
+[Tokat] Tokat / Bahçelievler: TR-Y-60-009-M-0007, TR-Y-60-009-M-0008, TR-Y-60-009-M-0009
+[Tokat] Tokat / Güneşli: TR-Y-60-009-M-0028, TR-Y-60-009-M-0029
+[Tokat] Tokat / Karşıyaka: TR-Y-60-009-M-0035, TR-Y-60-009-M-0036
+[Uşak] Banaz / Cumhuriyet: TR-Y-64-001-M-0003, TR-Y-64-001-M-0004
+[Uşak] Sivaslı / Atatürk: TR-Y-64-004-M-0002, TR-Y-64-004-M-0003
+[Yozgat] Akdağmadeni / Merkez: TR-Y-66-001-M-0012, TR-Y-66-001-M-0013
+[Yozgat] Boğazlıyan / Esentepe: TR-Y-66-003-K-0009, TR-Y-66-003-M-0010
+[Yozgat] Boğazlıyan / Kemaliye: TR-Y-66-003-M-0014, TR-Y-66-003-M-0015
+[Yozgat] Boğazlıyan / Mevlana: TR-Y-66-003-M-0017, TR-Y-66-003-M-0018, TR-Y-66-003-M-0019
+[Yozgat] Boğazlıyan / Özler: TR-Y-66-003-K-0015, TR-Y-66-003-M-0021
+[Yozgat] Boğazlıyan / Yenidoğan: TR-Y-66-003-M-0024, TR-Y-66-003-M-0025
+[Yozgat] Çekerek / Bağlarbaşı: TR-Y-66-006-M-0001, TR-Y-66-006-M-0002
+[Yozgat] Kadışehri / Akçakale: TR-Y-66-007-K-0001, TR-Y-66-007-M-0001
+[Yozgat] Saraykent / Merkez: TR-Y-66-008-M-0010, TR-Y-66-008-M-0011
+[Yozgat] Sorgun / Çay: TR-Y-66-010-M-0014, TR-Y-66-010-M-0015
+[Yozgat] Sorgun / Erkekli: TR-Y-66-010-K-0028, TR-Y-66-010-M-0018
+[Yozgat] Sorgun / Güzelyurt: TR-Y-66-010-M-0023, TR-Y-66-010-M-0024
+[Yozgat] Sorgun / Karşıyaka: TR-Y-66-010-M-0031, TR-Y-66-010-M-0032, TR-Y-66-010-M-0033
+[Yozgat] Sorgun / Yenimahalle: TR-Y-66-010-M-0049, TR-Y-66-010-M-0050
+[Zonguldak] Alaplı / Merkez: TR-Y-67-001-M-0006, TR-Y-67-001-M-0007
+[Zonguldak] Çaycuma / Geriş: TR-Y-67-002-M-0010, TR-Y-67-002-M-0011
+[Zonguldak] Çaycuma / Karamusa: TR-Y-67-002-K-0042, TR-Y-67-002-M-0018
+[Zonguldak] Çaycuma / Merkez: TR-Y-67-002-M-0025, TR-Y-67-002-M-0026
+[Zonguldak] Çaycuma / Torlaklar: TR-Y-67-002-K-0061, TR-Y-67-002-M-0035
+[Zonguldak] Çaycuma / Yeni Mahalle: TR-Y-67-002-M-0039, TR-Y-67-002-M-0040
+[Zonguldak] Çaycuma / Yeşilyurt: TR-Y-67-002-K-0068, TR-Y-67-002-M-0043
+[Zonguldak] Devrek / Yeni: TR-Y-67-003-M-0010, TR-Y-67-003-M-0011
+[Zonguldak] Ereğli / Merkez: TR-Y-67-004-M-0027, TR-Y-67-004-M-0028
+[Zonguldak] Ereğli / Sarıkaya: TR-Y-67-004-K-0070, TR-Y-67-004-M-0035
+[Zonguldak] Kilimli / Merkez: TR-Y-67-006-M-0019, TR-Y-67-006-M-0020, TR-Y-67-006-M-0021, TR-Y-67-006-M-0022
+[Zonguldak] Kozlu / Yahma: TR-Y-67-007-K-0024, TR-Y-67-007-M-0009
+[Zonguldak] Zonguldak / Birlik: TR-Y-67-008-M-0006, TR-Y-67-008-M-0007
+[Zonguldak] Zonguldak / Merkez: TR-Y-67-008-M-0023, TR-Y-67-008-M-0024, TR-Y-67-008-M-0025
+[Zonguldak] Zonguldak / Yeni: TR-Y-67-008-M-0035, TR-Y-67-008-M-0036, TR-Y-67-008-M-0037
+[Aksaray] Aksaray / Cumhuriyet: TR-Y-68-002-M-0015, TR-Y-68-002-M-0016
+[Aksaray] Aksaray / Fatih: TR-Y-68-002-M-0021, TR-Y-68-002-M-0022, TR-Y-68-002-M-0023, TR-Y-68-002-M-0024
+[Aksaray] Aksaray / Hürriyet: TR-Y-68-002-M-0031, TR-Y-68-002-M-0032
+[Aksaray] Aksaray / İstiklal: TR-Y-68-002-M-0033, TR-Y-68-002-M-0034
+[Aksaray] Aksaray / Kurtuluş: TR-Y-68-002-M-0042, TR-Y-68-002-M-0043
+[Aksaray] Aksaray / Yenimahalle: TR-Y-68-002-M-0067, TR-Y-68-002-M-0068, TR-Y-68-002-M-0069
+[Aksaray] Aksaray / Zafer: TR-Y-68-002-M-0072, TR-Y-68-002-M-0073, TR-Y-68-002-M-0074, TR-Y-68-002-M-0075
+[Aksaray] Gülağaç / Cumhuriyet: TR-Y-68-004-M-0002, TR-Y-68-004-M-0003
+[Aksaray] Gülağaç / Fatih: TR-Y-68-004-M-0005, TR-Y-68-004-M-0006
+[Aksaray] Gülağaç / İstiklal: TR-Y-68-004-M-0008, TR-Y-68-004-M-0009
+[Aksaray] Gülağaç / Meydan: TR-Y-68-004-M-0014, TR-Y-68-004-M-0015
+[Aksaray] Gülağaç / Pınarbaşı: TR-Y-68-004-M-0016, TR-Y-68-004-M-0017
+[Aksaray] Güzelyurt / Yeni: TR-Y-68-005-M-0009, TR-Y-68-005-M-0010
+[Bayburt] Bayburt / Gençosman: TR-Y-69-002-K-0042, TR-Y-69-002-M-0005
+[Karaman] Ermenek / Orta: TR-Y-70-003-M-0021, TR-Y-70-003-M-0022
+[Karaman] Karaman / Atatürk: TR-Y-70-004-M-0006, TR-Y-70-004-M-0007
+[Karaman] Karaman / Bahçelievler: TR-Y-70-004-M-0008, TR-Y-70-004-M-0009
+[Karaman] Karaman / Cumhuriyet: TR-Y-70-004-M-0014, TR-Y-70-004-M-0015
+[Karaman] Karaman / Fatih: TR-Y-70-004-M-0017, TR-Y-70-004-M-0018
+[Karaman] Karaman / Hamidiye: TR-Y-70-004-K-0048, TR-Y-70-004-M-0024
+[Karaman] Karaman / Hürriyet: TR-Y-70-004-M-0026, TR-Y-70-004-M-0027
+[Karaman] Sarıveliler / Yeşilyurt: TR-Y-70-006-M-0017, TR-Y-70-006-M-0018
+[Batman] Batman / Yenimahalle: TR-Y-72-001-M-0045, TR-Y-72-001-M-0046
+[Batman] Gercüş / Pınarbaşı: TR-Y-72-003-M-0003, TR-Y-72-003-M-0004
+[Batman] Kozluk / Karpuzlu: TR-Y-72-005-K-0033, TR-Y-72-005-M-0013
+[Batman] Kozluk / Karşıyaka: TR-Y-72-005-K-0034, TR-Y-72-005-M-0014
+[Batman] Sason / Karşıyaka: TR-Y-72-006-M-0014, TR-Y-72-006-M-0015
+[Batman] Sason / Yıldız: TR-Y-72-006-M-0033, TR-Y-72-006-M-0034
+[Şırnak] Silopi / Atatürk: TR-Y-73-005-M-0001, TR-Y-73-005-M-0002
+[Şırnak] Silopi / Başak: TR-Y-73-005-K-0005, TR-Y-73-005-M-0005
+[Şırnak] Silopi / Cumhuriyet: TR-Y-73-005-M-0008, TR-Y-73-005-M-0009, TR-Y-73-005-M-0010
+[Şırnak] Şırnak / Atatürk: TR-Y-73-006-M-0002, TR-Y-73-006-M-0003
+[Şırnak] Şırnak / Bahçelievler: TR-Y-73-006-M-0006, TR-Y-73-006-M-0007
+[Şırnak] Şırnak / Çadırlı: TR-Y-73-006-K-0009, TR-Y-73-006-M-0009
+[Şırnak] Uludere / Ayyıldız: TR-Y-73-007-M-0001, TR-Y-73-007-M-0002
+[Bartın] Bartın / Merkez: TR-Y-74-002-M-0022, TR-Y-74-002-M-0023
+[Bartın] Bartın / Şabankadı: TR-Y-74-002-K-0101, TR-Y-74-002-M-0027
+[Bartın] Kurucaşile / Ömerler: TR-Y-74-003-K-0021, TR-Y-74-003-M-0003
+[Ardahan] Ardahan / Hasköy: TR-Y-75-001-K-0033, TR-Y-75-001-K-0034
+[Iğdır] Iğdır / Yenimahalle: TR-Y-76-002-M-0023, TR-Y-76-002-M-0024
+[Yalova] Altınova / Merkez: TR-Y-77-001-M-0007, TR-Y-77-001-M-0008
+[Yalova] Çınarcık / Cumhuriyet: TR-Y-77-004-M-0004, TR-Y-77-004-M-0005
+[Karabük] Yenice / Atatürk Mahallesi: TR-Y-78-006-M-0001, TR-Y-78-006-M-0002
+[Karabük] Yenice / Merkez Mahallesi: TR-Y-78-006-M-0013, TR-Y-78-006-M-0014
+[Kilis] Kilis / Demirciler: TR-Y-79-002-K-0020, TR-Y-79-002-M-0015
+[Osmaniye] Düziçi / Merkez: TR-Y-80-002-M-0029, TR-Y-80-002-M-0030, TR-Y-80-002-M-0031
+[Osmaniye] Düziçi / Yeşilyurt: TR-Y-80-002-K-0025, TR-Y-80-002-M-0042
+[Osmaniye] Osmaniye / Cumhuriyet: TR-Y-80-005-M-0007, TR-Y-80-005-M-0008
+[Osmaniye] Osmaniye / Karataş: TR-Y-80-005-K-0013, TR-Y-80-005-M-0020
+[Osmaniye] Osmaniye / Selimiye: TR-Y-80-005-K-0031, TR-Y-80-005-M-0033
+[Düzce] Düzce / Cumhuriyet: TR-Y-81-004-M-0022, TR-Y-81-004-M-0023
+[Düzce] Düzce / Esentepe: TR-Y-81-004-K-0029, TR-Y-81-004-M-0030
+[Düzce] Düzce / Kültür: TR-Y-81-004-M-0046, TR-Y-81-004-M-0047
+[Düzce] Düzce / Yeni: TR-Y-81-004-M-0073, TR-Y-81-004-M-0074
+[Düzce] Yığılca / Orhangazi: TR-Y-81-008-K-0029, TR-Y-81-008-M-0005

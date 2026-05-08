@@ -28,15 +28,11 @@
           <div class="hero-intro glass">
             <div class="hero-intro-copy">
               <p class="eyebrow">İstediğiniz Formatta</p>
-              <h1>Türkiye'mizin Bölge, İl ve İlçe Haritaları</h1>
+              <h1>Türkiye'mizin Bölge, İl, İlçe ve Mahalle Haritaları</h1>
               <p class="hero-text">GeoJSON, SVG, PNG ve daha fazlası için tek veri modeli, tek kontrol yüzeyi, tek indirme akışı.</p>
             </div>
 
             <div class="hero-side">
-              <div class="hero-badges">
-                <span>81 İl</span>
-                <span>973 İlçe</span>
-              </div>
               <div class="hero-format-strip" aria-label="Format kısayolları">
                 <button class="hero-format-chip is-active" type="button" data-format="geojson">GeoJSON</button>
                 <button class="hero-format-chip" type="button" data-format="json">JSON</button>
@@ -47,18 +43,14 @@
                 <button class="hero-format-chip" type="button" data-format="wkt">WKT</button>
                 <button class="hero-format-chip" type="button" data-format="kml">KML</button>
                 <button class="hero-format-chip" type="button" data-format="kmz">KMZ</button>
+                <button class="hero-format-chip" type="button" data-format="gml">GML</button>
+                <button class="hero-format-chip" type="button" data-format="osm">OSM XML</button>
                 <button class="hero-format-chip" type="button" data-format="svg">SVG</button>
                 <button class="hero-format-chip" type="button" data-format="png">PNG</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>GeoPackage</button>
+                <button class="hero-format-chip" type="button" data-format="gpkg">GeoPackage</button>
                 <button class="hero-format-chip" type="button" data-format="shp">Shapefile</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>PDF</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>React Component</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>AI</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>EPS</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>OBJ</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>STL</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>GLB</button>
-                <button class="hero-format-chip is-planned" type="button" disabled>GLTF</button>
+                <button class="hero-format-chip" type="button" data-format="pdf">PDF</button>
+                <button class="hero-format-chip" type="button" data-format="react-component">React</button>
               </div>
             </div>
           </div>
@@ -82,12 +74,14 @@
                     <option value="wkt">WKT</option>
                     <option value="kml">KML</option>
                     <option value="kmz">KMZ</option>
-                    <option value="gpkg">GeoPackage (.gpkg) · Planlanan</option>
+                    <option value="gml">GML</option>
+                    <option value="osm">OSM XML (.osm)</option>
+                    <option value="gpkg">GeoPackage (.gpkg)</option>
                     <option value="shp">Shapefile (.shp)</option>
                     <option value="svg">SVG</option>
                     <option value="png">PNG</option>
-                    <option value="pdf">PDF · Planlanan</option>
-                    <option value="react-component">React Component · Planlanan</option>
+                    <option value="pdf">PDF</option>
+                    <option value="react-component">React (.jsx)</option>
                     <option value="ai">AI · Planlanan</option>
                     <option value="eps">EPS · Planlanan</option>
                     <option value="obj">OBJ · Planlanan</option>
@@ -140,6 +134,31 @@
                 <div class="field" id="fieldsField">
                   <span>Alanlar</span>
                   <div id="fieldChecklist" class="field-checklist"></div>
+                </div>
+
+                <label class="field is-hidden" id="gpkgCrsField">
+                  <span>GeoPackage CRS</span>
+                  <select id="gpkgCrsSelect">
+                    <option value="EPSG:4326">EPSG:4326 · WGS 84</option>
+                    <option value="EPSG:3857">EPSG:3857 · Web Mercator</option>
+                    <option value="EPSG:32635">EPSG:32635 · WGS 84 / UTM zone 35N</option>
+                    <option value="EPSG:32636">EPSG:32636 · WGS 84 / UTM zone 36N</option>
+                    <option value="EPSG:5254">EPSG:5254 · Türkiye yerel</option>
+                  </select>
+                </label>
+
+                <label class="field is-hidden" id="gpkgGeometryField">
+                  <span>GeoPackage geometri tipi</span>
+                  <select id="gpkgGeometrySelect">
+                    <option value="auto">Otomatik (kaynağı koru)</option>
+                    <option value="polygon">Polygon</option>
+                    <option value="multiPolygon">MultiPolygon</option>
+                  </select>
+                </label>
+
+                <div class="field is-hidden" id="gpkgEncodingField">
+                  <span>Kodlama</span>
+                  <div class="field-note">UTF-8 (sabit). Bu sürümde encoding seçimi yoktur.</div>
                 </div>
 
                 <label class="field is-hidden" id="styleField">
@@ -271,6 +290,9 @@
     <script src="https://cdn.jsdelivr.net/npm/topojson-server@3/dist/topojson-server.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
-    <script type="module" src="./app.js?v=33"></script>
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.20.2/dist/proj4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/sql-wasm.min.js"></script>
+    <script type="module" src="./app.js?v=35"></script>
   </body>
 </html>
+

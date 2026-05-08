@@ -1,7 +1,11 @@
-import {
+﻿import {
+  buildPdfDocumentBlob,
   buildGeojsonPayload as buildFilteredGeojsonPayload,
   buildJsonPayload as buildFilteredJsonPayload,
   buildKmzBlobFromKml,
+  buildGeoPackageBlob,
+  featureCollectionToGml,
+  featureCollectionToOsm,
   buildShapefileZipBlob,
   buildTabularRows as buildFilteredTabularRows,
   buildTopojsonPayload as buildFilteredTopojsonPayload,
@@ -10,9 +14,9 @@ import {
   featureCollectionToKml,
   pickFields,
   rowsToCsv,
-  rowsToSql,
   rowsToWkt,
-} from './download.js?v=31';
+  rowsToSql,
+} from './download.js?v=33';
 
 const state = {
   format: 'geojson',
@@ -25,6 +29,8 @@ const state = {
   palette: 'blue',
   baseLayer: 'none',
   resolution: '1920x1080',
+  gpkgCrs: 'EPSG:4326',
+  gpkgGeometryMode: 'auto',
   regionId: '',
   provinceId: '',
   districtId: '',
@@ -42,12 +48,17 @@ const els = {
   colorModeSelect: document.querySelector('#colorModeSelect'),
   paletteSelect: document.querySelector('#paletteSelect'),
   resolutionSelect: document.querySelector('#resolutionSelect'),
+  gpkgCrsSelect: document.querySelector('#gpkgCrsSelect'),
+  gpkgGeometrySelect: document.querySelector('#gpkgGeometrySelect'),
   csvDelimiterSelect: document.querySelector('#csvDelimiterSelect'),
   fieldsField: document.querySelector('#fieldsField'),
   styleField: document.querySelector('#styleField'),
   colorModeField: document.querySelector('#colorModeField'),
   paletteField: document.querySelector('#paletteField'),
   resolutionField: document.querySelector('#resolutionField'),
+  gpkgCrsField: document.querySelector('#gpkgCrsField'),
+  gpkgGeometryField: document.querySelector('#gpkgGeometryField'),
+  gpkgEncodingField: document.querySelector('#gpkgEncodingField'),
   csvDelimiterField: document.querySelector('#csvDelimiterField'),
   formatStatus: document.querySelector('#formatStatus'),
   downloadTitle: document.querySelector('#downloadTitle'),
@@ -85,25 +96,7 @@ const dataLoadProgress = {
   phase: 'idle',
 };
 let renderRequestId = 0;
-const dataQualityNotes = [
-  {
-    provinceId: 'TR-P-48',
-    districtId: 'TR-D-48-011',
-    level: 'mahalle',
-    issue: 'Seydikemer ilçesinde kaynakta çok parçalı/ayrık geometri',
-    message: 'Bu mahalle sınırları kamuya acik kaynak verisinde çok parçalı/ayrık poligonlar halinde geliyor. Sınırlar kaynak veriye sadık gösterilir.',
-    affectedIds: [
-      'TR-Y-48-011-M-0001',
-      'TR-Y-48-011-M-0004',
-      'TR-Y-48-011-M-0013',
-      'TR-Y-48-011-M-0030',
-      'TR-Y-48-011-M-0037',
-      'TR-Y-48-011-M-0043',
-      'TR-Y-48-011-M-0053',
-      'TR-Y-48-011-M-0065',
-    ],
-  },
-];
+
 const datasets = await loadDatasets();
 const projections = {
   region: buildProjection(datasets.regionsGeojson),
@@ -115,23 +108,30 @@ const projections = {
 hydrateRegionSelect();
 hydrateProvinceSelect();
 normalizeInterfaceCopy();
+hydrateHeroFormatCards();
 bindEvents();
 bindParallax();
 syncConfigurator();
 render();
 
 async function loadDatasets() {
-  const requests = [
-    ['./dist/json/regions.json', 'B????lgeler'],
-    ['./dist/json/provinces.json', '????ller'],
-    ['./dist/json/districts.json', '????l????eler'],
-    ['./dist/json/yerlesimler.json', 'Yerle????imler'],
+  const requiredRequests = [
+    ['./dist/json/regions.json', 'Bölgeler'],
+    ['./dist/json/provinces.json', 'İller'],
+    ['./dist/json/districts.json', 'İlçeler'],
+    ['./dist/json/yerlesimler.json', 'Yerleşimler'],
     ['./source/reference/source-labels.json', 'Kaynak etiketleri'],
     ['./source/yayinlanabilir/sources.json', 'Yayinlanabilir kaynaklar'],
-    ['./dist/geojson/regions.geojson', 'B????lge geometrisi'],
-    ['./dist/geojson/provinces.geojson', '????l geometrisi'],
-    ['./dist/geojson/districts.geojson', '????l????e geometrisi'],
+    ['./dist/geojson/regions.geojson', 'Bölge geometrisi'],
+    ['./dist/geojson/provinces.geojson', 'İl geometrisi'],
+    ['./dist/geojson/districts.geojson', 'İlçe geometrisi'],
   ];
+  const optionalRequests = [
+    ['./source/reference/quality-overrides.json', 'Kalite notlari'],
+    ['./data/processed/mahalle-geometrileri-report.json', 'Geometri raporu'],
+    ['./data/processed/mahalle-geometrileri-coverage.json', 'Geometri kapsam listesi'],
+  ];
+  const requests = [...requiredRequests, ...optionalRequests];
   initDataLoadProgress(requests);
 
   const [
@@ -144,12 +144,18 @@ async function loadDatasets() {
     regionsGeojson,
     provincesGeojson,
     districtsGeojson,
-  ] = await Promise.all(requests.map(([url, label]) => fetchJson(url, label)));
+  ] = await Promise.all(requiredRequests.map(([url, label]) => fetchJson(url, label)));
+  const [qualityOverrides, geometryReport, geometryCoverage] = await Promise.all(
+    optionalRequests.map(([url, label]) => fetchJson(url, label, { silent404: true })),
+  );
 
   updateDataLoadStatus('processing');
 
   const yerlesimlerById = new Map(yerlesimler.map((item) => [item.id, item]));
   const mahalleMetadataById = new Map(yerlesimlerById);
+  const regionsById = new Map(regions.map((item) => [item.id, item]));
+  const provincesById = new Map(provinces.map((item) => [item.id, item]));
+  const districtsById = new Map(districts.map((item) => [item.id, item]));
   const publishableProvinceIds = new Set(
     (publishableSources?.province_sources || [])
       .filter((item) => item.publishable)
@@ -163,21 +169,219 @@ async function loadDatasets() {
     provinces,
     districts,
     yerlesimler,
-    regionsGeojson,
+    regionsGeojson: buildDissolvedRegionsGeojson(regions, regionsGeojson, provincesGeojson),
     provincesGeojson,
     districtsGeojson,
     mahalleGeometrileri: { type: 'FeatureCollection', features: [] },
     mahalleGeometryCache: new Map(),
     loadedMahalleGeometryKey: '',
     sourceLabels,
+    qualityNotes: [...normalizeQualityNotes(qualityOverrides), ...normalizeReportNotes(geometryReport)],
+    qualityIssueLabels: qualityOverrides?.issue_labels || {},
+    mahalleGeometryCoverage: normalizeMahalleGeometryCoverage(geometryCoverage),
     publishableSources,
     publishableProvinceIds,
-    regionsById: new Map(regions.map((item) => [item.id, item])),
-    provincesById: new Map(provinces.map((item) => [item.id, item])),
-    districtsById: new Map(districts.map((item) => [item.id, item])),
+    regionsById,
+    provincesById,
+    districtsById,
     yerlesimlerById,
     mahalleMetadataById,
   };
+}
+
+function buildDissolvedRegionsGeojson(regions, regionsGeojson, provincesGeojson) {
+  if (!window.topojson?.topology || !window.topojson?.merge) {
+    return regionsGeojson;
+  }
+
+  const topology = window.topojson.topology({ provinces: provincesGeojson });
+  const provinceGeometries = topology?.objects?.provinces?.geometries;
+  if (!Array.isArray(provinceGeometries)) {
+    return regionsGeojson;
+  }
+
+  const mergedFeatures = regionsGeojson.features.map((feature) => {
+    const region = regions.find((item) => item.id === feature.properties.id);
+    const memberIds = new Set(region?.member_ids || feature.properties.member_ids || []);
+    const members = provinceGeometries.filter((geometry) => memberIds.has(geometry.properties?.id));
+    if (members.length === 0) {
+      return feature;
+    }
+
+    const mergedGeometry = window.topojson.merge(topology, members);
+    return {
+      ...feature,
+      geometry: mergedGeometry || feature.geometry,
+    };
+  });
+
+  return {
+    ...regionsGeojson,
+    features: mergedFeatures,
+  };
+}
+
+function normalizeMahalleGeometryCoverage(payload) {
+  const districtsByProvince = new Map();
+  for (const [provinceId, districtIds] of Object.entries(payload?.districts_by_province || {})) {
+    districtsByProvince.set(provinceId, new Set((districtIds || []).filter(Boolean)));
+  }
+  return {
+    provinceIds: new Set((payload?.province_ids || []).filter(Boolean)),
+    districtIds: new Set((payload?.district_ids || []).filter(Boolean)),
+    districtsByProvince,
+  };
+}
+
+function normalizeQualityNotes(payload) {
+  const notes = Array.isArray(payload?.notes) ? payload.notes : Array.isArray(payload) ? payload : [];
+  return notes.map((note) => {
+    const affectedIds = [];
+    const settlementNames = [];
+
+    if (note.settlement_id) {
+      affectedIds.push(note.settlement_id);
+    }
+    if (note.settlement_name) {
+      settlementNames.push(note.settlement_name);
+    }
+
+    for (const settlement of note.settlements || []) {
+      if (settlement?.settlement_id) {
+        affectedIds.push(settlement.settlement_id);
+      }
+      if (settlement?.settlement_name) {
+        settlementNames.push(settlement.settlement_name);
+      }
+    }
+
+    return {
+      level: note.level || 'mahalle',
+      provinceId: note.province_id || '',
+      provinceName: note.province_name || '',
+      districtId: note.district_id || '',
+      districtName: note.district_name || '',
+      issue: note.issue || 'manual_quality_note',
+      status: note.status || 'open',
+      message: note.note || 'Bu kayt iin kalite notu bulunuyor.',
+      settlementNames: [...new Set(settlementNames.filter(Boolean))],
+      affectedIds: [...new Set(affectedIds.filter(Boolean))],
+    };
+  });
+}
+
+function normalizeReportNotes(report) {
+  if (!report) return [];
+  const notes = [];
+
+  // OSB areas — group by province + district
+  const osbMap = new Map();
+  for (const src of Object.values(report.sources || {})) {
+    for (const osb of src.osb_areas || []) {
+      const key = `${src.province_id}::${osb.district_id || ''}`;
+      if (!osbMap.has(key)) {
+        osbMap.set(key, {
+          provinceId: src.province_id,
+          provinceName: src.province_name,
+          districtId: osb.district_id || '',
+          districtName: osb.district_name || '',
+          names: [],
+          ids: [],
+        });
+      }
+      const g = osbMap.get(key);
+      g.names.push(osb.raw_name);
+      if (osb.osb_id) g.ids.push(osb.osb_id);
+    }
+  }
+  for (const group of osbMap.values()) {
+    notes.push({
+      level: 'mahalle',
+      provinceId: group.provinceId,
+      provinceName: group.provinceName,
+      districtId: group.districtId,
+      districtName: group.districtName,
+      issue: 'osb_area',
+      status: 'open',
+      message: 'Resmi mahalle listesinde bulunmuyor; OSB veya sanayi alanı olarak çizildi.',
+      settlementNames: group.names,
+      affectedIds: group.ids,
+    });
+  }
+
+  // Geometry repairs — group by province + district
+  const repairsMap = new Map();
+  for (const repair of report.geometry_repairs || []) {
+    if (repair.status !== 'applied') continue;
+    const key = `${repair.province_id}::${repair.district_id}`;
+    if (!repairsMap.has(key)) {
+      repairsMap.set(key, {
+        provinceId: repair.province_id,
+        provinceName: repair.province_name,
+        districtId: repair.district_id,
+        districtName: repair.district_name,
+        pairs: [],
+        affectedIds: [],
+      });
+    }
+    const group = repairsMap.get(key);
+    group.pairs.push(`${repair.outer_name} içinde ${repair.inner_name}`);
+    if (repair.outer_id) group.affectedIds.push(repair.outer_id);
+  }
+  for (const group of repairsMap.values()) {
+    notes.push({
+      level: 'mahalle',
+      provinceId: group.provinceId,
+      provinceName: group.provinceName,
+      districtId: group.districtId,
+      districtName: group.districtName,
+      issue: 'geometry_repair',
+      status: 'applied',
+      message: 'İç içe geçen polygon düzeltildi; iç yerleşimi kapsayan dış mahallenin geometrisi kırpıldı.',
+      settlementNames: group.pairs,
+      affectedIds: group.affectedIds,
+    });
+  }
+
+  // Far multipolygons — group by province + district
+  const farMap = new Map();
+  for (const item of report.far_multipolygons || []) {
+    const key = `${item.province_id}::${item.district_id || ''}`;
+    if (!farMap.has(key)) {
+      farMap.set(key, {
+        provinceId: item.province_id,
+        provinceName: item.province_name || '',
+        districtId: item.district_id || '',
+        districtName: item.district_name || '',
+        names: [],
+        ids: [],
+      });
+    }
+    const g = farMap.get(key);
+    const km = Math.round(item.max_dist_deg * 111);
+    g.names.push(`${item.name} (${item.polygon_count} parça, ~${km} km arayla)`);
+    if (item.id) g.ids.push(item.id);
+  }
+  for (const group of farMap.values()) {
+    notes.push({
+      level: 'mahalle',
+      provinceId: group.provinceId,
+      provinceName: group.provinceName,
+      districtId: group.districtId,
+      districtName: group.districtName,
+      issue: 'far_multipolygon',
+      status: 'open',
+      message: 'Mahalle geometrisi birden fazla uzak parçadan oluşuyor; kaynak hatası olabilir.',
+      settlementNames: group.names,
+      affectedIds: group.ids,
+    });
+  }
+
+  return notes;
+}
+
+function getActiveQualityNotes() {
+  return datasets.qualityNotes || [];
 }
 
 function initDataLoadProgress(requests) {
@@ -247,17 +451,21 @@ function updateDataLoadStatus(phase) {
   els.mapLoadBar.style.width = percent === null ? '' : `${percent}%`;
 }
 
-async function fetchJson(url, label = url) {
+async function fetchJson(url, label = url, { silent404 = false } = {}) {
   updateResourceProgress(url, { label });
   const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) {
+    if (silent404 && response.status === 404) {
+      updateResourceProgress(url, { done: true });
+      return null;
+    }
     updateDataLoadStatus('error');
-    throw new Error(`Yüklenemedi: ${url}`);
+    throw new Error(`Yüklenemedi (${response.status}): ${url}`);
   }
   const total = Number(response.headers.get('Content-Length')) || 0;
   updateResourceProgress(url, { total });
 
-  if (!response.body?.getReader) {
+  if (!response.body.getReader) {
     const text = await response.text();
     updateResourceProgress(url, { loaded: total || text.length, total: total || text.length, processing: true });
     const payload = JSON.parse(text);
@@ -293,13 +501,15 @@ function getMahalleGeometryUrlsForState() {
     return [];
   }
 
+  const coverage = datasets.mahalleGeometryCoverage || { districtIds: new Set() };
   const districtIds = state.districtId
-    ? [state.districtId]
+    ? (coverage.districtIds.size === 0 || coverage.districtIds.has(state.districtId) ? [state.districtId] : [])
     : datasets.districts
       .filter((district) => {
         if (!datasets.publishableProvinceIds.has(district.parent_id)) return false;
         if (state.provinceId && district.parent_id !== state.provinceId) return false;
         if (!state.provinceId && state.regionId && district.region_id !== state.regionId) return false;
+        if (coverage.districtIds.size > 0 && !coverage.districtIds.has(district.id)) return false;
         return true;
       })
       .map((district) => district.id);
@@ -322,6 +532,8 @@ async function ensureActiveMahalleGeometries() {
     return;
   }
 
+  updateDataLoadStatus('loading');
+
   for (const resource of resources) {
     if (!dataLoadProgress.resources.has(resource.url)) {
       dataLoadProgress.resources.set(resource.url, {
@@ -336,7 +548,13 @@ async function ensureActiveMahalleGeometries() {
 
   const collections = await Promise.all(resources.map(async (resource) => {
     if (!datasets.mahalleGeometryCache.has(resource.key)) {
-      datasets.mahalleGeometryCache.set(resource.key, fetchJson(resource.url, resource.label));
+      const request = fetchJson(resource.url, resource.label, { silent404: true })
+        .then((data) => data ?? { type: 'FeatureCollection', features: [] })
+        .catch((error) => {
+          datasets.mahalleGeometryCache.delete(resource.key);
+          throw error;
+        });
+      datasets.mahalleGeometryCache.set(resource.key, request);
     }
     return datasets.mahalleGeometryCache.get(resource.key);
   }));
@@ -415,7 +633,7 @@ function normalizeInterfaceCopy() {
 
 
 function bindEvents() {
-  els.heroFormatChips?.forEach((chip) => {
+  els.heroFormatChips.forEach((chip) => {
     chip.addEventListener('click', () => {
       const format = chip.dataset.format;
       if (!format) {
@@ -431,64 +649,70 @@ function bindEvents() {
     });
   });
 
-  els.formatSelect?.addEventListener('change', (event) => {
+  els.formatSelect.addEventListener('change', (event) => {
     state.format = event.target.value;
     syncConfigurator();
     render();
   });
 
-  els.scopeSelect?.addEventListener('change', (event) => {
+  els.scopeSelect.addEventListener('change', (event) => {
     state.scope = event.target.value;
 
     if (state.scope === 'turkey') {
-      state.level = state.level === 'mahalle' ? 'mahalle' : 'region';
       state.regionId = '';
       state.provinceId = '';
       state.districtId = '';
-      if (els.detailSelect) els.detailSelect.value = state.level;
       if (els.regionSelect) els.regionSelect.value = '';
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
     } else if (state.scope === 'region') {
-      state.level = 'province';
       state.provinceId = '';
       state.districtId = '';
-      if (els.detailSelect) els.detailSelect.value = 'province';
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
     } else {
-      state.level = 'district';
       state.districtId = '';
-      if (els.detailSelect) els.detailSelect.value = 'district';
+      if (state.provinceId) {
+        state.regionId = datasets.provincesById.get(state.provinceId)?.region_id || state.regionId;
+      }
+      if (els.districtSelect) els.districtSelect.value = '';
     }
 
     syncConfigurator();
     render();
   });
 
-  els.detailSelect?.addEventListener('change', (event) => {
-    const previousLevel = state.level;
+  els.detailSelect.addEventListener('change', (event) => {
     state.level = event.target.value;
 
     if (state.level === 'region') {
-      state.scope = 'turkey';
-      state.regionId = '';
+      if (state.provinceId) {
+        state.regionId = datasets.provincesById.get(state.provinceId)?.region_id || state.regionId;
+      } else if (state.districtId) {
+        const district = datasets.districtsById.get(state.districtId);
+        state.regionId = district?.region_id || state.regionId;
+      }
+      state.scope = state.regionId ? 'region' : 'turkey';
       state.provinceId = '';
       state.districtId = '';
-      if (els.scopeSelect) els.scopeSelect.value = 'turkey';
-      if (els.regionSelect) els.regionSelect.value = '';
+      if (els.scopeSelect) els.scopeSelect.value = state.scope;
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
     } else if (state.level === 'province') {
-      if (state.regionId) {
+      if (state.districtId && !state.provinceId) {
+        const district = datasets.districtsById.get(state.districtId);
+        state.provinceId = district?.parent_id || '';
+        state.regionId = district?.region_id || state.regionId;
+      }
+      state.districtId = '';
+      if (state.provinceId) {
+        state.scope = 'province';
+      } else if (state.regionId) {
         state.scope = 'region';
-        if (els.scopeSelect) els.scopeSelect.value = 'region';
       } else {
         state.scope = 'turkey';
-        if (els.scopeSelect) els.scopeSelect.value = 'turkey';
       }
-      state.provinceId = '';
-      state.districtId = '';
+      if (els.scopeSelect) els.scopeSelect.value = state.scope;
       if (els.provinceSelect) els.provinceSelect.value = '';
       if (els.districtSelect) els.districtSelect.value = '';
     } else if (state.level === 'mahalle') {
@@ -508,76 +732,78 @@ function bindEvents() {
       } else if (state.regionId) {
         state.scope = 'region';
         if (els.scopeSelect) els.scopeSelect.value = 'region';
-      } else if (previousLevel !== 'mahalle') {
+      } else {
         state.scope = 'turkey';
-        state.regionId = '';
-        state.provinceId = '';
-        state.districtId = '';
         if (els.scopeSelect) els.scopeSelect.value = 'turkey';
-        if (els.regionSelect) els.regionSelect.value = '';
-        if (els.provinceSelect) els.provinceSelect.value = '';
-        if (els.districtSelect) els.districtSelect.value = '';
       }
     } else {
-      if (state.scope === 'region' || state.regionId) {
-        state.scope = 'region';
-        if (els.scopeSelect) els.scopeSelect.value = 'region';
-        state.provinceId = '';
-        state.districtId = '';
-        if (els.provinceSelect) els.provinceSelect.value = '';
-        if (els.districtSelect) els.districtSelect.value = '';
-      } else {
+      if (state.districtId) {
+        const district = datasets.districtsById.get(state.districtId);
+        state.provinceId = district?.parent_id || state.provinceId;
+        state.regionId = district?.region_id || state.regionId;
         state.scope = 'province';
-        if (els.scopeSelect) els.scopeSelect.value = 'province';
-        if (!state.provinceId && datasets.provinces.length > 0) {
-          state.provinceId = state.level === 'mahalle'
-            ? firstMahalleProvinceId() || datasets.provinces[0].id
-            : datasets.provinces[0].id;
-          if (els.provinceSelect) els.provinceSelect.value = state.provinceId;
-          state.regionId = datasets.provincesById.get(state.provinceId)?.region_id || '';
-          if (els.regionSelect) els.regionSelect.value = state.regionId;
-        }
+        if (els.provinceSelect) els.provinceSelect.value = state.provinceId;
+        if (els.regionSelect) els.regionSelect.value = state.regionId;
+      } else if (state.provinceId) {
+        state.regionId = datasets.provincesById.get(state.provinceId)?.region_id || state.regionId;
+        state.scope = 'province';
+        if (els.regionSelect) els.regionSelect.value = state.regionId;
+      } else if (state.regionId) {
+        state.scope = 'region';
+      } else {
+        state.scope = 'turkey';
       }
+      if (els.scopeSelect) els.scopeSelect.value = state.scope;
     }
 
     syncConfigurator();
     render();
   });
 
-  els.styleSelect?.addEventListener('change', (event) => {
+  els.styleSelect.addEventListener('change', (event) => {
     state.style = event.target.value;
     syncConfigurator();
     render();
   });
 
-  els.colorModeSelect?.addEventListener('change', (event) => {
+  els.colorModeSelect.addEventListener('change', (event) => {
     state.colorMode = event.target.value;
     syncConfigurator();
     render();
   });
 
-  els.paletteSelect?.addEventListener('change', (event) => {
+  els.paletteSelect.addEventListener('change', (event) => {
     state.palette = event.target.value;
     syncConfigurator();
     render();
   });
 
-  els.resolutionSelect?.addEventListener('change', (event) => {
+  els.resolutionSelect.addEventListener('change', (event) => {
     state.resolution = event.target.value;
     syncConfigurator();
   });
 
-  els.csvDelimiterSelect?.addEventListener('change', (event) => {
+  els.gpkgCrsSelect.addEventListener('change', (event) => {
+    state.gpkgCrs = event.target.value;
+    syncConfigurator();
+  });
+
+  els.gpkgGeometrySelect.addEventListener('change', (event) => {
+    state.gpkgGeometryMode = event.target.value;
+    syncConfigurator();
+  });
+
+  els.csvDelimiterSelect.addEventListener('change', (event) => {
     state.csvDelimiter = event.target.value;
     syncConfigurator();
   });
 
-  els.baseLayerSelect?.addEventListener('change', (event) => {
+  els.baseLayerSelect.addEventListener('change', (event) => {
     state.baseLayer = event.target.value;
     render();
   });
 
-  els.regionSelect?.addEventListener('change', (event) => {
+  els.regionSelect.addEventListener('change', (event) => {
     state.regionId = event.target.value;
     state.selectedId = '';
 
@@ -606,7 +832,7 @@ function bindEvents() {
     render();
   });
 
-  els.provinceSelect?.addEventListener('change', (event) => {
+  els.provinceSelect.addEventListener('change', (event) => {
     state.provinceId = event.target.value;
     state.districtId = '';
     state.selectedId = '';
@@ -625,14 +851,14 @@ function bindEvents() {
     render();
   });
 
-  els.districtSelect?.addEventListener('change', (event) => {
+  els.districtSelect.addEventListener('change', (event) => {
     state.districtId = event.target.value;
     state.selectedId = '';
 
     if (state.districtId) {
       const district = datasets.districtsById.get(state.districtId);
-      state.provinceId = district?.parent_id || state.provinceId;
-      state.regionId = district?.region_id || state.regionId;
+      state.provinceId = district.parent_id || state.provinceId;
+      state.regionId = district.region_id || state.regionId;
       if (els.provinceSelect) els.provinceSelect.value = state.provinceId;
       if (els.regionSelect) els.regionSelect.value = state.regionId;
       if (els.scopeSelect) els.scopeSelect.value = 'province';
@@ -644,7 +870,7 @@ function bindEvents() {
   });
 
   let searchDebounceTimer = 0;
-  els.searchInput?.addEventListener('input', (event) => {
+  els.searchInput.addEventListener('input', (event) => {
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = window.setTimeout(() => {
       state.search = normalizeSearchText(event.target.value);
@@ -652,7 +878,7 @@ function bindEvents() {
     }, 160);
   });
 
-  els.downloadButton?.addEventListener('click', async () => {
+  els.downloadButton.addEventListener('click', async () => {
     const availability = getFormatAvailability();
     if (!availability.available) {
       return;
@@ -690,12 +916,21 @@ function bindEvents() {
     }
   });
 
-  els.qualityButton?.addEventListener('click', () => {
-    const isOpen = !els.qualityPanel?.classList.contains('is-hidden');
+  els.qualityButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = !els.qualityPanel.classList.contains('is-hidden');
     setQualityPanelOpen(!isOpen);
   });
 
-  els.resetButton?.addEventListener('click', () => {
+  document.addEventListener('click', (e) => {
+    if (!els.qualityPanel.classList.contains('is-hidden')) {
+      if (!els.qualityPanel.contains(e.target) && e.target !== els.qualityButton) {
+        setQualityPanelOpen(false);
+      }
+    }
+  });
+
+  els.resetButton.addEventListener('click', () => {
     state.format = 'geojson';
     state.scope = 'turkey';
     state.level = 'region';
@@ -705,6 +940,8 @@ function bindEvents() {
     state.colorMode = 'single';
     state.palette = 'blue';
     state.resolution = '1920x1080';
+    state.gpkgCrs = 'EPSG:4326';
+    state.gpkgGeometryMode = 'auto';
     state.regionId = '';
     state.provinceId = '';
     state.districtId = '';
@@ -719,6 +956,8 @@ function bindEvents() {
     if (els.colorModeSelect) els.colorModeSelect.value = state.colorMode;
     if (els.paletteSelect) els.paletteSelect.value = state.palette;
     if (els.resolutionSelect) els.resolutionSelect.value = state.resolution;
+    if (els.gpkgCrsSelect) els.gpkgCrsSelect.value = state.gpkgCrs;
+    if (els.gpkgGeometrySelect) els.gpkgGeometrySelect.value = state.gpkgGeometryMode;
     if (els.csvDelimiterSelect) els.csvDelimiterSelect.value = state.csvDelimiter;
     if (els.regionSelect) els.regionSelect.value = '';
     if (els.provinceSelect) els.provinceSelect.value = '';
@@ -727,6 +966,42 @@ function bindEvents() {
 
     syncConfigurator();
     render();
+  });
+}
+
+function hydrateHeroFormatCards() {
+  const meta = {
+    geojson: { subtitle: 'Vektör', color: '#61d7ff' },
+    json: { subtitle: 'Veri', color: '#ff9f43' },
+    topojson: { subtitle: 'Topo', color: '#7f8cff' },
+    csv: { subtitle: 'Tablo', color: '#ffcd38' },
+    xlsx: { subtitle: 'Excel', color: '#4be38a' },
+    sql: { subtitle: 'Sorgu', color: '#8c9bff' },
+    wkt: { subtitle: 'Metin', color: '#c9d2e7' },
+    kml: { subtitle: 'Harita', color: '#45e27d' },
+    kmz: { subtitle: 'Sıkışık', color: '#42c9ff' },
+    gml: { subtitle: 'OGC', color: '#ff6f91' },
+    osm: { subtitle: 'OSM XML', color: '#56d68b' },
+    svg: { subtitle: 'Vektör', color: '#3dbbff' },
+    png: { subtitle: 'Görsel', color: '#a9ef57' },
+    gpkg: { subtitle: 'GIS Paket', color: '#ff8a3d' },
+    shp: { subtitle: 'Shapefile', color: '#59a7ff' },
+    pdf: { subtitle: 'Belge', color: '#ffd166' },
+    'react-component': { subtitle: 'Kod', color: '#ff7de9' },
+  };
+
+  els.heroFormatChips.forEach((chip) => {
+    const format = chip.dataset.format;
+    if (!format || !meta[format]) {
+      return;
+    }
+    const title = chip.textContent.trim();
+    const info = meta[format];
+    chip.style.setProperty('--format-accent', info.color);
+    chip.innerHTML = `
+      <span class="hero-format-title">${title}</span>
+      <span class="hero-format-meta">${info.subtitle}</span>
+    `;
   });
 }
 
@@ -770,9 +1045,10 @@ function syncConfigurator() {
 }
 
 function syncFormatFields() {
-  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz'].includes(state.format);
+  const isGeoPackage = state.format === 'gpkg';
+  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'osm', 'gpkg', 'react-component'].includes(state.format);
   const isTabularData = ['csv', 'xlsx', 'sql', 'wkt'].includes(state.format);
-  const isVectorVisual = state.format === 'svg';
+  const isVectorVisual = state.format === 'svg' || state.format === 'react-component';
   const isRasterVisual = state.format === 'png' || state.format === 'pdf';
   const isVisual = isVectorVisual || isRasterVisual;
   const showColorMode = isVisual && (state.style === 'filled' || state.style === 'transparent');
@@ -783,16 +1059,24 @@ function syncFormatFields() {
   toggleField(els.colorModeField, showColorMode);
   toggleField(els.paletteField, showPalette);
   toggleField(els.resolutionField, isRasterVisual);
+  toggleField(els.gpkgCrsField, isGeoPackage);
+  toggleField(els.gpkgGeometryField, isGeoPackage);
+  toggleField(els.gpkgEncodingField, isGeoPackage);
   toggleField(els.csvDelimiterField, state.format === 'csv');
 
   if (!isTabularData && els.csvDelimiterSelect) {
     els.csvDelimiterSelect.value = state.csvDelimiter;
   }
+
+  if (!isGeoPackage) {
+    if (els.gpkgCrsSelect) els.gpkgCrsSelect.value = state.gpkgCrs;
+    if (els.gpkgGeometrySelect) els.gpkgGeometrySelect.value = state.gpkgGeometryMode;
+  }
 }
 
 function syncProvinceFilter() {
   const needsProvince = state.scope === 'province' || state.level === 'district' || state.level === 'mahalle';
-  toggleField(els.provinceSelect?.closest('.field'), needsProvince);
+  toggleField(els.provinceSelect.closest('.field'), needsProvince);
 
   if (!needsProvince && els.provinceSelect) {
     els.provinceSelect.value = '';
@@ -802,7 +1086,7 @@ function syncProvinceFilter() {
 
 function syncDistrictFilter() {
   const needsDistrict = state.level === 'district' || state.level === 'mahalle';
-  toggleField(els.districtSelect?.closest('.field'), needsDistrict);
+  toggleField(els.districtSelect.closest('.field'), needsDistrict);
 
   if (!needsDistrict && els.districtSelect) {
     els.districtSelect.value = '';
@@ -812,7 +1096,7 @@ function syncDistrictFilter() {
 
 function syncRegionFilter() {
   const needsRegion = state.scope === 'region' || state.scope === 'province' || state.level === 'province' || state.level === 'district' || state.level === 'mahalle';
-  toggleField(els.regionSelect?.closest('.field'), needsRegion);
+  toggleField(els.regionSelect.closest('.field'), needsRegion);
 
   if (!needsRegion && els.regionSelect) {
     els.regionSelect.value = '';
@@ -861,12 +1145,7 @@ function syncProvinceOptions() {
     els.provinceSelect.value = currentValue;
   } else {
     state.provinceId = '';
-    if (state.level === 'mahalle' && visibleProvinces.length > 0 && state.scope === 'province' && !state.regionId) {
-      state.provinceId = visibleProvinces[0].id;
-      els.provinceSelect.value = state.provinceId;
-    } else {
-      els.provinceSelect.value = '';
-    }
+    els.provinceSelect.value = '';
   }
 }
 
@@ -950,8 +1229,8 @@ function renderFieldChecklist(options) {
 }
 
 function getAvailableFieldDefinitions() {
-  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'svg']);
-  const tabularFormats = new Set(['csv', 'xlsx', 'sql', 'wkt']);
+  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'gml', 'osm', 'gpkg', 'svg', 'react-component']);
+  const spatialAttributeFormats = new Set(['csv', 'xlsx', 'sql', 'wkt', 'gml', 'gpkg']);
 
   if (!structuredFormats.has(state.format)) {
     return [];
@@ -959,9 +1238,9 @@ function getAvailableFieldDefinitions() {
 
   let options;
 
-  const spatialFields = tabularFormats.has(state.format) ? [
-    fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktası enlemi', false),
-    fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktası boylamı', false),
+  const spatialFields = spatialAttributeFormats.has(state.format) ? [
+    fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktas? enlemi', false),
+    fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktas? boylamı', false),
     fieldDef('x', 'X / Boylam', 'EPSG:4326 boylam değeri; CSV için sayısal noktalı format', false),
     fieldDef('y', 'Y / Enlem', 'EPSG:4326 enlem değeri; CSV için sayısal noktalı format', false),
     fieldDef('coordinate_system', 'Koordinat Sistemi', 'Koordinat referans sistemi', false),
@@ -969,8 +1248,10 @@ function getAvailableFieldDefinitions() {
     fieldDef('bbox_min_lat', 'Sınır Kutusu Güney', 'Minimum enlem (bbox_min_lat)', false),
     fieldDef('bbox_max_lon', 'Sınır Kutusu Doğu', 'Maksimum boylam (bbox_max_lon)', false),
     fieldDef('bbox_max_lat', 'Sınır Kutusu Kuzey', 'Maksimum enlem (bbox_max_lat)', false),
-    fieldDef('geometry_wkt', 'Tam Sınır (WKT)', 'Tam sınır geometrisi — yalnızca ileri düzey kullanım', false),
   ] : [];
+  if (state.format === 'wkt') {
+    spatialFields.push(fieldDef('geometry_wkt', 'Tam Sınır (WKT)', 'Tam sınır geometrisi — yalnızca ileri düzey kullanım', false));
+  }
 
   if (state.level === 'region') {
     options = [
@@ -1000,7 +1281,7 @@ function getAvailableFieldDefinitions() {
     options = [
       fieldDef('id', 'Mahalle ID', 'Mahalle Benzersiz Kimliği', true),
       fieldDef('name', 'Mahalle Adı', 'Mahalle Görünür Adı', true),
-      fieldDef('source_label', 'Kaynak', 'Kamuya açık kaynak grubu', true),
+      fieldDef('source_label', 'Kaynak', 'Opsiyonel provenance alanı; GeoPackage için zorunlu temel kolon değildir', false),
       fieldDef('parent_id', 'İlçe ID', 'İlçe Benzersiz Kimliği', true),
       fieldDef('parent_name', 'İlçe Adı', 'İlçe Görünür Adı', true),
       fieldDef('province_id', 'İl ID', 'İl Benzersiz Kimliği', true),
@@ -1073,8 +1354,11 @@ function estimateDownloadSize() {
   else if (fmt === 'sql') bytes = metaBytes * 1.2;
   else if (fmt === 'wkt') bytes = geoBytes * 0.9;
   else if (fmt === 'kml' || fmt === 'kmz') bytes = geoBytes * 1.1;
+  else if (fmt === 'gml') bytes = (geoBytes + metaBytes) * 1.15;
+  else if (fmt === 'osm') bytes = geoBytes * 1.4 + metaBytes * 0.2;
   else if (fmt === 'shp') bytes = geoBytes * 0.7;
-  else if (fmt === 'svg' || fmt === 'png') bytes = geoBytes * 0.5;
+  else if (fmt === 'gpkg') bytes = (geoBytes + metaBytes) * 0.65;
+  else if (fmt === 'svg' || fmt === 'png' || fmt === 'react-component') bytes = geoBytes * 0.6;
   else return '';
 
   if (fmt === 'kmz' || fmt === 'shp' || fmt === 'xlsx') bytes *= 0.5;
@@ -1085,13 +1369,13 @@ function estimateDownloadSize() {
 }
 
 function syncHeroFormatChips() {
-  els.heroFormatChips?.forEach((chip) => {
+  els.heroFormatChips.forEach((chip) => {
     chip.classList.toggle('is-active', chip.dataset.format === state.format);
   });
 }
 
 function getFormatAvailability() {
-  const builtArtifactFormats = new Set(['topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml']);
+  const builtArtifactFormats = new Set(['topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'gml', 'osm']);
 
   if (state.format === 'json') {
     return {
@@ -1136,6 +1420,18 @@ function getFormatAvailability() {
     };
   }
 
+  if (state.format === 'react-component') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'React Component hazır',
+      filename: getDownloadFilename('jsx', `${state.level}s-react`),
+      summary(scopeLabel, detailLabel, fields) {
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} React component indirilebilir. Seçilen alanlar data-* öznitelikleri olarak eklenir. Stil: ${getStyleLabel(state.style)}.`;
+      },
+    };
+  }
+
   if (state.format === 'png') {
     return {
       available: true,
@@ -1151,6 +1447,37 @@ function getFormatAvailability() {
           }
         }
         return `${scopeLabel} için ${getDetailLabel(detailLabel)} PNG indirilebilir. Stil: ${getStyleLabel(state.style)}.${colorMode} Çözünürlük: ${state.resolution}.`;
+      },
+    };
+  }
+
+  if (state.format === 'pdf') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'PDF hazır',
+      filename: getDownloadFilename('pdf', `${state.level}s`),
+      summary(scopeLabel, detailLabel) {
+        let colorMode = '';
+        if (state.style === 'filled') {
+          colorMode = ` Renk modu: ${getColorModeLabel(state.colorMode)}.`;
+          if (state.colorMode === 'palette') {
+            colorMode += ` Palet: ${getPaletteLabel(state.palette)}.`;
+          }
+        }
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} PDF indirilebilir. Stil: ${getStyleLabel(state.style)}.${colorMode} Sayfa boyutu: ${state.resolution}.`;
+      },
+    };
+  }
+
+  if (state.format === 'osm') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'OSM XML hazır',
+      filename: getDownloadFilename('osm', `${state.level}s`),
+      summary(scopeLabel, detailLabel, fields) {
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} OpenStreetMap XML çıktısı indirilebilir. Alanlar: ${formatSelectedFieldLabels(fields)}. Geometri OSM node/way/relation yapısına dönüştürülür.`;
       },
     };
   }
@@ -1187,6 +1514,18 @@ function getFormatAvailability() {
       filename: `${state.level}s.zip`,
       summary(scopeLabel, detailLabel) {
         return `${scopeLabel} için ${getDetailLabel(detailLabel)} Shapefile ZIP paketi indirilebilir (.shp + .shx + .dbf + .prj, WGS84).`;
+      },
+    };
+  }
+
+  if (state.format === 'gpkg') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'GeoPackage hazır',
+      filename: getDownloadFilename('gpkg', `${state.level}s`),
+      summary(scopeLabel, detailLabel, fields) {
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} GeoPackage indirilebilir. CRS: ${state.gpkgCrs}. Geometri: ${getGpkgGeometryModeLabel(state.gpkgGeometryMode)}. Alanlar: ${formatSelectedFieldLabels(fields)}. Kodlama: UTF-8.`;
       },
     };
   }
@@ -1261,81 +1600,271 @@ function syncQualityIndicator(visibleFeatures) {
   }
 
   const summary = getQualitySummary(visibleFeatures);
-  const shouldShow = state.level === 'mahalle' && summary.total > 0;
+  const shouldShow = summary.total > 0 && ['mahalle', 'district', 'province', 'region'].includes(state.level);
   els.qualityButton.classList.toggle('is-hidden', !shouldShow);
   if (!shouldShow) {
     setQualityPanelOpen(false);
     return;
   }
 
-  els.qualityButton.textContent = `Kalite %${summary.score}${summary.warningCount ? ` · ${summary.warningCount} not` : ''}`;
-  els.qualityButton.classList.toggle('has-warnings', summary.warningCount > 0);
-  els.qualityButton.title = summary.warningCount
-    ? `${summary.warningCount}/${summary.total} görünür kayıt veri notu içeriyor.`
-    : 'Görünen kayıtlarda bilinen veri notu yok.';
+  els.qualityButton.textContent = summary.bucketCount
+    ? `Bilinen kalite notu · ${summary.bucketCount}`
+    : 'Bilinen kalite notu yok';
+  els.qualityButton.classList.toggle('has-warnings', summary.bucketCount > 0);
+  els.qualityButton.title = summary.bucketCount
+    ? `${summary.bucketCount} kayıt için kalite notu mevcut.`
+    : 'Görünen kayıtlarda bilinen kalite notu yok; bu durum tüm verinin doğrulandığı anlamına gelmez.';
   renderQualityPanel(summary);
 }
 
 function getQualitySummary(visibleFeatures) {
   const visibleIds = new Set(visibleFeatures.map((feature) => feature.properties.id));
+  const visibleDistrictIds = new Set();
+  const visibleProvinceIds = new Set();
+
+  for (const feature of visibleFeatures) {
+    const props = feature.properties;
+    if (state.level === 'mahalle') {
+      if (props.district_id) visibleDistrictIds.add(props.district_id);
+      if (props.province_id) visibleProvinceIds.add(props.province_id);
+    } else if (state.level === 'district') {
+      visibleDistrictIds.add(props.id);
+      if (props.parent_id) visibleProvinceIds.add(props.parent_id);
+    } else if (state.level === 'province' || state.level === 'region') {
+      visibleProvinceIds.add(props.id);
+    }
+  }
+
   const warnings = [];
 
-  for (const note of dataQualityNotes.filter((item) => item.level === state.level)) {
-    const affected = note.affectedIds
-      .filter((id) => visibleIds.has(id))
-      .map((id) => getActiveMetadataMap().get(id))
-      .filter(Boolean);
-    if (affected.length > 0) {
+  for (const note of getActiveQualityNotes()) {
+    let relevant = false;
+    let affected = [];
+
+    if (note.affectedIds.length > 0) {
+      const affectedMeta = note.affectedIds
+        .map((id) => datasets.mahalleMetadataById.get(id))
+        .filter(Boolean);
+
+      if (state.level === 'mahalle') {
+        affected = affectedMeta.filter((item) => visibleIds.has(item.id));
+        relevant = affected.length > 0;
+      } else if (state.level === 'district') {
+        affected = affectedMeta.filter((item) => visibleDistrictIds.has(item.district_id));
+        relevant = affected.length > 0;
+      } else {
+        affected = affectedMeta.filter((item) => visibleProvinceIds.has(item.province_id));
+        relevant = affected.length > 0;
+      }
+    } else {
+      const districtMatch = note.districtId && visibleDistrictIds.has(note.districtId);
+      const provinceMatch = note.provinceId && visibleProvinceIds.has(note.provinceId);
+      relevant = state.level === 'mahalle' || state.level === 'district'
+        ? !!districtMatch
+        : !!provinceMatch || !!districtMatch;
+    }
+
+    if (relevant) {
       warnings.push({ ...note, affected });
     }
   }
 
-  const warningIds = new Set(warnings.flatMap((note) => note.affected.map((item) => item.id)));
-  const total = visibleFeatures.length;
-  const warningCount = warningIds.size;
-  const score = total > 0 ? Math.max(0, Math.round(100 - (warningCount / total) * 100)) : 100;
+  const buckets = buildQualityBuckets(warnings);
+  const bucketCount = buckets.reduce((sum, bucket) => sum + bucket.count, 0);
 
-  return { total, warningCount, score, warnings };
+  return {
+    total: visibleFeatures.length,
+    noteCount: warnings.length,
+    bucketCount,
+    warnings,
+    buckets,
+  };
 }
 
 function renderQualityPanel(summary) {
   els.qualityPanel.replaceChildren();
 
   const title = document.createElement('h3');
-  title.textContent = 'Veri Kalitesi';
+  title.textContent = buildQualityPanelTitle();
   els.qualityPanel.append(title);
 
-  if (summary.warningCount === 0) {
+  if (summary.noteCount === 0) {
     const empty = document.createElement('p');
-    empty.textContent = `Görünen ${numberFormat.format(summary.total)} kayıtta bilinen veri kalite notu yok.`;
-    els.qualityPanel.append(empty);
+    empty.textContent = `Görünen ${numberFormat.format(summary.total)} kayıt için kayıtlı kalite notu bulunmuyor.`;
+    const disclaimer = document.createElement('p');
+    disclaimer.textContent = 'Bu, verilerin doğrulandığı anlamına gelmez. Yalnızca şu ana kadar elle işaretlenmiş bir not olmadığını gösterir.';
+    els.qualityPanel.append(empty, disclaimer);
     return;
   }
 
-  const firstWarning = summary.warnings[0];
-  const affectedNames = summary.warnings
-    .flatMap((note) => note.affected.map((item) => (
-      item.district_name ? `${item.district_name} / ${item.name}` : item.name
-    )))
-    .sort((a, b) => a.localeCompare(b, 'tr'));
-
-  const summaryText = document.createElement('p');
-  summaryText.textContent = `${numberFormat.format(summary.warningCount)} / ${numberFormat.format(summary.total)} görünür kayıt veri notu içeriyor.`;
-
-  const issue = document.createElement('p');
-  const issueTitle = document.createElement('strong');
-  issueTitle.textContent = `${firstWarning.issue}:`;
-  issue.append(issueTitle, document.createTextNode(` ${firstWarning.message}`));
+  const disclaimer = document.createElement('p');
+  disclaimer.textContent = buildQualityPanelDisclaimer();
+  els.qualityPanel.append(disclaimer);
 
   const list = document.createElement('ul');
-  for (const name of affectedNames) {
-    const item = document.createElement('li');
-    item.textContent = name;
-    list.append(item);
+  for (const bucket of summary.buckets) {
+    const li = document.createElement('li');
+    li.textContent = `${bucket.label}: ${bucket.count} uyarı`;
+    if (bucket.details.length) {
+      li.title = bucket.details.join(' | ');
+      const detail = document.createElement('div');
+      detail.textContent = bucket.details.join(' | ');
+      detail.style.fontSize = '0.92em';
+      detail.style.opacity = '0.88';
+      detail.style.marginTop = '0.2rem';
+      li.append(detail);
+    }
+    list.append(li);
+  }
+  els.qualityPanel.append(list);
+}
+
+function buildQualityBuckets(warnings) {
+  const bucketMap = new Map();
+
+  function pushToBucket(label, detail = '') {
+    if (!label) return;
+    const key = label.toLocaleLowerCase('tr');
+    const current = bucketMap.get(key) || { label, count: 0, details: [] };
+    current.count += 1;
+    if (detail && !current.details.includes(detail)) current.details.push(detail);
+    bucketMap.set(key, current);
   }
 
-  els.qualityPanel.append(summaryText, issue, list);
+  function provinceName(warning) {
+    return datasets.provincesById.get(warning.provinceId)?.name
+      || warning.provinceName
+      || warning.provinceId
+      || 'İl geneli';
+  }
+
+  function regionName(warning) {
+    const province = warning.provinceId
+      ? datasets.provincesById.get(warning.provinceId)
+      : null;
+    return datasets.regionsById.get(province?.region_id)?.name
+      || warning.regionName
+      || warning.regionId
+      || 'Bölge geneli';
+  }
+
+  function districtName(warning) {
+    return datasets.districtsById.get(warning.districtId)?.name
+      || warning.districtName
+      || warning.districtId
+      || 'İlçe geneli';
+  }
+
+  function settlementNames(warning) {
+    const names = [];
+
+    for (const item of warning.affected || []) {
+      if (item.name) names.push(item.name);
+    }
+
+    for (const name of warning.settlementNames || []) {
+      if (name) names.push(name);
+    }
+
+    return [...new Set(names)];
+  }
+
+  function settlementDetail(name, warning) {
+    for (const candidate of warning.settlementNames || []) {
+      if (candidate === name) continue;
+      if (candidate.startsWith(`${name} (`) && candidate.endsWith(')')) {
+        return candidate.slice(name.length + 2, -1);
+      }
+    }
+    return '';
+  }
+
+  for (const warning of warnings) {
+    if (state.level === 'region') {
+      pushToBucket(regionName(warning), warning.message || '');
+      continue;
+    }
+
+    if (state.level === 'province') {
+      pushToBucket(provinceName(warning), warning.message || '');
+      continue;
+    }
+
+    if (state.level === 'district') {
+      pushToBucket(`${provinceName(warning)} / ${districtName(warning)}`, warning.message || '');
+      continue;
+    }
+
+    const affectedItems = [...new Map((warning.affected || []).map((item) => [item.id, item])).values()];
+    if (affectedItems.length > 0) {
+      for (const item of affectedItems) {
+        pushToBucket(
+          `${provinceName(warning)} / ${districtName(warning)} / ${item.name}`,
+          settlementDetail(item.name, warning) || warning.message || '',
+        );
+      }
+      continue;
+    }
+
+    const names = settlementNames(warning);
+    if (names.length === 0) {
+      pushToBucket(`${provinceName(warning)} / ${districtName(warning)} / Mahalle geneli`, warning.message || '');
+      continue;
+    }
+
+    for (const name of names) {
+      pushToBucket(
+        `${provinceName(warning)} / ${districtName(warning)} / ${name}`,
+        settlementDetail(name, warning) || warning.message || '',
+      );
+    }
+  }
+
+  return [...bucketMap.values()].sort((a, b) => {
+    if (b.count !== a.count) {
+      return b.count - a.count;
+    }
+    return a.label.localeCompare(b.label, 'tr');
+  });
 }
+
+function buildQualityPanelDisclaimer() {
+  if (state.level === 'region') {
+    return 'Bu panel yalnızca bölge bazlı bilinen kalite notu sayılarını gösterir.';
+  }
+  if (state.level === 'province') {
+    return 'Bu panel yalnızca il bazlı bilinen kalite notu sayılarını gösterir.';
+  }
+  if (state.level === 'district') {
+    return 'Bu panel yalnızca ilçe bazlı bilinen kalite notu sayılarını gösterir.';
+  }
+  return 'Bu panel yalnızca mahalle bazlı bilinen kalite notu sayılarını gösterir.';
+}
+
+function buildQualityPanelTitle() {
+  const provinceName = state.provinceId
+    ? datasets.provincesById.get(state.provinceId)?.name || state.provinceId
+    : '';
+  const districtName = state.districtId
+    ? datasets.districtsById.get(state.districtId)?.name || state.districtId
+    : '';
+
+  if (provinceName && districtName) {
+    return `Veri Kalitesi · ${provinceName} / ${districtName}`;
+  }
+  if (provinceName) {
+    return `Veri Kalitesi · ${provinceName}`;
+  }
+  if (state.regionId) {
+    const regionName = datasets.regionsById.get(state.regionId)?.name || state.regionId;
+    return `Veri Kalitesi · ${regionName}`;
+  }
+  return 'Veri Kalitesi';
+}
+
+
+
+
 
 function setQualityPanelOpen(isOpen) {
   if (!els.qualityButton || !els.qualityPanel) {
@@ -1352,6 +1881,8 @@ function getRenderableFeatures() {
   return features.filter((feature) => {
     const item = metadata.get(feature.properties.id);
     if (!item) return false;
+    if (state.level === 'region' && state.regionId && item.id !== state.regionId) return false;
+    if (state.level === 'province' && state.provinceId && item.id !== state.provinceId) return false;
     if (state.level === 'province' && state.regionId && item.region_id !== state.regionId) return false;
     if (state.level === 'district' && state.regionId && item.region_id !== state.regionId) return false;
     if (state.level === 'district' && state.provinceId && item.parent_id !== state.provinceId) return false;
@@ -1495,7 +2026,7 @@ function renderBaseLayer(features, projection) {
     return;
   }
 
-  const enabled = state.baseLayer.startsWith('osm') && features.length > 0 && projection?.projection;
+  const enabled = state.baseLayer.startsWith('osm') && features.length > 0 && projection.projection;
   els.baseMapAttribution.classList.toggle('is-hidden', !enabled);
   if (!enabled) {
     return;
@@ -1523,6 +2054,7 @@ function renderBaseLayer(features, projection) {
 
   els.mapSvg.append(group);
 }
+
 
 function buildOsmTiles(features, projection) {
   const collection = { type: 'FeatureCollection', features };
@@ -1643,7 +2175,7 @@ function getFeatureClass(id, matchedIds = null) {
   const classNames = ['feature'];
   if (state.search) {
     classNames.push('is-muted');
-    if (matchedIds?.has(id)) {
+    if (matchedIds.has(id)) {
       classNames.push('is-search-match');
     }
   }
@@ -1708,14 +2240,19 @@ function applyPreviewTheme() {
 function applyPreviewFeatureStyle(path, item) {
   const theme = getCurrentVisualTheme();
   const fill = resolveFeatureFill(item, theme);
+  const regionStroke = state.level === 'region' ? 'transparent' : (theme.stroke || '');
+  const regionStrokeWidth = state.level === 'region' ? '0' : (theme.strokeWidth || '');
   path.style.setProperty('--feature-fill', fill || '');
-  path.style.setProperty('--feature-stroke', theme.stroke || '');
-  path.style.setProperty('--feature-stroke-width', theme.strokeWidth || '');
+  path.style.setProperty('--feature-stroke', regionStroke);
+  path.style.setProperty('--feature-stroke-width', regionStrokeWidth);
 }
 
 function getCurrentVisualTheme() {
   if (state.format === 'svg' || state.format === 'png') {
-    return getSvgTheme();
+    const theme = getSvgTheme();
+    return state.level === 'region'
+      ? { ...theme, stroke: 'transparent', strokeWidth: '0' }
+      : theme;
   }
 
   if (state.level === 'region') {
@@ -1761,10 +2298,10 @@ function renderDetail(forcedId = '') {
   const parentName = state.level === 'mahalle'
     ? datasets.districtsById.get(item.parent_id)?.name || '-'
     : state.level === 'district'
-    ? datasets.provincesById.get(item.parent_id)?.name || '-'
-    : state.level === 'province'
-      ? datasets.regionsById.get(item.region_id)?.name || '-'
-      : '-';
+      ? datasets.provincesById.get(item.parent_id)?.name || '-'
+      : state.level === 'province'
+        ? datasets.regionsById.get(item.region_id)?.name || '-'
+        : '-';
 
   const rows = state.level === 'region'
     ? [
@@ -1925,6 +2462,16 @@ function getPaletteLabel(palette) {
   return labels[palette] || palette;
 }
 
+function getGpkgGeometryModeLabel(mode) {
+  const labels = {
+    auto: 'Otomatik',
+    polygon: 'Polygon',
+    multiPolygon: 'MultiPolygon',
+  };
+
+  return labels[mode] || mode;
+}
+
 async function triggerDownload(filename) {
   const blob = await buildDownloadBlob();
   if (!blob || blob.size === 0) {
@@ -1946,7 +2493,6 @@ async function triggerDownload(filename) {
   }, 4000);
 }
 
-
 async function buildDownloadBlob() {
   if (state.format === 'json') {
     return new Blob([JSON.stringify(buildJsonPayload(), null, 2)], {
@@ -1966,8 +2512,18 @@ async function buildDownloadBlob() {
     });
   }
 
+  if (state.format === 'react-component') {
+    return new Blob([buildReactComponentSource()], {
+      type: 'text/jsx;charset=utf-8',
+    });
+  }
+
   if (state.format === 'png') {
     return buildPngBlob();
+  }
+
+  if (state.format === 'pdf') {
+    return buildPdfBlob();
   }
 
   if (state.format === 'topojson') {
@@ -2004,12 +2560,37 @@ async function buildDownloadBlob() {
     });
   }
 
+  if (state.format === 'gml') {
+    return new Blob([buildGmlDocument()], {
+      type: 'application/gml+xml;charset=utf-8',
+    });
+  }
+
   if (state.format === 'kmz') {
     return buildKmzBlobFromKml(buildKmlDocument());
   }
 
+  if (state.format === 'osm') {
+    return new Blob([buildOsmDocument()], {
+      type: 'application/vnd.openstreetmap.data+xml;charset=utf-8',
+    });
+  }
+
   if (state.format === 'shp') {
     return buildShapefileZipBlob(getVisibleFeatures(), getVisibleMetadataItems(), `${state.level}s`);
+  }
+
+  if (state.format === 'gpkg') {
+    return buildGeoPackageBlob(
+      getVisibleFeatures(),
+      getVisibleMetadataItems(),
+      `${state.level}s`,
+      {
+        selectedFields: state.selectedFields,
+        crs: state.gpkgCrs,
+        geometryMode: state.gpkgGeometryMode,
+      },
+    );
   }
 
   throw new Error(`Unsupported download format: ${state.format}`);
@@ -2083,6 +2664,47 @@ function buildKmlDocument() {
     colorResolver);
 }
 
+function buildGmlDocument() {
+  const metadata = getVisibleMetadataItems();
+  const geometryCollection = {
+    type: 'FeatureCollection',
+    features: getVisibleFeatures(),
+  };
+  const name = state.scope === 'region' && currentRegionName()
+    ? `${currentRegionName()} ${state.level}`
+    : state.scope === 'province' && currentProvinceName()
+      ? `${currentProvinceName()} ${state.level}`
+      : `turkiye_map.${state.level}s`;
+
+  return featureCollectionToGml(
+    name,
+    metadata,
+    geometryCollection,
+    (item) => pickFields(buildExportProperties(item), state.selectedFields),
+    { featureTypeName: state.level },
+  );
+}
+
+function buildOsmDocument() {
+  const metadata = getVisibleMetadataItems();
+  const geometryCollection = {
+    type: 'FeatureCollection',
+    features: getVisibleFeatures(),
+  };
+  const name = state.scope === 'region' && currentRegionName()
+    ? `${currentRegionName()} ${state.level} osm`
+    : state.scope === 'province' && currentProvinceName()
+      ? `${currentProvinceName()} ${state.level} osm`
+      : `turkiye_map.${state.level}s.osm`;
+
+  return featureCollectionToOsm(
+    name,
+    metadata,
+    geometryCollection,
+    (item) => pickFields(buildExportProperties(item), state.selectedFields),
+  );
+}
+
 function buildXlsxBlob() {
   const arrayBuffer = buildXlsxArrayBuffer(
     buildSelectedTabularRows(),
@@ -2098,25 +2720,23 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
   const features = getVisibleFeatures();
   const projection = getActiveProjection(features, viewport);
   const theme = getSvgTheme();
+  const metadataMap = getActiveMetadataMap();
   const { width, height } = viewport;
-  const title = state.level === 'region'
-    ? 'Türkiye Bölgeleri'
-    : state.scope === 'province' && currentProvinceName()
-    ? `${currentProvinceName()} ilçeleri`
-    : state.scope === 'region' && currentRegionName()
-      ? `${currentRegionName()} illeri`
-    : 'Türkiye Haritası';
+  const title = getPdfExportTitle(features);
 
   const paths = features.map((feature) => {
-    const item = getActiveMetadataMap().get(feature.properties.id);
+    const item = metadataMap.get(feature.properties.id) || feature.properties || {};
 
     const pathData = buildSimplifiedSvgPath(feature, projection);
     const dataAttributes = buildSvgDataAttributes(item);
     const fill = resolveFeatureFill(item, theme);
-    const styleAttribute = fill ? ` style="fill:${escapeAttribute(fill)}"` : '';
-    return `<path d="${escapeAttribute(pathData)}"${styleAttribute} ${dataAttributes}><title>${escapeXml(metadataLabelForFeature(item.id))}</title></path>`;
+    const strokeStyle = state.level === 'region'
+      ? 'stroke:none'
+      : `stroke:${escapeAttribute(theme.stroke)};stroke-width:${state.style === 'outline-only' ? '1.2' : '1'}`;
+    const styleAttribute = ` style="fill:${escapeAttribute(fill || theme.fill)};${strokeStyle}"`;
+    const titleText = metadataLabelForFeature(item.id || feature.properties.id) || '';
+    return `<path d="${escapeAttribute(pathData)}"${styleAttribute} ${dataAttributes}><title>${escapeXml(titleText)}</title></path>`;
   }).join('');
-
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeAttribute(title)}">
   <desc>${escapeXml(title)}</desc>
@@ -2125,7 +2745,7 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
     path {
       fill: ${theme.fill};
       stroke: ${theme.stroke};
-      stroke-width: 1;
+      stroke-width: ${state.level === 'region' ? '0' : '1'};
       pointer-events: all;
       vector-effect: non-scaling-stroke;
       transition: fill 140ms ease, stroke 140ms ease, opacity 140ms ease;
@@ -2138,6 +2758,80 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
   </style>
   <g>${paths}</g>
 </svg>`;
+}
+
+function buildReactComponentSource(viewport = defaultExportViewport) {
+  const features = getVisibleFeatures();
+  const projection = getActiveProjection(features, viewport);
+  const theme = getSvgTheme();
+  const metadataMap = getActiveMetadataMap();
+  const { width, height } = viewport;
+  const title = state.level === 'region'
+    ? 'Türkiye Bölgeleri'
+    : state.scope === 'province' && currentProvinceName()
+      ? `${currentProvinceName()} ilçeleri`
+      : state.scope === 'region' && currentRegionName()
+        ? `${currentRegionName()} illeri`
+        : 'Türkiye Haritası';
+
+  const componentName = toPascalCase(getDownloadFilename('jsx', `${state.level}s-react`).replace(/\.jsx$/i, ''));
+  const paths = features.map((feature) => {
+    const item = metadataMap.get(feature.properties.id) || feature.properties || {};
+    const pathData = buildSimplifiedSvgPath(feature, projection);
+    const fill = resolveFeatureFill(item, theme);
+    const props = buildCommonProperties(item);
+    const dataAttrs = Object.entries(props)
+      .filter(([, value]) => value !== null && value !== undefined && value !== '')
+      .map(([key, value]) => `        data-${key.replaceAll('_', '-')}=${JSON.stringify(String(value))}`)
+      .join('\n');
+    const titleText = escapeJsString(metadataLabelForFeature(item.id || feature.properties.id));
+    return [
+      '      <path',
+      `        d=${JSON.stringify(pathData)}`,
+      `        fill=${JSON.stringify(fill || theme.fill)}`,
+      `        stroke=${JSON.stringify(theme.stroke)}`,
+      `        strokeWidth=${JSON.stringify(state.style === 'outline-only' ? 1.2 : 1)}`,
+      '        vectorEffect="non-scaling-stroke"',
+      dataAttrs,
+      '      >',
+      `        <title>${titleText}</title>`,
+      '      </path>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+
+  return [
+    "import * as React from 'react';",
+    '',
+    `export default function ${componentName}({`,
+    `  title = ${JSON.stringify(title)},`,
+    "  width = '100%',",
+    "  height = 'auto',",
+    "  className = '',",
+    '  ...props',
+    '}) {',
+    '  return (',
+    `    <svg`,
+    '      xmlns="http://www.w3.org/2000/svg"',
+    `      viewBox=${JSON.stringify(`0 0 ${width} ${height}`)}`,
+    '      preserveAspectRatio="xMidYMid meet"',
+    '      role="img"',
+    '      aria-label={title}',
+    '      width={width}',
+    '      height={height}',
+    '      className={className || undefined}',
+    '      {...props}',
+    '    >',
+    `      <title>{title}</title>`,
+    `      <desc>${escapeJsString(title)}</desc>`,
+    `      <rect width=${JSON.stringify(String(width))} height=${JSON.stringify(String(height))} fill=${JSON.stringify(theme.background)} />`,
+    '      <g>',
+    paths,
+    '      </g>',
+    '    </svg>',
+    '  );',
+    '}',
+    '',
+  ].join('\n');
 }
 
 async function buildPngBlob() {
@@ -2167,6 +2861,34 @@ async function buildPngBlob() {
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
+}
+
+function buildPdfBlob() {
+  const { width, height } = getRasterDimensions(state.resolution);
+  const viewport = { width, height, padding: 48 };
+  const features = getVisibleFeatures();
+  const projection = getActiveProjection(features, viewport);
+  const theme = getSvgTheme();
+  const title = getPdfExportTitle(features);
+  const subtitle = `${currentScopeLabel()} | ${getDetailLabel(state.level)} | ${state.resolution}`;
+  const paths = features.map((feature) => {
+    const item = getActiveMetadataMap().get(feature.properties.id);
+    return {
+      d: buildSimplifiedSvgPath(feature, projection),
+      fill: resolveFeatureFill(item, theme),
+      stroke: theme.stroke,
+      lineWidth: state.style === 'outline-only' ? 1.2 : 0.9,
+    };
+  }).filter((path) => path.d);
+
+  return buildPdfDocumentBlob({
+    width,
+    height,
+    title,
+    subtitle,
+    backgroundColor: theme.background,
+    paths,
+  });
 }
 
 function loadImageFromUrl(url) {
@@ -2205,10 +2927,10 @@ function buildExportProperties(item) {
   const parentName = item.level === 'yerlesim'
     ? (item.parent_id ? datasets.districtsById.get(item.parent_id)?.name || null : null)
     : item.level === 'district'
-    ? (item.parent_id ? datasets.provincesById.get(item.parent_id)?.name || null : null)
-    : item.level === 'province'
-      ? (item.region_id ? datasets.regionsById.get(item.region_id)?.name || null : null)
-      : null;
+      ? (item.parent_id ? datasets.provincesById.get(item.parent_id)?.name || null : null)
+      : item.level === 'province'
+        ? (item.region_id ? datasets.regionsById.get(item.region_id)?.name || null : null)
+        : null;
 
   return {
     id: item.id,
@@ -2382,6 +3104,14 @@ function currentProvinceName() {
   return datasets.provincesById.get(state.provinceId)?.name || '';
 }
 
+function currentDistrictName() {
+  if (!state.districtId) {
+    return '';
+  }
+
+  return datasets.districtsById.get(state.districtId)?.name || '';
+}
+
 function firstMahalleProvinceId() {
   return [...datasets.publishableProvinceIds][0] || '';
 }
@@ -2402,6 +3132,94 @@ function currentScopeLabel() {
     return currentProvinceName() || 'seçili il';
   }
   return 'Türkiye';
+}
+
+function buildFullFeatureLabel(item) {
+  if (!item) {
+    return '';
+  }
+
+  if (item.level === 'region') {
+    return item.name || '';
+  }
+
+  if (item.level === 'province') {
+    return item.name || '';
+  }
+
+  if (item.level === 'district') {
+    const provinceName = datasets.provincesById.get(item.parent_id)?.name || item.province_name || '';
+    return [provinceName, item.name].filter(Boolean).join(' / ');
+  }
+
+  if (item.level === 'yerlesim' || item.level === 'mahalle') {
+    const districtName = datasets.districtsById.get(item.parent_id)?.name || item.district_name || '';
+    const provinceId = item.province_id || datasets.districtsById.get(item.parent_id)?.parent_id || '';
+    const provinceName = datasets.provincesById.get(provinceId)?.name || item.province_name || '';
+    return [provinceName, districtName, item.name].filter(Boolean).join(' / ');
+  }
+
+  return item.name || '';
+}
+
+function getPdfExportTitle(features = getVisibleFeatures()) {
+  const metadataMap = getActiveMetadataMap();
+  const selectedItem = state.selectedId ? metadataMap.get(state.selectedId) : null;
+  if (selectedItem) {
+    return buildFullFeatureLabel(selectedItem) || 'Türkiye Haritası';
+  }
+
+  if (features.length === 1) {
+    const onlyItem = metadataMap.get(features[0].properties.id);
+    if (onlyItem) {
+      return buildFullFeatureLabel(onlyItem) || 'Türkiye Haritası';
+    }
+  }
+
+  if (state.level === 'region') {
+    return currentRegionName() || 'Türkiye Bölgeleri';
+  }
+
+  if (state.level === 'province') {
+    if (currentProvinceName()) {
+      return currentProvinceName();
+    }
+    if (currentRegionName()) {
+      return `${currentRegionName()} illeri`;
+    }
+    return 'Türkiye İlleri';
+  }
+
+  if (state.level === 'district') {
+    if (state.districtId) {
+      const districtItem = datasets.districtsById.get(state.districtId);
+      return buildFullFeatureLabel(districtItem) || 'Türkiye İlçeleri';
+    }
+    if (currentProvinceName()) {
+      return `${currentProvinceName()} ilçeleri`;
+    }
+    if (currentRegionName()) {
+      return `${currentRegionName()} ilçeleri`;
+    }
+    return 'Türkiye İlçeleri';
+  }
+
+  if (state.level === 'mahalle' || state.level === 'yerlesim') {
+    if (state.districtId) {
+      const districtItem = datasets.districtsById.get(state.districtId);
+      const districtLabel = buildFullFeatureLabel(districtItem);
+      return districtLabel ? `${districtLabel} mahalleleri` : 'Türkiye Mahalleleri';
+    }
+    if (currentProvinceName()) {
+      return `${currentProvinceName()} mahalleleri`;
+    }
+    if (currentRegionName()) {
+      return `${currentRegionName()} mahalleleri`;
+    }
+    return 'Türkiye Mahalleleri';
+  }
+
+  return 'Türkiye Haritası';
 }
 
 function toggleField(element, visible) {
@@ -2434,3 +3252,22 @@ function escapeAttribute(value) {
 function escapeXml(value) {
   return escapeHtml(value);
 }
+
+function escapeJsString(value) {
+  return String(value)
+    .replaceAll('\\', '\\\\')
+    .replaceAll('`', '\\`')
+    .replaceAll('${', '\\${');
+}
+
+function toPascalCase(value) {
+  return String(value)
+    .replace(/\.[a-z0-9]+$/i, '')
+    .replace(/[^a-zA-Z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('') || 'TurkeyMapComponent';
+}
+

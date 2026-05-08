@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "method": "outer_minus_inner",
+  "note": "İç içe yerleşim geometrisi düzeltmeleri. İç yerleşim korunur; alanı mahalle geometrisi normalizasyonu sırasında dış yerleşimden çıkarılır. Muğla Marmaris için source/reference/mugla-marmaris-open-data.json içinde harici bir Muğla CBS açık veri kaydı bulunur; ham dosya depoda yer almadığı için burada tekrar üretilebilir outer_minus_inner yedeği tutulur.",
+  "related_source_manifest": "source/reference/mugla-marmaris-open-data.json",
+  "repairs": [
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0005",
+      "outer_name": "Bozburun",
+      "inner_id": "TR-Y-48-007-M-0030",
+      "inner_name": "Yeşilova",
+      "reason": "Yeşilova, Bozburun sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır."
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0002",
+      "outer_name": "Armutalan",
+      "inner_id": "TR-Y-48-007-M-0022",
+      "inner_name": "Sinan",
+      "reason": "Sinan, Armutalan sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır."
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0002",
+      "outer_name": "Armutalan",
+      "inner_id": "TR-Y-48-007-M-0007",
+      "inner_name": "Camiavlu",
+      "reason": "Camiavlu, Armutalan sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır."
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0014",
+      "outer_name": "İçmeler",
+      "inner_id": "TR-Y-48-007-M-0011",
+      "inner_name": "Gölenye",
+      "reason": "Gölenye, İçmeler sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır."
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0004",
+      "outer_name": "Beldibi",
+      "inner_id": "TR-Y-48-007-M-0016",
+      "inner_name": "Karşıyaka",
+      "reason": "Karşıyaka, Beldibi sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır."
+    }
+  ]
+}

@@ -30,14 +30,14 @@ describe('assign-ids helpers', () => {
     expect(mergeAliases(['Merkez', 'Center'], ['Center', 'Kent'])).toEqual(['Merkez', 'Center', 'Kent']);
   });
 
-  it('mergeAliases null ve undefined girişleri tolere eder', () => {
+  it('mergeAliases null ve undefined girisleri tolere eder', () => {
     expect(mergeAliases(null, ['a'])).toEqual(['a']);
     expect(mergeAliases(['a'], null)).toEqual(['a']);
     expect(mergeAliases(null, null)).toEqual([]);
     expect(mergeAliases(undefined, undefined)).toEqual([]);
   });
 
-  it('createOverrideIndex null/eksik payload için boş index döner', () => {
+  it('createOverrideIndex null/eksik payload iÃ§in boÅŸ index dÃ¶ner', () => {
     expect(() => createOverrideIndex(null)).not.toThrow();
     expect(() => createOverrideIndex({})).not.toThrow();
     const index = createOverrideIndex(null);
@@ -45,51 +45,51 @@ describe('assign-ids helpers', () => {
     expect(index.district.size).toBe(0);
   });
 
-  it('applyProvinceCrosswalk null crosswalk için kaydı değiştirmeden döner', () => {
+  it('applyProvinceCrosswalk null crosswalk iÃ§in kaydÄ± deÄŸiÅŸtirmeden dÃ¶ner', () => {
     const record = { aliases: ['Test'], nuts_code: null };
     expect(applyProvinceCrosswalk(record, null)).toEqual(record);
   });
 
-  it('applyDistrictCrosswalk null crosswalk için kaydı değiştirmeden döner', () => {
+  it('applyDistrictCrosswalk null crosswalk iÃ§in kaydÄ± deÄŸiÅŸtirmeden dÃ¶ner', () => {
     const record = { aliases: [], lau_code: null };
     expect(applyDistrictCrosswalk(record, null)).toEqual(record);
   });
 
   it('indexes and finds crosswalk rows by source id and canonical id', () => {
     const index = createCrosswalkIndex([
-      { source_hdx_id: 'TUR034', id: 'TR-P-34', tuik_id: 34 },
+      { hdx_id: 'TUR034', id: 'TR-P-34', tuik_id: 34 },
       { id: 'TR-P-06', tuik_id: 6 },
     ]);
 
-    expect(findCrosswalk({ source_hdx_id: 'TUR034', id: 'TR-P-34' }, index)?.tuik_id).toBe(34);
-    expect(findCrosswalk({ source_hdx_id: 'missing', id: 'TR-P-06' }, index)?.tuik_id).toBe(6);
-    expect(findCrosswalk({ source_hdx_id: 'missing', id: 'TR-P-99' }, index)).toBeNull();
+    expect(findCrosswalk({ hdx_id: 'TUR034', id: 'TR-P-34' }, index)?.tuik_id).toBe(34);
+    expect(findCrosswalk({ hdx_id: 'missing', id: 'TR-P-06' }, index)?.tuik_id).toBe(6);
+    expect(findCrosswalk({ hdx_id: 'missing', id: 'TR-P-99' }, index)).toBeNull();
   });
 
   it('applies display overrides and crosswalk enrichments', () => {
     const overrideIndex = createOverrideIndex({
-      province_overrides: [{ source_hdx_id: 'TUR034', name: 'İstanbul' }],
-      district_overrides: [{ source_hdx_id: 'TUR034001', name: 'Adalar' }],
+      province_overrides: [{ hdx_id: 'TUR034', name: '\u0130stanbul' }],
+      district_overrides: [{ hdx_id: 'TUR034001', name: 'Adalar' }],
     });
 
     const province = applyDisplayOverride({
-      source_hdx_id: 'TUR034',
+      hdx_id: 'TUR034',
       name: 'Istanbul',
       name_ascii: 'istanbul',
     }, overrideIndex, 'province');
 
     const district = applyDisplayOverride({
-      source_hdx_id: 'TUR034001',
+      hdx_id: 'TUR034001',
       name: 'Adalar',
       name_ascii: 'adalar',
     }, overrideIndex, 'district');
 
-    expect(province.name).toBe('İstanbul');
+    expect(province.name).toBe('\u0130stanbul');
     expect(province.name_ascii).toBe('istanbul');
     expect(district.name).toBe('Adalar');
 
     expect(applyProvinceCrosswalk({
-      aliases: ['İstanbul'],
+      aliases: ['\u0130stanbul'],
       iso_3166_2: 'TR-34',
       nuts_code: null,
       tuik_id: null,
@@ -101,7 +101,7 @@ describe('assign-ids helpers', () => {
       tuik_id: 34,
       icisleri_id: 134,
     })).toMatchObject({
-      aliases: ['İstanbul', 'Constantinople'],
+      aliases: ['\u0130stanbul', 'Constantinople'],
       iso_3166_2: 'TR-34',
       nuts_code: 'TR10',
       tuik_id: 34,
@@ -127,8 +127,8 @@ describe('assign-ids helpers', () => {
 
   it('creates province and district records with canonical hierarchy', () => {
     const province = provinceRecord({
-      source_hdx_id: 'TUR034',
-      name: 'İstanbul',
+      hdx_id: 'TUR034',
+      name: '\u0130stanbul',
       name_ascii: 'istanbul',
       centroid: { lat: 41, lon: 29 },
       bbox: [28, 40, 30, 42],
@@ -137,7 +137,7 @@ describe('assign-ids helpers', () => {
     const regionIndex = createRegionIndex({
       province_membership: [{
         id: 'TR-P-34',
-        source_hdx_id: 'TUR034',
+        hdx_id: 'TUR034',
         region_id: 'TR-R-MAR',
         region_name: 'Marmara',
       }],
@@ -145,8 +145,8 @@ describe('assign-ids helpers', () => {
     const regionProvince = applyRegionMembershipToProvince(province, regionIndex);
 
     const district = districtRecord({
-      source_hdx_id: 'TUR034001',
-      source_parent_hdx_id: 'TUR034',
+      hdx_id: 'TUR034001',
+      parent_hdx_id: 'TUR034',
       name: 'Adalar',
       name_ascii: 'adalar',
       centroid: { lat: 40.8, lon: 29.1 },
@@ -171,7 +171,7 @@ describe('assign-ids helpers', () => {
     const index = createMunicipalityTypeIndex({
       types: {
         buyuksehir_belediyesi: {
-          label: 'Büyükşehir Belediyesi',
+          label: 'BÃ¼yÃ¼kÅŸehir Belediyesi',
           is_metropolitan_municipality: true,
         },
       },
@@ -183,7 +183,7 @@ describe('assign-ids helpers', () => {
 
     expect(applyMunicipalityType({ id: 'TR-P-34', plate_code: '34' }, index)).toMatchObject({
       municipality_type: 'buyuksehir_belediyesi',
-      municipality_type_label: 'Büyükşehir Belediyesi',
+      municipality_type_label: 'BÃ¼yÃ¼kÅŸehir Belediyesi',
       is_metropolitan_municipality: true,
     });
   });
@@ -194,7 +194,7 @@ describe('assign-ids helpers', () => {
       name: 'turkiye_map.normalized.provinces',
       features: [{
         type: 'Feature',
-        properties: { source_hdx_id: 'TUR034' },
+        properties: { hdx_id: 'TUR034' },
         geometry: { type: 'Polygon', coordinates: [[[28, 40], [29, 40], [29, 41], [28, 40]]] },
       }],
     };
@@ -221,8 +221,8 @@ describe('assign-ids helpers', () => {
 
   it('throws for missing district parent province and unsupported region geometry', () => {
     expect(() => districtRecord({
-      source_hdx_id: 'TUR999001',
-      source_parent_hdx_id: 'TUR999',
+      hdx_id: 'TUR999001',
+      parent_hdx_id: 'TUR999',
       name: 'Ghost',
       name_ascii: 'ghost',
       centroid: { lat: 0, lon: 0 },
@@ -242,7 +242,7 @@ describe('assign-ids helpers', () => {
   it('throws for missing region membership and missing geometry metadata', () => {
     expect(() => applyRegionMembershipToProvince({
       id: 'TR-P-34',
-      source_hdx_id: 'TUR034',
+      hdx_id: 'TUR034',
     }, createRegionIndex({ province_membership: [] }))).toThrow('Missing region membership for province TR-P-34');
 
     expect(() => withGeometryProperties({
@@ -250,7 +250,7 @@ describe('assign-ids helpers', () => {
       name: 'turkiye_map.normalized.provinces',
       features: [{
         type: 'Feature',
-        properties: { source_hdx_id: 'TUR034' },
+        properties: { hdx_id: 'TUR034' },
         geometry: { type: 'Polygon', coordinates: [[[0, 0], [1, 0], [0, 0]]] },
       }],
     }, new Map())).toThrow('Missing metadata for geometry feature TUR034');
@@ -392,13 +392,13 @@ describe('assign-ids helpers', () => {
       const file = String(filePath);
       if (file.includes('provinces.metadata.partial.json')) {
         return [{
-          source_hdx_id: 'TUR035',
+          hdx_id: 'TUR035',
           name: 'Izmir',
           name_ascii: 'izmir',
           centroid: { lat: 38.4, lon: 27.1 },
           bbox: [26, 37, 28, 39],
         }, {
-          source_hdx_id: 'TUR034',
+          hdx_id: 'TUR034',
           name: 'Istanbul',
           name_ascii: 'istanbul',
           centroid: { lat: 41, lon: 29 },
@@ -407,15 +407,15 @@ describe('assign-ids helpers', () => {
       }
       if (file.includes('districts.metadata.partial.json')) {
         return [{
-          source_hdx_id: 'TUR035002',
-          source_parent_hdx_id: 'TUR035',
+          hdx_id: 'TUR035002',
+          parent_hdx_id: 'TUR035',
           name: 'Konak',
           name_ascii: 'konak',
           centroid: { lat: 38.4, lon: 27.1 },
           bbox: [27, 38.3, 27.2, 38.5],
         }, {
-          source_hdx_id: 'TUR034001',
-          source_parent_hdx_id: 'TUR034',
+          hdx_id: 'TUR034001',
+          parent_hdx_id: 'TUR034',
           name: 'Adalar',
           name_ascii: 'adalar',
           centroid: { lat: 40.8, lon: 29.1 },
@@ -428,11 +428,11 @@ describe('assign-ids helpers', () => {
           name: 'turkiye_map.normalized.provinces',
           features: [{
             type: 'Feature',
-            properties: { source_hdx_id: 'TUR035' },
+            properties: { hdx_id: 'TUR035' },
             geometry: { type: 'Polygon', coordinates: [[[26, 37], [28, 37], [28, 39], [26, 37]]] },
           }, {
             type: 'Feature',
-            properties: { source_hdx_id: 'TUR034' },
+            properties: { hdx_id: 'TUR034' },
             geometry: { type: 'Polygon', coordinates: [[[28, 40], [30, 40], [30, 42], [28, 40]]] },
           }],
         };
@@ -443,11 +443,11 @@ describe('assign-ids helpers', () => {
           name: 'turkiye_map.normalized.districts',
           features: [{
             type: 'Feature',
-            properties: { source_hdx_id: 'TUR035002' },
+            properties: { hdx_id: 'TUR035002' },
             geometry: { type: 'Polygon', coordinates: [[[27, 38.3], [27.2, 38.3], [27.2, 38.5], [27, 38.3]]] },
           }, {
             type: 'Feature',
-            properties: { source_hdx_id: 'TUR034001' },
+            properties: { hdx_id: 'TUR034001' },
             geometry: { type: 'Polygon', coordinates: [[[29, 40.7], [29.2, 40.7], [29.2, 40.9], [29, 40.7]]] },
           }],
         };
@@ -469,12 +469,12 @@ describe('assign-ids helpers', () => {
           }],
           province_membership: [{
             id: 'TR-P-35',
-            source_hdx_id: 'TUR035',
+            hdx_id: 'TUR035',
             region_id: 'TR-R-EGE',
             region_name: 'Ege',
           }, {
             id: 'TR-P-34',
-            source_hdx_id: 'TUR034',
+            hdx_id: 'TUR034',
             region_id: 'TR-R-MAR',
             region_name: 'Marmara',
           }],
@@ -484,7 +484,7 @@ describe('assign-ids helpers', () => {
         return {
           types: {
             buyuksehir_belediyesi: {
-              label: 'Büyükşehir Belediyesi',
+              label: 'BÃ¼yÃ¼kÅŸehir Belediyesi',
               is_metropolitan_municipality: true,
             },
           },
@@ -503,20 +503,20 @@ describe('assign-ids helpers', () => {
       const file = String(filePath);
       if (file.includes('provinces.crosswalk.json')) {
         return [
-          { source_hdx_id: 'TUR034', tuik_id: 34, aliases: ['Constantinople'] },
-          { source_hdx_id: 'TUR035', tuik_id: 35, aliases: ['Smyrna'] },
+          { hdx_id: 'TUR034', tuik_id: 34, aliases: ['Constantinople'] },
+          { hdx_id: 'TUR035', tuik_id: 35, aliases: ['Smyrna'] },
         ];
       }
       if (file.includes('districts.crosswalk.json')) {
         return [
-          { source_hdx_id: 'TUR034001', lau_code: 'LAU-34-001', aliases: ['Princes Islands'] },
-          { source_hdx_id: 'TUR035002', lau_code: 'LAU-35-002', aliases: ['Konak Center'] },
+          { hdx_id: 'TUR034001', lau_code: 'LAU-34-001', aliases: ['Princes Islands'] },
+          { hdx_id: 'TUR035002', lau_code: 'LAU-35-002', aliases: ['Konak Center'] },
         ];
       }
       if (file.includes('display-name-overrides.json')) {
         return {
-          province_overrides: [{ source_hdx_id: 'TUR034', name: 'İstanbul' }, { source_hdx_id: 'TUR035', name: 'İzmir' }],
-          district_overrides: [{ source_hdx_id: 'TUR034001', name: 'Adalar' }, { source_hdx_id: 'TUR035002', name: 'Konak' }],
+          province_overrides: [{ hdx_id: 'TUR034', name: '\u0130stanbul' }, { hdx_id: 'TUR035', name: '\u0130zmir' }],
+          district_overrides: [{ hdx_id: 'TUR034001', name: 'Adalar' }, { hdx_id: 'TUR035002', name: 'Konak' }],
         };
       }
       return fallbackValue;

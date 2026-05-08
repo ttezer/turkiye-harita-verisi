@@ -74,8 +74,8 @@
     {
       "province": "Edirne",
       "province_code": 22,
-      "source_name": "Bulutkbs.gov.tr Rehber Uygulamasi",
-      "source_url": "https://bulutkbs.gov.tr/Rehber/#/app",
+      "source_name": "Edirne Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": "",
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -84,6 +84,20 @@
       "publishable": true,
       "local_manifests": [],
       "note": "9 ilce, 354 mahalle/koy geometrisi. 347 eslesti (%98.0); 7 eslesmeyenin tamami yerlesimler.json'da karsiligi olmayan objeler."
+    },
+    {
+      "province": "Canakkale",
+      "province_code": 17,
+      "source_name": "Canakkale Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": "",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "12 ilce, 659 mahalle/koy geometrisi. 659 eslesti (%100); kanonik kimlikler KML icindeki canonical_* alanlarindan okundu."
     },
     {
       "province": "Sakarya",
@@ -312,6 +326,5 @@
       ],
       "note": "Il geneli degil, sadece ilce kapsami. Zip tam shapefile paketi iceriyor ve DBF icinde mahalle adlari var."
     }
-  ],
-  "permission_pending_or_verification_only": []
+  ]
 }

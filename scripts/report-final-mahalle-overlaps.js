@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import polygonClipping from 'polygon-clipping';
 import { paths, readJson, toNameAscii, writeJson } from './lib/pipeline.js';
@@ -254,7 +254,7 @@ const report = {
 
 const repairCandidateSummary = {
   generated_at: report.generated_at,
-  source_report: 'source/kamu-kaynak/yerlesim/final-overlap-report.json',
+  source_report: 'data/processed/final-mahalle-overlap-report.json',
   method: 'Flat list of final dist overlap pairs classified as auto_fixable_outer_minus_inner. Manual-review overlaps are intentionally excluded.',
   candidate_count: report.totals.auto_fixable_count,
   districts_with_candidate_count: districtReports.filter((district) => district.auto_fixable_count > 0).length,
@@ -264,10 +264,10 @@ const repairCandidateSummary = {
   }))),
 };
 
-const outPath = `${paths.rootDir}/source/kamu-kaynak/yerlesim/final-overlap-report.json`;
+const outPath = `${paths.processedDir}/final-mahalle-overlap-report.json`;
 writeJson(outPath, report);
 
-const candidateOutPath = `${paths.rootDir}/source/kamu-kaynak/yerlesim/final-overlap-candidates.json`;
+const candidateOutPath = `${paths.processedDir}/final-mahalle-overlap-candidates.json`;
 writeJson(candidateOutPath, repairCandidateSummary);
 
 console.log(`Final overlap report written: ${outPath}`);

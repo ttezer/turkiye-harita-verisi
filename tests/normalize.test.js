@@ -30,7 +30,7 @@ function polygonFeature(properties) {
 
 describe('normalize helpers', () => {
   it('prefers Turkish display names when available', () => {
-    expect(preferredName({ adm1_name: 'Istanbul', adm1_name1: 'İstanbul' }, 'adm1_name', 'adm1_name1')).toBe('İstanbul');
+    expect(preferredName({ adm1_name: 'Istanbul', adm1_name1: 'Ä°stanbul' }, 'adm1_name', 'adm1_name1')).toBe('Ä°stanbul');
     expect(preferredName({ adm1_name: 'Ankara' }, 'adm1_name', 'adm1_name1')).toBe('Ankara');
   });
 
@@ -50,7 +50,7 @@ describe('normalize helpers', () => {
       adm2_pcode: 'TUR006001',
       adm1_pcode: 'TUR006',
       adm2_name: 'Cankaya',
-      adm2_name1: 'Çankaya',
+      adm2_name1: 'Ã‡ankaya',
       adm1_name: 'Ankara',
       adm1_name1: 'Ankara',
       valid_on: '2022-01-01',
@@ -62,15 +62,15 @@ describe('normalize helpers', () => {
     }));
 
     expect(province).toMatchObject({
-      source_hdx_id: 'TUR006',
+      hdx_id: 'TUR006',
       name: 'Ankara',
       plate_code: '006',
       geometry_type: 'Polygon',
     });
     expect(district).toMatchObject({
-      source_hdx_id: 'TUR006001',
-      source_parent_hdx_id: 'TUR006',
-      name: 'Çankaya',
+      hdx_id: 'TUR006001',
+      parent_hdx_id: 'TUR006',
+      name: 'Ã‡ankaya',
       parent_name: 'Ankara',
       parent_name_ascii: 'ankara',
     });
@@ -82,13 +82,13 @@ describe('normalize helpers', () => {
 
     expect(province.properties).toEqual({
       level: 'province',
-      source_hdx_id: 'TUR006',
-      source_parent_hdx_id: null,
+      hdx_id: 'TUR006',
+      parent_hdx_id: null,
     });
     expect(district.properties).toEqual({
       level: 'district',
-      source_hdx_id: 'TUR006001',
-      source_parent_hdx_id: 'TUR006',
+      hdx_id: 'TUR006001',
+      parent_hdx_id: 'TUR006',
     });
   });
 
@@ -124,7 +124,7 @@ describe('normalize helpers', () => {
             adm2_pcode: 'TUR006001',
             adm1_pcode: 'TUR006',
             adm2_name: 'Cankaya',
-            adm2_name1: 'Çankaya',
+            adm2_name1: 'Ã‡ankaya',
             adm1_name: 'Ankara',
             adm1_name1: 'Ankara',
             valid_on: '2022-01-01',

@@ -4,7 +4,9 @@ import XLSX from 'xlsx';
 import { topology } from 'topojson-server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
+  buildPdfDocumentBlob,
   buildGeojsonPayload,
+  featureCollectionToGml,
   buildJsonPayload,
   buildKmzBlobFromKml,
   buildTabularRows,
@@ -13,6 +15,8 @@ import {
   escapeCsvValue,
   escapeSqlValue,
   featureCollectionToKml,
+  featureCollectionToOsm,
+  geometryToGml,
   geometryToKml,
   rowsToCsv,
   rowsToSql,
@@ -221,6 +225,29 @@ describe('test-ui download helpers', () => {
       expect(kml).not.toContain('undefined');
     });
 
+    it('GML üretir ve polygon/multipolygon geometriyi korur', () => {
+      const geojson = buildGeojsonPayload(
+        visibleFeatures,
+        (id) => ({ id, name: visibleItems.find((item) => item.id === id)?.name, region_name: visibleItems.find((item) => item.id === id)?.region_name }),
+      );
+      const gml = featureCollectionToGml(
+        'marmara provinces',
+        visibleItems,
+        geojson,
+        (item) => ({ id: item.id, name: item.name, region_name: item.region_name }),
+        { featureTypeName: 'province' },
+      );
+
+      expect(gml).toContain('<?xml version="1.0" encoding="UTF-8"?>');
+      expect(gml).toContain('<gml:FeatureCollection');
+      expect(gml).toContain('<gml:featureMember>');
+      expect(gml).toContain('<tm:province');
+      expect(gml).toContain('<tm:name>İstanbul</tm:name>');
+      expect(gml).toContain('<gml:Polygon');
+      expect(gml).toContain('<gml:MultiSurface');
+      expect(gml).not.toContain('undefined');
+    });
+
     it('KML renk modu: colorResolver per-feature style üretir', () => {
       const geojson = buildGeojsonPayload(
         [visibleFeatures[0]],
@@ -293,6 +320,32 @@ describe('test-ui download helpers', () => {
       expect((kml.match(/,0 /g) || []).length).toBeGreaterThan(12);
     });
 
+    it('GML mahalle olceginde ara koordinatlari sadelestirmeden korur', () => {
+      const detailedRing = [
+        [0, 0],
+        [0.001, 0.0001],
+        [0.002, 0],
+        [0.003, 0.0001],
+        [0.004, 0],
+        [0.005, 0.0001],
+        [0.006, 0],
+        [0.007, 0.0001],
+        [0.008, 0],
+        [0.009, 0.0001],
+        [0.01, 0],
+        [0.011, 0.0001],
+        [0.012, 0],
+        [0.012, 0.01],
+        [0, 0.01],
+        [0, 0],
+      ];
+      const gml = geometryToGml({ type: 'Polygon', coordinates: [detailedRing] });
+
+      expect(gml).toContain('0.001 0.0001');
+      expect(gml).toContain('0.011 0.0001');
+      expect((gml.match(/ 0\.0001/g) || []).length).toBeGreaterThan(4);
+    });
+
     it('KMZ, içinde doc.kml olan geçerli zip üretir', async () => {
       const geojson = buildGeojsonPayload(
         [visibleFeatures[0]],
@@ -306,6 +359,28 @@ describe('test-ui download helpers', () => {
       expect(kmz.readAsText('doc.kml')).toContain('<name>İstanbul</name>');
     });
 
+    it('OSM XML üretir ve multipolygon relation kurar', () => {
+      const geojson = buildGeojsonPayload(
+        visibleFeatures,
+        (id) => ({ id, name: visibleItems.find((item) => item.id === id)?.name, region_name: visibleItems.find((item) => item.id === id)?.region_name }),
+      );
+      const osm = featureCollectionToOsm(
+        'test',
+        visibleItems,
+        geojson,
+        (item) => ({ id: item.id, name: item.name, region_name: item.region_name }),
+      );
+
+      expect(osm).toContain('<?xml version="1.0" encoding="UTF-8"?>');
+      expect(osm).toContain('<osm version="0.6" generator="test">');
+      expect(osm).toContain('<node id="');
+      expect(osm).toContain('<way id="');
+      expect(osm).toContain('<relation id="');
+      expect(osm).toContain('<tag k="type" v="multipolygon"/>');
+      expect(osm).toContain('<tag k="name" v="İstanbul"/>');
+      expect(osm).toContain('<tag k="turkiye_map:id" v="TR-P-34"/>');
+    });
+
     it('XLSX: geometry_wkt sütunu hariç tüm alanları içerir', () => {
       const rows = buildTabularRows([visibleItems[0]], new Map([['TR-P-34', polygonGeometry]]));
       const workbookBuffer = buildXlsxArrayBuffer(rows, 'provinces', XLSX);
@@ -316,6 +391,34 @@ describe('test-ui download helpers', () => {
       expect(firstRow.id).toBe('TR-P-34');
       expect(firstRow.name).toBe('İstanbul');
       expect(firstRow.geometry_wkt).toBeUndefined();
+    });
+  });
+
+  describe('pdf Ã§Ä±ktÄ±sÄ±', () => {
+    it('PDF blob Ã¼retir ve temel belge iskeletini yazar', async () => {
+      const blob = buildPdfDocumentBlob({
+        width: 320,
+        height: 180,
+        title: 'Marmara Provinces',
+        subtitle: 'Region scope',
+        backgroundColor: '#ffffff',
+        paths: [
+          {
+            d: 'M10,10L120,10L120,80L10,10Z',
+            fill: '#d7dfff',
+            stroke: '#42538f',
+            lineWidth: 1,
+          },
+        ],
+      });
+
+      const text = new TextDecoder().decode(await blob.arrayBuffer());
+
+      expect(blob.type).toBe('application/pdf');
+      expect(text.startsWith('%PDF-1.4')).toBe(true);
+      expect(text).toContain('/Type /Catalog');
+      expect(text).toContain('Marmara Provinces');
+      expect(text).toContain('/MediaBox [0 0 320 180]');
     });
   });
 

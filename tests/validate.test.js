@@ -5,7 +5,7 @@ import { main, matchesType, validateCollection, validateMetadataCollection, vali
 const region = {
   id: 'TR-R-MAR',
   slug: 'marmara',
-  source_hdx_id: 'GEOGRAPHIC7:TR-R-MAR',
+  hdx_id: 'GEOGRAPHIC7:TR-R-MAR',
   member_ids: ['TR-P-34'],
 };
 
@@ -14,7 +14,7 @@ const province = {
   parent_id: 'TR-R-MAR',
   region_id: 'TR-R-MAR',
   slug: 'istanbul',
-  source_hdx_id: 'TUR034',
+  hdx_id: 'TUR034',
 };
 
 const district = {
@@ -24,7 +24,7 @@ const district = {
   plate_code: '34',
   district_local_code: '001',
   slug: 'adalar-istanbul',
-  source_hdx_id: 'TUR034001',
+  hdx_id: 'TUR034001',
 };
 
 const settlement = {
@@ -44,15 +44,15 @@ describe('validateCollection', () => {
       properties: {
         id: { type: 'string' },
         slug: { type: 'string' },
-        source_hdx_id: { type: 'string' },
+        hdx_id: { type: 'string' },
       },
-      required: ['id', 'slug', 'source_hdx_id'],
+      required: ['id', 'slug', 'hdx_id'],
       additionalProperties: true,
     };
 
     const metadata = [
-      { id: 'A', slug: 'alpha', source_hdx_id: 'SRC-1' },
-      { id: 'A', slug: 'beta', source_hdx_id: 'SRC-2' },
+      { id: 'A', slug: 'alpha', hdx_id: 'SRC-1' },
+      { id: 'A', slug: 'beta', hdx_id: 'SRC-2' },
     ];
     const geometry = {
       features: [
@@ -137,7 +137,7 @@ describe('validateRelationships', () => {
       ...district,
       district_local_code: '002',
       id: 'TR-D-34-002',
-      source_hdx_id: 'TUR034002',
+      hdx_id: 'TUR034002',
     };
 
     expect(() => validateRelationships([region], [province], [invalidDistrict]))
@@ -151,7 +151,7 @@ describe('validateRelationships', () => {
     }], [{
       ...province,
       id: 'TR-P-35',
-      source_hdx_id: 'TUR035',
+      hdx_id: 'TUR035',
       parent_id: 'TR-R-EGE',
       region_id: 'TR-R-EGE',
     }], [])).toThrow('Province TR-P-35 has missing parent region TR-R-EGE');
@@ -164,7 +164,7 @@ describe('validateRelationships', () => {
       {
         ...province,
         id: 'TR-P-35',
-        source_hdx_id: 'TUR035',
+        hdx_id: 'TUR035',
         parent_id: 'TR-R-MAR',
         region_id: 'TR-R-MAR',
       },
@@ -177,13 +177,13 @@ describe('validateRelationships', () => {
 
     expect(() => validateRelationships([region], [{
       ...province,
-      source_hdx_id: 'TUR035',
-    }], [district])).toThrow('District TR-D-34-001 cannot resolve parent source_hdx_id TUR034');
+      hdx_id: 'TUR035',
+    }], [district])).toThrow('District TR-D-34-001 cannot resolve parent hdx_id TUR034');
 
     expect(() => validateRelationships([region], [province], [{
       ...district,
-      source_hdx_id: 'BAD034001',
-    }])).toThrow('District TR-D-34-001 source_hdx_id does not match parent prefix');
+      hdx_id: 'BAD034001',
+    }])).toThrow('District TR-D-34-001 hdx_id does not match parent prefix');
 
     expect(() => validateRelationships([region], [province], [district], [{
       ...settlement,
@@ -212,14 +212,14 @@ describe('validateRelationships', () => {
           properties: {
             id: { type: 'string' },
             slug: { type: 'string' },
-            source_hdx_id: { type: 'string' },
+            hdx_id: { type: 'string' },
             parent_id: { type: ['string', 'null'] },
             region_id: { type: ['string', 'null'] },
             plate_code: { type: ['string', 'null'] },
             district_local_code: { type: ['string', 'null'] },
             member_ids: { type: 'array', items: { type: 'string' } },
           },
-          required: ['id', 'slug', 'source_hdx_id'],
+          required: ['id', 'slug', 'hdx_id'],
           additionalProperties: true,
         };
       }

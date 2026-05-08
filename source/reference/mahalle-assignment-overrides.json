@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "overrides": [
+    {
+      "province_id": "TR-P-54",
+      "province_name": "Sakarya",
+      "source_mahalle_id": 185231,
+      "source_district_name": "Geyve",
+      "source_name": "Mecidiye",
+      "target_district_id": "TR-D-54-008",
+      "target_district_name": "Karapürçek",
+      "settlement_id": "TR-Y-54-008-M-0010",
+      "settlement_name": "Mecidiye",
+      "reason": "Kamu-kaynak kaydı Geyve altında geliyor; Mülki yerleşim metadata'sında Mecidiye Karapürçek altında yer alıyor ve geometri merkezi Karapürçek sınırında kalıyor."
+    }
+  ]
+}

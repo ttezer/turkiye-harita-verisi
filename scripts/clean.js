@@ -47,6 +47,9 @@ export const targets = [
   path.join(paths.rootDir, 'dist', 'wkt'),
   path.join(paths.rootDir, 'dist', 'kml'),
   path.join(paths.rootDir, 'dist', 'kmz'),
+  path.join(paths.rootDir, 'dist', 'gml'),
+  path.join(paths.rootDir, 'dist', 'osm'),
+  path.join(paths.rootDir, 'dist', 'gpkg'),
 ];
 
 export function main() {

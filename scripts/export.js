@@ -2,10 +2,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import AdmZip from 'adm-zip';
 import { topology } from 'topojson-server';
 import XLSX from 'xlsx';
+import { featureCollectionToGml, featureCollectionToOsm } from '../download.js';
 import {
   ensureDir,
   paths,
@@ -22,6 +24,77 @@ import {
 const scriptPath = fileURLToPath(import.meta.url);
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
 const distRoot = path.join(paths.rootDir, 'dist');
+const INTERNAL_EXPORT_FIELDS = new Set([
+  'hdx_id',
+  'parent_hdx_id',
+  'member_hdx_ids',
+  'source_valid_on',
+  'source_valid_to',
+  'source_version',
+  'source_file',
+  'source_row',
+  'source_raw_name',
+  'source_report',
+  'source_label',
+  'geometry_type',
+  'area_sqkm',
+  'administrative_unit_name_ascii',
+]);
+
+function ensureMetadataGeometrySync(label, metadata, geometryCollection) {
+  const metadataIds = new Set(metadata.map((item) => item.id));
+  const geometryIds = new Set(geometryCollection.features.map((feature) => feature.properties.id));
+
+  const missingMetadataIds = [...geometryIds].filter((id) => !metadataIds.has(id));
+  if (missingMetadataIds.length > 0) {
+    throw new Error(`${label}: geometry features missing metadata for ids ${missingMetadataIds.slice(0, 10).join(', ')}`);
+  }
+
+  const missingGeometryIds = [...metadataIds].filter((id) => !geometryIds.has(id));
+  if (missingGeometryIds.length > 0) {
+    throw new Error(`${label}: metadata rows missing geometry for ids ${missingGeometryIds.slice(0, 10).join(', ')}`);
+  }
+}
+
+function sanitizeTabularMetadata(item) {
+  const sanitized = {};
+  for (const [key, value] of Object.entries(item)) {
+    if (INTERNAL_EXPORT_FIELDS.has(key)) {
+      continue;
+    }
+    sanitized[key] = value;
+  }
+  return sanitized;
+}
+
+function sanitizeKmlMetadata(item) {
+  const allowedKeys = [
+    'id',
+    'name',
+    'parent_id',
+    'parent_name',
+    'region_id',
+    'region_name',
+    'level',
+    'plate_code',
+    'district_local_code',
+    'lau_code',
+    'tuik_id',
+    'icisleri_id',
+    'osm_relation_id',
+    'iso_3166_2',
+    'nuts_code',
+    'municipality_type',
+  ];
+  const sanitized = {};
+  for (const key of allowedKeys) {
+    if (item[key] === undefined || item[key] === null || typeof item[key] === 'object' || item[key] === '') {
+      continue;
+    }
+    sanitized[key] = item[key];
+  }
+  return sanitized;
+}
 
 function geometryToWkt(geometry) {
   if (geometry.type === 'Polygon') {
@@ -44,7 +117,7 @@ function toTabularRows(metadata, geometryCollection, propertyBuilder = null) {
     if (!geometry) {
       throw new Error(`toTabularRows: no geometry found for id "${item.id}"`);
     }
-    const { centroid, bbox, aliases, member_ids, ...rest } = item;
+    const { centroid, bbox, aliases, member_ids, ...rest } = sanitizeTabularMetadata(item);
     return {
       ...rest,
       ...(propertyBuilder ? propertyBuilder(item) : {}),
@@ -394,7 +467,11 @@ function featureCollectionToKml(name, metadata, geometryCollection) {
   const styleId = 'turkiye-map-style';
   const placemarks = geometryCollection.features.map((feature) => {
     const item = metadataById.get(feature.properties.id);
-    const extendedData = Object.entries(item)
+    if (!item) {
+      throw new Error(`featureCollectionToKml: no metadata found for id "${feature.properties.id}"`);
+    }
+    const kmlItem = sanitizeKmlMetadata(item);
+    const extendedData = Object.entries(kmlItem)
       .filter(([, value]) => value !== null && value !== undefined && typeof value !== 'object')
       .map(([key, value]) => `<Data name="${xmlEscape(key)}"><value>${xmlEscape(value)}</value></Data>`)
       .join('');
@@ -402,8 +479,8 @@ function featureCollectionToKml(name, metadata, geometryCollection) {
     return [
       '<Placemark>',
       `<styleUrl>#${styleId}</styleUrl>`,
-      `<name>${xmlEscape(item.name)}</name>`,
-      `<description>${xmlEscape(buildKmlDescription(item))}</description>`,
+      `<name>${xmlEscape(item.name || item.id)}</name>`,
+      `<description>${xmlEscape(buildKmlDescription(kmlItem))}</description>`,
       extendedData ? `<ExtendedData>${extendedData}</ExtendedData>` : '',
       geometryToKml(feature.geometry),
       '</Placemark>',
@@ -431,6 +508,30 @@ function writeText(filePath, content) {
 function writeBinary(filePath, buffer) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, buffer);
+}
+
+function writeGeoPackage(filePath, layers) {
+  ensureDir(path.dirname(filePath));
+  const payload = {
+    layers: layers.map((layer) => ({
+      table_name: layer.tableName,
+      identifier: layer.identifier,
+      description: layer.description,
+      rows: layer.rows,
+      geojson: layer.geojson,
+    })),
+  };
+
+  execFileSync(
+    'python',
+    ['scripts/export-gpkg.py', '--output', filePath],
+    {
+      cwd: paths.rootDir,
+      input: JSON.stringify(payload),
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    },
+  );
 }
 
 export function sortMetadata(items) {
@@ -477,6 +578,9 @@ export function main() {
   const provinceGeometry = sortGeometry(readJson(path.join(paths.processedDir, 'provinces.geometry.geojson')));
   const districtGeometry = sortGeometry(readJson(path.join(paths.processedDir, 'districts.geometry.geojson')));
   const provincesById = new Map(provinces.map((item) => [item.id, item]));
+  ensureMetadataGeometrySync('regions', regions, regionGeometry);
+  ensureMetadataGeometrySync('provinces', provinces, provinceGeometry);
+  ensureMetadataGeometrySync('districts', districts, districtGeometry);
   const regionRows = toTabularRows(regions, regionGeometry);
   const provinceRows = toTabularRows(provinces, provinceGeometry);
   const districtRows = toTabularRows(districts, districtGeometry, (item) => ({
@@ -520,9 +624,21 @@ export function main() {
   const regionKml = featureCollectionToKml('turkiye_map.regions', regions, regionGeometry);
   const provinceKml = featureCollectionToKml('turkiye_map.provinces', provinces, provinceGeometry);
   const districtKml = featureCollectionToKml('turkiye_map.districts', districts, districtGeometry);
+  const regionGml = featureCollectionToGml('turkiye_map.regions', regions, regionGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'region' });
+  const provinceGml = featureCollectionToGml('turkiye_map.provinces', provinces, provinceGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'province' });
+  const districtGml = featureCollectionToGml('turkiye_map.districts', districts, districtGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'district' });
+  const regionOsm = featureCollectionToOsm('turkiye_map.regions', regions, regionGeometry, (item) => sanitizeKmlMetadata(item));
+  const provinceOsm = featureCollectionToOsm('turkiye_map.provinces', provinces, provinceGeometry, (item) => sanitizeKmlMetadata(item));
+  const districtOsm = featureCollectionToOsm('turkiye_map.districts', districts, districtGeometry, (item) => sanitizeKmlMetadata(item));
   writeText(path.join(distRoot, 'kml', 'regions.kml'), regionKml);
   writeText(path.join(distRoot, 'kml', 'provinces.kml'), provinceKml);
   writeText(path.join(distRoot, 'kml', 'districts.kml'), districtKml);
+  writeText(path.join(distRoot, 'gml', 'regions.gml'), regionGml);
+  writeText(path.join(distRoot, 'gml', 'provinces.gml'), provinceGml);
+  writeText(path.join(distRoot, 'gml', 'districts.gml'), districtGml);
+  writeText(path.join(distRoot, 'osm', 'regions.osm'), regionOsm);
+  writeText(path.join(distRoot, 'osm', 'provinces.osm'), provinceOsm);
+  writeText(path.join(distRoot, 'osm', 'districts.osm'), districtOsm);
 
   const regionKmz = new AdmZip();
   regionKmz.addFile('doc.kml', Buffer.from(regionKml, 'utf8'));
@@ -538,6 +654,30 @@ export function main() {
   writeShapefile(shpDir, 'regions', regionGeometry, regionRows);
   writeShapefile(shpDir, 'provinces', provinceGeometry, provinceRows);
   writeShapefile(shpDir, 'districts', districtGeometry, districtRows);
+
+  writeGeoPackage(path.join(distRoot, 'gpkg', 'turkiye-map.gpkg'), [
+    {
+      tableName: 'regions',
+      identifier: 'regions',
+      description: 'Turkey geographic regions',
+      rows: regionWorkbookRows,
+      geojson: regionGeometry,
+    },
+    {
+      tableName: 'provinces',
+      identifier: 'provinces',
+      description: 'Turkey provinces',
+      rows: provinceWorkbookRows,
+      geojson: provinceGeometry,
+    },
+    {
+      tableName: 'districts',
+      identifier: 'districts',
+      description: 'Turkey districts',
+      rows: districtWorkbookRows,
+      geojson: districtGeometry,
+    },
+  ]);
 
   logStep(`Exported ${regions.length} regions, ${provinces.length} provinces, ${districts.length} districts and ${settlements.length} yerlesimler`);
 }

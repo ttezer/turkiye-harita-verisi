@@ -69,13 +69,36 @@ describe('export helpers', () => {
     vi.spyOn(pipeline, 'readJson').mockImplementation((filePath) => {
       const file = String(filePath);
       if (file.includes('regions.metadata.json')) {
-        return [{ id: 'TR-R-MAR', name: 'Marmara', aliases: [], member_ids: [] }];
+        return [{
+          id: 'TR-R-MAR',
+          name: 'Marmara',
+          aliases: [],
+          member_ids: [],
+          hdx_id: 'region-hdx',
+          source_valid_on: '2026-04-23',
+          source_file: 'internal.json',
+        }];
       }
       if (file.includes('provinces.metadata.json')) {
-        return [{ id: 'TR-P-34', name: 'Istanbul', aliases: [], member_ids: [] }];
+        return [{
+          id: 'TR-P-34',
+          name: 'Istanbul',
+          aliases: [],
+          member_ids: [],
+          hdx_id: 'province-hdx',
+          parent_hdx_id: 'region-hdx',
+          source_valid_to: '2026-12-31',
+        }];
       }
       if (file.includes('districts.metadata.json')) {
-        return [{ id: 'TR-D-34-001', name: 'Adalar', aliases: [], member_ids: [] }];
+        return [{
+          id: 'TR-D-34-001',
+          name: 'Adalar',
+          aliases: [],
+          member_ids: [],
+          hdx_id: 'district-hdx',
+          source_label: 'Internal Label',
+        }];
       }
       if (file.includes('yerlesimler.metadata.json')) {
         return [{ id: 'TR-Y-34-001-M-0001', name: 'Maden', province_id: 'TR-P-34', district_id: 'TR-D-34-001' }];
@@ -97,10 +120,12 @@ describe('export helpers', () => {
     const mkdirSyncSpy = vi.spyOn(fs, 'mkdirSync').mockImplementation(() => undefined);
     const writeFileSyncSpy = vi.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined);
     const xlsxWriteFileSpy = vi.spyOn(XLSX, 'writeFile').mockImplementation(() => {});
+    const gpkgPath = path.join(process.cwd(), 'dist', 'gpkg', 'turkiye-map.gpkg');
+    fs.rmSync(gpkgPath, { force: true });
 
     main();
 
-    expect(writeJsonSpy).toHaveBeenCalledTimes(6);
+    expect(writeJsonSpy).toHaveBeenCalledTimes(4);
     expect(writeJsonCompactSpy).toHaveBeenCalledTimes(6);
     expect(String(writeJsonSpy.mock.calls[0][0])).toContain('regions.json');
     expect(String(writeJsonSpy.mock.calls[3][0])).toContain('yerlesimler.json');
@@ -128,9 +153,21 @@ describe('export helpers', () => {
     );
 
     const regionKml = textWrites.find(([filePath]) => filePath.includes(`dist${sep}kml${sep}regions.kml`))?.[1];
+    const regionGml = textWrites.find(([filePath]) => filePath.includes(`dist${sep}gml${sep}regions.gml`))?.[1];
     expect(regionKml).toContain('<name>Marmara</name>');
     expect(regionKml).toContain('<description>ID: TR-R-MAR');
     expect(regionKml).toContain('<coordinates>28.123457,40.123457,0');
+    expect(regionKml).not.toContain('hdx_id');
+    expect(regionKml).not.toContain('source_valid_on');
+    expect(regionKml).not.toContain('source_file');
+    expect(regionGml).toContain('<gml:FeatureCollection');
+    expect(regionGml).toContain('<gml:featureMember>');
+    expect(regionGml).toContain('<tm:region');
+    expect(regionGml).toContain('<tm:name>Marmara</tm:name>');
+    const regionOsm = textWrites.find(([filePath]) => filePath.includes(`dist${sep}osm${sep}regions.osm`))?.[1];
+    expect(regionOsm).toContain('<osm version="0.6" generator="turkiye_map.regions">');
+    expect(regionOsm).toContain('<way id="');
+    expect(regionOsm).toContain('<tag k="name" v="Marmara"/>');
 
     const kmzBuffer = writeFileSyncSpy.mock.calls.find(([filePath, content]) => (
       String(filePath).includes(`dist${sep}kmz${sep}regions.kmz`) && Buffer.isBuffer(content)
@@ -152,13 +189,95 @@ describe('export helpers', () => {
     // SHP header: file code 9994 at byte 0 (big-endian)
     const shpBuf = shpZip.readFile('regions.shp');
     expect(shpBuf.readInt32BE(0)).toBe(9994);
+    expect(fs.existsSync(gpkgPath)).toBe(true);
+    fs.rmSync(gpkgPath, { force: true });
     // CSV: bbox columns present as separate fields
     const regionCsv = textWrites.find(([filePath]) => filePath.includes(`dist${sep}csv${sep}regions.csv`))?.[1];
     expect(regionCsv).toContain('bbox_min_lon');
     expect(regionCsv).toContain('bbox_min_lat');
     expect(regionCsv).toContain('centroid_lat');
     expect(regionCsv).toContain('coordinate_system');
-    expect(regionCsv).toContain('geometry_wkt');
     expect(regionCsv).not.toContain('"bbox":');
+    expect(regionCsv).not.toContain('geometry_wkt');
+    expect(regionCsv).not.toContain('hdx_id');
+    expect(regionCsv).not.toContain('source_valid_on');
+    expect(regionCsv).not.toContain('source_file');
+  });
+
+  it('fails early when geometry has no matching metadata row', async () => {
+    const pipeline = await import('../scripts/lib/pipeline.js');
+    vi.spyOn(pipeline, 'readJson').mockImplementation((filePath) => {
+      const file = String(filePath);
+      if (file.includes('regions.metadata.json')) {
+        return [{ id: 'TR-R-MAR', name: 'Marmara', aliases: [], member_ids: [] }];
+      }
+      if (file.includes('provinces.metadata.json')) {
+        return [{ id: 'TR-P-34', name: 'Istanbul', aliases: [], member_ids: [] }];
+      }
+      if (file.includes('districts.metadata.json')) {
+        return [{ id: 'TR-D-34-001', name: 'Adalar', aliases: [], member_ids: [] }];
+      }
+      if (file.includes('yerlesimler.metadata.json')) {
+        return [];
+      }
+      return {
+        type: 'FeatureCollection',
+        features: [{
+          type: 'Feature',
+          properties: { id: file.includes('regions') ? 'TR-R-MAR' : file.includes('provinces') ? 'TR-P-34' : 'TR-D-34-999' },
+          geometry: {
+            type: 'Polygon',
+            coordinates: [[[28.1234567, 40.1234567], [29.1234567, 40.1234567], [29.1234567, 41.1234567], [28.1234567, 40.1234567]]],
+          },
+        }],
+      };
+    });
+    vi.spyOn(pipeline, 'writeJson').mockImplementation(() => {});
+    vi.spyOn(pipeline, 'writeJsonCompact').mockImplementation(() => {});
+    vi.spyOn(fs, 'mkdirSync').mockImplementation(() => undefined);
+    vi.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined);
+    vi.spyOn(XLSX, 'writeFile').mockImplementation(() => {});
+
+    expect(() => main()).toThrow(/districts: geometry features missing metadata/);
+  });
+
+  it('fails early when metadata has no matching geometry row', async () => {
+    const pipeline = await import('../scripts/lib/pipeline.js');
+    vi.spyOn(pipeline, 'readJson').mockImplementation((filePath) => {
+      const file = String(filePath);
+      if (file.includes('regions.metadata.json')) {
+        return [{ id: 'TR-R-MAR', name: 'Marmara', aliases: [], member_ids: [] }];
+      }
+      if (file.includes('provinces.metadata.json')) {
+        return [
+          { id: 'TR-P-34', name: 'Istanbul', aliases: [], member_ids: [] },
+          { id: 'TR-P-35', name: 'Izmir', aliases: [], member_ids: [] },
+        ];
+      }
+      if (file.includes('districts.metadata.json')) {
+        return [{ id: 'TR-D-34-001', name: 'Adalar', aliases: [], member_ids: [] }];
+      }
+      if (file.includes('yerlesimler.metadata.json')) {
+        return [];
+      }
+      return {
+        type: 'FeatureCollection',
+        features: [{
+          type: 'Feature',
+          properties: { id: file.includes('regions') ? 'TR-R-MAR' : file.includes('provinces') ? 'TR-P-34' : 'TR-D-34-001' },
+          geometry: {
+            type: 'Polygon',
+            coordinates: [[[28.1234567, 40.1234567], [29.1234567, 40.1234567], [29.1234567, 41.1234567], [28.1234567, 40.1234567]]],
+          },
+        }],
+      };
+    });
+    vi.spyOn(pipeline, 'writeJson').mockImplementation(() => {});
+    vi.spyOn(pipeline, 'writeJsonCompact').mockImplementation(() => {});
+    vi.spyOn(fs, 'mkdirSync').mockImplementation(() => undefined);
+    vi.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined);
+    vi.spyOn(XLSX, 'writeFile').mockImplementation(() => {});
+
+    expect(() => main()).toThrow(/provinces: metadata rows missing geometry/);
   });
 });

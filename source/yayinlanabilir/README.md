@@ -1,29 +1,30 @@
-# Yayınlanabilir Açık Veri Kaynakları
+# Yayinlanabilir Acik Veri Kaynaklari
 
-Bu klasör, GitHub üzerinden yayımlanması uygun görülen açık veri kaynakları için ayrılmıştır.
+Bu klasor, GitHub uzerinden yayinlanmasi uygun gorulen acik veri kaynaklari icin ayrilmistir.
 
-Buraya yalnızca şu şartlardan en az biri sağlandığında veri veya manifest alınır:
+Buraya yalnizca su sartlardan en az biri saglandiginda veri veya manifest alinir:
 
-- açık veri portalı
-- açık lisans
-- açık indirilebilir kaynak
-- yeniden dağıtım şartı açıkça görünen kurum verisi
+- acik veri portali
+- acik lisans
+- acik indirilebilir kaynak
+- yeniden dagitim sarti acikca gorunen kurum verisi
 
-## Bu klasörde ne tutulur
+## Bu klasorde ne tutulur
 
 - kaynak manifestleri
-- açık veri ham dosyaları
-- kısmi ilçe veya il bazlı açık veri dosyaları
-- yayın kararını destekleyen notlar
+- acik veri ham dosyalari
+- kismi ilce veya il bazli acik veri dosyalari
+- yayin kararini destekleyen notlar
+- kapsam sinirlarini aciklayan province-level notlar
 
-## Bu klasörde ne tutulmaz
+## Bu klasorde ne tutulmaz
 
-- lisansı belirsiz kent rehberi servisleri
-- token gerektiren veya izin bekleyen servis çıktıları
-- yalnızca doğrulama için kullanılan karşılaştırma verileri
-- mülki idare referans listeleri
+- lisansi belirsiz kent rehberi servisleri
+- token gerektiren veya izin bekleyen servis ciktilari
+- yalnizca dogrulama icin kullanilan karsilastirma verileri
+- mulki idare referans listeleri
 
-## Güncel mahalle açık veri illeri
+## Guncel mahalle acik veri illeri
 
 - Ankara
 - Bursa
@@ -31,25 +32,30 @@ Buraya yalnızca şu şartlardan en az biri sağlandığında veri veya manifest
 - Gaziantep
 - Kayseri
 - Konya
-- Muğla
+- Mugla
 - Ordu
 - Sakarya
 - Sivas
 
-Güncel resmi liste için:
+Guncel resmi liste icin:
 
-- [sources.json](D:/turkiye_map/source/yayinlanabilir/sources.json)
+- [sources.json](/D:/turkiye_map/source/yayinlanabilir/sources.json)
 
-## Kullanıcıdan gelecek mahalle dosyaları
+## Kullanicidan gelecek mahalle dosyalari
 
-Yeni ham mahalle dosyaları önce şu klasöre bırakılmalıdır:
+Yeni ham mahalle dosyalari once su klasore birakilmalidir:
 
-- [incoming-mahalle](D:/turkiye_map/source/yayinlanabilir/incoming-mahalle)
+- [incoming-mahalle](/D:/turkiye_map/source/yayinlanabilir/incoming-mahalle)
 
-Bu klasörün amacı:
+Bu klasorun amaci:
 
-- dosyayı kaybetmeden sabit bir yerde toplamak
-- kaynak kararını sonradan verebilmek
-- manifest hazırlanmadan önce ham dosyayı ayrı tutmak
+- dosyayi kaybetmeden sabit bir yerde toplamak
+- kaynak kararini sonradan verebilmek
+- manifest hazirlanmadan once ham dosyayi ayri tutmak
 
-Dosya geldiğinde hemen yayınlanabilir kabul edilmez; önce lisans, kapsam ve kalite kontrol edilir.
+Dosya geldiginde hemen yayinlanabilir kabul edilmez; once lisans, kapsam ve kalite kontrol edilir.
+
+## Kapsam notu
+
+- Bir il kaynagi yalnizca merkez ilceyi veya kisitli bir alt bolgeyi kapsiyorsa bu durum bug diye yorumlanmamalidir.
+- Boyle durumlar `source/reference/quality-overrides.json` icinde `limited_source_coverage` olarak isaretlenmelidir.

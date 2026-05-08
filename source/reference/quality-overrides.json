@@ -8,10 +8,11 @@
     "duplicate_name": "Mükerrer ad",
     "count_mismatch": "Kayıt sayısı uyuşmazlığı",
     "manual_quality_note": "Elle incelenmiş kalite notu",
+    "limited_source_coverage": "Sınırlı kaynak kapsamı",
     "valid_far_multipolygon": "Doğrulanmış uzak veya parçalı geometri",
-    "osb_area": "OSB / Sanayi Alanı — Mahalle Listesi Dışı",
+    "osb_area": "OSB / Sanayi Alanı - Mahalle Listesi Dışı",
     "geometry_repair": "İç İçe Polygon Düzeltildi",
-    "far_multipolygon": "Uzak Parçalı Polygon — Kaynak Hatası Olabilir"
+    "far_multipolygon": "Uzak Parçalı Polygon - Kaynak Hatası Olabilir"
   },
   "notes": [
     {
@@ -20,7 +21,15 @@
       "issue": "manual_quality_note",
       "status": "open",
       "reviewed_at": "2026-04-24",
-      "note": "Bazi OSB veya ozel sanayi alani adlari resmi mahalle metadata'si ile birebir eslesmedigi icin mahalle polygonu olarak cizilmeyebilir. Bu not, gorunmeyen OSB benzeri alanlar icin genel veri kapsami uyarisidir."
+      "note": "Bazı OSB veya özel sanayi alanı adları resmi mahalle metadata'sı ile birebir eşleşmediği için mahalle polygonu olarak çizilmeyebilir. Bu not, görünmeyen OSB benzeri alanlar için genel veri kapsamı uyarısıdır."
+    },
+    {
+      "province_id": "TR-P-58",
+      "province_name": "Sivas",
+      "issue": "limited_source_coverage",
+      "status": "open",
+      "reviewed_at": "2026-05-06",
+      "note": "Sivas Belediyesi kaynağı şu an yalnızca merkez ilçe kapsamı veriyor gibi görünüyor. Bu nedenle TR-D-58-012 dışındaki ilçelerde mahalle polygonu üretilmemesi veri kapsamı durumudur, render hatası değildir."
     },
     {
       "province_id": "TR-P-48",
@@ -56,32 +65,14 @@
       "issue": "manual_quality_note",
       "status": "verified_ok",
       "reviewed_at": "2026-04-22",
-      "note": "Yeşilüzümlü-İncirköy, Çiftlik-Karagedik ve Menteşeoğlu-Karaçulha kontrol edildi; sorun yok.",
+      "note": "Yeşilüzümlü-İncirköy, Çiftlik-Karagedik ve Menteşeoğlu-Karaculha kontrol edildi; sorun yok.",
       "settlements": [
-        {
-          "settlement_id": "TR-Y-48-004-M-0041",
-          "settlement_name": "Yeşilüzümlü"
-        },
-        {
-          "settlement_id": "TR-Y-48-004-M-0017",
-          "settlement_name": "İncirköy"
-        },
-        {
-          "settlement_id": "TR-Y-48-004-M-0008",
-          "settlement_name": "Çiftlik"
-        },
-        {
-          "settlement_id": "TR-Y-48-004-M-0022",
-          "settlement_name": "Karagedik"
-        },
-        {
-          "settlement_id": "TR-Y-48-004-M-0030",
-          "settlement_name": "Menteşeoğlu"
-        },
-        {
-          "settlement_id": "TR-Y-48-004-M-0021",
-          "settlement_name": "Karaçulha"
-        }
+        { "settlement_id": "TR-Y-48-004-M-0041", "settlement_name": "Yeşilüzümlü" },
+        { "settlement_id": "TR-Y-48-004-M-0017", "settlement_name": "İncirköy" },
+        { "settlement_id": "TR-Y-48-004-M-0008", "settlement_name": "Çiftlik" },
+        { "settlement_id": "TR-Y-48-004-M-0022", "settlement_name": "Karagedik" },
+        { "settlement_id": "TR-Y-48-004-M-0030", "settlement_name": "Menteşeoğlu" },
+        { "settlement_id": "TR-Y-48-004-M-0021", "settlement_name": "Karaculha" }
       ],
       "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
     },
@@ -104,7 +95,7 @@
       "district_id": "TR-D-48-009",
       "district_name": "Milas",
       "settlement_id": "TR-Y-48-009-M-0022",
-      "settlement_name": "Bozbük",
+      "settlement_name": "Bozbuk",
       "issue": "valid_far_multipolygon",
       "status": "verified_ok",
       "reviewed_at": "2026-04-22",
@@ -134,14 +125,6 @@
       "source_report": "archive/kamu-kaynak/yerlesim/quality-report.json"
     },
     {
-      "province_id": "TR-P-30",
-      "province_name": "Hakkari",
-      "issue": "manual_quality_note",
-      "status": "open",
-      "reviewed_at": "2026-04-25",
-      "note": "Hakkari için mahalle geometri verisi henüz mevcut değil; ilçe verisi de yayınlanmamıştır."
-    },
-    {
       "province_id": "TR-P-22",
       "province_name": "Edirne",
       "district_id": "TR-D-22-005",
@@ -149,7 +132,7 @@
       "issue": "manual_quality_note",
       "status": "open",
       "reviewed_at": "2026-04-27",
-      "note": "Keşan / Yenimescit: KML kaynağında mevcut ancak resmi yerleşim listesinde (e-icisleri) karşılığı bulunmadığından geometri çizilmemektedir."
+      "note": "Keşan / Yenimescit: KML kaynağında mevcut ancak resmi yerleşim listesinde (e-İçişleri) karşılığı bulunmadığından geometri çizilmemektedir."
     },
     {
       "province_id": "TR-P-22",
@@ -159,7 +142,7 @@
       "issue": "osb_area",
       "status": "open",
       "reviewed_at": "2026-04-27",
-      "note": "Süloğlu / Organize Sanayi Bölgesi: Mahalle kaydı değil, OSB alanı. Geometri kasıtlı olarak çizilmemektedir."
+      "note": "Süloğlu / Organize Sanayi Bölgesi: Mahalle kaydı değil, OSB alanıdır. Bu not görünümden bağımsız sınıflandırma uyarısıdır; mahalle katmanında görünse bile resmi mahalle kaydı gibi değerlendirilmemelidir."
     },
     {
       "province_id": "TR-P-06",
@@ -171,7 +154,50 @@
       "issue": "unverified_geometry",
       "status": "open",
       "reviewed_at": "2026-04-27",
-      "note": "Gençali geometrisinin centroidi ~31.99° lon, diğer Ayaş mahallelerinden ~14km batıda. Oltan mahallesiyle komşu olması bekleniyor ancak geometri uzakta görünüyor. Kaynak: Seffaf Ankara. Manuel doğrulama gerekli."
+      "note": "Gençali geometrisinin centroidi yaklaşık 31.99 lon, diğer Ayaş mahallelerinden yaklaşık 14 km batıda. Oltan ile komşu olması bekleniyor ancak geometri uzakta görünüyor. Manuel doğrulama gerekli."
+    },
+    {
+      "province_id": "TR-P-16",
+      "province_name": "Bursa",
+      "district_id": "TR-D-16-012",
+      "district_name": "Nilüfer",
+      "settlement_name": "Hasanağa",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-05-06",
+      "note": "Hasanağa çevresindeki bazı polygonlar yerleşim çekirdeğinin üstüne veya altına kaymış görünüyor. Kaynak geometri hizası manuel doğrulama bekliyor."
+    },
+    {
+      "province_id": "TR-P-42",
+      "province_name": "Konya",
+      "district_id": "TR-D-42-030",
+      "district_name": "Yalıhüyük",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-05-06",
+      "note": "Yalıhüyük ilçesindeki mahalle polygonlarının ilçe merkezi ve yerleşim dağılımı ile tutarsız göründüğü bildirildi. İlçe genelinde geometri doğrulaması gerekiyor."
+    },
+    {
+      "province_id": "TR-P-52",
+      "province_name": "Ordu",
+      "district_id": "TR-D-52-013",
+      "district_name": "Kabataş",
+      "settlement_name": "Alankent",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-05-06",
+      "note": "Alankent mahallesi 3 parça ve dağınık görünüyor. Çok parçalı geometri kaynağı manuel doğrulama bekliyor."
+    },
+    {
+      "province_id": "TR-P-61",
+      "province_name": "Trabzon",
+      "district_id": "TR-D-61-008",
+      "district_name": "Düzköy",
+      "settlement_name": "Çayırbağı Zeliha",
+      "issue": "unverified_geometry",
+      "status": "open",
+      "reviewed_at": "2026-05-06",
+      "note": "Çayırbağı Zeliha polygonu ilçe çekirdeğinden belirgin biçimde uzak görünüyor. Kaynak geometri veya ilçe ataması manuel doğrulama bekliyor."
     }
   ]
 }
