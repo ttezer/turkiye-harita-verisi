@@ -260,6 +260,16 @@ const LOCAL_MUNICIPAL_SOURCES = [
     pre_matched_id_field: 'canonical_id',
     district_field: 'source_ilce_adi',
   },
+  {
+    province_id: 'TR-P-10',
+    province_name: 'Balikesir',
+    slug: '10-balikesir',
+    source_name: 'Balikesir Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '10-balikesir', 'balikesir-mahalle.kml'),
+    district_field: 'district',
+  },
 ];
 
 export function compactKey(value) {
@@ -1204,6 +1214,19 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
   }
 
   const settlement = settlementMatches[0];
+
+  if (
+    source.province_id === 'TR-P-10' &&
+    district.id === 'TR-D-10-011' &&
+    compactKey(rawName) === 'altay' &&
+    geometry.type === 'MultiPolygon'
+  ) {
+    const splitResult = splitGonenAltayFeature(source, district, rawName, geometry, settlement);
+    if (splitResult) {
+      return splitResult;
+    }
+  }
+
   return {
     status: 'matched',
     feature: {
@@ -1250,6 +1273,67 @@ function polygonsToGeometry(polygons) {
   return polygons.length === 1
     ? { type: 'Polygon', coordinates: polygons[0] }
     : { type: 'MultiPolygon', coordinates: polygons };
+}
+
+function polygonCentroidBounds(polygon) {
+  const outer = polygon[0] || [];
+  const lons = outer.map((point) => point[0]);
+  const lats = outer.map((point) => point[1]);
+  return {
+    minLon: Math.min(...lons),
+    maxLon: Math.max(...lons),
+    minLat: Math.min(...lats),
+    maxLat: Math.max(...lats),
+    centerLon: (Math.min(...lons) + Math.max(...lons)) / 2,
+    centerLat: (Math.min(...lats) + Math.max(...lats)) / 2,
+  };
+}
+
+function splitGonenAltayFeature(source, district, rawName, geometry, settlement) {
+  const polygons = geometryToPolygons(geometry);
+  if (polygons.length !== 2) {
+    return null;
+  }
+
+  const indexed = polygons.map((polygon, index) => ({
+    index,
+    polygon,
+    bounds: polygonCentroidBounds(polygon),
+  }));
+
+  indexed.sort((a, b) => a.bounds.centerLon - b.bounds.centerLon);
+  const denizkentPolygon = indexed[0].polygon;
+  const altayPolygon = indexed[1].polygon;
+  const sourceLabel = source.source_label || PUBLIC_CITY_GUIDE_LABEL;
+
+  return {
+    status: 'matched_many',
+    features: [
+      {
+        type: 'Feature',
+        properties: buildGeometryProperties(source, district, rawName, null, settlement),
+        geometry: roundGeometryCoordinates(rewindGeometry(polygonsToGeometry([altayPolygon])), 6),
+      },
+      {
+        type: 'Feature',
+        properties: {
+          id: 'TR-Y-10-011-M-SRC-ALTAYDENIZKENT',
+          level: 'yerlesim',
+          type: 'mahalle',
+          parent_id: district.id,
+          province_id: source.province_id,
+          district_id: district.id,
+          name: 'Altay-Denizkent',
+          source_raw_name: normalizeDisplayText(rawName),
+          source: sourceLabel,
+          source_label: sourceLabel,
+          source_name: source.source_name,
+          source_only: true,
+        },
+        geometry: roundGeometryCoordinates(rewindGeometry(polygonsToGeometry([denizkentPolygon])), 6),
+      },
+    ],
+  };
 }
 
 function mergeDuplicateFeatureGeometries(features) {
@@ -1635,6 +1719,9 @@ async function processLocalMunicipalSources(features, sourceReports, indexes, di
       if (result.status === 'matched') {
         features.push(result.feature);
         report.matched_count += 1;
+      } else if (result.status === 'matched_many') {
+        features.push(...result.features);
+        report.matched_count += result.features.length;
       } else if (result.status === 'osb') {
         features.push(result.feature);
         report.osb_areas.push({ raw_name: result.raw_name, district_id: result.district_id, district_name: result.district_name, osb_id: result.osb_id });
@@ -1718,6 +1805,9 @@ export async function main() {
         if (result.status === 'matched') {
           features.push(result.feature);
           report.matched_count += 1;
+        } else if (result.status === 'matched_many') {
+          features.push(...result.features);
+          report.matched_count += result.features.length;
         } else {
           report[result.status].push(result);
         }

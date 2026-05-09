@@ -16,13 +16,14 @@ Mahalle verisi tüm Türkiye için tam değildir. Yalnızca doğrulanmış açı
 
 Son doğrulama özeti:
 
-- aktif kaynak sayısı: `14`
-- üretilen toplam mahalle geometrisi: `10040`
+- aktif kaynak sayısı: `15`
+- üretilen toplam mahalle geometrisi: `11112`
 
 ### Aktif mahalle kaynakları
 
 | İl | Kod | Kaynak tipi | Format | Not |
 | --- | ---: | --- | --- | --- |
+| Balıkesir | 10 | Manuel kaynak | KML | 1136 kaydın 1075'i eşleşti; ek isim eşleme temizliği gerekiyor |
 | Ankara | 06 | Belediye açık veri | GeoJSON | OSB/source-only kayıtlar ayıklanır |
 | Bursa | 16 | Belediye açık veri | GeoJSON | OSB/source-only kayıtlar ayıklanır |
 | Çanakkale | 17 | Manuel kaynak | KML | Kullanıcı tarafından sağlanan aktif kaynak |
@@ -59,6 +60,7 @@ Manuel mahalle dosyaları:
 
 Şu an aktif manuel il örnekleri:
 
+- Balıkesir
 - Çanakkale
 - Edirne
 - Kocaeli

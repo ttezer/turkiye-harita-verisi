@@ -58,6 +58,20 @@
   ],
   "province_sources": [
     {
+      "province": "Balikesir",
+      "province_code": 10,
+      "source_name": "Balikesir Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": "",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Balikesir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Kocaeli",
       "province_code": 41,
       "source_name": "Kocaeli Buyuksehir Belediyesi Rehber Uygulamasi",

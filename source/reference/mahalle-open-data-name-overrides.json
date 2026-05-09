@@ -4082,5 +4082,464 @@
     "raw_key": "emirhan",
     "settlement_id": "TR-Y-42-015-M-0005",
     "note": "Emirhan - district centroid ilce siniri disinda, Beysehir ilcesine atandi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-004",
+    "raw_key": "17eylul",
+    "settlement_id": "TR-Y-10-004-M-0042",
+    "note": "17 eylul -> Onyedieylul"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-004",
+    "raw_key": "600evler",
+    "settlement_id": "TR-Y-10-004-M-0004",
+    "note": "600 evler -> Altiyuzevler"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-004",
+    "raw_key": "yesilcomlu",
+    "settlement_id": "TR-Y-10-004-M-0055",
+    "note": "Yesilcomlu -> Yesilconlu"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-004",
+    "raw_key": "yenice",
+    "settlement_id": "TR-Y-10-004-M-0048",
+    "note": "Bandirma Yenice -> Sahil Yenice"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-008",
+    "raw_key": "doyran",
+    "settlement_id": "TR-Y-10-008-M-0017",
+    "note": "Doyran -> Doyuran"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-008",
+    "raw_key": "mehmetalan",
+    "settlement_id": "TR-Y-10-008-M-0034",
+    "note": "Mehmetalan -> Mehmetalani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-009",
+    "raw_key": "alaettin",
+    "settlement_id": "TR-Y-10-009-M-0001",
+    "note": "Alaettin -> Alaaddin"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-009",
+    "raw_key": "cakil",
+    "settlement_id": "TR-Y-10-009-M-0007",
+    "note": "Cakil -> Cakilkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-010",
+    "raw_key": "kuyualan",
+    "settlement_id": "TR-Y-10-010-M-0010",
+    "note": "Kuyualan -> Kuyualani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "ciftlikalan",
+    "settlement_id": "TR-Y-10-011-M-0027",
+    "note": "Ciftlikalan -> Ciftlikalani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "dumanalan",
+    "settlement_id": "TR-Y-10-011-M-0034",
+    "note": "Dumanalan -> Dumanalani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "kaplanoba",
+    "settlement_id": "TR-Y-10-011-M-0056",
+    "note": "Kaplanoba -> Kaplanobasi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "karaagacalan",
+    "settlement_id": "TR-Y-10-011-M-0057",
+    "note": "Karaagacalan -> Karaaagac Alani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "kavakalan",
+    "settlement_id": "TR-Y-10-011-M-0061",
+    "note": "Kavakalan -> Kavakalani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "kocbayir",
+    "settlement_id": "TR-Y-10-011-M-0067",
+    "note": "Kocbayir -> Kocbayiri"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "pasaciftlik",
+    "settlement_id": "TR-Y-10-011-M-0080",
+    "note": "Pasaciftlik -> Pasaciftligi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-012",
+    "raw_key": "camiikebir",
+    "settlement_id": "TR-Y-10-012-M-0006",
+    "note": "Camiikebir -> Camikebir"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-012",
+    "raw_key": "sarnic",
+    "settlement_id": "TR-Y-10-012-M-0028",
+    "note": "Sarnic -> Sarnickoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "7eylul",
+    "settlement_id": "TR-Y-10-013-M-0068",
+    "note": "7eylul -> Yedieylul"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "asagikaleoba",
+    "settlement_id": "TR-Y-10-013-M-0035",
+    "note": "Asagikaleoba -> Kaleoba"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "yukarikaleoba",
+    "settlement_id": "TR-Y-10-013-M-0035",
+    "note": "Yukarikaleoba -> Kaleoba"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "haydar",
+    "settlement_id": "TR-Y-10-013-M-0031",
+    "note": "Haydar -> Haydarkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "karacepis",
+    "settlement_id": "TR-Y-10-013-M-0036",
+    "note": "Karacepis -> Karacebis"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-013",
+    "raw_key": "kina",
+    "settlement_id": "TR-Y-10-013-M-0040",
+    "note": "Kina -> Kinakoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "camiiatik",
+    "settlement_id": "TR-Y-10-015-M-0012",
+    "note": "Camiiatik -> Camiatik"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "camiicedit",
+    "settlement_id": "TR-Y-10-015-M-0013",
+    "note": "Camiicedit -> Camicedit"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "isaalan",
+    "settlement_id": "TR-Y-10-015-M-0027",
+    "note": "Isaalan -> Isaalani"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "recep",
+    "settlement_id": "TR-Y-10-015-M-0054",
+    "note": "Recep -> Recepkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "sarac",
+    "settlement_id": "TR-Y-10-015-M-0055",
+    "note": "Sarac -> Sarackoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-015",
+    "raw_key": "servet",
+    "settlement_id": "TR-Y-10-015-M-0062",
+    "note": "Servet -> Servetkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "haydar",
+    "settlement_id": "TR-Y-10-016-M-0025",
+    "note": "Haydar -> Haydarkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "kulak",
+    "settlement_id": "TR-Y-10-016-M-0039",
+    "note": "Kulak -> Kulakkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "necip",
+    "settlement_id": "TR-Y-10-016-M-0041",
+    "note": "Necip -> Necipkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "oren",
+    "settlement_id": "TR-Y-10-016-M-0042",
+    "note": "Oren -> Orenkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "peynirkuyu",
+    "settlement_id": "TR-Y-10-016-M-0043",
+    "note": "Peynirkuyu -> Peynirkuyusu"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "yayla",
+    "settlement_id": "TR-Y-10-016-M-0048",
+    "note": "Yayla -> Yaylakoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-017",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-10-017-M-0013",
+    "note": "Yeni -> Yenimahalle"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-019",
+    "raw_key": "cayir",
+    "settlement_id": "TR-Y-10-019-M-0019",
+    "note": "Cayir -> Cayirkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "duman",
+    "settlement_id": "TR-Y-10-020-M-0013",
+    "note": "Duman -> Dumankoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "kiraz",
+    "settlement_id": "TR-Y-10-020-M-0032",
+    "note": "Kiraz -> Kirazkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "sogutcayir",
+    "settlement_id": "TR-Y-10-020-M-0045",
+    "note": "Sogutcayir -> Sogutcayiri"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "sultancayir",
+    "settlement_id": "TR-Y-10-020-M-0048",
+    "note": "Sultancayir -> Sultancayiri"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "sulecek",
+    "settlement_id": "TR-Y-10-020-M-0047",
+    "note": "Sulecek -> Sulecik"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "yaylacayir",
+    "settlement_id": "TR-Y-10-020-M-0053",
+    "note": "Yaylacayir -> Yaylacayiri"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-020",
+    "raw_key": "yildiz",
+    "settlement_id": "TR-Y-10-020-M-0055",
+    "note": "Yildiz -> Yildizkoy"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-001",
+    "raw_key": "gaziosmanpasaosb",
+    "action": "include",
+    "id": "TR-Y-10-001-M-SRC-GAZIOSMANPASAOSB",
+    "name": "Gaziosmanpaşaosb",
+    "note": "Altieylul'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-001",
+    "raw_key": "hasanbasricantay",
+    "action": "include",
+    "id": "TR-Y-10-001-M-SRC-HASANBASRICANTAY",
+    "name": "Hasan basri çantay",
+    "note": "Altieylul'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-001",
+    "raw_key": "plevne",
+    "action": "include",
+    "id": "TR-Y-10-001-M-SRC-PLEVNE",
+    "name": "Plevne",
+    "note": "Altieylul'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-002",
+    "raw_key": "yeni",
+    "action": "include",
+    "id": "TR-Y-10-002-M-SRC-YENI",
+    "name": "Yeni",
+    "note": "Ayvalik'ta Yeni ayri mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-005",
+    "raw_key": "yurucekler",
+    "action": "include",
+    "id": "TR-Y-10-005-M-SRC-YURUCEKLER",
+    "name": "Yürücekler",
+    "note": "Bigadic'te dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-006",
+    "raw_key": "haciahmet",
+    "action": "include",
+    "id": "TR-Y-10-006-M-SRC-HACIAHMET",
+    "name": "Hacıahmet",
+    "note": "Burhaniye'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-007",
+    "raw_key": "uceylul",
+    "action": "include",
+    "id": "TR-Y-10-007-M-SRC-UCEYLUL",
+    "name": "Üçeylül",
+    "note": "Dursunbey'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-009",
+    "raw_key": "ilhan",
+    "action": "include",
+    "id": "TR-Y-10-009-M-SRC-ILHAN",
+    "name": "İlhan",
+    "note": "Erdek'te dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-011",
+    "raw_key": "sogut",
+    "action": "include",
+    "id": "TR-Y-10-011-M-SRC-SOGUT",
+    "name": "Söğüt",
+    "note": "Gonen'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-014",
+    "raw_key": "1orucgazi",
+    "action": "include",
+    "id": "TR-Y-10-014-M-SRC-1ORUCGAZI",
+    "name": "1.oruçgazi",
+    "note": "Karesi'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-014",
+    "raw_key": "2orucgazi",
+    "action": "include",
+    "id": "TR-Y-10-014-M-SRC-2ORUCGAZI",
+    "name": "2.oruçgazi",
+    "note": "Karesi'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-014",
+    "raw_key": "kuvaimilliye",
+    "action": "include",
+    "id": "TR-Y-10-014-M-SRC-KUVAIMILLIYE",
+    "name": "Kuva-i milliye",
+    "note": "Karesi'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-014",
+    "raw_key": "yeni",
+    "action": "include",
+    "id": "TR-Y-10-014-M-SRC-YENI",
+    "name": "Yeni",
+    "note": "Karesi'de Yeni ayri mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-016",
+    "raw_key": "erecek",
+    "action": "include",
+    "id": "TR-Y-10-016-M-SRC-ERECEK",
+    "name": "Erecek",
+    "note": "Manyas'ta dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-018",
+    "raw_key": "egerci",
+    "action": "include",
+    "id": "TR-Y-10-018-M-SRC-EGERCI",
+    "name": "Eğerci",
+    "note": "Savastepe'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-019",
+    "raw_key": "danacayir",
+    "action": "include",
+    "id": "TR-Y-10-019-M-SRC-DANACAYIR",
+    "name": "Danaçayır",
+    "note": "Sindirgi'de dogru mahalle kaydi olarak source-only dahil edildi"
   }
 ]
