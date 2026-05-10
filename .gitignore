@@ -54,6 +54,9 @@ dist/geojson/mahalle-geometrileri-by-district/*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-52-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-54-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-58-*.geojson
+!dist/geojson/mahalle-geometrileri-by-district/TR-D-10-*.geojson
+!dist/geojson/mahalle-geometrileri-by-district/TR-D-17-*.geojson
+!dist/geojson/mahalle-geometrileri-by-district/TR-D-22-*.geojson
 data/normalized/
 data/processed/
 .vscode/
