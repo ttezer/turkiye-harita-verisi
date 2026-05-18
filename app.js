@@ -2375,7 +2375,12 @@ function buildProjection(featureCollection, viewport = defaultExportViewport) {
     ],
     featureCollection,
   );
-  const path = window.d3.geoPath(projection).digits(1);
+  const pathDigits = state.level === 'mahalle'
+    ? 2
+    : state.level === 'district'
+      ? 2
+      : 1;
+  const path = window.d3.geoPath(projection).digits(pathDigits);
 
   return {
     projection,
@@ -3012,10 +3017,13 @@ function buildSimplifiedSvgPath(feature, projectionWrapper) {
 }
 
 function getSvgTolerance() {
-  if (state.level === 'district') {
-    return state.provinceId ? 1.4 : 2.2;
+  if (state.level === 'mahalle') {
+    return state.districtId ? 0.1 : state.provinceId ? 0.18 : 0.28;
   }
-  return 0.9;
+  if (state.level === 'district') {
+    return state.provinceId ? 0.8 : 1.2;
+  }
+  return 0.55;
 }
 
 function projectGeometry(geometry, projection) {
@@ -3088,6 +3096,9 @@ function simplifyPoints(points, tolerance) {
 
 
 function roundSvgNumber(value) {
+  if (state.level === 'mahalle' || state.level === 'district') {
+    return Number(value.toFixed(2));
+  }
   return Number(value.toFixed(1));
 }
 

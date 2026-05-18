@@ -4541,5 +4541,436 @@
     "id": "TR-Y-10-019-M-SRC-DANACAYIR",
     "name": "Danaçayır",
     "note": "Sindirgi'de dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "lahna",
+    "settlement_id": "TR-Y-59-004-M-0037",
+    "note": "Lahna -> Lahana"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "cene",
+    "action": "include",
+    "id": "TR-Y-59-004-M-SRC-CENE",
+    "name": "\u00c7ene",
+    "note": "Hayrabolu'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "dugcali",
+    "action": "include",
+    "id": "TR-Y-59-004-M-SRC-DUGCALI",
+    "name": "Du\u011fcal\u0131",
+    "note": "Hayrabolu'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "hacilli",
+    "action": "include",
+    "id": "TR-Y-59-004-M-SRC-HACILLI",
+    "name": "Hac\u0131ll\u0131",
+    "note": "Hayrabolu'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "orey",
+    "action": "include",
+    "id": "TR-Y-59-004-M-SRC-OREY",
+    "name": "\u00d6rey",
+    "note": "Hayrabolu'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "kemallar",
+    "action": "include",
+    "id": "TR-Y-59-004-M-SRC-KEMALLAR",
+    "name": "Kemallar",
+    "note": "Hayrabolu'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-001",
+    "raw_key": "velikoyyaliboyuosb",
+    "action": "include_as_osb",
+    "note": "Cerkekzoy Yaliboyu OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-003",
+    "raw_key": "marmaracikosb",
+    "action": "include_as_osb",
+    "note": "Ergene Marmaracik OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-004",
+    "raw_key": "hayraboluosb",
+    "action": "include_as_osb",
+    "note": "Hayrabolu OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-005",
+    "raw_key": "bahcelievlerosb",
+    "action": "include_as_osb",
+    "note": "Kapakli Bahcelievler OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-005",
+    "raw_key": "ismetpasaosb",
+    "action": "include_as_osb",
+    "note": "Kapakli Ismetpasa OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-006",
+    "raw_key": "hacievhat",
+    "action": "include",
+    "id": "TR-Y-59-006-M-SRC-HACIEVHAT",
+    "name": "HACIEVHAT",
+    "note": "Malkara'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-006",
+    "raw_key": "kozyoruk",
+    "action": "include",
+    "id": "TR-Y-59-006-M-SRC-KOZYORUK",
+    "name": "KOZY\u00d6R\u00dcK",
+    "note": "Malkara'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-006",
+    "raw_key": "sarnic",
+    "action": "include",
+    "id": "TR-Y-59-006-M-SRC-SARNIC",
+    "name": "SARNI\u00c7",
+    "note": "Malkara'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-007",
+    "raw_key": "kamaradere",
+    "action": "include",
+    "id": "TR-Y-59-007-M-SRC-KAMARADERE",
+    "name": "KAMARADERE",
+    "note": "Marmara Ereglisi'nde dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-008",
+    "raw_key": "kazimdirikturan",
+    "action": "include",
+    "id": "TR-Y-59-008-M-SRC-KAZIMDIRIKTURAN",
+    "name": "KAZIM D\u0130R\u0130K-TURAN",
+    "note": "Muratli'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-009",
+    "raw_key": "sefaalan",
+    "action": "include",
+    "id": "TR-Y-59-009-M-SRC-SEFAALAN",
+    "name": "SEFAALAN",
+    "note": "Saray'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-010",
+    "raw_key": "dogrukaracamurat",
+    "action": "include",
+    "id": "TR-Y-59-010-M-SRC-DOGRUKARACAMURAT",
+    "name": "DO\u011eRUKARACAMURAT",
+    "note": "Suleymanpasa'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-59",
+    "district_id": "TR-D-59-010",
+    "raw_key": "guvecli",
+    "action": "include",
+    "id": "TR-Y-59-010-M-SRC-GUVECLI",
+    "name": "G\u00dcVE\u00c7L\u0130",
+    "note": "Suleymanpasa'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-007",
+    "raw_key": "yesilkoysb",
+    "action": "include_as_osb",
+    "note": "Bakirkoy Yesilkoy SB mahalleden ayri kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-008",
+    "raw_key": "askeribolge",
+    "action": "include",
+    "id": "TR-Y-34-008-M-SRC-ASKERIBOLGE",
+    "name": "ASKER\u0130 B\u00d6LGE",
+    "note": "Basaksehir'de ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-008",
+    "raw_key": "ikitelliosb",
+    "action": "include_as_osb",
+    "note": "Basaksehir Ikitelli OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-008",
+    "raw_key": "sahintepe",
+    "settlement_id": "TR-Y-34-008-M-0008",
+    "note": "Basaksehir / Sahintepe -> Sahintepesi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-011",
+    "raw_key": "cumhuriyet",
+    "settlement_id": "TR-Y-34-011-M-0015",
+    "note": "Beykoz / Cumhuriyet -> Cumhuriyetkoy"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-011",
+    "raw_key": "ciftlik",
+    "settlement_id": "TR-Y-34-011-M-0011",
+    "note": "Beykoz / Ciftlik -> Cavusbasi Ciftlik"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-011",
+    "raw_key": "merkez",
+    "settlement_id": "TR-Y-34-011-M-0008",
+    "note": "Beykoz / Merkez -> Beykoz Merkez"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-012",
+    "raw_key": "beylikduzuosb",
+    "action": "include_as_osb",
+    "note": "Beylikduzu OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-013",
+    "raw_key": "kalyoncukullugu",
+    "settlement_id": "TR-Y-34-013-M-0022",
+    "note": "Beyoglu / Kalyoncu Kullugu -> Kalyoncukulluk"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-013",
+    "raw_key": "piripasa",
+    "action": "include",
+    "id": "TR-Y-34-013-M-SRC-PIRIPASA",
+    "name": "P\u0130R\u0130PA\u015eA",
+    "note": "Beyoglu'nda dogrudan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-013",
+    "raw_key": "sururimehmetefendi",
+    "settlement_id": "TR-Y-34-013-M-0041",
+    "note": "Beyoglu / Sururi Mehmet Efendi -> Sururi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-014",
+    "raw_key": "muratbeymerkez",
+    "action": "include",
+    "id": "TR-Y-34-014-M-SRC-MURATBEYMERKEZ",
+    "name": "MURATBEY MERKEZ",
+    "note": "Buyukcekmece kaydinda source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-015",
+    "raw_key": "balaban",
+    "action": "include",
+    "id": "TR-Y-34-015-M-SRC-BALABAN",
+    "name": "BALABAN",
+    "note": "Catalca kaydinda source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-015",
+    "raw_key": "ferhatpasasb",
+    "settlement_id": "TR-Y-34-015-M-0014",
+    "note": "Catalca / Ferhatpasa SB -> Ferhatpasa"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-017",
+    "raw_key": "askeribolge",
+    "action": "include",
+    "id": "TR-Y-34-017-M-SRC-ASKERIBOLGE",
+    "name": "ASKER\u0130 B\u00d6LGE",
+    "note": "Esenler'de ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-019",
+    "raw_key": "merkez",
+    "settlement_id": "TR-Y-34-019-M-0012",
+    "note": "Eyupsultan / Merkez -> Eyup Merkez"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-019",
+    "raw_key": "nisanci",
+    "settlement_id": "TR-Y-34-019-M-0021",
+    "note": "Eyupsultan / Nisanci -> Nisanca"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-026",
+    "raw_key": "kucukcekmeceikitelliosb",
+    "action": "include_as_osb",
+    "note": "Kucukcekmece Ikitelli OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-028",
+    "raw_key": "orman",
+    "action": "include",
+    "id": "TR-Y-34-028-M-SRC-ORMAN",
+    "name": "ORMAN",
+    "note": "Pendik'te ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-029",
+    "raw_key": "kuzuderedevletormani",
+    "action": "include",
+    "id": "TR-Y-34-029-M-SRC-KUZUDEREDEVLETORMANI",
+    "name": "KUZUDERE DEVLET ORMANI",
+    "note": "Sancaktepe'de ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-030",
+    "raw_key": "bahcekoyyenimahalle",
+    "settlement_id": "TR-Y-34-030-M-0004",
+    "note": "Sariyer / Bahcekoy Yenimahalle -> Bahcekoy Yeni"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-030",
+    "raw_key": "sariyermerkez",
+    "settlement_id": "TR-Y-34-030-M-0033",
+    "note": "Sariyer / Sariyer Merkez -> Sariyer"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-030",
+    "raw_key": "sariyeryenimahalle",
+    "settlement_id": "TR-Y-34-030-M-0036",
+    "note": "Sariyer / Sariyer Yenimahalle -> Yeni"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-031",
+    "raw_key": "degirmenkoyfevzipasa",
+    "settlement_id": "TR-Y-34-031-M-0016",
+    "note": "Silivri / Degirmenkoy Fevzipasa -> Degitmenkoy Fevzipasa"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-031",
+    "raw_key": "kavaklihurriyet",
+    "action": "include",
+    "id": "TR-Y-34-031-M-SRC-KAVAKLIHURRIYET",
+    "name": "KAVAKLI H\u00dcRR\u0130YET",
+    "note": "Silivri kaydinda source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-032",
+    "raw_key": "aksemsettin",
+    "settlement_id": "TR-Y-34-032-M-0004",
+    "note": "Sultanbeyli / Aksemsettin -> Aksemseddin"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-032",
+    "raw_key": "salgamlidevletormani",
+    "action": "include",
+    "id": "TR-Y-34-032-M-SRC-SALGAMLIDEVLETORMANI",
+    "name": "\u015eALGAMLI DEVLET ORMANI",
+    "note": "Sultanbeyli'de ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-032",
+    "raw_key": "teferructepeormani",
+    "action": "include",
+    "id": "TR-Y-34-032-M-SRC-TEFERRUCTEPEORMANI",
+    "name": "TEFERR\u00dc\u00c7 TEPE ORMANI",
+    "note": "Sultanbeyli'de ozel alan source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-035",
+    "raw_key": "merkez",
+    "settlement_id": "TR-Y-34-035-M-0023",
+    "note": "Sisli / Merkez -> Sisli Merkez"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "aydinlibirlikosb",
+    "action": "include_as_osb",
+    "note": "Tuzla Aydinli Birlik OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "aydinliistanbulayosb",
+    "action": "include_as_osb",
+    "note": "Tuzla Aydinli Istanbul AYOSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "aydinlisb",
+    "action": "include_as_osb",
+    "note": "Tuzla Aydinli SB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "aydinlikosb",
+    "action": "include_as_osb",
+    "note": "Tuzla Aydinli KOSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "deriosb",
+    "action": "include_as_osb",
+    "note": "Tuzla Deri OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-036",
+    "raw_key": "tepeorenitosb",
+    "action": "include_as_osb",
+    "note": "Tuzla Tepeoren ITOSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-34",
+    "district_id": "TR-D-34-037",
+    "raw_key": "dudulluosb",
+    "action": "include_as_osb",
+    "note": "Umraniye Dudullu OSB kalite kaydi olarak tutuldu"
   }
 ]

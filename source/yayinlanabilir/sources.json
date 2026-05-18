@@ -72,6 +72,48 @@
       "note": "Kullanici tarafindan saglanan manuel Balikesir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
+      "province": "Istanbul",
+      "province_code": 34,
+      "source_name": "Istanbul Mahalle KML",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Istanbul mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce bilgisi ile ilce eslesmesi yapilir."
+    },
+    {
+      "province": "Tekirdag",
+      "province_code": 59,
+      "source_name": "Tekirdag Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": "",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Tekirdag mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
+      "province": "Kirklareli",
+      "province_code": 39,
+      "source_name": "Kirklareli Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": "",
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Ilce ilce kaynaklardan birlestirilmis Kirklareli mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Kocaeli",
       "province_code": 41,
       "source_name": "Kocaeli Buyuksehir Belediyesi Rehber Uygulamasi",
@@ -280,30 +322,6 @@
     }
   ],
   "partial_sources": [
-    {
-      "province": "Istanbul",
-      "district": "Kadikoy",
-      "source_url": "https://acikveri.kadikoy.bel.tr/",
-      "settlement_geometry": true,
-      "formats": ["SHP"],
-      "publishable": "partial",
-      "local_manifests": [
-        "source/yayinlanabilir/municipal/34-istanbul/kadikoy/mahalle/manifest.json"
-      ],
-      "note": "Il geneli degil, sadece ilce kapsami. Kaynak tek .shp dosyasi olarak indi; yan shapefile dosyalari eksik."
-    },
-    {
-      "province": "Istanbul",
-      "district": "Uskudar",
-      "source_url": "https://ulasav.csb.gov.tr/dataset/34-7-uskudar-mahalle-bilgi-hairtasi",
-      "settlement_geometry": true,
-      "formats": ["GeoJSON"],
-      "publishable": "partial",
-      "local_manifests": [
-        "source/yayinlanabilir/municipal/34-istanbul/uskudar/mahalle/manifest.json"
-      ],
-      "note": "Il geneli degil, sadece ilce kapsami. GeoJSON icinde mahalle adi ve kimlik numarasi var."
-    },
     {
       "province": "Osmaniye",
       "district": "Merkez",

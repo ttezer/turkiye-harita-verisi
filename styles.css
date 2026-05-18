@@ -708,6 +708,10 @@ button, input, select { font: inherit; }
   stroke-width: var(--feature-stroke-width, 1);
   cursor: pointer;
   pointer-events: all;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  shape-rendering: geometricPrecision;
   transition: fill 140ms ease, stroke 140ms ease, filter 140ms ease, opacity 140ms ease;
 }
 
