@@ -128,8 +128,8 @@ async function loadDatasets() {
   ];
   const optionalRequests = [
     ['./source/reference/quality-overrides.json', 'Kalite notlari'],
-    ['./data/processed/mahalle-geometrileri-report.json', 'Geometri raporu'],
-    ['./data/processed/mahalle-geometrileri-coverage.json', 'Geometri kapsam listesi'],
+    ['./dist/json/mahalle-geometrileri-report.json', 'Geometri raporu'],
+    ['./dist/json/mahalle-geometrileri-coverage.json', 'Geometri kapsam listesi'],
   ];
   const requests = [...requiredRequests, ...optionalRequests];
   initDataLoadProgress(requests);
@@ -516,7 +516,7 @@ function getMahalleGeometryUrlsForState() {
 
   return districtIds.map((districtId) => ({
     key: `district:${districtId}`,
-    url: `./dist/geojson/mahalle-geometrileri-by-district/${districtId}.geojson`,
+    url: `./dist/geojson/mahalle-geometrileri-by-district-v2/${districtId}.geojson`,
     label: `Mahalle geometrisi: ${datasets.districtsById.get(districtId)?.name || districtId}`,
   }));
 }

@@ -1,0 +1,922 @@
+{
+  "source_count": 18,
+  "geometry_count": 12824,
+  "geometry_repair_count": 5,
+  "geometry_repairs": [
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0005",
+      "outer_name": "Bozburun",
+      "inner_id": "TR-Y-48-007-M-0030",
+      "inner_name": "Yeşilova",
+      "reason": "Yeşilova, Bozburun sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır.",
+      "status": "applied",
+      "before_polygon_count": 10,
+      "after_polygon_count": 10,
+      "before_hole_count": 0,
+      "after_hole_count": 0,
+      "before_area_degrees": 0.00292639,
+      "after_area_degrees": 0.00292639,
+      "removed_area_degrees": 0
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0002",
+      "outer_name": "Armutalan",
+      "inner_id": "TR-Y-48-007-M-0022",
+      "inner_name": "Sinan",
+      "reason": "Sinan, Armutalan sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır.",
+      "status": "applied",
+      "before_polygon_count": 1,
+      "after_polygon_count": 1,
+      "before_hole_count": 0,
+      "after_hole_count": 0,
+      "before_area_degrees": 0.00023242,
+      "after_area_degrees": 0.00023242,
+      "removed_area_degrees": 0
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0002",
+      "outer_name": "Armutalan",
+      "inner_id": "TR-Y-48-007-M-0007",
+      "inner_name": "Camiavlu",
+      "reason": "Camiavlu, Armutalan sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır.",
+      "status": "applied",
+      "before_polygon_count": 1,
+      "after_polygon_count": 1,
+      "before_hole_count": 0,
+      "after_hole_count": 0,
+      "before_area_degrees": 0.00023242,
+      "after_area_degrees": 0.00023242,
+      "removed_area_degrees": 0
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0014",
+      "outer_name": "İçmeler",
+      "inner_id": "TR-Y-48-007-M-0011",
+      "inner_name": "Gölenye",
+      "reason": "Gölenye, İçmeler sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır.",
+      "status": "applied",
+      "before_polygon_count": 3,
+      "after_polygon_count": 3,
+      "before_hole_count": 0,
+      "after_hole_count": 0,
+      "before_area_degrees": 0.00167292,
+      "after_area_degrees": 0.00167292,
+      "removed_area_degrees": 0
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "outer_id": "TR-Y-48-007-M-0004",
+      "outer_name": "Beldibi",
+      "inner_id": "TR-Y-48-007-M-0016",
+      "inner_name": "Karşıyaka",
+      "reason": "Karşıyaka, Beldibi sınırı içinde ayrı yerleşim olarak görülüyor; dış polygon iç yerleşim alanını kapsadığı için çıkarılır.",
+      "status": "applied",
+      "before_polygon_count": 1,
+      "after_polygon_count": 1,
+      "before_hole_count": 0,
+      "after_hole_count": 0,
+      "before_area_degrees": 0.00138833,
+      "after_area_degrees": 0.00138833,
+      "removed_area_degrees": 0
+    }
+  ],
+  "far_multipolygons": [
+    {
+      "id": "TR-Y-06-006-M-0044",
+      "name": "Yahşihan",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.206
+    },
+    {
+      "id": "TR-Y-06-006-M-0048",
+      "name": "Yılanlı",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.143
+    },
+    {
+      "id": "TR-Y-06-006-M-0042",
+      "name": "Tatlak",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.107
+    },
+    {
+      "id": "TR-Y-06-006-M-0039",
+      "name": "Peçenek",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.157
+    },
+    {
+      "id": "TR-Y-06-006-M-0026",
+      "name": "İnceöz",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.169
+    },
+    {
+      "id": "TR-Y-06-006-M-0012",
+      "name": "Buğralar",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.256
+    },
+    {
+      "id": "TR-Y-06-006-M-0031",
+      "name": "Meşeler",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.141
+    },
+    {
+      "id": "TR-Y-06-006-M-0006",
+      "name": "Avşarlar",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-006",
+      "district_name": "Çamlıdere",
+      "polygon_count": 2,
+      "max_dist_deg": 0.103
+    },
+    {
+      "id": "TR-Y-06-013-M-0011",
+      "name": "Güneyce",
+      "province_id": "TR-P-06",
+      "district_id": "TR-D-06-013",
+      "district_name": "Güdül",
+      "polygon_count": 2,
+      "max_dist_deg": 0.127
+    },
+    {
+      "id": "TR-Y-27-007-M-0078",
+      "name": "İnönü",
+      "province_id": "TR-P-27",
+      "district_id": "TR-D-27-007",
+      "district_name": "Şahinbey",
+      "polygon_count": 2,
+      "max_dist_deg": 0.115
+    },
+    {
+      "id": "TR-Y-27-007-M-0082",
+      "name": "Kale",
+      "province_id": "TR-P-27",
+      "district_id": "TR-D-27-007",
+      "district_name": "Şahinbey",
+      "polygon_count": 2,
+      "max_dist_deg": 0.327
+    },
+    {
+      "id": "TR-Y-38-007-M-0072",
+      "name": "Taşhan",
+      "province_id": "TR-P-38",
+      "district_id": "TR-D-38-007",
+      "district_name": "Kocasinan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.12
+    },
+    {
+      "id": "TR-Y-52-003-M-0006",
+      "name": "Esenli",
+      "province_id": "TR-P-52",
+      "district_id": "TR-D-52-003",
+      "district_name": "Aybastı",
+      "polygon_count": 4,
+      "max_dist_deg": 0.109
+    },
+    {
+      "id": "TR-Y-52-002-M-0021",
+      "name": "Cumhuriyet",
+      "province_id": "TR-P-52",
+      "district_id": "TR-D-52-002",
+      "district_name": "Altınordu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.161
+    },
+    {
+      "id": "TR-Y-48-011-M-0037",
+      "name": "Kadıköy",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 3,
+      "max_dist_deg": 0.331
+    },
+    {
+      "id": "TR-Y-48-011-M-0030",
+      "name": "Gerişburnu",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.265
+    },
+    {
+      "id": "TR-Y-48-011-M-0043",
+      "name": "Kıncılar",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.301
+    },
+    {
+      "id": "TR-Y-48-011-M-0004",
+      "name": "Atlıdere",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.371
+    },
+    {
+      "id": "TR-Y-48-003-M-0003",
+      "name": "Emecik",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-003",
+      "district_name": "Datça",
+      "polygon_count": 8,
+      "max_dist_deg": 0.135
+    },
+    {
+      "id": "TR-Y-48-011-M-0013",
+      "name": "Çamurköy",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.322
+    },
+    {
+      "id": "TR-Y-48-011-M-0053",
+      "name": "Sarıyer",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.221
+    },
+    {
+      "id": "TR-Y-48-007-M-0008",
+      "name": "Çamlı",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "polygon_count": 5,
+      "max_dist_deg": 0.136
+    },
+    {
+      "id": "TR-Y-48-007-M-0001",
+      "name": "Adaköy",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-007",
+      "district_name": "Marmaris",
+      "polygon_count": 4,
+      "max_dist_deg": 0.111
+    },
+    {
+      "id": "TR-Y-48-004-M-0038",
+      "name": "Yakacık",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-004",
+      "district_name": "Fethiye",
+      "polygon_count": 2,
+      "max_dist_deg": 0.331
+    },
+    {
+      "id": "TR-Y-48-011-M-0065",
+      "name": "Zorlar",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-011",
+      "district_name": "Seydikemer",
+      "polygon_count": 2,
+      "max_dist_deg": 0.422
+    },
+    {
+      "id": "TR-Y-48-001-M-0024",
+      "name": "Gümüşlük",
+      "province_id": "TR-P-48",
+      "district_id": "TR-D-48-001",
+      "district_name": "Bodrum",
+      "polygon_count": 4,
+      "max_dist_deg": 0.111
+    },
+    {
+      "id": "TR-Y-61-011-M-0050",
+      "name": "Ortaköy",
+      "province_id": "TR-P-61",
+      "district_id": "TR-D-61-011",
+      "district_name": "Maçka",
+      "polygon_count": 2,
+      "max_dist_deg": 0.171
+    },
+    {
+      "id": "TR-Y-61-002-M-0042",
+      "name": "Yeniköy",
+      "province_id": "TR-P-61",
+      "district_id": "TR-D-61-002",
+      "district_name": "Araklı",
+      "polygon_count": 2,
+      "max_dist_deg": 0.122
+    },
+    {
+      "id": "TR-Y-61-012-M-0067",
+      "name": "Yenimahalle",
+      "province_id": "TR-P-61",
+      "district_id": "TR-D-61-012",
+      "district_name": "Of",
+      "polygon_count": 2,
+      "max_dist_deg": 0.148
+    },
+    {
+      "id": "TR-Y-17-003-M-0003",
+      "name": "Cumhuriyet",
+      "province_id": "TR-P-17",
+      "district_id": "TR-D-17-003",
+      "district_name": "Biga",
+      "polygon_count": 2,
+      "max_dist_deg": 0.11
+    },
+    {
+      "id": "TR-Y-17-004-M-0002",
+      "name": "Cumhuriyet",
+      "province_id": "TR-P-17",
+      "district_id": "TR-D-17-004",
+      "district_name": "Bozcaada",
+      "polygon_count": 15,
+      "max_dist_deg": 0.109
+    },
+    {
+      "id": "TR-Y-17-007-M-0002",
+      "name": "Kemalpaşa",
+      "province_id": "TR-P-17",
+      "district_id": "TR-D-17-007",
+      "district_name": "Eceabat",
+      "polygon_count": 2,
+      "max_dist_deg": 0.174
+    },
+    {
+      "id": "TR-Y-17-009-K-0004",
+      "name": "Bolayır",
+      "province_id": "TR-P-17",
+      "district_id": "TR-D-17-009",
+      "district_name": "Gelibolu",
+      "polygon_count": 4,
+      "max_dist_deg": 0.106
+    },
+    {
+      "id": "TR-Y-10-002-M-0021",
+      "name": "Mithatpaşa",
+      "province_id": "TR-P-10",
+      "district_id": "TR-D-10-002",
+      "district_name": "Ayvalık",
+      "polygon_count": 11,
+      "max_dist_deg": 0.119
+    },
+    {
+      "id": "TR-Y-10-002-M-0024",
+      "name": "Namıkkemal",
+      "province_id": "TR-P-10",
+      "district_id": "TR-D-10-002",
+      "district_name": "Ayvalık",
+      "polygon_count": 15,
+      "max_dist_deg": 0.103
+    },
+    {
+      "id": "TR-Y-59-003-OSB-VELIMESEOSBMAH",
+      "name": "Velimeşe Osb Mah.",
+      "province_id": "TR-P-59",
+      "district_id": "TR-D-59-003",
+      "district_name": "Ergene",
+      "polygon_count": 3,
+      "max_dist_deg": 0.158
+    }
+  ],
+  "sources": [
+    {
+      "province_id": "TR-P-06",
+      "province_name": "Ankara",
+      "source_name": "Ankara Büyükşehir Belediyesi Seffaf Ankara Açık Veri Platformu - MAKS Mahalle",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 1434,
+      "matched_count": 1434,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "SARAYOSB",
+          "district_id": "TR-D-06-015",
+          "district_name": "Kahramankazan",
+          "osb_id": "TR-Y-06-015-OSB-SARAYOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-16",
+      "province_name": "Bursa",
+      "source_name": "Bursa Açık Yeşil Platformu - Mahalle Sınırları",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 1074,
+      "matched_count": 1074,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "SÜLEYMANİYEOSB",
+          "district_id": "TR-D-16-005",
+          "district_name": "İnegöl",
+          "osb_id": "TR-Y-16-005-OSB-SULEYMANIYEOSB"
+        },
+        {
+          "raw_name": "MİNARELİÇAVUŞOSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-MINARELICAVUSOSB"
+        },
+        {
+          "raw_name": "KURTULUŞOSB",
+          "district_id": "TR-D-16-003",
+          "district_name": "Gürsu",
+          "osb_id": "TR-Y-16-003-OSB-KURTULUSOSB"
+        },
+        {
+          "raw_name": "YENİDOĞANOSB",
+          "district_id": "TR-D-16-003",
+          "district_name": "Gürsu",
+          "osb_id": "TR-Y-16-003-OSB-YENIDOGANOSB"
+        },
+        {
+          "raw_name": "ATA SB",
+          "district_id": "TR-D-16-002",
+          "district_name": "Gemlik",
+          "osb_id": "TR-Y-16-002-OSB-ATASB"
+        },
+        {
+          "raw_name": "DEMİRTAŞ DUMLUPINAROSB",
+          "district_id": "TR-D-16-015",
+          "district_name": "Osmangazi",
+          "osb_id": "TR-Y-16-015-OSB-DEMIRTASDUMLUPINAROSB"
+        },
+        {
+          "raw_name": "MİNARELİÇAVUŞ BURSA OSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-MINARELICAVUSBURSAOSB"
+        },
+        {
+          "raw_name": "BALATOSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-BALATOSB"
+        },
+        {
+          "raw_name": "IŞIKTEPEOSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-ISIKTEPEOSB"
+        },
+        {
+          "raw_name": "FETHİYEOSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-FETHIYEOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-27",
+      "province_name": "Gaziantep",
+      "source_name": "Gaziantep Açık Veri Platformu - Mahalle Sınır Alanları",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_kml",
+      "source_feature_count": 786,
+      "matched_count": 786,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-38",
+      "province_name": "Kayseri",
+      "source_name": "Kayseri Büyükşehir Belediyesi Açık Veri Platformu - Mahalle Sınırı",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 711,
+      "matched_count": 711,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-42",
+      "province_name": "Konya",
+      "source_name": "Konya Büyükşehir Belediyesi Açık Veri Platformu - Mahalleler",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 1143,
+      "matched_count": 1143,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-52",
+      "province_name": "Ordu",
+      "source_name": "Ordu Büyükşehir Belediyesi Akıllı Şehir Açık Veri Platformu - Mahalleler",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 772,
+      "matched_count": 772,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-48",
+      "province_name": "Muğla",
+      "source_name": "Muğla Büyükşehir Belediyesi CBS - MAKS Resmi Mahalleler",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 574,
+      "matched_count": 574,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-20",
+      "province_name": "Denizli",
+      "source_name": "Denizli Adres Bilgi Sistemi - Mahalle Sınırları",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 617,
+      "matched_count": 617,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-54",
+      "province_name": "Sakarya",
+      "source_name": "Sakarya Büyükşehir Belediyesi Açık Veri Portalı - Mahalle Sınırları",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 677,
+      "matched_count": 677,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "SOĞUCAKOSB",
+          "district_id": "TR-D-54-015",
+          "district_name": "Söğütlü",
+          "osb_id": "TR-Y-54-015-OSB-SOGUCAKOSB"
+        },
+        {
+          "raw_name": "KARGALI HANBABAOSB",
+          "district_id": "TR-D-54-007",
+          "district_name": "Hendek",
+          "osb_id": "TR-Y-54-007-OSB-KARGALIHANBABAOSB"
+        },
+        {
+          "raw_name": "SAKARYA I.ORGANİZE SANAYİ BÖLGESİ",
+          "district_id": "TR-D-54-003",
+          "district_name": "Arifiye",
+          "osb_id": "TR-Y-54-003-OSB-SAKARYAIORGANIZESANAYIBOLGESI"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-58",
+      "province_name": "Sivas",
+      "source_name": "Sivas Belediyesi Açık Veri Platformu - Mahalle Sınırları",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 65,
+      "matched_count": 65,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-61",
+      "province_name": "Trabzon",
+      "source_name": "Trabzon BÃ¼yÃ¼kÅŸehir Belediyesi AÃ§Ä±k Veri PortalÄ± - Adrese DayalÄ± Mahalle SÄ±nÄ±rlarÄ±",
+      "source_label": "Kamuya açık veri ve kent rehberi servisleri",
+      "format": "local_geojson",
+      "source_feature_count": 716,
+      "matched_count": 716,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-41",
+      "province_name": "Kocaeli",
+      "source_name": "Kocaeli Mahalle KML - kullanıcı tarafından sağlandı",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 472,
+      "matched_count": 472,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-22",
+      "province_name": "Edirne",
+      "source_name": "Edirne Mahalle KML - kullanıcı tarafından sağlandı",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 354,
+      "matched_count": 352,
+      "unmatched": [
+        {
+          "status": "unmatched",
+          "raw_name": "TR-Y-22-005-M-SRC-YENIMESCIT",
+          "district_id": null,
+          "district_name": null
+        },
+        {
+          "status": "unmatched",
+          "raw_name": "TR-Y-22-008-OSB-ORGANIZESANAYIBOLGESI",
+          "district_id": null,
+          "district_name": null
+        }
+      ],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-17",
+      "province_name": "Canakkale",
+      "source_name": "Canakkale Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 658,
+      "matched_count": 658,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-10",
+      "province_name": "Balikesir",
+      "source_name": "Balikesir Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 1136,
+      "matched_count": 1137,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-59",
+      "province_name": "Tekirdağ",
+      "source_name": "Tekirdağ Mahalle KML",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 388,
+      "matched_count": 388,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Gazi Mustafa Kemal Paşa Osb Mah.",
+          "district_id": "TR-D-59-001",
+          "district_name": "Çerkezköy",
+          "osb_id": "TR-Y-59-001-OSB-GAZIMUSTAFAKEMALPASAOSBMAH"
+        },
+        {
+          "raw_name": "Gazi Osman Paşa Osb Mah.",
+          "district_id": "TR-D-59-001",
+          "district_name": "Çerkezköy",
+          "osb_id": "TR-Y-59-001-OSB-GAZIOSMANPASAOSBMAH"
+        },
+        {
+          "raw_name": "Veliköy Osb Mah.",
+          "district_id": "TR-D-59-001",
+          "district_name": "Çerkezköy",
+          "osb_id": "TR-Y-59-001-OSB-VELIKOYOSBMAH"
+        },
+        {
+          "raw_name": "Veliköy-Yalıboyu Osb Mah.",
+          "district_id": "TR-D-59-001",
+          "district_name": "Çerkezköy",
+          "osb_id": "TR-Y-59-001-OSB-VELIKOYYALIBOYUOSBMAH"
+        },
+        {
+          "raw_name": "Yıldırım Beyazıt Osb Mah.",
+          "district_id": "TR-D-59-001",
+          "district_name": "Çerkezköy",
+          "osb_id": "TR-Y-59-001-OSB-YILDIRIMBEYAZITOSBMAH"
+        },
+        {
+          "raw_name": "Türkgücü Osb Mah.",
+          "district_id": "TR-D-59-002",
+          "district_name": "Çorlu",
+          "osb_id": "TR-Y-59-002-OSB-TURKGUCUOSBMAH"
+        },
+        {
+          "raw_name": "Marmaracıkosb Mah.",
+          "district_id": "TR-D-59-003",
+          "district_name": "Ergene",
+          "osb_id": "TR-Y-59-003-OSB-MARMARACIKOSBMAH"
+        },
+        {
+          "raw_name": "Ulaş Osb Mah.",
+          "district_id": "TR-D-59-003",
+          "district_name": "Ergene",
+          "osb_id": "TR-Y-59-003-OSB-ULASOSBMAH"
+        },
+        {
+          "raw_name": "Vakıflar Osb Mah.",
+          "district_id": "TR-D-59-003",
+          "district_name": "Ergene",
+          "osb_id": "TR-Y-59-003-OSB-VAKIFLAROSBMAH"
+        },
+        {
+          "raw_name": "Velimeşe Osb Mah.",
+          "district_id": "TR-D-59-003",
+          "district_name": "Ergene",
+          "osb_id": "TR-Y-59-003-OSB-VELIMESEOSBMAH"
+        },
+        {
+          "raw_name": "Hayraboluosb Mah.",
+          "district_id": "TR-D-59-004",
+          "district_name": "Hayrabolu",
+          "osb_id": "TR-Y-59-004-OSB-HAYRABOLUOSBMAH"
+        },
+        {
+          "raw_name": "Bahçelievlerosb Mah.",
+          "district_id": "TR-D-59-005",
+          "district_name": "Kapaklı",
+          "osb_id": "TR-Y-59-005-OSB-BAHCELIEVLEROSBMAH"
+        },
+        {
+          "raw_name": "İsmetpaşaosb Mah.",
+          "district_id": "TR-D-59-005",
+          "district_name": "Kapaklı",
+          "osb_id": "TR-Y-59-005-OSB-ISMETPASAOSBMAH"
+        },
+        {
+          "raw_name": "Karaağaç Osb Mah.",
+          "district_id": "TR-D-59-005",
+          "district_name": "Kapaklı",
+          "osb_id": "TR-Y-59-005-OSB-KARAAGACOSBMAH"
+        },
+        {
+          "raw_name": "İstiklalkurtpınar Osb Mah.",
+          "district_id": "TR-D-59-008",
+          "district_name": "Muratlı",
+          "osb_id": "TR-Y-59-008-OSB-ISTIKLALKURTPINAROSBMAH"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-39",
+      "province_name": "Kırklareli",
+      "source_name": "Kırklareli Mahalle KML",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 287,
+      "matched_count": 287,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-34",
+      "province_name": "Istanbul",
+      "source_name": "Istanbul Mahalle KML",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 979,
+      "matched_count": 979,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "YEŞİLKÖY SB",
+          "district_id": "TR-D-34-007",
+          "district_name": "Bakırköy",
+          "osb_id": "TR-Y-34-007-OSB-YESILKOYSB"
+        },
+        {
+          "raw_name": "İKİTELLİ OSB",
+          "district_id": "TR-D-34-008",
+          "district_name": "Başakşehir",
+          "osb_id": "TR-Y-34-008-OSB-IKITELLIOSB"
+        },
+        {
+          "raw_name": "BEYLİKDÜZÜOSB",
+          "district_id": "TR-D-34-012",
+          "district_name": "Beylikdüzü",
+          "osb_id": "TR-Y-34-012-OSB-BEYLIKDUZUOSB"
+        },
+        {
+          "raw_name": "KÜÇÜKÇEKMECE İKİTELLİOSB",
+          "district_id": "TR-D-34-026",
+          "district_name": "Küçükçekmece",
+          "osb_id": "TR-Y-34-026-OSB-KUCUKCEKMECEIKITELLIOSB"
+        },
+        {
+          "raw_name": "AYDINLI - BİRLİK OSB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-AYDINLIBIRLIKOSB"
+        },
+        {
+          "raw_name": "AYDINLI - İSTANBUL AYOSB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-AYDINLIISTANBULAYOSB"
+        },
+        {
+          "raw_name": "AYDINLI SB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-AYDINLISB"
+        },
+        {
+          "raw_name": "AYDINLI-KOSB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-AYDINLIKOSB"
+        },
+        {
+          "raw_name": "DERİ OSB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-DERIOSB"
+        },
+        {
+          "raw_name": "TEPEOREN İTOSB",
+          "district_id": "TR-D-34-036",
+          "district_name": "Tuzla",
+          "osb_id": "TR-Y-34-036-OSB-TEPEORENITOSB"
+        },
+        {
+          "raw_name": "DUDULLU OSB",
+          "district_id": "TR-D-34-037",
+          "district_name": "Ümraniye",
+          "osb_id": "TR-Y-34-037-OSB-DUDULLUOSB"
+        }
+      ]
+    }
+  ]
+}
