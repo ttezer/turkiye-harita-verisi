@@ -61,7 +61,7 @@
       "province": "Balikesir",
       "province_code": 10,
       "source_name": "Balikesir Mahalle KML - kullanici tarafindan saglandi",
-      "source_url": "",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -74,7 +74,7 @@
     {
       "province": "Istanbul",
       "province_code": 34,
-      "source_name": "Istanbul Mahalle KML",
+      "source_name": "Istanbul Mahalle KML - kullanici tarafindan saglandi",
       "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
@@ -89,7 +89,7 @@
       "province": "Tekirdag",
       "province_code": 59,
       "source_name": "Tekirdag Mahalle KML - kullanici tarafindan saglandi",
-      "source_url": "",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -103,7 +103,7 @@
       "province": "Kirklareli",
       "province_code": 39,
       "source_name": "Kirklareli Mahalle KML - kullanici tarafindan saglandi",
-      "source_url": "",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -111,13 +111,13 @@
       "formats": ["KML"],
       "publishable": true,
       "local_manifests": [],
-      "note": "Ilce ilce kaynaklardan birlestirilmis Kirklareli mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+      "note": "Kullanici tarafindan saglanan manuel Kirklareli mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
       "province": "Kocaeli",
       "province_code": 41,
-      "source_name": "Kocaeli Buyuksehir Belediyesi Rehber Uygulamasi",
-      "source_url": "https://rehber.kocaeli.bel.tr/",
+      "source_name": "Kocaeli Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -125,13 +125,13 @@
       "formats": ["KML"],
       "publishable": true,
       "local_manifests": [],
-      "note": "12 ilce, 472 mahalle geometrisi. 472 eslesti (%100); ilce bilgisi KML ilce_adi alanindan okundu."
+      "note": "Kullanici tarafindan saglanan manuel Kocaeli mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce_adi alani ile ilce eslesmesi yapilir."
     },
     {
       "province": "Edirne",
       "province_code": 22,
       "source_name": "Edirne Mahalle KML - kullanici tarafindan saglandi",
-      "source_url": "",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -139,13 +139,13 @@
       "formats": ["KML"],
       "publishable": true,
       "local_manifests": [],
-      "note": "9 ilce, 354 mahalle/koy geometrisi. 347 eslesti (%98.0); 7 eslesmeyenin tamami yerlesimler.json'da karsiligi olmayan objeler."
+      "note": "Kullanici tarafindan saglanan manuel Edirne mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce ve mahalle kimligi alanlari kullanilir."
     },
     {
       "province": "Canakkale",
       "province_code": 17,
       "source_name": "Canakkale Mahalle KML - kullanici tarafindan saglandi",
-      "source_url": "",
+      "source_url": null,
       "license": "Kamu verisi",
       "province_geometry": false,
       "district_geometry": false,
@@ -153,7 +153,7 @@
       "formats": ["KML"],
       "publishable": true,
       "local_manifests": [],
-      "note": "12 ilce, 659 mahalle/koy geometrisi. 659 eslesti (%100); kanonik kimlikler KML icindeki canonical_* alanlarindan okundu."
+      "note": "Kullanici tarafindan saglanan manuel Canakkale mahalle KML dosyasi. Normalize asamasinda KML icindeki canonical ve ilce alanlari kullanilir."
     },
     {
       "province": "Sakarya",

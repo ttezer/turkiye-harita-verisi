@@ -17,6 +17,13 @@ source/mahalle-manual/*/*.shx
 source/mahalle-manual/*/*.zip
 source/mahalle-manual/*/*.rar
 source/mahalle-manual/*/*.7z
+!source/mahalle-manual/10-balikesir/balikesir-mahalle.kml
+!source/mahalle-manual/17-canakkale/canakkale-mahalle-manual.kml
+!source/mahalle-manual/22-edirne/edirne-mahalleler.kml
+!source/mahalle-manual/34-istanbul/istanbul-mahalle.kml
+!source/mahalle-manual/39-kirklareli/kirklareli-mahalle.kml
+!source/mahalle-manual/41-kocaeli/kocaeli-mahalle.kml
+!source/mahalle-manual/59-tekirdag/tekirdag-mahalle.kml
 source/yerlesimler/*.xls
 source/yerlesimler/*.xlsx
 *.log
