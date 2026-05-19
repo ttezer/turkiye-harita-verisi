@@ -312,6 +312,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     kml_text_replacements: [
       ['?l?e:', 'İlçe:'],
     ],
+    osb_name_pattern: '\\b(osb|sb|itosb|ayosb|kosb)\\b',
   },
 ];
 
@@ -321,6 +322,28 @@ export function compactKey(value) {
 
 function uniqueKeys(keys) {
   return [...new Set(keys.filter(Boolean))];
+}
+
+function formatDisplayNamePreservingAcronyms(value) {
+  const normalized = normalizeDisplayText(String(value || ''));
+  const preservedTokens = new Set(['OSB', 'SB', 'İSBAŞ', 'İTOSB', 'AYOSB', 'KOSB']);
+  return normalized
+    .split(/(\s+|-)/)
+    .map((part) => {
+      if (!part || /^\s+$/.test(part) || part === '-') {
+        return part;
+      }
+      const upper = part.toLocaleUpperCase('tr-TR');
+      if (preservedTokens.has(upper)) {
+        return upper;
+      }
+      if (/[0-9]/.test(part) && upper === part) {
+        return part;
+      }
+      const lower = part.toLocaleLowerCase('tr-TR');
+      return lower.charAt(0).toLocaleUpperCase('tr-TR') + lower.slice(1);
+    })
+    .join('');
 }
 
 function nameMatchKeys(value) {
@@ -480,7 +503,7 @@ function buildGeometryProperties(source, district, rawName, override, settlement
     };
   }
 
-  const name = override.name || normalizeDisplayText(rawName);
+  const name = formatDisplayNamePreservingAcronyms(override.name || rawName);
   return {
     id: override.id,
     level: 'yerlesim',
@@ -1075,7 +1098,7 @@ function inferDistrictFromGeometry(source, feature, districtFeatures) {
 
 function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
   const buildOsbResult = (rawName, district, geometry) => {
-    const osbName = normalizeDisplayText(rawName);
+    const osbName = formatDisplayNamePreservingAcronyms(rawName);
     const nameKey = compactKey(rawName).toUpperCase();
     const distSeq = district.id.split('-').pop();
     const provincePlate = source.province_id.replace('TR-P-', '');
@@ -1329,7 +1352,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
           properties: {
             ...buildGeometryProperties(source, outputDistrict, rawName, {
               id: sourceOnlyId,
-              name: normalizeDisplayText(rawName),
+              name: formatDisplayNamePreservingAcronyms(rawName),
             }),
             source_only_keep_separate: true,
             source_match_status: settlementMatches.length === 0 ? 'unmatched' : 'ambiguous',
@@ -2046,6 +2069,11 @@ export async function main() {
   );
   writeGroupedGeojson(
     path.join(distGeojsonDir, 'mahalle-geometrileri-by-district'),
+    groupBy(repairedFeatures, (feature) => feature.properties.district_id),
+    'turkiye_map.dist.mahalle_geometrileri_by_district',
+  );
+  writeGroupedGeojson(
+    path.join(distGeojsonDir, 'mahalle-geometrileri-by-district-v2'),
     groupBy(repairedFeatures, (feature) => feature.properties.district_id),
     'turkiye_map.dist.mahalle_geometrileri_by_district',
   );

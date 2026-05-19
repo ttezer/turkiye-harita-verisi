@@ -4797,15 +4797,16 @@
     "raw_key": "balaban",
     "action": "include",
     "id": "TR-Y-34-015-M-SRC-BALABAN",
-    "name": "BALABAN",
+    "name": "Balaban",
     "note": "Catalca kaydinda source-only dahil edildi"
   },
   {
     "province_id": "TR-P-34",
     "district_id": "TR-D-34-015",
     "raw_key": "ferhatpasasb",
-    "settlement_id": "TR-Y-34-015-M-0014",
-    "note": "Catalca / Ferhatpasa SB -> Ferhatpasa"
+    "action": "include_as_osb",
+    "id": "TR-Y-34-015-OSB-FERHATPASASB",
+    "note": "Catalca / Ferhatpasa SB ayri OSB kaydi olarak dahil edildi"
   },
   {
     "province_id": "TR-P-34",
