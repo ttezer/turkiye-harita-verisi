@@ -1204,8 +1204,21 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
 
   if (source.resolved_format === 'kmz' || source.resolved_format === 'kml') {
     const description = parseHtmlDescription(feature.properties.description);
-    rawName = description.ad || description.mahalle || description.mahalle_adi || feature.properties.name;
-    const rawDistrictName = description.ilce || description.ilceadi || description.ilce_adi || feature.properties.ilce || feature.properties.ILCE || (source.district_field && feature.properties[source.district_field]);
+    rawName =
+      feature.properties.neighborhood ||
+      feature.properties.mahalle_adi ||
+      feature.properties.name ||
+      description.ad ||
+      description.mahalle ||
+      description.mahalle_adi;
+    const rawDistrictName =
+      (source.district_field && feature.properties[source.district_field]) ||
+      feature.properties.ilce_adi ||
+      feature.properties.ilce ||
+      feature.properties.ILCE ||
+      description.ilce ||
+      description.ilceadi ||
+      description.ilce_adi;
     if (rawDistrictName) {
       district = resolveDistrictByName(source, rawDistrictName, indexes.districts);
     } else if (source.infer_district_from_geometry) {
