@@ -90,7 +90,7 @@ const els = {
 
 const numberFormat = new Intl.NumberFormat('tr-TR');
 const defaultExportViewport = { width: 1200, height: 760, padding: 28 };
-const maxPreviewFeatureCount = 8000;
+const maxPreviewFeatureCount = 20000;
 const dataLoadProgress = {
   resources: new Map(),
   phase: 'idle',
