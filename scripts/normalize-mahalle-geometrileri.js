@@ -314,6 +314,19 @@ const LOCAL_MUNICIPAL_SOURCES = [
     ],
     osb_name_pattern: '\\b(osb|sb|itosb|ayosb|kosb)\\b',
   },
+  {
+    province_id: 'TR-P-35',
+    province_name: 'Izmir',
+    slug: '35-izmir',
+    source_name: 'Izmir Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '35-izmir', 'izmir-mahalle.kml'),
+    district_field: 'district',
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+    osb_name_pattern: '\\b(osb|organize sanayi bolgesi|serbest bolge)\\b',
+  },
 ];
 
 export function compactKey(value) {
@@ -2060,6 +2073,14 @@ export async function main() {
     far_multipolygons: farMultipolygons,
     sources: sourceReports,
   });
+  writeJson(path.join(paths.distJsonDir, 'mahalle-geometrileri-report.json'), {
+    source_count: sourceReports.length,
+    geometry_count: repairedFeatures.length,
+    geometry_repair_count: repairResult.report.filter((item) => item.status === 'applied').length,
+    geometry_repairs: repairResult.report,
+    far_multipolygons: farMultipolygons,
+    sources: sourceReports,
+  });
 
   writeJsonCompact(path.join(distGeojsonDir, 'mahalle-geometrileri.geojson'), collection);
   writeGroupedGeojson(
@@ -2079,6 +2100,7 @@ export async function main() {
   );
   const coverage = buildGeometryCoverage(repairedFeatures);
   writeJson(path.join(paths.processedDir, 'mahalle-geometrileri-coverage.json'), coverage);
+  writeJson(path.join(paths.distJsonDir, 'mahalle-geometrileri-coverage.json'), coverage);
   writeJsonCompact(path.join(distGeojsonDir, 'mahalle-geometrileri-coverage.json'), coverage);
 
   logStep(`Normalized ${repairedFeatures.length} mahalle geometries from ${sourceReports.length} sources`);

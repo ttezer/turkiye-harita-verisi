@@ -1,6 +1,6 @@
 {
-  "source_count": 18,
-  "geometry_count": 12824,
+  "source_count": 19,
+  "geometry_count": 14142,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -417,12 +417,30 @@
     },
     {
       "id": "TR-Y-59-003-OSB-VELIMESEOSBMAH",
-      "name": "Velimeşe Osb Mah.",
+      "name": "Velimeşe OSB Mah.",
       "province_id": "TR-P-59",
       "district_id": "TR-D-59-003",
       "district_name": "Ergene",
       "polygon_count": 3,
       "max_dist_deg": 0.158
+    },
+    {
+      "id": "TR-Y-35-011-M-0004",
+      "name": "Çandarlı",
+      "province_id": "TR-P-35",
+      "district_id": "TR-D-35-011",
+      "district_name": "Dikili",
+      "polygon_count": 5,
+      "max_dist_deg": 0.101
+    },
+    {
+      "id": "TR-Y-35-016-M-0008",
+      "name": "Küçükbahçe",
+      "province_id": "TR-P-35",
+      "district_id": "TR-D-35-016",
+      "district_name": "Karaburun",
+      "polygon_count": 4,
+      "max_dist_deg": 0.118
     }
   ],
   "sources": [
@@ -869,6 +887,12 @@
           "osb_id": "TR-Y-34-012-OSB-BEYLIKDUZUOSB"
         },
         {
+          "raw_name": "FERHATPAŞA SB",
+          "district_id": "TR-D-34-015",
+          "district_name": "Çatalca",
+          "osb_id": "TR-Y-34-015-OSB-FERHATPASASB"
+        },
+        {
           "raw_name": "KÜÇÜKÇEKMECE İKİTELLİOSB",
           "district_id": "TR-D-34-026",
           "district_name": "Küçükçekmece",
@@ -915,6 +939,80 @@
           "district_id": "TR-D-34-037",
           "district_name": "Ümraniye",
           "osb_id": "TR-Y-34-037-OSB-DUDULLUOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-35",
+      "province_name": "Izmir",
+      "source_name": "Izmir Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 1317,
+      "matched_count": 1317,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "ÇORAKLAR OSB",
+          "district_id": "TR-D-35-001",
+          "district_name": "Aliağa",
+          "osb_id": "TR-Y-35-001-OSB-CORAKLAROSB"
+        },
+        {
+          "raw_name": "BERGAMA OSB",
+          "district_id": "TR-D-35-005",
+          "district_name": "Bergama",
+          "osb_id": "TR-Y-35-005-OSB-BERGAMAOSB"
+        },
+        {
+          "raw_name": "HALİLBEYLİ OSB",
+          "district_id": "TR-D-35-018",
+          "district_name": "Kemalpaşa",
+          "osb_id": "TR-Y-35-018-OSB-HALILBEYLIOSB"
+        },
+        {
+          "raw_name": "KEMALPAŞA OSB",
+          "district_id": "TR-D-35-018",
+          "district_name": "Kemalpaşa",
+          "osb_id": "TR-Y-35-018-OSB-KEMALPASAOSB"
+        },
+        {
+          "raw_name": "KINIK TDİOSB",
+          "district_id": "TR-D-35-019",
+          "district_name": "Kınık",
+          "osb_id": "TR-Y-35-019-OSB-KINIKTDIOSB"
+        },
+        {
+          "raw_name": "KINIK OSB",
+          "district_id": "TR-D-35-019",
+          "district_name": "Kınık",
+          "osb_id": "TR-Y-35-019-OSB-KINIKOSB"
+        },
+        {
+          "raw_name": "İTOB OSB",
+          "district_id": "TR-D-35-022",
+          "district_name": "Menderes",
+          "osb_id": "TR-Y-35-022-OSB-ITOBOSB"
+        },
+        {
+          "raw_name": "ÖDEMİŞ OSB",
+          "district_id": "TR-D-35-025",
+          "district_name": "Ödemiş",
+          "osb_id": "TR-Y-35-025-OSB-ODEMISOSB"
+        },
+        {
+          "raw_name": "İBNİ MELEK OSB",
+          "district_id": "TR-D-35-028",
+          "district_name": "Tire",
+          "osb_id": "TR-Y-35-028-OSB-IBNIMELEKOSB"
+        },
+        {
+          "raw_name": "YENİKÖY OSB",
+          "district_id": "TR-D-35-029",
+          "district_name": "Torbalı",
+          "osb_id": "TR-Y-35-029-OSB-YENIKOYOSB"
         }
       ]
     }

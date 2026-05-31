@@ -21,6 +21,7 @@ source/mahalle-manual/*/*.7z
 !source/mahalle-manual/17-canakkale/canakkale-mahalle-manual.kml
 !source/mahalle-manual/22-edirne/edirne-mahalleler.kml
 !source/mahalle-manual/34-istanbul/istanbul-mahalle.kml
+!source/mahalle-manual/35-izmir/izmir-mahalle.kml
 !source/mahalle-manual/39-kirklareli/kirklareli-mahalle.kml
 !source/mahalle-manual/41-kocaeli/kocaeli-mahalle.kml
 !source/mahalle-manual/59-tekirdag/tekirdag-mahalle.kml
@@ -65,6 +66,7 @@ dist/geojson/mahalle-geometrileri-by-district/*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-17-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-22-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-34-*.geojson
+!dist/geojson/mahalle-geometrileri-by-district/TR-D-35-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-39-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-41-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-59-*.geojson
