@@ -1,6 +1,8 @@
 node_modules/
 docs/todo.md
 docs/release-review-notes.md
+hata_raporu.md
+apply-app-field-fix.mjs
 dist-build/
 data/normalized/
 data/processed/*.geojson
