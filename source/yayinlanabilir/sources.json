@@ -86,6 +86,20 @@
       "note": "Kullanici tarafindan saglanan manuel Antalya mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
+      "province": "Aydin",
+      "province_code": 9,
+      "source_name": "Aydin Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Aydin mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Istanbul",
       "province_code": 34,
       "source_name": "Istanbul Mahalle KML - kullanici tarafindan saglandi",
@@ -112,6 +126,20 @@
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Izmir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
+      "province": "Yalova",
+      "province_code": 77,
+      "source_name": "Yalova Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Yalova mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
       "province": "Tekirdag",

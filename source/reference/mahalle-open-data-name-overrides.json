@@ -5302,5 +5302,272 @@
     "id": "TR-Y-07-014-M-SRC-YENI",
     "name": "Yeni",
     "note": "Konyaalti / Yeni dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-001",
+    "raw_key": "asma",
+    "action": "include",
+    "id": "TR-Y-09-001-M-SRC-ASMA",
+    "name": "Asma",
+    "note": "Bozdogan / Asma source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-001",
+    "raw_key": "domen",
+    "action": "include",
+    "id": "TR-Y-09-001-M-SRC-DOMEN",
+    "name": "Dömen",
+    "note": "Bozdogan / Domen source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-001",
+    "raw_key": "guney",
+    "action": "include",
+    "id": "TR-Y-09-001-M-SRC-GUNEY",
+    "name": "Güney",
+    "note": "Bozdogan / Guney source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-001",
+    "raw_key": "yaka",
+    "action": "include",
+    "id": "TR-Y-09-001-M-SRC-YAKA",
+    "name": "Yaka",
+    "note": "Bozdogan / Yaka source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-003",
+    "raw_key": "bucak",
+    "action": "include",
+    "id": "TR-Y-09-003-M-SRC-BUCAK",
+    "name": "Bucak",
+    "note": "Cine / Bucak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-003",
+    "raw_key": "sarnic",
+    "action": "include",
+    "id": "TR-Y-09-003-M-SRC-SARNIC",
+    "name": "Sarnıç",
+    "note": "Cine / Sarnic source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-003",
+    "raw_key": "umurkoy",
+    "action": "include",
+    "id": "TR-Y-09-003-M-SRC-UMURKOY",
+    "name": "Umurköy",
+    "note": "Cine / Umurkoy source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-003",
+    "raw_key": "yorukler",
+    "action": "include",
+    "id": "TR-Y-09-003-M-SRC-YORUKLER",
+    "name": "Yörükler",
+    "note": "Cine / Yorukler source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-005",
+    "raw_key": "ataosb",
+    "action": "include_as_osb",
+    "note": "Efeler / Ataosb OSB olarak dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-005",
+    "raw_key": "bocek",
+    "action": "include",
+    "id": "TR-Y-09-005-M-SRC-BOCEK",
+    "name": "Böcek",
+    "note": "Efeler / Bocek source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-005",
+    "raw_key": "dalamabucagiyenikoy",
+    "action": "include",
+    "id": "TR-Y-09-005-M-SRC-DALAMABUCAGIYENIKOY",
+    "name": "Dalama Bucağı Yeniköy",
+    "note": "Efeler / Dalama Bucağı Yeniköy source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-005",
+    "raw_key": "merkezbucagiyenikoy",
+    "action": "include",
+    "id": "TR-Y-09-005-M-SRC-MERKEZBUCAGIYENIKOY",
+    "name": "Merkez Bucağı Yeniköy",
+    "note": "Efeler / Merkez Bucağı Yeniköy source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-008",
+    "raw_key": "gorle",
+    "action": "include",
+    "id": "TR-Y-09-008-M-SRC-GORLE",
+    "name": "Görle",
+    "note": "Karacasu / Görle source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-009",
+    "raw_key": "guney",
+    "action": "include",
+    "id": "TR-Y-09-009-M-SRC-GUNEY",
+    "name": "Güney",
+    "note": "Karpuzlu / Güney source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-009",
+    "raw_key": "hatipkisla",
+    "action": "include",
+    "id": "TR-Y-09-009-M-SRC-HATIPKISLA",
+    "name": "Hatıpkışla",
+    "note": "Karpuzlu / Hatıpkışla source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-009",
+    "raw_key": "koguk",
+    "action": "include",
+    "id": "TR-Y-09-009-M-SRC-KOGUK",
+    "name": "Koğuk",
+    "note": "Karpuzlu / Koğuk source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-009",
+    "raw_key": "yagsilar",
+    "action": "include",
+    "id": "TR-Y-09-009-M-SRC-YAGSILAR",
+    "name": "Yağşılar",
+    "note": "Karpuzlu / Yağşılar source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-010",
+    "raw_key": "cakirbeyli",
+    "action": "include",
+    "id": "TR-Y-09-010-M-SRC-CAKIRBEYLI",
+    "name": "Çakırbeyli",
+    "note": "Koçarlı / Çakırbeyli source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-010",
+    "raw_key": "kuslarbelen",
+    "action": "include",
+    "id": "TR-Y-09-010-M-SRC-KUSLARBELEN",
+    "name": "Kuşlarbelen",
+    "note": "Koçarlı / Kuşlarbelen source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-010",
+    "raw_key": "mersinbelen",
+    "action": "include",
+    "id": "TR-Y-09-010-M-SRC-MERSINBELEN",
+    "name": "Mersinbelen",
+    "note": "Koçarlı / Mersinbelen source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-014",
+    "raw_key": "nazilliosb",
+    "action": "include_as_osb",
+    "note": "Nazilli OSB olarak dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-014",
+    "raw_key": "profmuammeraksoy",
+    "action": "include",
+    "id": "TR-Y-09-014-M-SRC-PROFMUAMMERAKSOY",
+    "name": "Prof.muammer Aksoy",
+    "note": "Nazilli / Prof.muammer Aksoy source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-014",
+    "raw_key": "yenisanayii",
+    "action": "include_as_osb",
+    "note": "Nazilli / Yeni sanayii OSB-ozel alan olarak dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-015",
+    "raw_key": "sokeosb",
+    "action": "include_as_osb",
+    "note": "Söke OSB olarak dahil edildi"
+  },
+  {
+    "province_id": "TR-P-09",
+    "district_id": "TR-D-09-017",
+    "raw_key": "cavdar",
+    "action": "include",
+    "id": "TR-Y-09-017-M-SRC-CAVDAR",
+    "name": "Çavdar",
+    "note": "Yenipazar / Çavdar source-only dahil edildi"
+  }
+  ,
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-001",
+    "raw_key": "kaytazderemerkez",
+    "settlement_id": "TR-Y-77-001-M-0007",
+    "note": "Kaytazdere Merkez belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-001",
+    "raw_key": "subasimerkez",
+    "settlement_id": "TR-Y-77-001-M-0008",
+    "note": "Subasi Merkez belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-004",
+    "raw_key": "korucumhuriyet",
+    "settlement_id": "TR-Y-77-004-M-0004",
+    "note": "Koru Cumhuriyet belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-004",
+    "raw_key": "tesvikiyecumhuriyet",
+    "settlement_id": "TR-Y-77-004-M-0005",
+    "note": "Tesvikiye Cumhuriyet belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-003",
+    "raw_key": "taskoprumerkez",
+    "settlement_id": "TR-Y-77-003-M-0004",
+    "note": "Taskopru Merkez belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-003",
+    "raw_key": "taskopruyeni",
+    "settlement_id": "TR-Y-77-003-M-0008",
+    "note": "Taskopru Yeni belde baglaminda dogru mahalleye baglandi"
+  },
+  {
+    "province_id": "TR-P-77",
+    "district_id": "TR-D-77-004",
+    "raw_key": "harmanlar",
+    "settlement_id": "TR-Y-77-004-M-0006",
+    "note": "Harmanlar kaydi kanonik Harman mahallesine baglandi"
   }
 ]

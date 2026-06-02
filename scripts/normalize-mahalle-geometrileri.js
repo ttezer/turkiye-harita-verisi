@@ -261,6 +261,18 @@ const LOCAL_MUNICIPAL_SOURCES = [
     district_field: 'source_ilce_adi',
   },
   {
+    province_id: 'TR-P-09',
+    province_name: 'Aydin',
+    slug: '09-aydin',
+    source_name: 'Aydin Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '09-aydin', 'aydin-mahalle.kml'),
+    district_field: 'district',
+    include_unmatched_as_source_only: true,
+    osb_name_pattern: '\\b(osb|ataosb|sanayi|sanayii)\\b',
+  },
+  {
     province_id: 'TR-P-10',
     province_name: 'Balikesir',
     slug: '10-balikesir',
@@ -337,6 +349,16 @@ const LOCAL_MUNICIPAL_SOURCES = [
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
     osb_name_pattern: '\\b(osb|organize sanayi bolgesi|serbest bolge)\\b',
+  },
+  {
+    province_id: 'TR-P-77',
+    province_name: 'Yalova',
+    slug: '77-yalova',
+    source_name: 'Yalova Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '77-yalova', 'yalova-mahalle.kml'),
+    district_field: 'district',
   },
 ];
 

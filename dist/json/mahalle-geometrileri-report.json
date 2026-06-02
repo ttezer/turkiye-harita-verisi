@@ -1,6 +1,6 @@
 {
-  "source_count": 20,
-  "geometry_count": 15059,
+  "source_count": 22,
+  "geometry_count": 15827,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -396,6 +396,24 @@
       "district_name": "Gelibolu",
       "polygon_count": 4,
       "max_dist_deg": 0.106
+    },
+    {
+      "id": "TR-Y-09-012-M-0012",
+      "name": "Güzelçamlı",
+      "province_id": "TR-P-09",
+      "district_id": "TR-D-09-012",
+      "district_name": "Kuşadası",
+      "polygon_count": 7,
+      "max_dist_deg": 0.139
+    },
+    {
+      "id": "TR-Y-09-015-M-0019",
+      "name": "Doğanbey",
+      "province_id": "TR-P-09",
+      "district_id": "TR-D-09-015",
+      "district_name": "Söke",
+      "polygon_count": 25,
+      "max_dist_deg": 0.108
     },
     {
       "id": "TR-Y-10-002-M-0021",
@@ -988,6 +1006,44 @@
       "osb_areas": []
     },
     {
+      "province_id": "TR-P-09",
+      "province_name": "Aydin",
+      "source_name": "Aydin Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 674,
+      "matched_count": 674,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Ataosb",
+          "district_id": "TR-D-09-005",
+          "district_name": "Efeler",
+          "osb_id": "TR-Y-09-005-OSB-ATAOSB"
+        },
+        {
+          "raw_name": "Nazilli osb",
+          "district_id": "TR-D-09-014",
+          "district_name": "Nazilli",
+          "osb_id": "TR-Y-09-014-OSB-NAZILLIOSB"
+        },
+        {
+          "raw_name": "Yeni sanayii",
+          "district_id": "TR-D-09-014",
+          "district_name": "Nazilli",
+          "osb_id": "TR-Y-09-014-OSB-YENISANAYII"
+        },
+        {
+          "raw_name": "Söke osb",
+          "district_id": "TR-D-09-015",
+          "district_name": "Söke",
+          "osb_id": "TR-Y-09-015-OSB-SOKEOSB"
+        }
+      ]
+    },
+    {
       "province_id": "TR-P-10",
       "province_name": "Balikesir",
       "source_name": "Balikesir Mahalle KML - kullanici tarafindan saglandi",
@@ -1314,6 +1370,19 @@
           "osb_id": "TR-Y-35-029-OSB-YENIKOYOSB"
         }
       ]
+    },
+    {
+      "province_id": "TR-P-77",
+      "province_name": "Yalova",
+      "source_name": "Yalova Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 94,
+      "matched_count": 94,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
     }
   ]
 }
