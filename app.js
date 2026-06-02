@@ -52,6 +52,7 @@ const els = {
   gpkgGeometrySelect: document.querySelector('#gpkgGeometrySelect'),
   csvDelimiterSelect: document.querySelector('#csvDelimiterSelect'),
   fieldsField: document.querySelector('#fieldsField'),
+  shpFieldsNote: document.querySelector('#shpFieldsNote'),
   styleField: document.querySelector('#styleField'),
   colorModeField: document.querySelector('#colorModeField'),
   paletteField: document.querySelector('#paletteField'),
@@ -640,6 +641,9 @@ function bindEvents() {
         return;
       }
 
+      if (state.format !== format) {
+        state.selectedFields = [];
+      }
       state.format = format;
       if (els.formatSelect) {
         els.formatSelect.value = format;
@@ -650,6 +654,9 @@ function bindEvents() {
   });
 
   els.formatSelect.addEventListener('change', (event) => {
+    if (state.format !== event.target.value) {
+      state.selectedFields = [];
+    }
     state.format = event.target.value;
     syncConfigurator();
     render();
@@ -683,6 +690,9 @@ function bindEvents() {
   });
 
   els.detailSelect.addEventListener('change', (event) => {
+    if (state.level !== event.target.value) {
+      state.selectedFields = [];
+    }
     state.level = event.target.value;
 
     if (state.level === 'region') {
@@ -1046,7 +1056,7 @@ function syncConfigurator() {
 
 function syncFormatFields() {
   const isGeoPackage = state.format === 'gpkg';
-  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'osm', 'gpkg', 'react-component'].includes(state.format);
+  const isStructuredData = ['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'gml', 'osm', 'gpkg', 'react-component'].includes(state.format);
   const isTabularData = ['csv', 'xlsx', 'sql', 'wkt'].includes(state.format);
   const isVectorVisual = state.format === 'svg' || state.format === 'react-component';
   const isRasterVisual = state.format === 'png' || state.format === 'pdf';
@@ -1055,6 +1065,7 @@ function syncFormatFields() {
   const showPalette = showColorMode && state.colorMode === 'palette';
 
   toggleField(els.fieldsField, isStructuredData || isVectorVisual);
+  toggleField(els.shpFieldsNote, state.format === 'shp');
   toggleField(els.styleField, isVisual);
   toggleField(els.colorModeField, showColorMode);
   toggleField(els.paletteField, showPalette);

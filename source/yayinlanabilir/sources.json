@@ -72,6 +72,20 @@
       "note": "Kullanici tarafindan saglanan manuel Balikesir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
+      "province": "Antalya",
+      "province_code": 7,
+      "source_name": "Antalya Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Antalya mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Istanbul",
       "province_code": 34,
       "source_name": "Istanbul Mahalle KML - kullanici tarafindan saglandi",

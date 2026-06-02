@@ -1,6 +1,6 @@
 {
-  "source_count": 19,
-  "geometry_count": 14142,
+  "source_count": 20,
+  "geometry_count": 15059,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -416,6 +416,267 @@
       "max_dist_deg": 0.103
     },
     {
+      "id": "TR-Y-07-003-M-0009",
+      "name": "Basırlı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.256
+    },
+    {
+      "id": "TR-Y-07-003-M-0024",
+      "name": "Cikcilli",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.423
+    },
+    {
+      "id": "TR-Y-07-003-M-0033",
+      "name": "Fakırcalı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.249
+    },
+    {
+      "id": "TR-Y-07-003-M-0044",
+      "name": "Hacımehmetli",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.411
+    },
+    {
+      "id": "TR-Y-07-003-M-0047",
+      "name": "İmamlı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.349
+    },
+    {
+      "id": "TR-Y-07-003-M-0052",
+      "name": "Karakocalı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.25
+    },
+    {
+      "id": "TR-Y-07-003-M-0061",
+      "name": "Kocaoğlanlı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.277
+    },
+    {
+      "id": "TR-Y-07-003-M-0072",
+      "name": "Özvadi",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.319
+    },
+    {
+      "id": "TR-Y-07-003-M-SRC-SIHLAR",
+      "name": "Şıhlar",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.282
+    },
+    {
+      "id": "TR-Y-07-003-M-0086",
+      "name": "Tırılar",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.198
+    },
+    {
+      "id": "TR-Y-07-003-M-0092",
+      "name": "Uğrak",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.356
+    },
+    {
+      "id": "TR-Y-07-003-M-0098",
+      "name": "Yaylakonak",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.222
+    },
+    {
+      "id": "TR-Y-07-003-M-0099",
+      "name": "Yaylalı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-003",
+      "district_name": "Alanya",
+      "polygon_count": 2,
+      "max_dist_deg": 0.44
+    },
+    {
+      "id": "TR-Y-07-004-M-0006",
+      "name": "Çevreli",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-004",
+      "district_name": "Demre",
+      "polygon_count": 2,
+      "max_dist_deg": 0.354
+    },
+    {
+      "id": "TR-Y-07-004-M-0011",
+      "name": "Kapaklı",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-004",
+      "district_name": "Demre",
+      "polygon_count": 2,
+      "max_dist_deg": 0.362
+    },
+    {
+      "id": "TR-Y-07-011-M-SRC-AGULLU",
+      "name": "Ağullu",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.36
+    },
+    {
+      "id": "TR-Y-07-011-M-0004",
+      "name": "Akörü",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.126
+    },
+    {
+      "id": "TR-Y-07-011-M-0005",
+      "name": "Bayındır",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 13,
+      "max_dist_deg": 0.433
+    },
+    {
+      "id": "TR-Y-07-011-M-0007",
+      "name": "Belenli",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 3,
+      "max_dist_deg": 0.426
+    },
+    {
+      "id": "TR-Y-07-011-M-0013",
+      "name": "Çavdır",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.211
+    },
+    {
+      "id": "TR-Y-07-011-M-0014",
+      "name": "Çayköy",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.172
+    },
+    {
+      "id": "TR-Y-07-011-M-0018",
+      "name": "Çukurbağ",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.331
+    },
+    {
+      "id": "TR-Y-07-011-M-0020",
+      "name": "Dirgenler",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.242
+    },
+    {
+      "id": "TR-Y-07-011-M-0037",
+      "name": "Kızılağaç",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.205
+    },
+    {
+      "id": "TR-Y-07-011-M-0044",
+      "name": "Sarıbelen",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 5,
+      "max_dist_deg": 0.1
+    },
+    {
+      "id": "TR-Y-07-011-M-0049",
+      "name": "Üzümlü",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-011",
+      "district_name": "Kaş",
+      "polygon_count": 2,
+      "max_dist_deg": 0.207
+    },
+    {
+      "id": "TR-Y-07-015-M-0008",
+      "name": "Beğiş",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-015",
+      "district_name": "Korkuteli",
+      "polygon_count": 2,
+      "max_dist_deg": 0.159
+    },
+    {
+      "id": "TR-Y-07-016-M-0001",
+      "name": "Adrasan",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-016",
+      "district_name": "Kumluca",
+      "polygon_count": 8,
+      "max_dist_deg": 0.122
+    },
+    {
+      "id": "TR-Y-07-017-M-0057",
+      "name": "Karabük",
+      "province_id": "TR-P-07",
+      "district_id": "TR-D-07-017",
+      "district_name": "Manavgat",
+      "polygon_count": 2,
+      "max_dist_deg": 0.254
+    },
+    {
       "id": "TR-Y-59-003-OSB-VELIMESEOSBMAH",
       "name": "Velimeşe OSB Mah.",
       "province_id": "TR-P-59",
@@ -738,6 +999,44 @@
       "ambiguous": [],
       "skipped": [],
       "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-07",
+      "province_name": "Antalya",
+      "source_name": "Antalya Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 917,
+      "matched_count": 917,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Aosb1kısım",
+          "district_id": "TR-D-07-005",
+          "district_name": "Döşemealtı",
+          "osb_id": "TR-Y-07-005-OSB-AOSB1KISIM"
+        },
+        {
+          "raw_name": "Aosb2kısım",
+          "district_id": "TR-D-07-005",
+          "district_name": "Döşemealtı",
+          "osb_id": "TR-Y-07-005-OSB-AOSB2KISIM"
+        },
+        {
+          "raw_name": "Aosb3kısım",
+          "district_id": "TR-D-07-005",
+          "district_name": "Döşemealtı",
+          "osb_id": "TR-Y-07-005-OSB-AOSB3KISIM"
+        },
+        {
+          "raw_name": "Liman sb",
+          "district_id": "TR-D-07-014",
+          "district_name": "Konyaaltı",
+          "osb_id": "TR-Y-07-014-OSB-LIMANSB"
+        }
+      ]
     },
     {
       "province_id": "TR-P-59",

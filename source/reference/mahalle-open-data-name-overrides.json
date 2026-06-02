@@ -4973,5 +4973,334 @@
     "raw_key": "dudulluosb",
     "action": "include_as_osb",
     "note": "Umraniye Dudullu OSB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-001",
+    "raw_key": "geris",
+    "settlement_id": "TR-Y-07-001-M-0026",
+    "note": "Akseki / Geris -> Geris B.M"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "bucak",
+    "settlement_id": "TR-Y-07-003-M-0017",
+    "note": "Alanya / Bucak -> Bucakkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "guney",
+    "settlement_id": "TR-Y-07-003-M-0040",
+    "note": "Alanya / Guney -> Guneykoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "isbatli",
+    "settlement_id": "TR-Y-07-003-M-0050",
+    "note": "Alanya / Isbatli -> Ispatli"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "orhan",
+    "settlement_id": "TR-Y-07-003-M-0070",
+    "note": "Alanya / Orhan -> Orhankoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-005",
+    "raw_key": "aosb1kisim",
+    "action": "include_as_osb",
+    "note": "Dosemealti AOSB 1. kisim kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-005",
+    "raw_key": "aosb2kisim",
+    "action": "include_as_osb",
+    "note": "Dosemealti AOSB 2. kisim kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-005",
+    "raw_key": "aosb3kisim",
+    "action": "include_as_osb",
+    "note": "Dosemealti AOSB 3. kisim kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-006",
+    "raw_key": "duden",
+    "settlement_id": "TR-Y-07-006-M-0017",
+    "note": "Elmali / Duden -> Dudenkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-006",
+    "raw_key": "gecit",
+    "settlement_id": "TR-Y-07-006-M-0020",
+    "note": "Elmali / Gecit -> Gecitkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-006",
+    "raw_key": "kisla",
+    "settlement_id": "TR-Y-07-006-M-0036",
+    "note": "Elmali / Kisla -> Kislakoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-006",
+    "raw_key": "tekke",
+    "settlement_id": "TR-Y-07-006-M-0051",
+    "note": "Elmali / Tekke -> Tekkekoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-008",
+    "raw_key": "ilica",
+    "settlement_id": "TR-Y-07-008-M-0027",
+    "note": "Gazipasa / Ilica -> Ilicakoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-008",
+    "raw_key": "inal",
+    "settlement_id": "TR-Y-07-008-M-0028",
+    "note": "Gazipasa / Inal -> Inalkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-008",
+    "raw_key": "macar",
+    "settlement_id": "TR-Y-07-008-M-0040",
+    "note": "Gazipasa / Macar -> Macarkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "cesme",
+    "settlement_id": "TR-Y-07-011-M-0017",
+    "note": "Kas / Cesme -> Cesmekoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "dere",
+    "settlement_id": "TR-Y-07-011-M-0019",
+    "note": "Kas / Dere -> Derekoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "kemer",
+    "settlement_id": "TR-Y-07-011-M-0033",
+    "note": "Kas / Kemer -> Kemerkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "palamut",
+    "settlement_id": "TR-Y-07-011-M-0041",
+    "note": "Kas / Palamut -> Palamutkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-014",
+    "raw_key": "hisarcandir",
+    "settlement_id": "TR-Y-07-014-M-0020",
+    "note": "Konyaalti / Hisarcandir -> Hisarcandiri"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-014",
+    "raw_key": "limansb",
+    "action": "include_as_osb",
+    "note": "Konyaalti Liman SB kalite kaydi olarak tutuldu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-015",
+    "raw_key": "kayabas",
+    "settlement_id": "TR-Y-07-015-M-0029",
+    "note": "Korkuteli / Kayabas -> Kayabasi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-015",
+    "raw_key": "leylek",
+    "settlement_id": "TR-Y-07-015-M-0040",
+    "note": "Korkuteli / Leylek -> Leylekkoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-017",
+    "raw_key": "ahisar",
+    "settlement_id": "TR-Y-07-017-M-0005",
+    "note": "Manavgat / A. hisar -> Asagihisar"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-017",
+    "raw_key": "apazarci",
+    "settlement_id": "TR-Y-07-017-M-0006",
+    "note": "Manavgat / A. pazarci -> Asagipazarci"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-017",
+    "raw_key": "yhisar",
+    "settlement_id": "TR-Y-07-017-M-0105",
+    "note": "Manavgat / Y. hisar -> Yukarihisar"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-017",
+    "raw_key": "ypazarci",
+    "settlement_id": "TR-Y-07-017-M-0106",
+    "note": "Manavgat / Y. pazarci -> Yukaripazarci"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-018",
+    "raw_key": "kilincarslan",
+    "action": "include",
+    "id": "TR-Y-07-018-M-SRC-KILINCARSLAN",
+    "name": "Kılınçarslan",
+    "note": "Muratpasa'da dogru mahalle kaydi olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-019",
+    "raw_key": "tekke",
+    "settlement_id": "TR-Y-07-019-M-0056",
+    "note": "Serik / Tekke -> Tekkekoy"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-019",
+    "raw_key": "tonguslu",
+    "settlement_id": "TR-Y-07-019-M-0057",
+    "note": "Serik / Tonguslu -> Tunguslu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "bayir",
+    "action": "include",
+    "id": "TR-Y-07-003-M-SRC-BAYIR",
+    "name": "Bayır",
+    "note": "Alanya / Bayir dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "dere",
+    "action": "include",
+    "id": "TR-Y-07-003-M-SRC-DERETURBELINAS",
+    "name": "Deretürbelinas",
+    "note": "Alanya / Dere kaydi Dereturbelinas olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "dereturbelinas",
+    "action": "include",
+    "id": "TR-Y-07-003-M-SRC-DERETURBELINAS",
+    "name": "Deretürbelinas",
+    "note": "Alanya / Dereturbelinas dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-003",
+    "raw_key": "sihlar",
+    "action": "include",
+    "id": "TR-Y-07-003-M-SRC-SIHLAR",
+    "name": "Şıhlar",
+    "note": "Alanya / Sihlar dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "agullu",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-AGULLU",
+    "name": "Ağullu",
+    "note": "Kas / Agullu dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "andifli",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-ANDIFLI",
+    "name": "Andifli",
+    "note": "Kas / Andifli dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "bogazcik",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-BOGAZCIK",
+    "name": "Boğazcık",
+    "note": "Kas / Bogazcik dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "sahilkilincli",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-SAHILKILINCLI",
+    "name": "Sahilkılınçlı",
+    "note": "Kas / Sahilkilincli dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
+    "raw_key": "yaylakilincli",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-YAYLAKILINCLI",
+    "name": "Yaylakılınçlı",
+    "note": "Kas / Yaylakilincli dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-012",
+    "raw_key": "yeni",
+    "action": "include",
+    "id": "TR-Y-07-012-M-SRC-YENI",
+    "name": "Yeni",
+    "note": "Kemer / Yeni dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-013",
+    "raw_key": "yeni",
+    "action": "include",
+    "id": "TR-Y-07-013-M-SRC-YENI",
+    "name": "Yeni",
+    "note": "Kepez / Yeni dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-014",
+    "raw_key": "suicecek",
+    "action": "include",
+    "id": "TR-Y-07-014-M-SRC-SUICECEK",
+    "name": "Suiçecek",
+    "note": "Konyaalti / Suicecek dogru mahalle olarak source-only dahil edildi"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-014",
+    "raw_key": "yeni",
+    "action": "include",
+    "id": "TR-Y-07-014-M-SRC-YENI",
+    "name": "Yeni",
+    "note": "Konyaalti / Yeni dogru mahalle olarak source-only dahil edildi"
   }
 ]

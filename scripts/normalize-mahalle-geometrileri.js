@@ -271,6 +271,17 @@ const LOCAL_MUNICIPAL_SOURCES = [
     district_field: 'district',
   },
   {
+    province_id: 'TR-P-07',
+    province_name: 'Antalya',
+    slug: '07-antalya',
+    source_name: 'Antalya Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '07-antalya', 'antalya-mahalle.kml'),
+    district_field: 'district',
+    include_unmatched_as_source_only: true,
+  },
+  {
     province_id: 'TR-P-59',
     province_name: 'Tekirdağ',
     slug: '59-tekirdag',

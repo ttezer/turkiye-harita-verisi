@@ -3,287 +3,409 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Her Formatta Türkiye Haritası</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9QM1EV95K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-H9QM1EV95K');
-    </script>
-    <link rel="stylesheet" href="./styles.css?v=13">
+    <title>Her Formatta Türkiye Haritası | Veri İndir</title>
+    <!-- Mevcut Analytics etiketi korunacaksa buraya mevcut gtag bloğunu geri ekleyebilirsiniz. -->
+    <link rel="stylesheet" href="./styles.css?v=ui-revision-1">
   </head>
   <body>
     <div class="page-shell">
-      <div class="cinematic-backdrop">
-        <div class="backdrop-image layer-back"></div>
-        <div class="topography-grid layer-mid"></div>
-        <div class="map-silhouette layer-front"></div>
-        <div class="backdrop-overlay"></div>
-      </div>
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Türkiye Harita Verisi">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 42">
+              <path d="M7 9.5 14 6l7 4 7-3 7 5-2 8 3 6-7 3-5 7-8-3-7 2-2-8-4-6 4-6z"/>
+              <circle cx="21" cy="21" r="4.2"/>
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>Türkiye Harita Verisi</strong>
+          </span>
+        </a>
 
-      <main class="content">
-        <section class="hero-map" id="hero">
-          <div class="hero-intro glass">
-            <div class="hero-intro-copy">
-              <p class="eyebrow">İstediğiniz Formatta</p>
-              <h1>Türkiye'mizin Bölge, İl, İlçe ve Mahalle Haritaları</h1>
-              <p class="hero-text">GeoJSON, SVG, PNG ve daha fazlası için tek veri modeli, tek kontrol yüzeyi, tek indirme akışı.</p>
-            </div>
+        <div class="header-title" aria-label="Ürün açıklaması">
+          <span>İstediğiniz Formatta</span>
+          <strong>Türkiye'mizin Bölge, İl, İlçe ve Mahalle Haritaları</strong>
+        </div>
 
-            <div class="hero-side">
-              <div class="hero-format-strip" aria-label="Format kısayolları">
-                <button class="hero-format-chip is-active" type="button" data-format="geojson">GeoJSON</button>
-                <button class="hero-format-chip" type="button" data-format="json">JSON</button>
-                <button class="hero-format-chip" type="button" data-format="topojson">TopoJSON</button>
-                <button class="hero-format-chip" type="button" data-format="csv">CSV</button>
-                <button class="hero-format-chip" type="button" data-format="xlsx">XLSX</button>
-                <button class="hero-format-chip" type="button" data-format="sql">SQL</button>
-                <button class="hero-format-chip" type="button" data-format="wkt">WKT</button>
-                <button class="hero-format-chip" type="button" data-format="kml">KML</button>
-                <button class="hero-format-chip" type="button" data-format="kmz">KMZ</button>
-                <button class="hero-format-chip" type="button" data-format="gml">GML</button>
-                <button class="hero-format-chip" type="button" data-format="osm">OSM XML</button>
-                <button class="hero-format-chip" type="button" data-format="svg">SVG</button>
-                <button class="hero-format-chip" type="button" data-format="png">PNG</button>
-                <button class="hero-format-chip" type="button" data-format="gpkg">GeoPackage</button>
-                <button class="hero-format-chip" type="button" data-format="shp">Shapefile</button>
-                <button class="hero-format-chip" type="button" data-format="pdf">PDF</button>
-                <button class="hero-format-chip" type="button" data-format="react-component">React</button>
-              </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Koyu moda geç" title="Görünümü değiştir">
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.64 5.64l2.12 2.12M16.24 16.24l2.12 2.12M18.36 5.64l-2.12 2.12M7.76 16.24l-2.12 2.12"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5Z"/>
+          </svg>
+          <span class="theme-label">Koyu</span>
+        </button>
+
+        <a class="github-link" href="https://github.com/ttezer/turkiye-harita-verisi"
+           target="_blank" rel="noopener" aria-label="GitHub reposuna git" title="GitHub reposuna git">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .9a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-1.92c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.22.71-1.5-2.49-.28-5.11-1.24-5.11-5.53 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.1 1.15a10.75 10.75 0 0 1 5.65 0c2.15-1.45 3.1-1.15 3.1-1.15.61 1.54.23 2.68.11 2.96.72.78 1.16 1.78 1.16 3 0 4.3-2.63 5.25-5.13 5.53.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .9z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </header>
+
+      <main class="workspace" id="interactive-map">
+        <aside class="left-panel panel">
+          <div class="left-scroll-body">
+          <div class="panel-title">
+            <span class="step">1</span>
+            <div>
+              <h2>Kapsam ve Detay</h2>
+              <p>Neresi ve hangi idari seviyede?</p>
             </div>
           </div>
 
-          <section class="workspace glass" id="interactive-map">
-            <aside class="control-column">
-              <section class="control-panel">
-                <div class="config-head">
-                  <p class="eyebrow">İndirme Yapılandırıcısı</p>
-                  <div id="formatStatus" class="status-pill">Hazır</div>
-                </div>
-                <label class="field">
-                  <span>Dosya türü</span>
-                  <select id="formatSelect">
-                    <option value="geojson">GeoJSON</option>
-                    <option value="json">JSON</option>
-                    <option value="topojson">TopoJSON</option>
-                    <option value="csv">CSV</option>
-                    <option value="xlsx">XLSX</option>
-                    <option value="sql">SQL</option>
-                    <option value="wkt">WKT</option>
-                    <option value="kml">KML</option>
-                    <option value="kmz">KMZ</option>
-                    <option value="gml">GML</option>
-                    <option value="osm">OSM XML (.osm)</option>
-                    <option value="gpkg">GeoPackage (.gpkg)</option>
-                    <option value="shp">Shapefile (.shp)</option>
-                    <option value="svg">SVG</option>
-                    <option value="png">PNG</option>
-                    <option value="pdf">PDF</option>
-                    <option value="react-component">React (.jsx)</option>
-                    <option value="ai">AI · Planlanan</option>
-                    <option value="eps">EPS · Planlanan</option>
-                    <option value="obj">OBJ · Planlanan</option>
-                    <option value="stl">STL · Planlanan</option>
-                    <option value="glb">GLB · Planlanan</option>
-                    <option value="gltf">GLTF · Planlanan</option>
-                  </select>
-                </label>
+          <div class="selector-grid">
+            <label class="field">
+              <span>Kapsam</span>
+              <select id="scopeSelect">
+                <option value="turkey">Türkiye</option>
+                <option value="region">Bölge</option>
+                <option value="province">İl</option>
+              </select>
+            </label>
 
-                <label class="field">
-                  <span>Kapsam</span>
-                  <select id="scopeSelect">
-                    <option value="turkey">Türkiye</option>
-                    <option value="region">Bölge</option>
-                    <option value="province">İl</option>
-                  </select>
-                </label>
+            <label class="field">
+              <span>Detay</span>
+              <select id="detailSelect">
+                <option value="region">Bölge</option>
+                <option value="province">İl</option>
+                <option value="district">İlçe</option>
+                <option value="mahalle">Mahalle</option>
+              </select>
+            </label>
+          </div>
 
-                <label class="field">
-                  <span>Detay</span>
-                  <select id="detailSelect">
-                    <option value="region">Bölge</option>
-                    <option value="province">İl</option>
-                    <option value="district">İlçe</option>
-                    <option value="mahalle">Mahalle</option>
-                  </select>
-                </label>
+          <label class="field is-hidden">
+            <span>Bölge filtresi</span>
+            <select id="regionSelect">
+              <option value="">Tüm Türkiye</option>
+            </select>
+          </label>
 
-                <label class="field">
-                  <span>Bölge filtresi</span>
-                  <select id="regionSelect">
-                    <option value="">Tüm Türkiye</option>
-                  </select>
-                </label>
+          <label class="field is-hidden">
+            <span>İl filtresi</span>
+            <select id="provinceSelect">
+              <option value="">Tüm Türkiye</option>
+            </select>
+          </label>
 
-                <label class="field">
-                  <span>İl filtresi</span>
-                  <select id="provinceSelect">
-                    <option value="">Tüm Türkiye</option>
-                  </select>
-                </label>
+          <label class="field is-hidden">
+            <span>İlçe filtresi</span>
+            <select id="districtSelect">
+              <option value="">Tüm ilçeler</option>
+            </select>
+          </label>
 
-                <label class="field is-hidden">
-                  <span>İlçe filtresi</span>
-                  <select id="districtSelect">
-                    <option value="">Tüm ilçeler</option>
-                  </select>
-                </label>
+          <div class="mahalle-note">
+            <strong>Mahalle katmanı</strong>
+            <span>Yalnızca yayımlanabilir veri kaynağı bulunan alanlarda kullanılabilir.</span>
+          </div>
 
-                <div class="field" id="fieldsField">
-                  <span>Alanlar</span>
-                  <div id="fieldChecklist" class="field-checklist"></div>
-                </div>
-
-                <label class="field is-hidden" id="gpkgCrsField">
-                  <span>GeoPackage CRS</span>
-                  <select id="gpkgCrsSelect">
-                    <option value="EPSG:4326">EPSG:4326 · WGS 84</option>
-                    <option value="EPSG:3857">EPSG:3857 · Web Mercator</option>
-                    <option value="EPSG:32635">EPSG:32635 · WGS 84 / UTM zone 35N</option>
-                    <option value="EPSG:32636">EPSG:32636 · WGS 84 / UTM zone 36N</option>
-                    <option value="EPSG:5254">EPSG:5254 · Türkiye yerel</option>
-                  </select>
-                </label>
-
-                <label class="field is-hidden" id="gpkgGeometryField">
-                  <span>GeoPackage geometri tipi</span>
-                  <select id="gpkgGeometrySelect">
-                    <option value="auto">Otomatik (kaynağı koru)</option>
-                    <option value="polygon">Polygon</option>
-                    <option value="multiPolygon">MultiPolygon</option>
-                  </select>
-                </label>
-
-                <div class="field is-hidden" id="gpkgEncodingField">
-                  <span>Kodlama</span>
-                  <div class="field-note">UTF-8 (sabit). Bu sürümde encoding seçimi yoktur.</div>
-                </div>
-
-                <label class="field is-hidden" id="styleField">
-                  <span>Stil</span>
-                  <select id="styleSelect">
-                    <option value="filled">Dolgulu</option>
-                    <option value="transparent">Transparan</option>
-                    <option value="outline-only">Sadece sınır</option>
-                    <option value="dark">Koyu</option>
-                    <option value="light">Açık</option>
-                  </select>
-                </label>
-
-                <label class="field is-hidden" id="colorModeField">
-                  <span>Renk modu</span>
-                  <select id="colorModeSelect">
-                    <option value="single">Tek renk</option>
-                    <option value="auto">Otomatik renk</option>
-                    <option value="palette">Palet</option>
-                  </select>
-                </label>
-
-                <label class="field is-hidden" id="paletteField">
-                  <span>Palet</span>
-                  <select id="paletteSelect">
-                    <option value="blue">Mavi</option>
-                    <option value="violet">Mor</option>
-                    <option value="turquoise">Turkuaz</option>
-                    <option value="pastel">Pastel</option>
-                    <option value="contrast">Kontrast</option>
-                  </select>
-                </label>
-
-                <label class="field is-hidden" id="resolutionField">
-                  <span>Çözünürlük</span>
-                  <select id="resolutionSelect">
-                    <option value="1920x1080">1920x1080</option>
-                    <option value="2048x2048">2048x2048</option>
-                    <option value="300dpi">300dpi</option>
-                  </select>
-                </label>
-
-                <label class="field is-hidden" id="csvDelimiterField">
-                  <span>CSV ayırıcı</span>
-                  <select id="csvDelimiterSelect">
-                    <option value=",">Virgül (,)</option>
-                    <option value=";">Noktalı virgül (;)</option>
-                  </select>
-                </label>
-
-              </section>
-            </aside>
-
-            <section class="map-column">
-              <div class="map-layout">
-                <div class="map-stage">
-                  <div class="stage-grid"></div>
-                  <svg id="mapSvg" viewBox="0 0 1200 760" role="img" aria-label="Türkiye idari sınırları"></svg>
-                  <div id="mapOverlay" class="map-overlay">Bölge görünümü</div>
-                  <label class="basemap-control">
-                    <span>Altlık</span>
-                    <select id="baseLayerSelect" aria-label="Harita altlığı">
-                      <option value="none">Sade</option>
-                      <option value="osm-light">OSM Hafif</option>
-                      <option value="osm-medium">OSM Orta</option>
-                      <option value="osm-strong">OSM Belirgin</option>
-                    </select>
-                  </label>
-                  <a id="baseMapAttribution" class="basemap-attribution is-hidden" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>
-                  <div id="mapLoadStatus" class="map-load-status" aria-live="polite">
-                    <span id="mapLoadText" class="map-load-text">Veri y&#252;kleniyor...</span>
-                    <span class="map-load-track" aria-hidden="true">
-                      <span id="mapLoadBar" class="map-load-bar"></span>
-                    </span>
-                  </div>
-                  <button id="qualityButton" class="quality-button is-hidden" type="button" aria-expanded="false">Kalite %100</button>
-                  <div id="qualityPanel" class="quality-panel is-hidden"></div>
-                </div>
-
-                <aside class="map-rail">
-                  <label class="field rail-search">
-                    <span>Arama</span>
-                    <input id="searchInput" type="search" placeholder="örn. Ankara, Çankaya">
-                  </label>
-
-                  <div class="download-summary">
-                    <strong id="downloadTitle">GeoJSON hazır</strong>
-                    <p id="downloadSummary">Türkiye için bölge geometrisi indirilebilir.</p>
-                    <span id="estimatedSize" class="size-badge"></span>
-                  </div>
-
-                  <div class="action-row">
-                    <button id="resetButton" class="reset-button" type="button">Sıfırla</button>
-                    <button id="downloadButton" class="download-link" type="button">İndir</button>
-                  </div>
-
-                  <section class="mini-stats">
-                    <article>
-                      <span>Bölge</span>
-                      <strong id="regionCount">0</strong>
-                    </article>
-                    <article>
-                      <span>İl</span>
-                      <strong id="provinceCount">0</strong>
-                    </article>
-                    <article>
-                      <span>İlçe</span>
-                      <strong id="districtCount">0</strong>
-                    </article>
-                    <article>
-                      <span>Görünür</span>
-                      <strong id="visibleCount">0</strong>
-                    </article>
-                  </section>
-
-                  <section class="detail-panel" id="detailPanel">
-                    <p class="detail-empty">Haritada bir öğe seç.</p>
-                  </section>
-                </aside>
+          <section class="formats" id="formatlar">
+            <div class="panel-title compact">
+              <span class="step">2</span>
+              <div>
+                <h2>Format Seçimi</h2>
+                <p>17 hazır çıktı formatı</p>
               </div>
-            </section>
+            </div>
+
+            <div class="hero-format-strip" aria-label="Dosya formatları">
+              <button class="hero-format-chip is-active" type="button" data-format="geojson">GeoJSON</button>
+              <button class="hero-format-chip" type="button" data-format="json">JSON</button>
+              <button class="hero-format-chip" type="button" data-format="topojson">TopoJSON</button>
+              <button class="hero-format-chip" type="button" data-format="csv">CSV</button>
+              <button class="hero-format-chip" type="button" data-format="xlsx">XLSX</button>
+              <button class="hero-format-chip" type="button" data-format="sql">SQL</button>
+              <button class="hero-format-chip" type="button" data-format="wkt">WKT</button>
+              <button class="hero-format-chip" type="button" data-format="kml">KML</button>
+              <button class="hero-format-chip" type="button" data-format="kmz">KMZ</button>
+              <button class="hero-format-chip" type="button" data-format="gml">GML</button>
+              <button class="hero-format-chip" type="button" data-format="osm">OSM XML</button>
+              <button class="hero-format-chip" type="button" data-format="gpkg">GeoPackage</button>
+              <button class="hero-format-chip" type="button" data-format="shp">Shapefile</button>
+              <button class="hero-format-chip" type="button" data-format="svg">SVG</button>
+              <button class="hero-format-chip" type="button" data-format="png">PNG</button>
+              <button class="hero-format-chip" type="button" data-format="pdf">PDF</button>
+              <button class="hero-format-chip" type="button" data-format="react-component">React</button>
+            </div>
+
+            <select id="formatSelect" class="logic-only" aria-hidden="true" tabindex="-1">
+              <option value="geojson">GeoJSON</option>
+              <option value="json">JSON</option>
+              <option value="topojson">TopoJSON</option>
+              <option value="csv">CSV</option>
+              <option value="xlsx">XLSX</option>
+              <option value="sql">SQL</option>
+              <option value="wkt">WKT</option>
+              <option value="kml">KML</option>
+              <option value="kmz">KMZ</option>
+              <option value="gml">GML</option>
+              <option value="osm">OSM XML (.osm)</option>
+              <option value="gpkg">GeoPackage (.gpkg)</option>
+              <option value="shp">Shapefile (.shp)</option>
+              <option value="svg">SVG</option>
+              <option value="png">PNG</option>
+              <option value="pdf">PDF</option>
+              <option value="react-component">React (.jsx)</option>
+              <option value="ai">AI · Planlanan</option>
+              <option value="eps">EPS · Planlanan</option>
+              <option value="obj">OBJ · Planlanan</option>
+              <option value="stl">STL · Planlanan</option>
+              <option value="glb">GLB · Planlanan</option>
+              <option value="gltf">GLTF · Planlanan</option>
+            </select>
+          </section>
+
+          </div>
+
+          <section class="download-summary-card embedded-summary">
+            <div class="panel-title compact">
+              <span class="step">6</span>
+              <div>
+                <h2>İndirme Özeti</h2>
+                <p>Seçiminize göre tarayıcıda hazırlanır.</p>
+              </div>
+            </div>
+            <div class="summary-main">
+              <div>
+                <div class="ready-row">
+                  <span id="formatStatus" class="status-pill">Hazır</span>
+                  <strong id="downloadTitle">GeoJSON hazır</strong>
+                  <span id="estimatedSize" class="size-badge"></span>
+                </div>
+                <p id="downloadSummary">Türkiye için bölge geometrisi indirilebilir.</p>
+              </div>
+              <div class="action-row">
+                <button id="resetButton" class="reset-button" type="button">Sıfırla</button>
+                <button id="downloadButton" class="download-link" type="button"><span class="download-arrow" aria-hidden="true">↓</span><span>İNDİR</span></button>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <section class="center-column">
+          <section class="map-card panel">
+            <div class="map-toolbar">
+              <label class="search-field">
+                <span aria-hidden="true">⌕</span>
+                <input id="searchInput" type="search" placeholder="İl, ilçe veya mahalle ara…">
+              </label>
+              <div class="click-hint">
+                <strong>Haritadan seçin</strong>
+                <span>Detayı açmak için bir alana tıklayın</span>
+              </div>
+            </div>
+
+            <div class="map-stage">
+              <svg id="mapSvg" viewBox="0 0 1200 760" role="img" aria-label="Türkiye idari sınırları"></svg>
+              <div id="mapOverlay" class="map-overlay">Bölge görünümü</div>
+
+              <label class="basemap-control">
+                <span>Altlık</span>
+                <select id="baseLayerSelect" aria-label="Harita altlığı">
+                  <option value="none">Sade</option>
+                  <option value="osm-light">OSM Hafif</option>
+                  <option value="osm-medium">OSM Orta</option>
+                  <option value="osm-strong">OSM Belirgin</option>
+                </select>
+              </label>
+
+              <a id="baseMapAttribution" class="basemap-attribution is-hidden"
+                 href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">
+                © OpenStreetMap contributors
+              </a>
+
+              <div id="mapLoadStatus" class="map-load-status" aria-live="polite">
+                <span id="mapLoadText" class="map-load-text">Veri yükleniyor…</span>
+                <span class="map-load-track" aria-hidden="true">
+                  <span id="mapLoadBar" class="map-load-bar"></span>
+                </span>
+              </div>
+
+              <button id="qualityButton" class="quality-button is-hidden" type="button" aria-expanded="false">
+                Bilinen kalite notu yok
+              </button>
+              <div id="qualityPanel" class="quality-panel is-hidden"></div>
+            </div>
           </section>
         </section>
+
+        <aside class="right-panel">
+          <section class="settings panel">
+            <div class="panel-title">
+              <span class="step">3</span>
+              <div>
+                <h2>Alanlar ve Format Ayarları</h2>
+                <p>Seçenekler dosya türüne göre değişir.</p>
+              </div>
+            </div>
+
+            <div class="field" id="fieldsField">
+              <span>Alanlar</span>
+              <div id="fieldChecklist" class="field-checklist"></div>
+            </div>
+
+            <div class="field is-hidden format-info-note" id="shpFieldsNote">
+              <span>Shapefile Alanları</span>
+              <div class="field-note">
+                Bu sürümde Shapefile paketi <strong>.dbf</strong> öznitelik şemasını sabit üretir.
+                Alan seçimi desteklenmediği için yanıltıcı seçenek gösterilmez.
+              </div>
+            </div>
+
+            <label class="field is-hidden" id="gpkgCrsField">
+              <span>GeoPackage CRS</span>
+              <select id="gpkgCrsSelect">
+                <option value="EPSG:4326">EPSG:4326 · WGS 84</option>
+                <option value="EPSG:3857">EPSG:3857 · Web Mercator</option>
+                <option value="EPSG:32635">EPSG:32635 · WGS 84 / UTM zone 35N</option>
+                <option value="EPSG:32636">EPSG:32636 · WGS 84 / UTM zone 36N</option>
+                <option value="EPSG:5254">EPSG:5254 · Türkiye yerel</option>
+              </select>
+            </label>
+
+            <label class="field is-hidden" id="gpkgGeometryField">
+              <span>GeoPackage geometri tipi</span>
+              <select id="gpkgGeometrySelect">
+                <option value="auto">Otomatik (kaynağı koru)</option>
+                <option value="polygon">Polygon</option>
+                <option value="multiPolygon">MultiPolygon</option>
+              </select>
+            </label>
+
+            <div class="field is-hidden field-note-card" id="gpkgEncodingField">
+              <span>Kodlama</span>
+              <div class="field-note">UTF-8 (sabit). Bu sürümde encoding seçimi yoktur.</div>
+            </div>
+
+            <label class="field is-hidden" id="styleField">
+              <span>Stil</span>
+              <select id="styleSelect">
+                <option value="filled">Dolgulu</option>
+                <option value="transparent">Transparan</option>
+                <option value="outline-only">Sadece sınır</option>
+                <option value="dark">Koyu</option>
+                <option value="light">Açık</option>
+              </select>
+            </label>
+
+            <label class="field is-hidden" id="colorModeField">
+              <span>Renk modu</span>
+              <select id="colorModeSelect">
+                <option value="single">Tek renk</option>
+                <option value="auto">Otomatik renk</option>
+                <option value="palette">Palet</option>
+              </select>
+            </label>
+
+            <label class="field is-hidden" id="paletteField">
+              <span>Palet</span>
+              <select id="paletteSelect">
+                <option value="blue">Mavi</option>
+                <option value="violet">Mor</option>
+                <option value="turquoise">Turkuaz</option>
+                <option value="pastel">Pastel</option>
+                <option value="contrast">Kontrast</option>
+              </select>
+            </label>
+
+            <label class="field is-hidden" id="resolutionField">
+              <span>Çözünürlük</span>
+              <select id="resolutionSelect">
+                <option value="1920x1080">1920x1080</option>
+                <option value="2048x2048">2048x2048</option>
+                <option value="300dpi">300dpi</option>
+              </select>
+            </label>
+
+            <label class="field is-hidden" id="csvDelimiterField">
+              <span>CSV ayırıcı</span>
+              <select id="csvDelimiterSelect">
+                <option value=",">Virgül (,)</option>
+                <option value=";">Noktalı virgül (;)</option>
+              </select>
+            </label>
+          </section>
+
+          <section class="detail-card panel">
+            <div class="panel-title compact">
+              <span class="step">4</span>
+              <div>
+                <h2>Seçilen Alan</h2>
+                <p>Harita öğesi bilgisi</p>
+              </div>
+            </div>
+            <section class="detail-panel" id="detailPanel">
+              <p class="detail-empty">Haritada bir öğe seç.</p>
+            </section>
+          </section>
+
+          <section class="contact-card panel" aria-label="İletişim">
+            <div class="contact-icon" aria-hidden="true">@</div>
+            <div class="contact-copy">
+              <span>İletişim</span>
+              <strong>Tacettin TEZER</strong>
+              <a href="mailto:ttezer@gmail.com">ttezer@gmail.com</a>
+            </div>
+          </section>
+        </aside>
+
+        <footer class="status-footer panel">
+          <article>
+            <strong id="regionCount">0</strong>
+            <span>Bölge</span>
+          </article>
+          <article>
+            <strong id="provinceCount">0</strong>
+            <span>İl</span>
+          </article>
+          <article>
+            <strong id="districtCount">0</strong>
+            <span>İlçe</span>
+          </article>
+          <article class="visible">
+            <strong id="visibleCount">0</strong>
+            <span>Görünür geometri</span>
+          </article>
+          <p>Mahalle kapsamı yalnızca mevcut ve yayımlanabilir kaynaklarla sınırlıdır.</p>
+        </footer>
       </main>
     </div>
+
+    <script>
+      (() => {
+        const storageKey = 'turkiye-harita-verisi-theme';
+        const saved = localStorage.getItem(storageKey);
+        const preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = saved || (preferredDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = initialTheme;
+
+        window.addEventListener('DOMContentLoaded', () => {
+          const toggle = document.getElementById('themeToggle');
+          if (!toggle) return;
+
+          const syncToggle = () => {
+            const dark = document.documentElement.dataset.theme === 'dark';
+            toggle.setAttribute('aria-label', dark ? 'Açık moda geç' : 'Koyu moda geç');
+            const label = toggle.querySelector('.theme-label');
+            if (label) label.textContent = dark ? 'Açık' : 'Koyu';
+          };
+
+          syncToggle();
+          toggle.addEventListener('click', () => {
+            const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = next;
+            localStorage.setItem(storageKey, next);
+            syncToggle();
+          });
+        });
+      })();
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js"></script>
@@ -295,4 +417,3 @@
     <script type="module" src="./app.js?v=36"></script>
   </body>
 </html>
-
