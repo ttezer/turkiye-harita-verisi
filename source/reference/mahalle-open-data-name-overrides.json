@@ -5526,6 +5526,7 @@
     "district_id": "TR-D-77-001",
     "raw_key": "kaytazderemerkez",
     "settlement_id": "TR-Y-77-001-M-0007",
+    "name": "Kaytazdere Merkez",
     "note": "Kaytazdere Merkez belde baglaminda dogru mahalleye baglandi"
   },
   {
@@ -5533,6 +5534,7 @@
     "district_id": "TR-D-77-001",
     "raw_key": "subasimerkez",
     "settlement_id": "TR-Y-77-001-M-0008",
+    "name": "Subaşı Merkez",
     "note": "Subasi Merkez belde baglaminda dogru mahalleye baglandi"
   },
   {
@@ -5540,6 +5542,7 @@
     "district_id": "TR-D-77-004",
     "raw_key": "korucumhuriyet",
     "settlement_id": "TR-Y-77-004-M-0004",
+    "name": "Koru Cumhuriyet",
     "note": "Koru Cumhuriyet belde baglaminda dogru mahalleye baglandi"
   },
   {
@@ -5547,6 +5550,7 @@
     "district_id": "TR-D-77-004",
     "raw_key": "tesvikiyecumhuriyet",
     "settlement_id": "TR-Y-77-004-M-0005",
+    "name": "Teşvikiye Cumhuriyet",
     "note": "Tesvikiye Cumhuriyet belde baglaminda dogru mahalleye baglandi"
   },
   {
@@ -5554,6 +5558,7 @@
     "district_id": "TR-D-77-003",
     "raw_key": "taskoprumerkez",
     "settlement_id": "TR-Y-77-003-M-0004",
+    "name": "Taşköprü Merkez",
     "note": "Taskopru Merkez belde baglaminda dogru mahalleye baglandi"
   },
   {
@@ -5561,6 +5566,7 @@
     "district_id": "TR-D-77-003",
     "raw_key": "taskopruyeni",
     "settlement_id": "TR-Y-77-003-M-0008",
+    "name": "Taşköprü Yeni",
     "note": "Taskopru Yeni belde baglaminda dogru mahalleye baglandi"
   },
   {

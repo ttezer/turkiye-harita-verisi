@@ -534,6 +534,7 @@ function repairPolygonRings(polygon) {
 
 function buildGeometryProperties(source, district, rawName, override, settlement = null) {
   if (settlement) {
+    const displayName = formatDisplayNamePreservingAcronyms(override?.name || settlement.name);
     return {
       id: settlement.id,
       level: 'yerlesim',
@@ -541,7 +542,7 @@ function buildGeometryProperties(source, district, rawName, override, settlement
       parent_id: settlement.parent_id,
       province_id: settlement.province_id,
       district_id: settlement.district_id,
-      name: settlement.name,
+      name: displayName,
       source_raw_name: normalizeDisplayText(rawName),
       source: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
       source_label: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
