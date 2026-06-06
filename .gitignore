@@ -26,6 +26,7 @@ source/mahalle-manual/*/*.7z
 !source/mahalle-manual/34-istanbul/istanbul-mahalle.kml
 !source/mahalle-manual/35-izmir/izmir-mahalle.kml
 !source/mahalle-manual/77-yalova/yalova-mahalle.kml
+!source/mahalle-manual/81-duzce/duzce-mahalle.kml
 !source/mahalle-manual/39-kirklareli/kirklareli-mahalle.kml
 !source/mahalle-manual/41-kocaeli/kocaeli-mahalle.kml
 !source/mahalle-manual/59-tekirdag/tekirdag-mahalle.kml
@@ -75,6 +76,7 @@ dist/geojson/mahalle-geometrileri-by-district/*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-34-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-35-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-77-*.geojson
+!dist/geojson/mahalle-geometrileri-by-district/TR-D-81-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-39-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-41-*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-59-*.geojson

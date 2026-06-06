@@ -142,6 +142,20 @@
       "note": "Kullanici tarafindan saglanan manuel Yalova mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
+      "province": "Duzce",
+      "province_code": 81,
+      "source_name": "Duzce Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Duzce mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Tekirdag",
       "province_code": 59,
       "source_name": "Tekirdag Mahalle KML - kullanici tarafindan saglandi",

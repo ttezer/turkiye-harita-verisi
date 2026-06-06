@@ -1,6 +1,6 @@
 {
-  "source_count": 22,
-  "geometry_count": 15827,
+  "source_count": 23,
+  "geometry_count": 16221,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -1379,6 +1379,19 @@
       "format": "local_kml",
       "source_feature_count": 94,
       "matched_count": 94,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-81",
+      "province_name": "Duzce",
+      "source_name": "Duzce Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 395,
+      "matched_count": 395,
       "unmatched": [],
       "ambiguous": [],
       "skipped": [],

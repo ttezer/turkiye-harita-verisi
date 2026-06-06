@@ -360,6 +360,19 @@ const LOCAL_MUNICIPAL_SOURCES = [
     file_path: path.join(paths.manualMahalleRawDir, '77-yalova', 'yalova-mahalle.kml'),
     district_field: 'district',
   },
+  {
+    province_id: 'TR-P-81',
+    province_name: 'Duzce',
+    slug: '81-duzce',
+    source_name: 'Duzce Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '81-duzce', 'duzce-mahalle.kml'),
+    district_field: 'district',
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+    osb_name_pattern: '\\bosb\\b',
+  },
 ];
 
 export function compactKey(value) {
