@@ -1064,7 +1064,7 @@ function syncFormatFields() {
   const showColorMode = isVisual && (state.style === 'filled' || state.style === 'transparent');
   const showPalette = showColorMode && state.colorMode === 'palette';
 
-  toggleField(els.fieldsField, isStructuredData || isVectorVisual);
+  toggleField(els.fieldsField, isStructuredData || isVisual);
   toggleField(els.shpFieldsNote, state.format === 'shp');
   toggleField(els.styleField, isVisual);
   toggleField(els.colorModeField, showColorMode);
@@ -1240,7 +1240,7 @@ function renderFieldChecklist(options) {
 }
 
 function getAvailableFieldDefinitions() {
-  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'gml', 'osm', 'gpkg', 'svg', 'react-component']);
+  const structuredFormats = new Set(['json', 'geojson', 'topojson', 'csv', 'xlsx', 'sql', 'wkt', 'kml', 'kmz', 'gml', 'osm', 'gpkg', 'svg', 'png', 'pdf', 'react-component']);
   const spatialAttributeFormats = new Set(['csv', 'xlsx', 'sql', 'wkt', 'gml', 'gpkg']);
 
   if (!structuredFormats.has(state.format)) {
