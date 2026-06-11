@@ -1402,7 +1402,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Gümeli Merkez</name>
 		<description>İlçe: Alaplı
     Tip: Mahalle
     Mahalle ID: 81011</description>
@@ -2997,7 +2997,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Geriş</name>
+		<name>Filyos Geriş</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -4154,7 +4154,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Karapınar Merkez</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -4185,7 +4185,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Perşembe Merkez</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -4908,7 +4908,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Torlaklar</name>
+		<name>Torlaklar Köyü</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -4939,7 +4939,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Torlaklar</name>
+		<name>Karapınar Torlaklar</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -5404,7 +5404,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yeşilyurt</name>
+		<name>Nebioğlu Yeşilyurt</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -5435,7 +5435,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yeşilyurt</name>
+		<name>Yeşilyurt Köyü</name>
 		<visibility>0</visibility>
 		<description>İlçe: Çaycuma
         Tip: Mahalle
@@ -8211,7 +8211,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yeni</name>
+		<name>Çaydeğirmeni Yeni</name>
 		<description>İlçe: Devrek
     Tip: Mahalle
     Mahalle ID: 89845</description>
@@ -10875,11 +10875,11 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Sarıkaya</name>
+		<name>Sarıkaya Köyü</name>
 		<styleUrl>#mahalle1</styleUrl>
 		<ExtendedData>
 			<Data name="name">
-				<value>Sarıkaya</value>
+				<value>Sarıkaya Köyü</value>
 			</Data>
 			<Data name="raw_name">
 				<value>sarikaya</value>
@@ -12389,11 +12389,11 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Gülüç Merkez</name>
 		<styleUrl>#mahalle1</styleUrl>
 		<ExtendedData>
 			<Data name="name">
-				<value>Merkez</value>
+				<value>Gülüç Merkez</value>
 			</Data>
 			<Data name="raw_name">
 				<value>MERKEZ</value>
@@ -12809,11 +12809,11 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Ormanlı Merkez</name>
 		<styleUrl>#mahalle1</styleUrl>
 		<ExtendedData>
 			<Data name="name">
-				<value>Merkez</value>
+				<value>Ormanlı Merkez</value>
 			</Data>
 			<Data name="raw_name">
 				<value>MERKEZ</value>
@@ -12914,11 +12914,11 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Sarıkaya</name>
+		<name>Ormanlı Sarıkaya</name>
 		<styleUrl>#mahalle1</styleUrl>
 		<ExtendedData>
 			<Data name="name">
-				<value>Sarıkaya</value>
+				<value>Ormanlı Sarıkaya</value>
 			</Data>
 			<Data name="raw_name">
 				<value>SARIKAYA</value>
@@ -14804,7 +14804,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Çatalağzı Merkez</name>
 		<description>İlçe: Kilimli
     Tip: Mahalle
     Mahalle ID: 80973</description>
@@ -14864,7 +14864,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Muslu Merkez</name>
 		<description>İlçe: Kilimli
     Tip: Mahalle
     Mahalle ID: 80989</description>
@@ -15914,7 +15914,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yahma</name>
+		<name>Yahma Köyü</name>
 		<description>İlçe: Kozlu
     Tip: Mahalle
     Mahalle ID: 1196379</description>
@@ -16214,7 +16214,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Birlik</name>
+		<name>Beycuma Birlik</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80955</description>
@@ -17124,7 +17124,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Elvanpazarcık Merkez</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80963</description>
@@ -17154,7 +17154,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Beycuma Merkez</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80958</description>
@@ -17184,7 +17184,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Merkez</name>
+		<name>Karaman Merkez</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80953</description>
@@ -17734,7 +17734,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yeni</name>
+		<name>Beycuma Yeni</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80960</description>
@@ -17764,7 +17764,7 @@
 		</MultiGeometry>
 	</Placemark>
 	<Placemark>
-		<name>Yeni</name>
+		<name>Karaman Yeni</name>
 		<description>İlçe: Zonguldak Merkez
     Tip: Mahalle
     Mahalle ID: 80965</description>
