@@ -1,6 +1,6 @@
 {
-  "source_count": 24,
-  "geometry_count": 16784,
+  "source_count": 25,
+  "geometry_count": 17365,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -720,6 +720,564 @@
       "district_name": "Karaburun",
       "polygon_count": 4,
       "max_dist_deg": 0.118
+    },
+    {
+      "id": "TR-Y-14-001-K-0005",
+      "name": "Alıçören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.135
+    },
+    {
+      "id": "TR-Y-14-001-K-0006",
+      "name": "Aşağıçamlı",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.128
+    },
+    {
+      "id": "TR-Y-14-001-K-0011",
+      "name": "Bahçeköy",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.152
+    },
+    {
+      "id": "TR-Y-14-001-K-0014",
+      "name": "Banaz",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 3,
+      "max_dist_deg": 0.114
+    },
+    {
+      "id": "TR-Y-14-001-M-SRC-TRD14001BERK",
+      "name": "Berk",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.128
+    },
+    {
+      "id": "TR-Y-14-001-K-0019",
+      "name": "Bürnük",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 3,
+      "max_dist_deg": 0.111
+    },
+    {
+      "id": "TR-Y-14-001-K-0023",
+      "name": "Çatakören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.129
+    },
+    {
+      "id": "TR-Y-14-001-K-0025",
+      "name": "Çayırköy",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.151
+    },
+    {
+      "id": "TR-Y-14-001-K-0038",
+      "name": "Gökpınar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.136
+    },
+    {
+      "id": "TR-Y-14-001-K-0051",
+      "name": "Kırha",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.103
+    },
+    {
+      "id": "TR-Y-14-001-K-0067",
+      "name": "Oğulduruk",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.132
+    },
+    {
+      "id": "TR-Y-14-001-K-0068",
+      "name": "Okçular",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.105
+    },
+    {
+      "id": "TR-Y-14-001-K-0076",
+      "name": "Saraycık",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.118
+    },
+    {
+      "id": "TR-Y-14-001-K-0078",
+      "name": "Sazakşeyhler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.113
+    },
+    {
+      "id": "TR-Y-14-001-K-0083",
+      "name": "Susuzkınık",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.121
+    },
+    {
+      "id": "TR-Y-14-001-K-0087",
+      "name": "Tatlar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.147
+    },
+    {
+      "id": "TR-Y-14-001-K-0096",
+      "name": "Yayladınlar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.106
+    },
+    {
+      "id": "TR-Y-14-001-K-0097",
+      "name": "Yazıören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.127
+    },
+    {
+      "id": "TR-Y-14-001-K-0098",
+      "name": "Yeniakçakavak",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.148
+    },
+    {
+      "id": "TR-Y-14-001-K-0100",
+      "name": "Yenicepınar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.117
+    },
+    {
+      "id": "TR-Y-14-001-K-0105",
+      "name": "Yenisefa",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.176
+    },
+    {
+      "id": "TR-Y-14-001-K-0109",
+      "name": "Yukarıçamlı",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-001",
+      "district_name": "Bolu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.111
+    },
+    {
+      "id": "TR-Y-14-002-K-0005",
+      "name": "Çalköy",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 3,
+      "max_dist_deg": 0.214
+    },
+    {
+      "id": "TR-Y-14-002-K-0006",
+      "name": "Çardak",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.109
+    },
+    {
+      "id": "TR-Y-14-002-K-0008",
+      "name": "Çetikören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.132
+    },
+    {
+      "id": "TR-Y-14-002-K-0009",
+      "name": "Doğancılar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 3,
+      "max_dist_deg": 0.2
+    },
+    {
+      "id": "TR-Y-14-002-K-0012",
+      "name": "Gücükler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.169
+    },
+    {
+      "id": "TR-Y-14-002-K-0014",
+      "name": "Kuruca",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.111
+    },
+    {
+      "id": "TR-Y-14-002-K-0015",
+      "name": "Ömerpaşalar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 2,
+      "max_dist_deg": 0.154
+    },
+    {
+      "id": "TR-Y-14-002-K-0020",
+      "name": "Yağbaşlar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-002",
+      "district_name": "Dörtdivan",
+      "polygon_count": 3,
+      "max_dist_deg": 0.115
+    },
+    {
+      "id": "TR-Y-14-003-K-0006",
+      "name": "Akçaşehir",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.101
+    },
+    {
+      "id": "TR-Y-14-003-K-0014",
+      "name": "Balcılar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.112
+    },
+    {
+      "id": "TR-Y-14-003-K-0023",
+      "name": "Çoğullu",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.128
+    },
+    {
+      "id": "TR-Y-14-003-K-0031",
+      "name": "Dursunfakı",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.117
+    },
+    {
+      "id": "TR-Y-14-003-M-SRC-TRD14003EYMUR",
+      "name": "Eymür",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.118
+    },
+    {
+      "id": "TR-Y-14-003-K-0036",
+      "name": "Geçitler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 3,
+      "max_dist_deg": 0.107
+    },
+    {
+      "id": "TR-Y-14-003-K-0037",
+      "name": "Göynükören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.15
+    },
+    {
+      "id": "TR-Y-14-003-K-0045",
+      "name": "İmamlar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.108
+    },
+    {
+      "id": "TR-Y-14-003-K-0053",
+      "name": "Kayıkiraz",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.146
+    },
+    {
+      "id": "TR-Y-14-003-K-0055",
+      "name": "Kazanlar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.102
+    },
+    {
+      "id": "TR-Y-14-003-K-0059",
+      "name": "Kürkçüler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.117
+    },
+    {
+      "id": "TR-Y-14-003-K-0062",
+      "name": "Mircekiraz",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.113
+    },
+    {
+      "id": "TR-Y-14-003-K-0065",
+      "name": "Mürdükler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.1
+    },
+    {
+      "id": "TR-Y-14-003-K-0066",
+      "name": "Nuhören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.122
+    },
+    {
+      "id": "TR-Y-14-003-K-0071",
+      "name": "Sapanlıurgancılar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.143
+    },
+    {
+      "id": "TR-Y-14-003-K-0073",
+      "name": "Sipahiler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.18
+    },
+    {
+      "id": "TR-Y-14-003-K-0075",
+      "name": "Süllertoklar",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.176
+    },
+    {
+      "id": "TR-Y-14-003-K-0082",
+      "name": "Yakakaya",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.17
+    },
+    {
+      "id": "TR-Y-14-003-K-0084",
+      "name": "Yazıköy",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 3,
+      "max_dist_deg": 0.193
+    },
+    {
+      "id": "TR-Y-14-003-K-0085",
+      "name": "Yelkenler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-003",
+      "district_name": "Gerede",
+      "polygon_count": 2,
+      "max_dist_deg": 0.152
+    },
+    {
+      "id": "TR-Y-14-005-K-0012",
+      "name": "Karacaören",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-005",
+      "district_name": "Kıbrıscık",
+      "polygon_count": 3,
+      "max_dist_deg": 0.102
+    },
+    {
+      "id": "TR-Y-14-005-K-0017",
+      "name": "Köseler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-005",
+      "district_name": "Kıbrıscık",
+      "polygon_count": 3,
+      "max_dist_deg": 0.131
+    },
+    {
+      "id": "TR-Y-14-005-K-0022",
+      "name": "Yazıca",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-005",
+      "district_name": "Kıbrıscık",
+      "polygon_count": 3,
+      "max_dist_deg": 0.182
+    },
+    {
+      "id": "TR-Y-14-007-K-0016",
+      "name": "Dedeler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-007",
+      "district_name": "Mudurnu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.146
+    },
+    {
+      "id": "TR-Y-14-007-K-0055",
+      "name": "Pelitözü",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-007",
+      "district_name": "Mudurnu",
+      "polygon_count": 2,
+      "max_dist_deg": 0.112
+    },
+    {
+      "id": "TR-Y-14-008-K-0002",
+      "name": "Bakırlı",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.15
+    },
+    {
+      "id": "TR-Y-14-008-K-0008",
+      "name": "Ekiciler",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.129
+    },
+    {
+      "id": "TR-Y-14-008-K-0009",
+      "name": "Gerenözü",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.206
+    },
+    {
+      "id": "TR-Y-14-008-K-0010",
+      "name": "Gökhaliller",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.196
+    },
+    {
+      "id": "TR-Y-14-008-K-0012",
+      "name": "Haccağız",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.336
+    },
+    {
+      "id": "TR-Y-14-008-K-0023",
+      "name": "Nimetli",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.154
+    },
+    {
+      "id": "TR-Y-14-008-M-SRC-TRD14008TEPE",
+      "name": "Tepe",
+      "province_id": "TR-P-14",
+      "district_id": "TR-D-14-008",
+      "district_name": "Seben",
+      "polygon_count": 2,
+      "max_dist_deg": 0.188
     }
   ],
   "sources": [
@@ -1383,6 +1941,26 @@
       "ambiguous": [],
       "skipped": [],
       "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-14",
+      "province_name": "Bolu",
+      "source_name": "Bolu Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 581,
+      "matched_count": 581,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Demirciler OSB",
+          "district_id": "TR-D-14-003",
+          "district_name": "Gerede",
+          "osb_id": "TR-Y-14-003-OSB-DEMIRCILEROSB"
+        }
+      ]
     },
     {
       "province_id": "TR-P-81",
