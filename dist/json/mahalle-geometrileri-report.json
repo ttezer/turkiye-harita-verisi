@@ -1,6 +1,6 @@
 {
-  "source_count": 23,
-  "geometry_count": 16221,
+  "source_count": 24,
+  "geometry_count": 16768,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -720,6 +720,78 @@
       "district_name": "Karaburun",
       "polygon_count": 4,
       "max_dist_deg": 0.118
+    },
+    {
+      "id": "TR-Y-67-001-M-SRC-TRD67001MERKEZ",
+      "name": "Merkez",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-001",
+      "district_name": "Alaplı",
+      "polygon_count": 2,
+      "max_dist_deg": 0.237
+    },
+    {
+      "id": "TR-Y-67-002-M-SRC-TRD67002GERIS",
+      "name": "Geriş",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-002",
+      "district_name": "Çaycuma",
+      "polygon_count": 2,
+      "max_dist_deg": 0.189
+    },
+    {
+      "id": "TR-Y-67-002-M-SRC-TRD67002TORLAKLAR",
+      "name": "Torlaklar",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-002",
+      "district_name": "Çaycuma",
+      "polygon_count": 2,
+      "max_dist_deg": 0.105
+    },
+    {
+      "id": "TR-Y-67-002-M-SRC-TRD67002YESILYURT",
+      "name": "Yeşilyurt",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-002",
+      "district_name": "Çaycuma",
+      "polygon_count": 2,
+      "max_dist_deg": 0.22
+    },
+    {
+      "id": "TR-Y-67-003-M-SRC-TRD67003YENI",
+      "name": "Yeni",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-003",
+      "district_name": "Devrek",
+      "polygon_count": 2,
+      "max_dist_deg": 0.155
+    },
+    {
+      "id": "TR-Y-67-004-M-SRC-TRD67004MERKEZ",
+      "name": "Merkez",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-004",
+      "district_name": "Ereğli",
+      "polygon_count": 2,
+      "max_dist_deg": 0.197
+    },
+    {
+      "id": "TR-Y-67-008-M-SRC-TRD67008BIRLIK",
+      "name": "Birlik",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-008",
+      "district_name": "Zonguldak",
+      "polygon_count": 2,
+      "max_dist_deg": 0.203
+    },
+    {
+      "id": "TR-Y-67-008-M-SRC-TRD67008YENI",
+      "name": "Yeni",
+      "province_id": "TR-P-67",
+      "district_id": "TR-D-67-008",
+      "district_name": "Zonguldak",
+      "polygon_count": 3,
+      "max_dist_deg": 0.195
     }
   ],
   "sources": [
@@ -1392,6 +1464,19 @@
       "format": "local_kml",
       "source_feature_count": 395,
       "matched_count": 395,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-67",
+      "province_name": "Zonguldak",
+      "source_name": "Zonguldak Mahalle KML - kullanici tarafindan saglandi",
+      "source_label": "Kullanıcı tarafından sağlanan KML",
+      "format": "local_kml",
+      "source_feature_count": 563,
+      "matched_count": 563,
       "unmatched": [],
       "ambiguous": [],
       "skipped": [],

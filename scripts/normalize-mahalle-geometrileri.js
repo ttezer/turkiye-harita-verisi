@@ -373,6 +373,18 @@ const LOCAL_MUNICIPAL_SOURCES = [
     include_ambiguous_as_source_only: true,
     osb_name_pattern: '\\bosb\\b',
   },
+  {
+    province_id: 'TR-P-67',
+    province_name: 'Zonguldak',
+    slug: '67-zonguldak',
+    source_name: 'Zonguldak Mahalle KML - kullanici tarafindan saglandi',
+    source_label: USER_PROVIDED_KML_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '67-zonguldak', 'zonguldak-mahalle.kml'),
+    district_field: 'district',
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+  },
 ];
 
 export function compactKey(value) {

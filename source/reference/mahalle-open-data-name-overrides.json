@@ -7,6 +7,13 @@
     "note": "Ezine / Sarisogut manuel KML kaydi canonical_id bos geldigi icin dogrudan mahalle kaydina baglandi"
   },
   {
+    "province_id": "TR-P-67",
+    "district_id": "TR-D-67-002",
+    "raw_key": "karamusa",
+    "settlement_id": "TR-Y-67-002-K-0042",
+    "note": "Zonguldak Caycuma manuel KML Karamusa kaydi, ayni adli mahalle ile karismasin"
+  },
+  {
     "province_id": "TR-P-22",
     "district_id": "TR-D-22-007",
     "raw_key": "bdoganca",

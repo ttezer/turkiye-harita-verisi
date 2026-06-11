@@ -156,6 +156,20 @@
       "note": "Kullanici tarafindan saglanan manuel Duzce mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
     },
     {
+      "province": "Zonguldak",
+      "province_code": 67,
+      "source_name": "Zonguldak Mahalle KML - kullanici tarafindan saglandi",
+      "source_url": null,
+      "license": "Kamu verisi",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan manuel Zonguldak mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
       "province": "Tekirdag",
       "province_code": 59,
       "source_name": "Tekirdag Mahalle KML - kullanici tarafindan saglandi",
