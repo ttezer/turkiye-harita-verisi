@@ -348,17 +348,99 @@ html, body, .page-shell {
   gap: 10px;
   white-space: nowrap;
 }
-.header-title span {
+.header-title > span {
   font-size: 13px;
   font-weight: 700;
   color: var(--blue);
 }
 .header-title strong {
+  min-width: 0;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
   color: var(--ink);
   font-size: 18px;
-  letter-spacing: -.035em;
+  letter-spacing: 0;
+}
+.header-main {
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.patriot-slogan {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #c4161c;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.patriot-text {
+  font-size: 15px;
+}
+.turkish-flag {
+  position: relative;
+  width: 25px;
+  height: 16px;
+  border-radius: 2px;
+  background: #e30a17;
+  box-shadow: 0 0 0 1px rgba(122, 0, 8, .12);
+}
+.turkish-flag::before,
+.turkish-flag::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.turkish-flag::before {
+  left: 6px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+}
+.turkish-flag::after {
+  left: 8.5px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background: #e30a17;
+}
+.flag-star {
+  position: absolute;
+  left: 15px;
+  top: 5.2px;
+  width: 5.8px;
+  height: 5.8px;
+  background: #fff;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 70%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
+  transform: rotate(-18deg);
+}
+.flag-wave {
+  display: inline-block;
+  transform-origin: 70% 85%;
+  animation: flag-wave 1.8s ease-in-out infinite;
+}
+.flag-wave-alt {
+  animation-delay: .28s;
+}
+@keyframes flag-wave {
+  0%, 100% {
+    transform: rotate(-5deg) translateY(0);
+  }
+  50% {
+    transform: rotate(7deg) translateY(-1px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flag-wave {
+    animation: none;
+  }
 }
 .github-link {
   height: 43px;
