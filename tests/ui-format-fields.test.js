@@ -18,4 +18,9 @@ describe('UI format alanlari', () => {
     expect(structuredFormatsLine).toContain("'png'");
     expect(structuredFormatsLine).toContain("'pdf'");
   });
+
+  it('DXF icin alan secimi yerine aciklama notu gosterir', () => {
+    expect(appSource).toContain("dxfFieldsNote: document.querySelector('#dxfFieldsNote')");
+    expect(appSource).toContain("toggleField(els.dxfFieldsNote, state.format === 'dxf');");
+  });
 });

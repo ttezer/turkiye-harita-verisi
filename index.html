@@ -125,7 +125,7 @@
               <span class="step">2</span>
               <div>
                 <h2>Format Seçimi</h2>
-                <p>17 hazır çıktı formatı</p>
+                <p>18 hazır çıktı formatı</p>
               </div>
             </div>
 
@@ -143,6 +143,7 @@
               <button class="hero-format-chip" type="button" data-format="osm">OSM XML</button>
               <button class="hero-format-chip" type="button" data-format="gpkg">GeoPackage</button>
               <button class="hero-format-chip" type="button" data-format="shp">Shapefile</button>
+              <button class="hero-format-chip" type="button" data-format="dxf">DXF</button>
               <button class="hero-format-chip" type="button" data-format="svg">SVG</button>
               <button class="hero-format-chip" type="button" data-format="png">PNG</button>
               <button class="hero-format-chip" type="button" data-format="pdf">PDF</button>
@@ -163,6 +164,7 @@
               <option value="osm">OSM XML (.osm)</option>
               <option value="gpkg">GeoPackage (.gpkg)</option>
               <option value="shp">Shapefile (.shp)</option>
+              <option value="dxf">DXF (.dxf)</option>
               <option value="svg">SVG</option>
               <option value="png">PNG</option>
               <option value="pdf">PDF</option>
@@ -270,6 +272,14 @@
               <div class="field-note">
                 Bu sürümde Shapefile paketi <strong>.dbf</strong> öznitelik şemasını sabit üretir.
                 Alan seçimi desteklenmediği için yanıltıcı seçenek gösterilmez.
+              </div>
+            </div>
+
+            <div class="field is-hidden format-info-note" id="dxfFieldsNote">
+              <span>DXF Alanları</span>
+              <div class="field-note">
+                DXF bir CAD çizimidir; alan seçimi gerekmez. Sınırlar Netcad uyumlu tabakalara,
+                bölge/il/ilçe/mahalle adları ise merkez noktaya <strong>TEXT</strong> etiketi olarak yazılır.
               </div>
             </div>
 

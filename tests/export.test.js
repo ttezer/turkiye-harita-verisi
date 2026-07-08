@@ -155,6 +155,8 @@ describe('export helpers', () => {
     const regionKml = textWrites.find(([filePath]) => filePath.includes(`dist${sep}kml${sep}regions.kml`))?.[1];
     const regionGml = textWrites.find(([filePath]) => filePath.includes(`dist${sep}gml${sep}regions.gml`))?.[1];
     expect(regionKml).toContain('<name>Marmara</name>');
+    expect(regionKml).toContain('<Folder>');
+    expect(regionKml).toContain('<name>BOLGE_SINIRLARI</name>');
     expect(regionKml).toContain('<description>ID: TR-R-MAR');
     expect(regionKml).toContain('<coordinates>28.123457,40.123457,0');
     expect(regionKml).not.toContain('hdx_id');
@@ -164,6 +166,17 @@ describe('export helpers', () => {
     expect(regionGml).toContain('<gml:featureMember>');
     expect(regionGml).toContain('<tm:region');
     expect(regionGml).toContain('<tm:name>Marmara</tm:name>');
+    const regionDxfBuffer = writeFileSyncSpy.mock.calls.find(([filePath, content]) => (
+      String(filePath).includes(`dist${sep}dxf${sep}regions.dxf`) && Buffer.isBuffer(content)
+    ))?.[1];
+    expect(regionDxfBuffer).toBeDefined();
+    const regionDxf = regionDxfBuffer.toString('latin1');
+    expect(regionDxf).toContain('ANSI_1254');
+    expect(regionDxf).toContain('POLYLINE');
+    expect(regionDxf).toContain('VERTEX');
+    expect(regionDxf).toContain('TEXT');
+    expect(regionDxf).toContain('Marmara');
+    expect(regionDxf).toContain('BOLGE_SINIRLARI');
     const regionOsm = textWrites.find(([filePath]) => filePath.includes(`dist${sep}osm${sep}regions.osm`))?.[1];
     expect(regionOsm).toContain('<osm version="0.6" generator="turkiye_map.regions">');
     expect(regionOsm).toContain('<way id="');

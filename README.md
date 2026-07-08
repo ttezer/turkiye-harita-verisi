@@ -34,6 +34,7 @@ Mahalle katmanı yalnızca doğrulanmış açık veri veya manuel kaynak bulunan
 - GML
 - OSM
 - SHP
+- DXF
 - GPKG
 - SVG
 - PNG

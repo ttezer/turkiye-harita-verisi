@@ -19,6 +19,28 @@ export function buildTopojsonPayload(featureCollection, topologyFn, objectName) 
   return topologyFn({ [objectName]: featureCollection });
 }
 
+const NETCAD_LAYER_NAMES_BY_LEVEL = {
+  region: 'BOLGE_SINIRLARI',
+  province: 'IL_SINIRLARI',
+  district: 'ILCE_SINIRLARI',
+  mahalle: 'MAHALLE_SINIRLARI',
+  yerlesim: 'MAHALLE_SINIRLARI',
+};
+
+export function getNetcadLayerName(levelOrItem) {
+  if (typeof levelOrItem === 'object' && levelOrItem !== null) {
+    if (levelOrItem.level && NETCAD_LAYER_NAMES_BY_LEVEL[levelOrItem.level]) {
+      return NETCAD_LAYER_NAMES_BY_LEVEL[levelOrItem.level];
+    }
+    const id = String(levelOrItem.id || '');
+    if (id.startsWith('TR-R-')) return NETCAD_LAYER_NAMES_BY_LEVEL.region;
+    if (id.startsWith('TR-P-')) return NETCAD_LAYER_NAMES_BY_LEVEL.province;
+    if (id.startsWith('TR-D-')) return NETCAD_LAYER_NAMES_BY_LEVEL.district;
+    if (id.startsWith('TR-Y-')) return NETCAD_LAYER_NAMES_BY_LEVEL.yerlesim;
+  }
+  return NETCAD_LAYER_NAMES_BY_LEVEL[levelOrItem] || 'SINIRLAR';
+}
+
 export function buildTabularRows(items, geometryById) {
   return items.map((item) => {
     const geometry = geometryById.get(item.id);
@@ -226,10 +248,12 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
         `<Style id="${styleId}"><LineStyle><color>ff8f5f34</color><width>1.4</width></LineStyle><PolyStyle><color>${kmlFill}</color><fill>1</fill><outline>1</outline></PolyStyle></Style>`)
     : [`<Style id="${defaultStyleId}"><LineStyle><color>ff8f5f34</color><width>1.4</width></LineStyle><PolyStyle><color>${defaultFillColor}</color><fill>1</fill><outline>1</outline></PolyStyle></Style>`];
 
-  const placemarks = geometryCollection.features.map((feature) => {
+  const folderGroups = new Map();
+
+  for (const feature of geometryCollection.features) {
     const item = metadataById.get(feature.properties.id);
     if (!item) {
-      return '';
+      continue;
     }
     const properties = propertyBuilder(item);
     const extendedData = Object.entries(properties)
@@ -242,7 +266,7 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
     const description = buildKmlDescription(item, properties);
     const resolvedStyleId = featureStyleIds.get(feature.properties.id) || defaultStyleId;
 
-    return [
+    const placemark = [
       '<Placemark>',
       `<styleUrl>#${resolvedStyleId}</styleUrl>`,
       `<name>${xmlEscape(item.name)}</name>`,
@@ -251,7 +275,22 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
       geometryToKml(feature.geometry),
       '</Placemark>',
     ].join('');
-  }).join('');
+
+    const layerName = getNetcadLayerName(item);
+    const group = folderGroups.get(layerName) || [];
+    group.push(placemark);
+    folderGroups.set(layerName, group);
+  }
+
+  const folders = [...folderGroups.entries()]
+    .map(([layerName, placemarks]) => [
+      '<Folder>',
+      `<name>${xmlEscape(layerName)}</name>`,
+      '<open>1</open>',
+      placemarks.join(''),
+      '</Folder>',
+    ].join(''))
+    .join('');
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -261,7 +300,7 @@ export function featureCollectionToKml(name, metadata, geometryCollection, prope
     '<open>1</open>',
     buildKmlLookAt(geometryCollection),
     ...styleDefinitions,
-    placemarks,
+    folders,
     '</Document>',
     '</kml>',
     '',
@@ -547,6 +586,12 @@ function getKmlFieldLabel(key, item) {
   const labels = {
     id: 'ID',
     name: 'Ad',
+    TABAKA: 'Netcad Tabaka',
+    BOLGE_ADI: 'Netcad Bolge Adi',
+    IL_ADI: 'Netcad Il Adi',
+    IL_KODU: 'Netcad Il Kodu',
+    ILCE_ADI: 'Netcad Ilce Adi',
+    MAHALLE_ADI: 'Netcad Mahalle Adi',
     region_id: 'Bölge ID',
     region_name: 'Bölge Adı',
     province_id: 'İl ID',
@@ -592,6 +637,218 @@ export function geometryToKml(geometry) {
   }
 
   return '';
+}
+
+function formatDxfNumber(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) {
+    return '0';
+  }
+  return String(Number(number.toFixed(8)));
+}
+
+function dxfPair(code, value) {
+  return `${code}\n${value}`;
+}
+
+const WINDOWS1254_OVERRIDES = new Map([
+  [0x11E, 0xD0], [0x11F, 0xF0], // G breve
+  [0x130, 0xDD], [0x131, 0xFD], // Turkish dotted/dotless I
+  [0x15E, 0xDE], [0x15F, 0xFE], // S cedilla
+]);
+
+function encodeWindows1254Char(code) {
+  if (WINDOWS1254_OVERRIDES.has(code)) return WINDOWS1254_OVERRIDES.get(code);
+  return code < 256 ? code : 0x3F;
+}
+
+export function encodeWindows1254Text(value) {
+  const text = String(value ?? '');
+  const bytes = new Uint8Array(text.length);
+  for (let index = 0; index < text.length; index += 1) {
+    bytes[index] = encodeWindows1254Char(text.charCodeAt(index));
+  }
+  return bytes;
+}
+
+function dxfRingPoints(ring) {
+  const closed = normalizeKmlRing(ring);
+  if (closed.length > 1) {
+    const first = closed[0];
+    const last = closed.at(-1);
+    if (first[0] === last[0] && first[1] === last[1]) {
+      return closed.slice(0, -1);
+    }
+  }
+  return closed;
+}
+
+function dxfPolygonRings(geometry) {
+  if (geometry?.type === 'Polygon') {
+    return geometry.coordinates;
+  }
+  if (geometry?.type === 'MultiPolygon') {
+    return geometry.coordinates.flat(1);
+  }
+  return [];
+}
+
+function buildDxfPolyline(layerName, points) {
+  const lines = [
+    dxfPair(0, 'POLYLINE'),
+    dxfPair(8, layerName),
+    dxfPair(66, 1),
+    dxfPair(70, 1),
+    dxfPair(10, 0),
+    dxfPair(20, 0),
+    dxfPair(30, 0),
+  ];
+
+  for (const [lon, lat] of points) {
+    lines.push(
+      dxfPair(0, 'VERTEX'),
+      dxfPair(8, layerName),
+      dxfPair(10, formatDxfNumber(lon)),
+      dxfPair(20, formatDxfNumber(lat)),
+      dxfPair(30, 0),
+    );
+  }
+
+  lines.push(
+    dxfPair(0, 'SEQEND'),
+    dxfPair(8, layerName),
+  );
+
+  return lines;
+}
+
+function getDxfLabelPoint(item, geometry) {
+  if (Number.isFinite(item.centroid?.lon) && Number.isFinite(item.centroid?.lat)) {
+    return [item.centroid.lon, item.centroid.lat];
+  }
+
+  const bounds = geometryBounds(geometry);
+  if (!bounds) {
+    return null;
+  }
+
+  return [
+    (bounds[0] + bounds[2]) / 2,
+    (bounds[1] + bounds[3]) / 2,
+  ];
+}
+
+function getDxfTextHeight(geometry) {
+  const bounds = geometryBounds(geometry);
+  if (!bounds) {
+    return 0.02;
+  }
+
+  const width = Math.abs(bounds[2] - bounds[0]);
+  const height = Math.abs(bounds[3] - bounds[1]);
+  const size = Math.max(width, height) * 0.045;
+  return Math.max(0.01, Math.min(0.18, size));
+}
+
+function buildDxfText(layerName, item, geometry) {
+  const point = getDxfLabelPoint(item, geometry);
+  if (!point || !item.name) {
+    return [];
+  }
+
+  return [
+    dxfPair(0, 'TEXT'),
+    dxfPair(8, layerName),
+    dxfPair(10, formatDxfNumber(point[0])),
+    dxfPair(20, formatDxfNumber(point[1])),
+    dxfPair(30, 0),
+    dxfPair(40, formatDxfNumber(getDxfTextHeight(geometry))),
+    dxfPair(1, item.name),
+    dxfPair(7, 'STANDARD'),
+    dxfPair(72, 1),
+    dxfPair(11, formatDxfNumber(point[0])),
+    dxfPair(21, formatDxfNumber(point[1])),
+    dxfPair(31, 0),
+  ];
+}
+
+export function featureCollectionToDxf(name, metadata, geometryCollection) {
+  const metadataById = new Map(metadata.map((item) => [item.id, item]));
+  const layers = new Set();
+  const entities = [];
+
+  for (const feature of geometryCollection.features || []) {
+    const item = metadataById.get(feature.properties?.id);
+    if (!item) {
+      continue;
+    }
+
+    const layerName = getNetcadLayerName(item);
+    layers.add(layerName);
+
+    for (const ring of dxfPolygonRings(feature.geometry)) {
+      const points = dxfRingPoints(ring);
+      if (points.length < 3) {
+        continue;
+      }
+      const polyline = buildDxfPolyline(layerName, points);
+      for (const line of polyline) {
+        entities.push(line);
+      }
+    }
+
+    for (const line of buildDxfText(layerName, item, feature.geometry)) {
+      entities.push(line);
+    }
+  }
+
+  if (layers.size === 0) {
+    layers.add('SINIRLAR');
+  }
+
+  const layerTable = [...layers].flatMap((layerName, index) => [
+    dxfPair(0, 'LAYER'),
+    dxfPair(2, layerName),
+    dxfPair(70, 0),
+    dxfPair(62, (index % 7) + 1),
+    dxfPair(6, 'CONTINUOUS'),
+  ]);
+
+  return [
+    dxfPair(999, name),
+    dxfPair(0, 'SECTION'),
+    dxfPair(2, 'HEADER'),
+    dxfPair(9, '$ACADVER'),
+    dxfPair(1, 'AC1009'),
+    dxfPair(9, '$DWGCODEPAGE'),
+    dxfPair(3, 'ANSI_1254'),
+    dxfPair(0, 'ENDSEC'),
+    dxfPair(0, 'SECTION'),
+    dxfPair(2, 'TABLES'),
+    dxfPair(0, 'TABLE'),
+    dxfPair(2, 'LTYPE'),
+    dxfPair(70, 1),
+    dxfPair(0, 'LTYPE'),
+    dxfPair(2, 'CONTINUOUS'),
+    dxfPair(70, 0),
+    dxfPair(3, 'Solid line'),
+    dxfPair(72, 65),
+    dxfPair(73, 0),
+    dxfPair(40, 0),
+    dxfPair(0, 'ENDTAB'),
+    dxfPair(0, 'TABLE'),
+    dxfPair(2, 'LAYER'),
+    dxfPair(70, layers.size),
+    ...layerTable,
+    dxfPair(0, 'ENDTAB'),
+    dxfPair(0, 'ENDSEC'),
+    dxfPair(0, 'SECTION'),
+    dxfPair(2, 'ENTITIES'),
+    ...entities,
+    dxfPair(0, 'ENDSEC'),
+    dxfPair(0, 'EOF'),
+    '',
+  ].join('\r\n');
 }
 
 export function geometryToGml(geometry, options = {}) {
@@ -1445,7 +1702,7 @@ function encodeISO88599Char(code) {
 function writeISO88599Field(u8, off, value, length) {
   const s = String(value ?? '').slice(0, length);
   for (let i = 0; i < length; i++) {
-    u8[off + i] = i < s.length ? encodeISO88599Char(s.charCodeAt(i)) : 0x20;
+    u8[off + i] = i < s.length ? encodeWindows1254Char(s.charCodeAt(i)) : 0x20;
   }
 }
 

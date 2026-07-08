@@ -7,7 +7,13 @@ import { fileURLToPath } from 'node:url';
 import AdmZip from 'adm-zip';
 import { topology } from 'topojson-server';
 import XLSX from 'xlsx';
-import { featureCollectionToGml, featureCollectionToOsm } from '../download.js';
+import {
+  featureCollectionToDxf,
+  featureCollectionToGml,
+  featureCollectionToOsm,
+  encodeWindows1254Text,
+  getNetcadLayerName,
+} from '../download.js';
 import {
   ensureDir,
   paths,
@@ -465,7 +471,9 @@ function buildKmlDescription(item) {
 function featureCollectionToKml(name, metadata, geometryCollection) {
   const metadataById = new Map(metadata.map((item) => [item.id, item]));
   const styleId = 'turkiye-map-style';
-  const placemarks = geometryCollection.features.map((feature) => {
+  const folderGroups = new Map();
+
+  for (const feature of geometryCollection.features) {
     const item = metadataById.get(feature.properties.id);
     if (!item) {
       throw new Error(`featureCollectionToKml: no metadata found for id "${feature.properties.id}"`);
@@ -476,7 +484,7 @@ function featureCollectionToKml(name, metadata, geometryCollection) {
       .map(([key, value]) => `<Data name="${xmlEscape(key)}"><value>${xmlEscape(value)}</value></Data>`)
       .join('');
 
-    return [
+    const placemark = [
       '<Placemark>',
       `<styleUrl>#${styleId}</styleUrl>`,
       `<name>${xmlEscape(item.name || item.id)}</name>`,
@@ -485,7 +493,22 @@ function featureCollectionToKml(name, metadata, geometryCollection) {
       geometryToKml(feature.geometry),
       '</Placemark>',
     ].join('');
-  }).join('');
+
+    const layerName = getNetcadLayerName(item);
+    const group = folderGroups.get(layerName) || [];
+    group.push(placemark);
+    folderGroups.set(layerName, group);
+  }
+
+  const folders = [...folderGroups.entries()]
+    .map(([layerName, placemarks]) => [
+      '<Folder>',
+      `<name>${xmlEscape(layerName)}</name>`,
+      '<open>1</open>',
+      placemarks.join(''),
+      '</Folder>',
+    ].join(''))
+    .join('');
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -493,7 +516,7 @@ function featureCollectionToKml(name, metadata, geometryCollection) {
     '<Document>',
     `<name>${xmlEscape(name)}</name>`,
     `<Style id="${styleId}"><LineStyle><color>ff8f5f34</color><width>1.4</width></LineStyle><PolyStyle><color>99ffddc7</color><fill>1</fill><outline>1</outline></PolyStyle></Style>`,
-    placemarks,
+    folders,
     '</Document>',
     '</kml>',
     '',
@@ -627,6 +650,9 @@ export function main() {
   const regionGml = featureCollectionToGml('turkiye_map.regions', regions, regionGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'region' });
   const provinceGml = featureCollectionToGml('turkiye_map.provinces', provinces, provinceGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'province' });
   const districtGml = featureCollectionToGml('turkiye_map.districts', districts, districtGeometry, (item) => sanitizeKmlMetadata(item), { featureTypeName: 'district' });
+  const regionDxf = featureCollectionToDxf('turkiye_map.regions', regions, regionGeometry);
+  const provinceDxf = featureCollectionToDxf('turkiye_map.provinces', provinces, provinceGeometry);
+  const districtDxf = featureCollectionToDxf('turkiye_map.districts', districts, districtGeometry);
   const regionOsm = featureCollectionToOsm('turkiye_map.regions', regions, regionGeometry, (item) => sanitizeKmlMetadata(item));
   const provinceOsm = featureCollectionToOsm('turkiye_map.provinces', provinces, provinceGeometry, (item) => sanitizeKmlMetadata(item));
   const districtOsm = featureCollectionToOsm('turkiye_map.districts', districts, districtGeometry, (item) => sanitizeKmlMetadata(item));
@@ -636,6 +662,9 @@ export function main() {
   writeText(path.join(distRoot, 'gml', 'regions.gml'), regionGml);
   writeText(path.join(distRoot, 'gml', 'provinces.gml'), provinceGml);
   writeText(path.join(distRoot, 'gml', 'districts.gml'), districtGml);
+  writeBinary(path.join(distRoot, 'dxf', 'regions.dxf'), Buffer.from(encodeWindows1254Text(regionDxf)));
+  writeBinary(path.join(distRoot, 'dxf', 'provinces.dxf'), Buffer.from(encodeWindows1254Text(provinceDxf)));
+  writeBinary(path.join(distRoot, 'dxf', 'districts.dxf'), Buffer.from(encodeWindows1254Text(districtDxf)));
   writeText(path.join(distRoot, 'osm', 'regions.osm'), regionOsm);
   writeText(path.join(distRoot, 'osm', 'provinces.osm'), provinceOsm);
   writeText(path.join(distRoot, 'osm', 'districts.osm'), districtOsm);

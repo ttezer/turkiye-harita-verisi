@@ -4,9 +4,11 @@
   buildJsonPayload as buildFilteredJsonPayload,
   buildKmzBlobFromKml,
   buildGeoPackageBlob,
+  featureCollectionToDxf,
   featureCollectionToGml,
   featureCollectionToOsm,
   buildShapefileZipBlob,
+  getNetcadLayerName,
   buildTabularRows as buildFilteredTabularRows,
   buildTopojsonPayload as buildFilteredTopojsonPayload,
   buildXlsxArrayBuffer,
@@ -16,7 +18,8 @@
   rowsToCsv,
   rowsToWkt,
   rowsToSql,
-} from './download.js?v=33';
+  encodeWindows1254Text,
+} from './download.js?v=34';
 
 const state = {
   format: 'geojson',
@@ -53,6 +56,7 @@ const els = {
   csvDelimiterSelect: document.querySelector('#csvDelimiterSelect'),
   fieldsField: document.querySelector('#fieldsField'),
   shpFieldsNote: document.querySelector('#shpFieldsNote'),
+  dxfFieldsNote: document.querySelector('#dxfFieldsNote'),
   styleField: document.querySelector('#styleField'),
   colorModeField: document.querySelector('#colorModeField'),
   paletteField: document.querySelector('#paletteField'),
@@ -996,6 +1000,7 @@ function hydrateHeroFormatCards() {
     png: { subtitle: 'Görsel', color: '#a9ef57' },
     gpkg: { subtitle: 'GIS Paket', color: '#ff8a3d' },
     shp: { subtitle: 'Shapefile', color: '#59a7ff' },
+    dxf: { subtitle: 'CAD', color: '#3ee6c4' },
     pdf: { subtitle: 'Belge', color: '#ffd166' },
     'react-component': { subtitle: 'Kod', color: '#ff7de9' },
   };
@@ -1066,6 +1071,7 @@ function syncFormatFields() {
 
   toggleField(els.fieldsField, isStructuredData || isVisual);
   toggleField(els.shpFieldsNote, state.format === 'shp');
+  toggleField(els.dxfFieldsNote, state.format === 'dxf');
   toggleField(els.styleField, isVisual);
   toggleField(els.colorModeField, showColorMode);
   toggleField(els.paletteField, showPalette);
@@ -1249,6 +1255,10 @@ function getAvailableFieldDefinitions() {
 
   let options;
 
+  const netcadGeojsonFields = state.format === 'geojson'
+    ? getNetcadGeojsonFieldDefinitions(state.level)
+    : [];
+
   const spatialFields = spatialAttributeFormats.has(state.format) ? [
     fieldDef('centroid_lat', 'Merkez Noktası (Lat)', 'Merkez noktas? enlemi', false),
     fieldDef('centroid_lon', 'Merkez Noktası (Lon)', 'Merkez noktas? boylamı', false),
@@ -1268,6 +1278,7 @@ function getAvailableFieldDefinitions() {
     options = [
       fieldDef('id', 'Bölge ID', 'Bölgenin Benzersiz Kimliği', true),
       fieldDef('name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...netcadGeojsonFields,
       ...spatialFields,
     ];
   } else if (state.level === 'province') {
@@ -1276,6 +1287,7 @@ function getAvailableFieldDefinitions() {
       fieldDef('name', 'İl Adı', 'İl Görünür Adı', true),
       fieldDef('region_id', 'Bölge ID', 'Bölge Benzersiz Kimliği', true),
       fieldDef('region_name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...netcadGeojsonFields,
       ...spatialFields,
     ];
   } else if (state.level === 'district') {
@@ -1286,6 +1298,7 @@ function getAvailableFieldDefinitions() {
       fieldDef('parent_name', 'İl Adı', 'İl Görünür Adı', true),
       fieldDef('region_id', 'Bölge ID', 'Bölge Benzersiz Kimliği', true),
       fieldDef('region_name', 'Bölge Adı', 'Bölge Görünür Adı', true),
+      ...netcadGeojsonFields,
       ...spatialFields,
     ];
   } else {
@@ -1297,11 +1310,36 @@ function getAvailableFieldDefinitions() {
       fieldDef('parent_name', 'İlçe Adı', 'İlçe Görünür Adı', true),
       fieldDef('province_id', 'İl ID', 'İl Benzersiz Kimliği', true),
       fieldDef('province_name', 'İl Adı', 'İl Görünür Adı', true),
+      ...netcadGeojsonFields,
       ...spatialFields,
     ];
   }
 
   return options;
+}
+
+function getNetcadGeojsonFieldDefinitions(level) {
+  const fields = [
+    fieldDef('TABAKA', 'Netcad Tabaka', 'Netcad katman adı', true),
+    fieldDef('BOLGE_ADI', 'Netcad Bölge Adı', 'Büyük harfli bölge adı', true),
+  ];
+
+  if (level === 'province' || level === 'district' || level === 'mahalle') {
+    fields.push(
+      fieldDef('IL_ADI', 'Netcad İl Adı', 'Büyük harfli il adı', true),
+      fieldDef('IL_KODU', 'Netcad İl Kodu', 'Plaka kodu', true),
+    );
+  }
+
+  if (level === 'district' || level === 'mahalle') {
+    fields.push(fieldDef('ILCE_ADI', 'Netcad İlçe Adı', 'Büyük harfli ilçe adı', true));
+  }
+
+  if (level === 'mahalle') {
+    fields.push(fieldDef('MAHALLE_ADI', 'Netcad Mahalle Adı', 'Büyük harfli mahalle adı', true));
+  }
+
+  return fields;
 }
 
 function fieldDef(key, label, description, defaultChecked) {
@@ -1368,6 +1406,7 @@ function estimateDownloadSize() {
   else if (fmt === 'gml') bytes = (geoBytes + metaBytes) * 1.15;
   else if (fmt === 'osm') bytes = geoBytes * 1.4 + metaBytes * 0.2;
   else if (fmt === 'shp') bytes = geoBytes * 0.7;
+  else if (fmt === 'dxf') bytes = geoBytes * 0.9;
   else if (fmt === 'gpkg') bytes = (geoBytes + metaBytes) * 0.65;
   else if (fmt === 'svg' || fmt === 'png' || fmt === 'react-component') bytes = geoBytes * 0.6;
   else return '';
@@ -1525,6 +1564,18 @@ function getFormatAvailability() {
       filename: `${state.level}s.zip`,
       summary(scopeLabel, detailLabel) {
         return `${scopeLabel} için ${getDetailLabel(detailLabel)} Shapefile ZIP paketi indirilebilir (.shp + .shx + .dbf + .prj, WGS84).`;
+      },
+    };
+  }
+
+  if (state.format === 'dxf') {
+    return {
+      available: true,
+      label: 'Hazır',
+      title: 'DXF hazır',
+      filename: getDownloadFilename('dxf', `${state.level}s`),
+      summary(scopeLabel, detailLabel) {
+        return `${scopeLabel} için ${getDetailLabel(detailLabel)} DXF çıktısı indirilebilir. Netcad uyumlu katman: ${getNetcadLayerName(state.level)}. Adlar TEXT etiketi olarak otomatik eklenir.`;
       },
     };
   }
@@ -2596,6 +2647,12 @@ async function buildDownloadBlob() {
     return buildShapefileZipBlob(getVisibleFeatures(), getVisibleMetadataItems(), `${state.level}s`);
   }
 
+  if (state.format === 'dxf') {
+    return new Blob([encodeWindows1254Text(buildDxfDocument())], {
+      type: 'application/dxf',
+    });
+  }
+
   if (state.format === 'gpkg') {
     return buildGeoPackageBlob(
       getVisibleFeatures(),
@@ -2678,6 +2735,21 @@ function buildKmlDocument() {
   return featureCollectionToKml(name, metadata, geometryCollection,
     (item) => pickFields(buildExportProperties(item), state.selectedFields),
     colorResolver);
+}
+
+function buildDxfDocument() {
+  const metadata = getVisibleMetadataItems();
+  const geometryCollection = {
+    type: 'FeatureCollection',
+    features: getVisibleFeatures(),
+  };
+  const name = state.scope === 'region' && currentRegionName()
+    ? `${currentRegionName()} ${state.level}`
+    : state.scope === 'province' && currentProvinceName()
+      ? `${currentProvinceName()} ${state.level}`
+      : `turkiye_map.${state.level}s`;
+
+  return featureCollectionToDxf(name, metadata, geometryCollection);
 }
 
 function buildGmlDocument() {
@@ -2939,6 +3011,42 @@ function buildCommonProperties(item) {
   return pickFields(buildExportProperties(item), state.selectedFields);
 }
 
+function formatNetcadText(value) {
+  return value ? String(value).toLocaleUpperCase('tr-TR') : '';
+}
+
+function buildNetcadProperties(item, parentName) {
+  const province = item.level === 'province'
+    ? item
+    : item.province_id
+      ? datasets.provincesById.get(item.province_id)
+      : item.parent_id
+        ? datasets.provincesById.get(item.parent_id)
+        : null;
+  const regionName = item.level === 'region'
+    ? item.name
+    : item.region_name || (province?.region_id ? datasets.regionsById.get(province.region_id)?.name : '');
+  const provinceName = item.level === 'province'
+    ? item.name
+    : item.level === 'district'
+      ? parentName
+      : item.province_name || province?.name || '';
+  const districtName = item.level === 'district'
+    ? item.name
+    : item.level === 'yerlesim' || item.level === 'mahalle'
+      ? parentName
+      : '';
+
+  return {
+    TABAKA: getNetcadLayerName(item),
+    BOLGE_ADI: formatNetcadText(regionName),
+    IL_ADI: formatNetcadText(provinceName),
+    IL_KODU: item.plate_code || province?.plate_code || '',
+    ILCE_ADI: formatNetcadText(districtName),
+    MAHALLE_ADI: item.level === 'yerlesim' || item.level === 'mahalle' ? formatNetcadText(item.name) : '',
+  };
+}
+
 function buildExportProperties(item) {
   const parentName = item.level === 'yerlesim'
     ? (item.parent_id ? datasets.districtsById.get(item.parent_id)?.name || null : null)
@@ -2965,6 +3073,7 @@ function buildExportProperties(item) {
     nuts_code: item.nuts_code,
     tuik_id: item.tuik_id,
     icisleri_id: item.icisleri_id,
+    ...buildNetcadProperties(item, parentName),
   };
 }
 

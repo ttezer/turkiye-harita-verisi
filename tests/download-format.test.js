@@ -14,6 +14,8 @@ import {
   buildXlsxArrayBuffer,
   escapeCsvValue,
   escapeSqlValue,
+  encodeWindows1254Text,
+  featureCollectionToDxf,
   featureCollectionToKml,
   featureCollectionToOsm,
   geometryToGml,
@@ -217,6 +219,8 @@ describe('test-ui download helpers', () => {
       );
 
       expect(kml).toContain('<?xml version="1.0" encoding="UTF-8"?>');
+      expect(kml).toContain('<Folder>');
+      expect(kml).toContain('<name>IL_SINIRLARI</name>');
       expect(kml).toContain('<name>İstanbul</name>');
       expect(kml).toContain('<name>Samsun</name>');
       expect(kml).toContain('Bölge Adı: Marmara');
@@ -246,6 +250,30 @@ describe('test-ui download helpers', () => {
       expect(gml).toContain('<gml:Polygon');
       expect(gml).toContain('<gml:MultiSurface');
       expect(gml).not.toContain('undefined');
+    });
+
+    it('DXF uretir ve Netcad katman adini POLYLINE entitylerine yazar', () => {
+      const geojson = buildGeojsonPayload(
+        visibleFeatures,
+        (id) => ({ id, name: visibleItems.find((item) => item.id === id)?.name }),
+      );
+      const dxf = featureCollectionToDxf('marmara provinces', visibleItems, geojson);
+
+      expect(dxf).toContain('SECTION');
+      expect(dxf).toContain('POLYLINE');
+      expect(dxf).toContain('VERTEX');
+      expect(dxf).toContain('TEXT');
+      expect(dxf).toContain('İstanbul');
+      expect(dxf).toContain('IL_SINIRLARI');
+      expect(dxf).toContain('AC1009');
+      expect(dxf).toContain('ANSI_1254');
+      expect(dxf.trimEnd().endsWith('EOF')).toBe(true);
+    });
+
+    it('DXF metnini Windows-1254 byte dizisine cevirir', () => {
+      const encoded = encodeWindows1254Text('ŞığİÇÖÜ');
+
+      expect([...encoded]).toEqual([0xDE, 0xFD, 0xF0, 0xDD, 0xC7, 0xD6, 0xDC]);
     });
 
     it('KML renk modu: colorResolver per-feature style üretir', () => {

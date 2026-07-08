@@ -17,6 +17,7 @@ describe('clean script', () => {
     expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('districts.geojson'), { recursive: true, force: true });
     expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('dist\\topojson'), { recursive: true, force: true });
     expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('dist\\gml'), { recursive: true, force: true });
+    expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('dist\\dxf'), { recursive: true, force: true });
     expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('dist\\osm'), { recursive: true, force: true });
     expect(rmSync).toHaveBeenCalledWith(expect.stringContaining('dist\\gpkg'), { recursive: true, force: true });
   });

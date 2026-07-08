@@ -112,6 +112,9 @@ async function main() {
     'dist/gml/regions.gml',
     'dist/gml/provinces.gml',
     'dist/gml/districts.gml',
+    'dist/dxf/regions.dxf',
+    'dist/dxf/provinces.dxf',
+    'dist/dxf/districts.dxf',
     'dist/osm/regions.osm',
     'dist/osm/provinces.osm',
     'dist/osm/districts.osm',
@@ -131,6 +134,7 @@ async function main() {
   const provincesWkt = readTextFile(path.join(rootDir, 'dist/wkt/provinces.wkt'));
   const regionsKml = readTextFile(path.join(rootDir, 'dist/kml/regions.kml'));
   const regionsGml = readTextFile(path.join(rootDir, 'dist/gml/regions.gml'));
+  const regionsDxf = readTextFile(path.join(rootDir, 'dist/dxf/regions.dxf'));
   const regionsOsm = readTextFile(path.join(rootDir, 'dist/osm/regions.osm'));
   const regionsKmz = new AdmZip(path.join(rootDir, 'dist/kmz/regions.kmz'));
   const gpkgHeader = fs.readFileSync(path.join(rootDir, 'dist/gpkg/turkiye-map.gpkg')).subarray(0, 16);
@@ -145,6 +149,10 @@ async function main() {
   assert(regionsKml.includes('<styleUrl>#turkiye-map-style</styleUrl>'), 'Region KML style reference missing');
   assert(regionsGml.includes('<gml:FeatureCollection'), 'Region GML root element missing');
   assert(regionsGml.includes('<gml:featureMember>'), 'Region GML has no featureMember');
+  assert(regionsDxf.includes('POLYLINE'), 'Region DXF has no polyline entity');
+  assert(regionsDxf.includes('VERTEX'), 'Region DXF has no vertex entity');
+  assert(regionsDxf.includes('TEXT'), 'Region DXF has no text label entity');
+  assert(regionsDxf.includes('BOLGE_SINIRLARI'), 'Region DXF has no Netcad layer name');
   assert(regionsOsm.includes('<osm version="0.6"'), 'Region OSM root element missing');
   assert(regionsOsm.includes('<way id="'), 'Region OSM has no way element');
   assert(regionsOsm.includes('k="name"'), 'Region OSM name tag missing');
