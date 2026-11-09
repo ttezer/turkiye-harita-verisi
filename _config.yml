@@ -39,4 +39,4 @@ exclude:
   - dist/wkt
   - dist/xlsx
   - dist/geojson/mahalle-geometrileri-by-province
-  - dist/geojson/mahalle-geometrileri-by-district
+  - dist/geojson/mahalle-geometrileri-by-district/*

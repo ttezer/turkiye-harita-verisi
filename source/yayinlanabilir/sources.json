@@ -58,6 +58,20 @@
   ],
   "province_sources": [
     {
+      "province": "Adiyaman",
+      "province_code": 2,
+      "source_name": "Manuel veri",
+      "source_url": null,
+      "license": "Manuel veri",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Kullanici tarafindan saglanan Besni mahalle verisi. Manuel veri olarak yayinlanir."
+    },
+    {
       "province": "Balikesir",
       "province_code": 10,
       "source_name": "Balikesir Mahalle KML - kullanici tarafindan saglandi",
