@@ -1,0 +1,42 @@
+# GitHub Pages only publishes the browser application and its runtime data.
+# The repository also contains source archives and export formats used by the
+# data pipeline; publishing those files makes the Pages artifact unnecessarily
+# large and slows the deployment synchronization step.
+exclude:
+  - source/hdx
+  - source/mahalle-manual
+  - source/mulki-idare
+  - source/reference/README.md
+  - source/reference/display-name-overrides.json
+  - source/reference/districts.crosswalk.json
+  - source/reference/duplicate-names.txt
+  - source/reference/harita-genel-mudurlugu.md
+  - source/reference/ilce-listesi.xlsx
+  - source/reference/mahalle-assignment-overrides.json
+  - source/reference/mahalle-geometry-repairs.json
+  - source/reference/mahalle-open-data-name-overrides.json
+  - source/reference/mahalle-open-data-sources.json
+  - source/reference/mugla-marmaris-open-data.json
+  - source/reference/nvi-surface-report.json
+  - source/reference/province-crosswalk.manifest.json
+  - source/reference/province-municipality-types.json
+  - source/reference/provinces.crosswalk.json
+  - source/reference/regions.geographic-7.json
+  - source/reference/uab-validation-report.json
+  - source/yayinlanabilir/incoming-mahalle
+  - source/yayinlanabilir/municipal
+  - dist/csv
+  - dist/dxf
+  - dist/gml
+  - dist/gpkg
+  - dist/kml
+  - dist/kmz
+  - dist/osm
+  - dist/shp
+  - dist/sql
+  - dist/svg
+  - dist/topojson
+  - dist/wkt
+  - dist/xlsx
+  - dist/geojson/mahalle-geometrileri-by-province
+  - dist/geojson/mahalle-geometrileri-by-district
