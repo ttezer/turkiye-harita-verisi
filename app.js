@@ -587,7 +587,7 @@ function mergeMahalleFeatureMetadata(feature) {
   datasets.mahalleMetadataById.set(feature.properties.id, {
     ...(existing || {}),
     ...feature.properties,
-    name: existing?.name || feature.properties.name || feature.properties.source_raw_name || feature.properties.id,
+    name: feature.properties.name || existing?.name || feature.properties.source_raw_name || feature.properties.id,
     parent_id: existing?.parent_id || feature.properties.parent_id || feature.properties.district_id || '',
     slug: existing?.slug || feature.properties.slug || feature.properties.id.toLowerCase(),
   });
