@@ -1,6 +1,6 @@
 {
-  "source_count": 25,
-  "geometry_count": 17365,
+  "source_count": 26,
+  "geometry_count": 17470,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -1281,6 +1281,26 @@
     }
   ],
   "sources": [
+    {
+      "province_id": "TR-P-02",
+      "province_name": "Adıyaman",
+      "source_name": "Manuel veri",
+      "source_label": "Manuel veri",
+      "format": "local_kml",
+      "source_feature_count": 105,
+      "matched_count": 105,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Pınarbaşıosb",
+          "district_id": "TR-D-02-002",
+          "district_name": "Besni",
+          "osb_id": "TR-Y-02-002-OSB-PINARBASIOSB"
+        }
+      ]
+    },
     {
       "province_id": "TR-P-06",
       "province_name": "Ankara",

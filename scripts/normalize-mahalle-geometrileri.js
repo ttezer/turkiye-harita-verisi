@@ -34,6 +34,7 @@ const sourceLabels = readJson(paths.sourceLabels);
 const PUBLIC_CITY_GUIDE_LABEL = sourceLabels.public_data_and_city_guides;
 const PUBLIC_SOURCES_LABEL = sourceLabels.public_sources;
 const USER_PROVIDED_KML_LABEL = sourceLabels.user_provided_kml;
+const MANUAL_DATA_LABEL = 'Manuel veri';
 
 const SOURCES = [
   {
@@ -107,6 +108,30 @@ const LOCAL_GEOJSON_CRS_DEFS = {
 };
 
 const LOCAL_MUNICIPAL_SOURCES = [
+  {
+    province_id: 'TR-P-02',
+    province_name: 'Adıyaman',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '02-adiyaman', 'besni-mahalleleri.kml'),
+    use_settlement_type: true,
+    use_osb_type: true,
+    infer_district_from_geometry: true,
+    kml_name_field: 'orijinal_ad',
+    kml_display_name_field: 'name',
+    kml_type_field: 'birim_turu',
+    kml_parent_field: 'bagli_belde',
+    kml_name_aliases: {
+      ince: 'İncekoz',
+      kaymakamhasantutun: 'Hasan Tütün',
+    },
+    kml_parent_value_map: {
+      'besnimerkez': 'Besni-İlçe Merkezi',
+    },
+    osb_name_pattern: '\\bosb\\b',
+  },
   {
     province_id: 'TR-P-06',
     province_name: 'Ankara',
@@ -570,20 +595,22 @@ function repairPolygonRings(polygon) {
   return polygons;
 }
 
-function buildGeometryProperties(source, district, rawName, override, settlement = null) {
+function buildGeometryProperties(source, district, rawName, override, settlement = null, displayNameOverride = null) {
   if (settlement) {
-    const displayName = formatDisplayNamePreservingAcronyms(override?.name || settlement.name);
+    const displayName = formatDisplayNamePreservingAcronyms(
+      override?.name || displayNameOverride || settlement.name,
+    );
     return {
       id: settlement.id,
       level: 'yerlesim',
-      type: 'mahalle',
+      type: source.use_settlement_type ? settlement.type || 'mahalle' : 'mahalle',
       parent_id: settlement.parent_id,
       province_id: settlement.province_id,
       district_id: settlement.district_id,
       name: displayName,
       source_raw_name: normalizeDisplayText(rawName),
-      source: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
-      source_label: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+      source: source.source || source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+      source_label: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
       source_name: source.source_name,
     };
   }
@@ -598,8 +625,8 @@ function buildGeometryProperties(source, district, rawName, override, settlement
     district_id: district.id,
     name,
     source_raw_name: normalizeDisplayText(rawName),
-    source: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
-    source_label: source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+    source: source.source || source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+    source_label: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
     source_name: source.source_name,
     source_only: true,
   };
@@ -1056,6 +1083,32 @@ function uniqueMatchingSettlements(districtId, nameKeys, settlementIndexes) {
   return results;
 }
 
+function filterSettlementMatchesByKmlContext(source, feature, settlements) {
+  let filtered = settlements;
+  const properties = feature?.properties || {};
+
+  if (source.kml_type_field && properties[source.kml_type_field]) {
+    const typeKey = compactKey(properties[source.kml_type_field]);
+    if (typeKey === 'koy' || typeKey === 'koyu') {
+      filtered = filtered.filter((settlement) => settlement.type === 'koy');
+    } else if (typeKey === 'mahalle' || typeKey === 'mah') {
+      filtered = filtered.filter((settlement) => settlement.type === 'mahalle');
+    }
+  }
+
+  if (source.kml_parent_field && properties[source.kml_parent_field]) {
+    const rawParent = properties[source.kml_parent_field];
+    const rawParentKey = compactKey(rawParent);
+    const expectedParent = source.kml_parent_value_map?.[rawParentKey] || rawParent;
+    const expectedParentKey = compactKey(expectedParent);
+    filtered = filtered.filter((settlement) => (
+      compactKey(settlement.administrative_unit_name) === expectedParentKey
+    ));
+  }
+
+  return filtered;
+}
+
 function buildOverrideIndex(overrides) {
   const byDistrictAndRaw = new Map();
   const byProvinceAndRaw = new Map();
@@ -1182,8 +1235,14 @@ function inferDistrictFromGeometry(source, feature, districtFeatures) {
 }
 
 function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
+  const displayNameForFeature = () => (
+    source.kml_display_name_field
+      ? feature.properties?.[source.kml_display_name_field] || null
+      : null
+  );
+
   const buildOsbResult = (rawName, district, geometry) => {
-    const osbName = formatDisplayNamePreservingAcronyms(rawName);
+    const osbName = formatDisplayNamePreservingAcronyms(displayNameForFeature() || rawName);
     const nameKey = compactKey(rawName).toUpperCase();
     const distSeq = district.id.split('-').pop();
     const provincePlate = source.province_id.replace('TR-P-', '');
@@ -1199,14 +1258,14 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
         properties: {
           id: osbId,
           level: 'yerlesim',
-          type: 'mahalle',
+          type: source.use_osb_type ? 'osb' : 'mahalle',
           parent_id: district.id,
           province_id: source.province_id,
           district_id: district.id,
           name: osbName,
           source_raw_name: osbName,
-          source: source.source_label || '',
-          source_label: source.source_label || '',
+          source: source.source || source.source_label || '',
+          source_label: source.source_label || source.source || '',
           source_name: source.source_name,
           source_only: true,
           osb: true,
@@ -1301,7 +1360,14 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
       status: 'matched',
       feature: {
         type: 'Feature',
-        properties: buildGeometryProperties(source, district, feature.properties.name, null, settlement),
+        properties: buildGeometryProperties(
+          source,
+          district,
+          feature.properties.name,
+          null,
+          settlement,
+          displayNameForFeature(),
+        ),
         geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
       },
     };
@@ -1312,13 +1378,15 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
 
   if (source.resolved_format === 'kmz' || source.resolved_format === 'kml') {
     const description = parseHtmlDescription(feature.properties.description);
-    rawName =
+    const kmlName =
+      (source.kml_name_field && feature.properties[source.kml_name_field]) ||
       feature.properties.neighborhood ||
       feature.properties.mahalle_adi ||
       feature.properties.name ||
       description.ad ||
       description.mahalle ||
       description.mahalle_adi;
+    rawName = source.kml_name_aliases?.[compactKey(kmlName)] || kmlName;
     const rawDistrictName =
       (source.district_field && feature.properties[source.district_field]) ||
       feature.properties.ilce_adi ||
@@ -1393,7 +1461,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
   }
 
   const geometry = normalizePolygonalGeometry(feature.geometry, source.repair_disjoint_rings);
-  if (shouldTreatRawNameAsOsb(source, rawName)) {
+  if (shouldTreatRawNameAsOsb(source, rawName) || shouldTreatKmlFeatureAsOsb(source, feature)) {
     return buildOsbResult(rawName, district, geometry);
   }
 
@@ -1412,12 +1480,14 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
     };
   }
 
-  const settlementMatches = override?.settlement_id
+  let settlementMatches = override?.settlement_id
     ? [indexes.settlementsById.get(override.settlement_id)].filter(Boolean)
     : uniqueKeys(nameMatchKeys(rawName).flatMap((nameKey) => (
     indexes.settlements.byDistrictAndName.get(`${district.id}|${nameKey}`) || []
   )).map((item) => item.id))
     .map((id) => indexes.settlementsById.get(id));
+
+  settlementMatches = filterSettlementMatchesByKmlContext(source, feature, settlementMatches);
 
   if (settlementMatches.length === 0 && shouldTreatKmlFeatureAsOsb(source, feature)) {
     return buildOsbResult(rawName, district, geometry);
@@ -1437,7 +1507,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
           properties: {
             ...buildGeometryProperties(source, outputDistrict, rawName, {
               id: sourceOnlyId,
-              name: formatDisplayNamePreservingAcronyms(rawName),
+              name: formatDisplayNamePreservingAcronyms(displayNameForFeature() || rawName),
             }),
             source_only_keep_separate: true,
             source_match_status: settlementMatches.length === 0 ? 'unmatched' : 'ambiguous',
@@ -1472,7 +1542,14 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
     status: 'matched',
     feature: {
       type: 'Feature',
-      properties: buildGeometryProperties(source, district, rawName, override, settlement),
+      properties: buildGeometryProperties(
+        source,
+        district,
+        rawName,
+        override,
+        settlement,
+        displayNameForFeature(),
+      ),
       geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
     },
   };
@@ -1937,6 +2014,9 @@ function normalizeLocalKmlCollection(source, collection) {
 }
 
 function shouldTreatKmlFeatureAsOsb(source, feature) {
+  if (source.kml_type_field && feature?.properties?.[source.kml_type_field]) {
+    return compactKey(feature.properties[source.kml_type_field]) === 'osb';
+  }
   return Boolean(source.kml_type_marks_osb && feature?.properties?._source_type);
 }
 
@@ -2106,6 +2186,7 @@ export async function main() {
         format: resolvedSource.resolved_format,
         source_feature_count: collection.features.length,
         matched_count: 0,
+        osb_count: 0,
         unmatched: [],
         ambiguous: [],
         skipped: [],
@@ -2113,9 +2194,12 @@ export async function main() {
 
       for (const feature of collection.features) {
         const result = normalizeSourceFeature(resolvedSource, feature, indexes, districtFeatures);
-        if (result.status === 'matched') {
+        if (result.status === 'matched' || result.status === 'osb') {
           features.push(result.feature);
           report.matched_count += 1;
+          if (result.status === 'osb') {
+            report.osb_count += 1;
+          }
         } else if (result.status === 'matched_many') {
           features.push(...result.features);
           report.matched_count += result.features.length;

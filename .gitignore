@@ -33,6 +33,7 @@ source/mahalle-manual/*/*.7z
 !source/mahalle-manual/41-kocaeli/kocaeli-mahalle.kml
 !source/mahalle-manual/59-tekirdag/tekirdag-mahalle.kml
 !source/mahalle-manual/07-antalya/antalya-mahalle.kml
+!source/mahalle-manual/02-adiyaman/besni-mahalleleri.kml
 source/yerlesimler/*.xls
 source/yerlesimler/*.xlsx
 *.log
