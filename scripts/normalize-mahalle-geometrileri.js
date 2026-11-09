@@ -123,6 +123,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     kml_display_name_field: 'name',
     kml_type_field: 'birim_turu',
     kml_parent_field: 'bagli_belde',
+    display_name_parent_on_duplicate: true,
     kml_name_aliases: {
       ince: 'İncekoz',
       kaymakamhasantutun: 'Hasan Tütün',
@@ -1241,6 +1242,25 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
       : null
   );
 
+  const displayNameForSettlement = (settlement) => {
+    if (!source.display_name_parent_on_duplicate) {
+      return displayNameForFeature();
+    }
+
+    const siblings = indexes.settlements.byDistrictAndName.get(
+      `${settlement.district_id}|${compactKey(settlement.name)}`,
+    ) || [];
+    const sameType = siblings.filter((item) => item.type === settlement.type);
+    if (sameType.length <= 1) {
+      return settlement.name;
+    }
+
+    const parent = settlement.administrative_unit_name
+      ?.replace(/-İlçe Merkezi$/i, '')
+      .trim();
+    return parent ? `${settlement.name} (${parent})` : settlement.name;
+  };
+
   const buildOsbResult = (rawName, district, geometry) => {
     const osbName = formatDisplayNamePreservingAcronyms(displayNameForFeature() || rawName);
     const nameKey = compactKey(rawName).toUpperCase();
@@ -1366,7 +1386,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
           feature.properties.name,
           null,
           settlement,
-          displayNameForFeature(),
+          displayNameForSettlement(settlement),
         ),
         geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
       },
@@ -1548,7 +1568,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
         rawName,
         override,
         settlement,
-        displayNameForFeature(),
+        displayNameForSettlement(settlement),
       ),
       geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
     },
