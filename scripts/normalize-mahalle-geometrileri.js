@@ -1247,18 +1247,20 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
       return displayNameForFeature();
     }
 
+    const baseDisplayName = settlement.name.replace(/\s+(?:Mahallesi|Köyü)$/iu, '').trim();
+
     const siblings = indexes.settlements.byDistrictAndName.get(
       `${settlement.district_id}|${compactKey(settlement.name)}`,
     ) || [];
     const sameType = siblings.filter((item) => item.type === settlement.type);
     if (sameType.length <= 1) {
-      return settlement.name;
+      return baseDisplayName;
     }
 
     const parent = settlement.administrative_unit_name
       ?.replace(/-İlçe Merkezi$/i, '')
       .trim();
-    return parent ? `${settlement.name} (${parent})` : settlement.name;
+    return parent ? `${baseDisplayName} (${parent})` : baseDisplayName;
   };
 
   const buildOsbResult = (rawName, district, geometry) => {
