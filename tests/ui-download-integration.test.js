@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import XLSX from 'xlsx';
 import { topology } from 'topojson-server';
 import { describe, expect, it } from 'vitest';
@@ -17,7 +18,7 @@ import {
   rowsToWkt,
 } from '../download.js';
 
-const rootDir = path.resolve('D:/turkiye_map');
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));

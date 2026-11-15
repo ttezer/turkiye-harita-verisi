@@ -1,8 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
-const appSource = fs.readFileSync(path.resolve('D:/turkiye_map/app.js'), 'utf8');
+const appSource = fs.readFileSync(
+  path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../app.js'),
+  'utf8',
+);
 
 describe('UI format alanlari', () => {
   it('PNG ve PDF icin alan secimi panelini acik tutar', () => {

@@ -5582,5 +5582,61 @@
     "raw_key": "harmanlar",
     "settlement_id": "TR-Y-77-004-M-0006",
     "note": "Harmanlar kaydi kanonik Harman mahallesine baglandi"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-001",
+    "raw_key": "koylukoyu",
+    "settlement_id": "TR-Y-10-001-M-0062",
+    "name": "Köylü"
+  },
+  {
+    "province_id": "TR-P-10",
+    "district_id": "TR-D-10-014",
+    "raw_key": "kamcilli",
+    "settlement_id": "TR-Y-10-014-M-0034",
+    "name": "Kamçıllı"
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-007",
+    "raw_key": "bakirkoy",
+    "settlement_id": "TR-Y-16-007-M-0006",
+    "name": "Bakırköy"
+  },
+  {
+    "province_id": "TR-P-27",
+    "district_id": "TR-D-27-002",
+    "raw_key": "serinevler",
+    "settlement_id": "TR-Y-27-002-M-0057",
+    "name": "Serinevler"
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "bademli",
+    "settlement_id": "TR-Y-35-025-M-0007",
+    "name": "Bademli"
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "birgi",
+    "settlement_id": "TR-Y-35-025-M-0013",
+    "name": "Birgi"
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "ovakent",
+    "settlement_id": "TR-Y-35-025-M-0076",
+    "name": "Ovakent"
+  },
+  {
+    "province_id": "TR-P-61",
+    "district_id": "TR-D-61-011",
+    "raw_key": "yesiltepe",
+    "settlement_id": "TR-Y-61-011-M-0063",
+    "name": "Yeşiltepe"
   }
 ]

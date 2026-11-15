@@ -533,6 +533,10 @@ function writeBinary(filePath, buffer) {
   fs.writeFileSync(filePath, buffer);
 }
 
+function pythonExecutable() {
+  return process.env.PYTHON || (process.platform === 'win32' ? 'python' : 'python3');
+}
+
 function writeGeoPackage(filePath, layers) {
   ensureDir(path.dirname(filePath));
   const payload = {
@@ -546,7 +550,7 @@ function writeGeoPackage(filePath, layers) {
   };
 
   execFileSync(
-    'python',
+    pythonExecutable(),
     ['scripts/export-gpkg.py', '--output', filePath],
     {
       cwd: paths.rootDir,
