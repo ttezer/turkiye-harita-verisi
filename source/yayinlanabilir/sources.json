@@ -404,6 +404,20 @@
       "note": "Mahalle siniri verisi var; kapsam Sivas merkez olabilir, il geneli kontrol edilmeli."
     },
     {
+      "province": "Erzurum",
+      "province_code": 25,
+      "source_name": "Manuel veri",
+      "source_url": null,
+      "license": "Manuel veri",
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Manuel veri"
+    },
+    {
       "province": "Trabzon",
       "province_code": 61,
       "source_name": "Trabzon Buyuksehir Belediyesi Acik Veri Portali",
