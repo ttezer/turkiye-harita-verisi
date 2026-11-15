@@ -1,127 +1,71 @@
 # Bölge Modeli
 
-Bu belge, `region` seviyesinin mevcut il ve ilçe modelini bozmadan nasıl ekleneceğini tanımlar.
+`region` seviyesi mevcut modelde uygulanmıştır. Hiyerarşi:
 
-## Öneri
+```text
+region -> province -> district
+```
 
-`region`'ı il üzerine ekle:
+İlçe için kanonik ebeveyn hâlâ ildir. Bölge, illeri gruplandıran üst katmandır;
+ilçenin doğrudan ebeveyni değildir.
 
-- `region -> province -> district`
-
-Region'ı il ile ilçe arasına yerleştirme.
-
-## Neden
-
-- mevcut ilçe-ebeveyn ilişkisi zaten doğru ve kullanışlı
-- birleştirmeler, filtreler ve aramalar `district.parent_id = province.id` bağlantısına dayanıyor
-- region, operasyonel bir ilçe ebeveyni değil, bir toplama katmanıdır
-
-## Kanonik Kurallar
+## Uygulanan model
 
 ### Bölge
 
 - `level = region`
 - `parent_id = null`
-- bölge satırları açık bir bölge üyelik politikasından türetilir
+- `region_kind = geographic-7`
+- `member_ids`, bölgeye bağlı il kimliklerini içerir
+- kimlik biçimi `TR-R-XXX`'tir
 
-Önerilen alanlar:
-
-- `id`
-- `name`
-- `name_ascii`
-- `slug`
-- `region_kind`
-- `member_ids`
-- `centroid`
-- `bbox`
+Bölge üyeliği [`source/reference/regions.geographic-7.json`](../source/reference/regions.geographic-7.json)
+dosyasında açıkça tutulur. Pipeline bu referanstan metadata ve il geometrilerinin
+dissolve edilmiş bölge geometrisini üretir.
 
 ### İl
 
 - `level = province`
-- bölge modu etkinleştirildiğinde `parent_id = region.id`
+- `parent_id = region.id`
+- `region_id = region.id`
 - il, ilçenin kanonik ebeveyni olmaya devam eder
 
 ### İlçe
 
 - `level = district`
 - `parent_id = province.id`
-- `region_id` türetilmiş bir kolaylık alanı olarak eklenebilir
+- `region_id`, bağlı ilin bölgesini gösterir
 
-## İlk Bölge Sistemi
+## İlk ve mevcut bölge sistemi
 
-Önerilen ilk `region_kind`:
+Mevcut sistem, Birinci Coğrafya Kongresi ile ilişkilendirilen yedi coğrafi bölgeyi
+referans üyelik tablosu olarak kullanır:
 
-- `geographic-7`
+- Marmara
+- Ege
+- Akdeniz
+- İç Anadolu
+- Karadeniz
+- Doğu Anadolu
+- Güneydoğu Anadolu
 
-`geographic-7` için referans notu:
+Bu, idari bir ilçe kademesi veya ayrı bir resmî polygon kaynağı değildir. Bölge
+geometrileri il geometrilerinin topoloji tabanlı birleştirilmesiyle üretilir; iç
+il sınırları bölge geometrisinde korunmaz.
 
-- bu gruplandırma, düzenlenmiş bir referans katmanı olarak değerlendirilmelidir
-- repo, 6-21 Haziran 1941'de Ankara'da toplanan Birinci Coğrafya Kongresi'nde belirlenen yedi coğrafi bölgeyi temel aldığını belirtmelidir
-- üyelik, çalışma zamanında çıkarılmak yerine yerel bir referans dosyasında açıkça saklanmalıdır
+İleride `nuts-1`, `nuts-2` veya özel gruplamalar eklenirse her biri ayrı
+`region_kind` olarak tanımlanmalıdır. Farklı sistemler örtük tek bir namespace'te
+karıştırılmamalıdır.
 
-İlk bölge örnekleri:
+## Dışa aktarım
 
-- `Marmara`
-- `Ege`
-- `Akdeniz`
-- `İç Anadolu`
-- `Karadeniz`
-- `Doğu Anadolu`
-- `Güneydoğu Anadolu`
-
-Olası ilerideki sistemler:
-
-- `nuts-1`
-- `nuts-2`
-- `custom`
-
-Bu sistemler tek bir örtük `region` namespace'inde karıştırılmamalıdır. `region_kind` aracılığıyla açık tutun.
-
-## Geometri Politikası
-
-- bölge geometrisi, il geometrilerinin ortak sınırlar boyunca eritilmesiyle üretilmelidir
-- uygulama, iç il kenarlarının bölge çıktısına taşınmaması için topoloji tabanlı birleştirmeyi tercih etmelidir
-- bölge, kasıtlı olarak benimsenip doğrulanmadıkça ikinci bir yetkili ham geometri kaynağı sunmamalıdır
-- ilçe geometrisi değişmeden kalır
-
-## Dışa Aktarım Kuralları
-
-Önerilen ilk geçerli kombinasyonlar:
+Bölge çıktıları diğer katmanlarla aynı export hattından üretilir. Geçerli temel
+kombinasyonlar:
 
 - `scope=turkey` + `detail=region`
 - `scope=turkey` + `detail=province`
 - `scope=region` + `detail=province`
 - `scope=province` + `detail=district`
 
-Ertelenen kombinasyon:
-
-- `scope=region` + `detail=district`
-
-Neden:
-
-- yük boyutunu ve arayüz karmaşıklığını artırır
-- ilk kullanışlı bölge sürümü için gerekli değildir
-
-## Kimlik Stratejisi
-
-Önerilen format:
-
-- `TR-R-XXX`
-
-Örnekler:
-
-- `TR-R-MAR`
-- `TR-R-EGE`
-
-İleride birden fazla bölge sistemi desteklenirse:
-
-- kimliğe tür bilgisini göm, ya da
-- kimlikler `region_kind` namespace'i içinde sabit kalır ve aramalarda `region_kind` gerektirilir
-
-## Geriye Dönük Uyumluluk
-
-Kırılmayı en aza indirmek için:
-
-- ilçe `parent_id`'sini değiştirme
-- bölge desteğini eklemeli bir katman olarak ekle
-- mevcut il ve ilçe dışa aktarım yollarını kaldırma
+`scope=region` + `detail=district` için uygulama desteği ayrıca doğrulanmadan
+belge veya entegrasyon sözleşmesine eklenmemelidir.

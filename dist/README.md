@@ -19,6 +19,9 @@ dist/
 └── svg/           # Scalable Vector Graphics haritaları
 ```
 
+`gml/`, `osm/`, `dxf/` ve `gpkg/` klasörleri de build çıktıları arasında yer alır.
+PNG, PDF ve React Component çıktıları tarayıcıdaki kullanıcı seçimine göre üretilir; bu nedenle `dist/` altında sabit dosya olarak bulunmaz.
+
 ## CSV Kolon Yapısı
 
 CSV dosyaları şu uzamsal kolonları içerir:

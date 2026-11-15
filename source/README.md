@@ -9,7 +9,7 @@ Bu klasor aktif il, ilce ve mahalle kaynaklarini tutar.
 - `source/yayinlanabilir/`
   Acik veri mahalle kaynaklari ve bunlara ait manifestler.
 - `source/mahalle-manual/`
-  Kullanici tarafindan saglanan manuel mahalle dosyalari.
+  Aktif hatta açıkça tanımlanmış manuel mahalle dosyaları.
 - `source/mulki-idare/`
   Referans listeler ve dogrulama yardimcilari.
 - `source/reference/`
@@ -18,7 +18,7 @@ Bu klasor aktif il, ilce ve mahalle kaynaklarini tutar.
 ## Kural
 
 - Aktif build yalnizca tanimli aktif kaynaklara dayanir.
-- `archive/` altindaki veriler varsayilan build akisina girmez.
+- `source/mulki-idare/` doğrulama/referans içindir; varsayılan mahalle geometri akışına girmez.
 - Pasif referans veya arsiv verisi burada aktif kaynak gibi belgelenmemelidir.
 
 ## Kalite ve kapsam notlari
@@ -29,5 +29,5 @@ Bu klasor aktif il, ilce ve mahalle kaynaklarini tutar.
 
 Ilgili belgeler:
 
-- [docs/data-sources.md](/D:/turkiye_map/docs/data-sources.md)
-- [docs/pipeline.md](/D:/turkiye_map/docs/pipeline.md)
+- [docs/data-sources.md](../docs/data-sources.md)
+- [docs/pipeline.md](../docs/pipeline.md)

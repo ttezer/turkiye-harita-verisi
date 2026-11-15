@@ -23,6 +23,7 @@ Birleştirme kuralı:
 - `name_ascii`: deterministik ASCII'ye dönüştürülmüş ad
 - `slug`: URL uyumlu string
 - `aliases`: alternatif adlar
+- `hdx_id`: kaynak snapshot'ındaki kimlik veya bölge için türetilmiş kaynak kimliği
 
 Slug kuralı:
 
@@ -37,15 +38,28 @@ Slug kuralı:
 - `lau_code`: yalnızca ilçe düzeyinde istatistiki kod, mevcut olduğunda
 - `tuik_id`: TÜİK referans kimliği
 - `icisleri_id`: İçişleri Bakanlığı / MİB referans kimliği
+- `municipality_type`: il düzeyindeki belediye türü
+- `is_metropolitan_municipality`: büyükşehir bilgisinin boolean karşılığı
 
 Kural:
 
 - `tuik_id` ve `icisleri_id` değerleri örtüşse bile ayrı alanlar olarak kalır
 
+## Bölge
+
+- `level = region`
+- `parent_id = null`
+- mevcut bölge sistemi `region_kind = geographic-7`'dir
+- `member_ids`, bölgeye bağlı il kimliklerini taşır
+
+Bölge üyeliği çalışma zamanında tahmin edilmez; `source/reference/regions.geographic-7.json`
+dosyasındaki referans üyelikten üretilir.
+
 ## İl
 
 - `level = province`
-- `parent_id = null`
+- `parent_id = region.id`
+- `region_id = parent_id`
 - `nuts_code` dolu olabilir
 - `lau_code = null`
 
@@ -53,6 +67,7 @@ Kural:
 
 - `level = district`
 - `parent_id = province.id`
+- `region_id`, bağlı ilin bölgesini gösterir
 - `nuts_code = null`
 - bir ilçe düzeyinde istatistiki referans eklendiğinde `lau_code` dolu olabilir
 

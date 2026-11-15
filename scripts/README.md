@@ -18,12 +18,16 @@ Pipeline steps:
    Produces deterministic canonical ids from normalized data and attaches region membership.
 8. `validate.js`
    Runs schema and relationship validation for region, province, and district outputs.
-9. `normalize-mahalle-geometrileri.js`
+9. `normalize-yerlesimler.js`
+   Normalizes neighborhood and village reference metadata from the e-İçişleri snapshots.
+10. `normalize-bagli-yerlesimler.js`
+    Normalizes subordinate-settlement metadata and writes its report.
+11. `normalize-mahalle-geometrileri.js`
    Builds mahalle geometries from open-data sources and user-supplied inputs.
    Also writes `data/processed/mahalle-geometrileri-report.json`, which feeds generated UI quality notes such as `osb_area`, `geometry_repair`, and `far_multipolygon`.
-10. `export.js`
+12. `export.js`
     Writes consumer-facing outputs into `dist/`.
-11. `smoke-test.js`
+13. `smoke-test.js`
     Verifies built artifacts, JavaScript package access, static test UI serving, and traversal blocking.
 
 Related quality-note inputs:

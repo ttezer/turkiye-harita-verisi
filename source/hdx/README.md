@@ -17,7 +17,7 @@ Bu dizin, il ve ilçe için aktif kaynak olarak kullanılan vendored `HDX` snaps
 
 Detay politika için:
 
-- [DATA-LICENSE.md](/D:/turkiye_map/DATA-LICENSE.md)
+- [DATA-LICENSE.md](../../DATA-LICENSE.md)
 
 ## Kurallar
 

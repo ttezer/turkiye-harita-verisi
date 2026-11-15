@@ -12,7 +12,7 @@ Buraya yalnizca su sartlardan en az biri saglandiginda veri veya manifest alinir
 ## Bu klasorde ne tutulur
 
 - kaynak manifestleri
-- acik veri ham dosyalari
+- `municipal/` altindaki acik veri snapshot'lari
 - kismi ilce veya il bazli acik veri dosyalari
 - yayin kararini destekleyen notlar
 - kapsam sinirlarini aciklayan province-level notlar
@@ -36,16 +36,17 @@ Buraya yalnizca su sartlardan en az biri saglandiginda veri veya manifest alinir
 - Ordu
 - Sakarya
 - Sivas
+- Trabzon
 
 Guncel resmi liste icin:
 
-- [sources.json](/D:/turkiye_map/source/yayinlanabilir/sources.json)
+- [sources.json](./sources.json)
 
 ## Kullanicidan gelecek mahalle dosyalari
 
 Yeni ham mahalle dosyalari once su klasore birakilmalidir:
 
-- [incoming-mahalle](/D:/turkiye_map/source/yayinlanabilir/incoming-mahalle)
+- [incoming-mahalle](./incoming-mahalle)
 
 Bu klasorun amaci:
 

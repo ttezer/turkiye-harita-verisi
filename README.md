@@ -22,6 +22,7 @@ Mahalle katmanı yalnızca doğrulanmış açık veri veya manuel kaynak bulunan
 
 ## Desteklenen Formatlar
 
+- JSON
 - GeoJSON
 - JSON
 - TopoJSON
@@ -43,9 +44,10 @@ Mahalle katmanı yalnızca doğrulanmış açık veri veya manuel kaynak bulunan
 
 ## Veri Modeli
 
+- İdari hiyerarşi: `region -> province -> district`
 - İl ve ilçe için aktif kaynak: `HDX`
-- Mahalle için aktif kaynak: `source/yayinlanabilir/` altındaki açık veri ve `source/mahalle-manual/` altındaki manuel kaynaklar
-- Pasif referans arşivi: `archive/`
+- Mahalle için aktif kaynaklar: `source/yayinlanabilir/municipal/` altındaki açık veri snapshot'ları ve `source/mahalle-manual/` altındaki tanımlı manuel kaynaklar
+- Mahalle kapsamı ve kalite özeti: [`dist/json/mahalle-geometrileri-report.json`](./dist/json/mahalle-geometrileri-report.json)
 
 ## Hızlı Başlangıç
 
@@ -70,11 +72,12 @@ npm run test:smoke
 ## Dizin Ozeti
 
 ```text
-source/   ham ve referans veri
-scripts/  normalize, validate ve export adimlari
-dist/     uretilmis cikti dosyalari
-docs/     kisa urun ve pipeline belgeleri
-tests/    otomatik testler
+source/          ham ve referans veri
+data/processed/  pipeline ara ve rapor çıktıları
+scripts/         normalize, validate ve export adımları
+dist/            üretilmiş tüketici çıktıları
+docs/            ürün ve pipeline belgeleri
+tests/           otomatik testler
 ```
 
 ## Temel Belgeler

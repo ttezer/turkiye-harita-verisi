@@ -20,6 +20,9 @@ Format: `TR-P-XX`
 
 Örnek: `TR-P-34`
 
+İl kimliği plaka kodundan türetilir; görünen ad veya crosswalk kimliği il
+kimliğinin yerine geçmez.
+
 ## İlçe Kimliği
 
 Format: `TR-D-XX-YYY`
@@ -27,16 +30,18 @@ Format: `TR-D-XX-YYY`
 - `TR`: ülke kodu
 - `D`: ilçe (district)
 - `XX`: bağlı olduğu ilin plaka kodu
-- `YYY`: il içi deterministik sıra numarası
+- `YYY`: HDX snapshot'ındaki ilçe yerel kodu
 
 Örnek: `TR-D-34-001`
 
-## Deterministik Sıralama
+## Kaynak ve kararlılık
 
-İlçe sıra numarası için uygulanan sıralama:
+İlçe kimliği ad alfabetik sıralamasıyla yeniden numaralandırılmaz. `YYY`, HDX
+`pcode` değerinden alınır; böylece aynı kaynak kodu korunduğu sürece ilçe
+kimliği de korunur.
 
-1. `name_ascii`
-2. `tuik_id`
-3. `icisleri_id`
+İsim, `tuik_id`, `icisleri_id` ve diğer crosswalk alanları eşleme/metadata
+amacıyla kullanılır; canonical kimlik üretmez.
 
-Bu kural tüm üretimlerde sabit kalmalıdır.
+Bölge üyelikleri ve bölge kimlikleri ayrıca
+`source/reference/regions.geographic-7.json` referansında sabittir.

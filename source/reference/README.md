@@ -38,6 +38,6 @@ Quality note policy:
 
 Related docs:
 
-- [docs/data-sources.md](/D:/turkiye_map/docs/data-sources.md)
-- [docs/pipeline.md](/D:/turkiye_map/docs/pipeline.md)
-- [harita-genel-mudurlugu.md](/D:/turkiye_map/source/reference/harita-genel-mudurlugu.md)
+- [docs/data-sources.md](../../docs/data-sources.md)
+- [docs/pipeline.md](../../docs/pipeline.md)
+- [harita-genel-mudurlugu.md](./harita-genel-mudurlugu.md)

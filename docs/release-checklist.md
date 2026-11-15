@@ -33,7 +33,7 @@ Snapshot yayinlamadan veya push oncesi son kontrol icin bu listeyi kullan.
 
 1. Il ve ilce icin aktif kaynagin `HDX` oldugunu dogrula.
 2. Mahalle icin yalnizca acik veri ve manuel kaynak kullanildigini dogrula.
-3. `archive/` altindaki dosyalarin varsayilan build akisina girmedigini dogrula.
+3. `source/mulki-idare/` altındaki referans dosyaların varsayılan mahalle geometri akışına girmediğini doğrula.
 
 ## Belge kontrolu
 

@@ -14,7 +14,8 @@ Bu repoda aktif veri modeli yalnızca şu kaynaklara dayanır:
   - il ve ilçe verisi
 - `source/yayinlanabilir/`
   - açık veriyle yayınlanabilir mahalle verisi
-- kullanıcı tarafından sonradan eklenecek manuel mahalle verileri
+- `source/mahalle-manual/`
+  - tanımlanmış manuel mahalle kaynakları
 
 ## HDX lisans ve referans notu
 
@@ -28,13 +29,12 @@ Bu repoda aktif veri modeli yalnızca şu kaynaklara dayanır:
 
 Snapshot ve dosya düzeni için:
 
-- [source/hdx/README.md](/D:/turkiye_map/source/hdx/README.md)
+- [source/hdx/README.md](./source/hdx/README.md)
 
 ## Pasif referans alanları
 
-Bu alanlar aktif build kaynağı değildir:
+Bu alanlar aktif mahalle geometri build kaynağı değildir:
 
-- `archive/kamu-kaynak/`
 - `source/mulki-idare/`
 - `source/reference/` içindeki kalite ve eşleme tablolarının referans tarafları
 
@@ -78,5 +78,5 @@ Verilerin doğruluğu, güncelliği ve tamlığı garanti edilmez. Kullanıcı, 
 - Kod `MIT`
 - İl ve ilçe için aktif kaynak `HDX`
 - Mahalle için aktif kaynaklar açık veri ve manuel veri
-- `archive/kamu-kaynak/` pasif referans arşividir
+- `source/mulki-idare/` pasif doğrulama/referans kaynağıdır
 - Veri kendi kaynağının lisansına tabidir

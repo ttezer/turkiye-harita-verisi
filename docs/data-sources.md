@@ -1,73 +1,55 @@
-# Data Sources
+# Veri Kaynakları
 
-## Amaç
+Bu belge, build hattındaki aktif kaynakları ve kapsam sınırlarını özetler. Sayısal
+özetler son başarılı build'in ürettiği
+[`dist/json/mahalle-geometrileri-report.json`](../dist/json/mahalle-geometrileri-report.json)
+ve [`dist/json/mahalle-geometrileri-coverage.json`](../dist/json/mahalle-geometrileri-coverage.json)
+dosyalarından kontrol edilmelidir.
 
-Bu belge, ürünün kullandığı aktif veri kaynaklarını ve kapsam sınırlamalarını tek yerde toplar.
+## İl ve ilçe
 
-## İl ve İlçe
-
-- Aktif kaynak: `HDX`
-- Kullanım: il ve ilçe metadata + polygon geometri
-- Not: repo içinde snapshot olarak tutulur; canlı API bağımlılığı yoktur
+- Aktif kaynak: repo içine alınmış `HDX` / `COD-AB-TUR` snapshot'ı
+- Kullanım: il ve ilçe metadata'sı ile polygon geometrisi
+- Çalışma şekli: canlı API çağrısı değil, pinlenmiş yerel dosya
+- Kaynak ayrıntısı: [`source/hdx/README.md`](../source/hdx/README.md)
 
 ## Mahalle
 
-Mahalle verisi tüm Türkiye için tam değildir. Yalnızca doğrulanmış açık veri veya manuel kaynak olan illerde üretilir.
+Mahalle kapsamı Türkiye geneli değildir. Yalnızca kaynak dosyası ve yayın kararı
+pipeline'a tanımlanmış illerde geometri üretilir.
 
-Son doğrulama özeti:
+15 Kasım 2026 tarihli mevcut build özeti:
 
-- aktif kaynak sayısı: `15`
-- üretilen toplam mahalle geometrisi: `11112`
+- 27 aktif mahalle kaynağı
+- 27 ilde kapsam
+- 18.657 üretilmiş mahalle geometrisi
+- 16 manuel kaynak: Adıyaman, Antalya, Aydın, Balıkesir, Bolu, Çanakkale,
+  Düzce, Edirne, Erzurum, İstanbul, İzmir, Kırklareli, Kocaeli, Tekirdağ,
+  Yalova ve Zonguldak
+- 11 açık veri/belediye kaynağı: Ankara, Bursa, Denizli, Gaziantep, Kayseri,
+  Konya, Muğla, Ordu, Sakarya, Sivas ve Trabzon
 
-### Aktif mahalle kaynakları
+Manuel kaynakların ham dosyaları `source/mahalle-manual/`, belediye/açık veri
+snapshot'ları `source/yayinlanabilir/municipal/` altında tutulur. Her dosya
+otomatik olarak aktif değildir; kaynak, eşleme ve kalite ayarları
+`scripts/normalize-mahalle-geometrileri.js` içinde tanımlıdır.
 
-| İl | Kod | Kaynak tipi | Format | Not |
-| --- | ---: | --- | --- | --- |
-| Balıkesir | 10 | Manuel kaynak | KML | 1136 kaydın 1075'i eşleşti; ek isim eşleme temizliği gerekiyor |
-| Ankara | 06 | Belediye açık veri | GeoJSON | OSB/source-only kayıtlar ayıklanır |
-| Bursa | 16 | Belediye açık veri | GeoJSON | OSB/source-only kayıtlar ayıklanır |
-| Çanakkale | 17 | Manuel kaynak | KML | Kullanıcı tarafından sağlanan aktif kaynak |
-| Denizli | 20 | Belediye açık veri | GeoJSON | Tam eşleşme |
-| Edirne | 22 | Manuel kaynak | KML | Küçük source-only farkları var |
-| Gaziantep | 27 | Belediye açık veri | KML | Tam eşleşme |
-| Kayseri | 38 | Belediye açık veri | GeoJSON | Tam eşleşme |
-| Kocaeli | 41 | Manuel kaynak | KML | Tam eşleşme |
-| Konya | 42 | Belediye açık veri | GeoJSON | Tam eşleşme |
-| Muğla | 48 | Belediye açık veri | GeoJSON | Tam eşleşme |
-| Ordu | 52 | Belediye açık veri | GeoJSON | Tam eşleşme |
-| Sakarya | 54 | Belediye açık veri | GeoJSON | Az sayıda source-only farkı var |
-| Sivas | 58 | Belediye açık veri | GeoJSON | Kapsam sınırlı; il geneli değil |
-| Trabzon | 61 | Belediye açık veri | GeoJSON | Tam eşleşme |
+## Kalite ve kapsam notları
 
-## Kalite ve Kapsam Notları
+Kalite paneli iki tür sinyal kullanır:
 
-Kalite paneli iki kaynaktan beslenir:
+- `source/reference/quality-overrides.json`: elle gözden geçirilmiş notlar
+- `mahalle-geometrileri-report.json`: build sırasında üretilen eşleşme, OSB,
+  geometri onarımı ve uzak multipolygon sinyalleri
 
-- `source/reference/quality-overrides.json`
-- `data/processed/mahalle-geometrileri-report.json`
+`limited_source_coverage`, kaynağın il geneli yerine tek ilçe veya sınırlı alan
+üretmesi için kullanılır. Kalite notunun bulunmaması verinin yüzde yüz
+doğrulandığı anlamına gelmez.
 
-Temel ilke:
+## Referans ve doğrulama kaynakları
 
-- kalite notu görünmemesi, verinin `%100` doğrulandığı anlamına gelmez
-- `limited_source_coverage`, kaynağın il geneli yerine tek ilçe veya sınırlı alan üretmesi için kullanılır
-- OSB, source-only alan ve geometri onarımları kalite sinyali olarak işaretlenebilir
+- `source/mulki-idare/`: yerleşim sayıları ve adlandırma karşılaştırmaları
+- `source/reference/`: crosswalk, bölge üyeliği ve kalite tabloları
+- `source/yayinlanabilir/sources.json`: mahalle kaynak envanteri ve yayın kararı
 
-## Manuel Kaynaklar
-
-Manuel mahalle dosyaları:
-
-- `source/mahalle-manual/`
-
-Şu an aktif manuel il örnekleri:
-
-- Balıkesir
-- Çanakkale
-- Edirne
-- Kocaeli
-
-## Referans Dosyalar
-
-- `scripts/normalize-mahalle-geometrileri.js`
-- `data/processed/mahalle-geometrileri-report.json`
-- `data/processed/mahalle-geometrileri-coverage.json`
-- `source/reference/quality-overrides.json`
+Bu referanslar, açıkça pipeline'a bağlanmadıkça aktif geometri kaynağı değildir.
