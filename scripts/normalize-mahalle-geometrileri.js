@@ -413,6 +413,17 @@ const LOCAL_MUNICIPAL_SOURCES = [
     osb_name_pattern: '\\bosb\\b',
   },
   {
+    province_id: 'TR-P-25',
+    province_name: 'Erzurum',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '25-erzurum', 'erzurum-mahalle-manual.kml'),
+    district_field: 'district',
+    pre_matched_id_field: 'mahalle_id',
+  },
+  {
     province_id: 'TR-P-67',
     province_name: 'Zonguldak',
     slug: '67-zonguldak',
