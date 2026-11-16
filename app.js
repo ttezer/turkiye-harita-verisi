@@ -102,11 +102,49 @@ const dataLoadProgress = {
 };
 let renderRequestId = 0;
 
+const lazyGeometryRequests = {
+  province: {
+    datasetKey: 'provincesGeojson',
+    url: './dist/geojson/provinces.geojson',
+    label: 'İl geometrisi',
+  },
+  district: {
+    datasetKey: 'districtsGeojson',
+    url: './dist/geojson/districts.geojson',
+    label: 'İlçe geometrisi',
+  },
+};
+
+const lazyDownloadScripts = {
+  topojson: {
+    url: 'https://cdn.jsdelivr.net/npm/topojson-server@3/dist/topojson-server.min.js',
+    globalName: 'topojson',
+  },
+  xlsx: {
+    url: 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js',
+    globalName: 'XLSX',
+  },
+  jszip: {
+    url: 'https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js',
+    globalName: 'JSZip',
+  },
+  proj4: {
+    url: 'https://cdn.jsdelivr.net/npm/proj4@2.20.2/dist/proj4.min.js',
+    globalName: 'proj4',
+  },
+  sqljs: {
+    url: 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/sql-wasm.min.js',
+    globalName: 'initSqlJs',
+  },
+};
+
+const lazyDownloadScriptPromises = new Map();
+
 const datasets = await loadDatasets();
 const projections = {
   region: buildProjection(datasets.regionsGeojson),
-  province: buildProjection(datasets.provincesGeojson),
-  district: buildProjection(datasets.districtsGeojson),
+  province: null,
+  district: null,
   mahalle: null,
 };
 
@@ -124,12 +162,9 @@ async function loadDatasets() {
     ['./dist/json/regions.json', 'Bölgeler'],
     ['./dist/json/provinces.json', 'İller'],
     ['./dist/json/districts.json', 'İlçeler'],
-    ['./dist/json/yerlesimler.json', 'Yerleşimler'],
     ['./source/reference/source-labels.json', 'Kaynak etiketleri'],
     ['./source/yayinlanabilir/sources.json', 'Yayinlanabilir kaynaklar'],
     ['./dist/geojson/regions.geojson', 'Bölge geometrisi'],
-    ['./dist/geojson/provinces.geojson', 'İl geometrisi'],
-    ['./dist/geojson/districts.geojson', 'İlçe geometrisi'],
   ];
   const optionalRequests = [
     ['./source/reference/quality-overrides.json', 'Kalite notlari'],
@@ -143,12 +178,9 @@ async function loadDatasets() {
     regions,
     provinces,
     districts,
-    yerlesimler,
     sourceLabels,
     publishableSources,
     regionsGeojson,
-    provincesGeojson,
-    districtsGeojson,
   ] = await Promise.all(requiredRequests.map(([url, label]) => fetchJson(url, label)));
   const [qualityOverrides, geometryReport, geometryCoverage] = await Promise.all(
     optionalRequests.map(([url, label]) => fetchJson(url, label, { silent404: true })),
@@ -156,8 +188,6 @@ async function loadDatasets() {
 
   updateDataLoadStatus('processing');
 
-  const yerlesimlerById = new Map(yerlesimler.map((item) => [item.id, item]));
-  const mahalleMetadataById = new Map(yerlesimlerById);
   const regionsById = new Map(regions.map((item) => [item.id, item]));
   const provincesById = new Map(provinces.map((item) => [item.id, item]));
   const districtsById = new Map(districts.map((item) => [item.id, item]));
@@ -173,13 +203,15 @@ async function loadDatasets() {
     regions,
     provinces,
     districts,
-    yerlesimler,
-    regionsGeojson: buildDissolvedRegionsGeojson(regions, regionsGeojson, provincesGeojson),
-    provincesGeojson,
-    districtsGeojson,
+    yerlesimler: [],
+    regionsGeojson,
+    provincesGeojson: null,
+    districtsGeojson: null,
     mahalleGeometrileri: { type: 'FeatureCollection', features: [] },
     mahalleGeometryCache: new Map(),
     loadedMahalleGeometryKey: '',
+    geometryPromises: new Map(),
+    settlementMetadataPromise: null,
     sourceLabels,
     qualityNotes: [...normalizeQualityNotes(qualityOverrides), ...normalizeReportNotes(geometryReport)],
     qualityIssueLabels: qualityOverrides?.issue_labels || {},
@@ -189,9 +221,96 @@ async function loadDatasets() {
     regionsById,
     provincesById,
     districtsById,
-    yerlesimlerById,
-    mahalleMetadataById,
+    yerlesimlerById: new Map(),
+    mahalleMetadataById: new Map(),
   };
+}
+
+async function ensureLevelGeometry(level) {
+  const request = lazyGeometryRequests[level];
+  if (!request) {
+    return;
+  }
+
+  if (datasets[request.datasetKey]) {
+    return;
+  }
+
+  if (!datasets.geometryPromises.has(level)) {
+    const promise = fetchJson(request.url, request.label)
+      .then((geojson) => {
+        datasets[request.datasetKey] = geojson;
+        projections[level] = buildProjection(geojson);
+        return geojson;
+      })
+      .catch((error) => {
+        datasets.geometryPromises.delete(level);
+        throw error;
+      });
+    datasets.geometryPromises.set(level, promise);
+  }
+
+  await datasets.geometryPromises.get(level);
+}
+
+async function ensureSettlementMetadata() {
+  if (datasets.settlementMetadataPromise) {
+    await datasets.settlementMetadataPromise;
+    return;
+  }
+
+  datasets.settlementMetadataPromise = fetchJson('./dist/json/yerlesimler.json', 'Yerleşimler')
+    .then((yerlesimler) => {
+      datasets.yerlesimler = yerlesimler;
+      datasets.yerlesimlerById = new Map(yerlesimler.map((item) => [item.id, item]));
+      datasets.mahalleMetadataById = new Map(datasets.yerlesimlerById);
+      return yerlesimler;
+    })
+    .catch((error) => {
+      datasets.settlementMetadataPromise = null;
+      throw error;
+    });
+
+  await datasets.settlementMetadataPromise;
+}
+
+function loadExternalScript(name) {
+  const definition = lazyDownloadScripts[name];
+  if (!definition) {
+    return Promise.reject(new Error(`Bilinmeyen harici kütüphane: ${name}`));
+  }
+
+  if (globalThis[definition.globalName]) {
+    return Promise.resolve(globalThis[definition.globalName]);
+  }
+
+  if (!lazyDownloadScriptPromises.has(name)) {
+    lazyDownloadScriptPromises.set(name, new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = definition.url;
+      script.async = true;
+      script.onload = () => {
+        if (!globalThis[definition.globalName]) {
+          reject(new Error(`${name} kütüphanesi yüklenemedi.`));
+          return;
+        }
+        resolve(globalThis[definition.globalName]);
+      };
+      script.onerror = () => reject(new Error(`${name} kütüphanesi indirilemedi.`));
+      document.head.append(script);
+    }));
+  }
+
+  return lazyDownloadScriptPromises.get(name);
+}
+
+async function ensureDownloadDependencies(format) {
+  const dependencies = [];
+  if (format === 'topojson') dependencies.push('topojson');
+  if (format === 'xlsx') dependencies.push('xlsx');
+  if (format === 'kmz' || format === 'shp') dependencies.push('jszip');
+  if (format === 'gpkg') dependencies.push('proj4', 'sqljs');
+  await Promise.all(dependencies.map((name) => loadExternalScript(name)));
 }
 
 function buildDissolvedRegionsGeojson(regions, regionsGeojson, provincesGeojson) {
@@ -458,7 +577,7 @@ function updateDataLoadStatus(phase) {
 
 async function fetchJson(url, label = url, { silent404 = false } = {}) {
   updateResourceProgress(url, { label });
-  const response = await fetch(url, { cache: 'no-store' });
+  const response = await fetch(url, { cache: 'default' });
   if (!response.ok) {
     if (silent404 && response.status === 404) {
       updateResourceProgress(url, { done: true });
@@ -470,32 +589,8 @@ async function fetchJson(url, label = url, { silent404 = false } = {}) {
   const total = Number(response.headers.get('Content-Length')) || 0;
   updateResourceProgress(url, { total });
 
-  if (!response.body.getReader) {
-    const text = await response.text();
-    updateResourceProgress(url, { loaded: total || text.length, total: total || text.length, processing: true });
-    const payload = JSON.parse(text);
-    updateResourceProgress(url, { done: true, processing: false });
-    return payload;
-  }
-
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder();
-  let loaded = 0;
-  let text = '';
-
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) {
-      break;
-    }
-
-    loaded += value.byteLength;
-    text += decoder.decode(value, { stream: true });
-    updateResourceProgress(url, { loaded, total });
-  }
-
-  text += decoder.decode();
-  updateResourceProgress(url, { loaded: total || loaded, total: total || loaded, processing: true });
+  const text = await response.text();
+  updateResourceProgress(url, { loaded: total || text.length, total: total || text.length, processing: true });
   const payload = JSON.parse(text);
   updateResourceProgress(url, { done: true, processing: false });
   return payload;
@@ -1606,9 +1701,13 @@ function getFormatAvailability() {
 async function render() {
   const requestId = ++renderRequestId;
   try {
+    await ensureLevelGeometry(state.level);
+    if (state.level === 'mahalle') {
+      await ensureSettlementMetadata();
+    }
     await ensureActiveMahalleGeometries();
   } catch (error) {
-    console.error('Mahalle geometrisi yüklenemedi', error);
+    console.error('Harita verisi yüklenemedi', error);
     updateDataLoadStatus('error');
   }
   if (requestId !== renderRequestId) {
@@ -1624,6 +1723,7 @@ async function render() {
   setText(els.visibleCount, numberFormat.format(visibleFeatures.length));
 
   renderMap(renderableFeatures);
+  syncDownloadState();
   syncQualityIndicator(visibleFeatures);
   renderDetail();
 }
@@ -1982,12 +2082,12 @@ function getActiveFeatureCollection() {
     return datasets.regionsGeojson;
   }
   if (state.level === 'province') {
-    return datasets.provincesGeojson;
+    return datasets.provincesGeojson || { type: 'FeatureCollection', features: [] };
   }
   if (state.level === 'mahalle') {
     return datasets.mahalleGeometrileri;
   }
-  return datasets.districtsGeojson;
+  return datasets.districtsGeojson || { type: 'FeatureCollection', features: [] };
 }
 
 function renderMap(features) {
@@ -2088,7 +2188,7 @@ function renderBaseLayer(features, projection) {
     return;
   }
 
-  const enabled = state.baseLayer.startsWith('osm') && features.length > 0 && projection.projection;
+  const enabled = state.baseLayer.startsWith('osm') && features.length > 0 && projection?.projection;
   els.baseMapAttribution.classList.toggle('is-hidden', !enabled);
   if (!enabled) {
     return;
@@ -2540,6 +2640,7 @@ function getGpkgGeometryModeLabel(mode) {
 }
 
 async function triggerDownload(filename) {
+  await ensureDownloadDependencies(state.format);
   const blob = await buildDownloadBlob();
   if (!blob || blob.size === 0) {
     throw new Error('Boş indirme çıktısı üretildi.');
