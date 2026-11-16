@@ -163,9 +163,9 @@
       "district_name": "Nilüfer",
       "settlement_name": "Hasanağa",
       "issue": "unverified_geometry",
-      "status": "open",
-      "reviewed_at": "2026-05-06",
-      "note": "Hasanağa çevresindeki bazı polygonlar yerleşim çekirdeğinin üstüne veya altına kaymış görünüyor. Kaynak geometri hizası manuel doğrulama bekliyor."
+      "status": "resolved",
+      "reviewed_at": "2026-11-16",
+      "note": "Bursa Açık Veri kaynağı yeniden kontrol edildi. Hasanağa kimliği ve geometri kaynağıyla uyumlu; QC yalnızca çok küçük sınır kesişimleri gösteriyor, anlamlı mahalle/OSB çakışması yok."
     },
     {
       "province_id": "TR-P-42",

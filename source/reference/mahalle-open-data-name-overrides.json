@@ -6431,5 +6431,29 @@
     "settlement_id": "TR-Y-35-019-M-0033",
     "name": "Türk",
     "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Türkcedit -> Türk; Kent Rehberi kaydı mahalle tipinde."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "75yilcumhuriyet",
+    "settlement_id": "TR-Y-35-023-M-0043",
+    "name": "Maltepe Cumhuriyet",
+    "note": "İzmir Kent Rehberi ve adres karşılaştırması: 75. Yıl Cumhuriyet -> Maltepe Cumhuriyet."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "85yilcumhuriyet",
+    "settlement_id": "TR-Y-35-023-M-0048",
+    "name": "Seyrek Cumhuriyet",
+    "note": "İzmir Kent Rehberi ve adres karşılaştırması: 85. Yıl Cumhuriyet -> Seyrek Cumhuriyet."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "cumhuriyet",
+    "settlement_id": "TR-Y-35-023-M-0040",
+    "name": "Koyundere Cumhuriyet",
+    "note": "İzmir Kent Rehberi ve adres karşılaştırması: Cumhuriyet -> Koyundere Cumhuriyet."
   }
 ]
