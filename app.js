@@ -2920,9 +2920,10 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
     const pathData = buildSimplifiedSvgPath(feature, projection);
     const dataAttributes = buildSvgDataAttributes(item);
     const fill = resolveFeatureFill(item, theme);
-    const strokeStyle = state.level === 'region'
-      ? 'stroke:none'
-      : `stroke:${escapeAttribute(theme.stroke)};stroke-width:${state.style === 'outline-only' ? '1.2' : '1'}`;
+    const strokeWidth = state.level === 'region'
+      ? '1.2'
+      : state.style === 'outline-only' ? '1.2' : '1';
+    const strokeStyle = `stroke:${escapeAttribute(theme.stroke)};stroke-width:${strokeWidth}`;
     const styleAttribute = ` style="fill:${escapeAttribute(fill || theme.fill)};${strokeStyle}"`;
     const titleText = metadataLabelForFeature(item.id || feature.properties.id) || '';
     const labelPosition = getSvgFeatureLabelPosition(feature, projection);
@@ -2939,7 +2940,7 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
     path {
       fill: ${theme.fill};
       stroke: ${theme.stroke};
-      stroke-width: ${state.level === 'region' ? '0' : '1'};
+      stroke-width: ${state.level === 'region' ? '1.2' : '1'};
       pointer-events: all;
       vector-effect: non-scaling-stroke;
       transition: fill 140ms ease, stroke 140ms ease, opacity 140ms ease;
