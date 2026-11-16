@@ -2924,7 +2924,11 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
       : `stroke:${escapeAttribute(theme.stroke)};stroke-width:${state.style === 'outline-only' ? '1.2' : '1'}`;
     const styleAttribute = ` style="fill:${escapeAttribute(fill || theme.fill)};${strokeStyle}"`;
     const titleText = metadataLabelForFeature(item.id || feature.properties.id) || '';
-    return `<path d="${escapeAttribute(pathData)}"${styleAttribute} ${dataAttributes}><title>${escapeXml(titleText)}</title></path>`;
+    const labelPosition = getSvgFeatureLabelPosition(feature, projection);
+    const visibleLabel = labelPosition && titleText
+      ? `<text class="feature-label" x="${labelPosition[0]}" y="${labelPosition[1]}" aria-hidden="true">${escapeXml(titleText)}</text>`
+      : '';
+    return `<g class="feature-group" aria-label="${escapeAttribute(titleText)}"><title>${escapeXml(titleText)}</title><path d="${escapeAttribute(pathData)}"${styleAttribute} ${dataAttributes}><title>${escapeXml(titleText)}</title></path>${visibleLabel}</g>`;
   }).join('');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeAttribute(title)}">
@@ -2944,9 +2948,38 @@ function buildSvgMarkup(viewport = defaultExportViewport) {
       stroke: #0b1f4f;
       stroke-width: 2;
     }
+    .feature-label {
+      display: none;
+      pointer-events: none;
+      fill: ${theme.stroke};
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      paint-order: stroke;
+      stroke: ${theme.background === 'transparent' ? '#ffffff' : theme.background};
+      stroke-width: 3px;
+      text-anchor: middle;
+    }
+    .feature-group:hover .feature-label {
+      display: block;
+    }
   </style>
   <g>${paths}</g>
 </svg>`;
+}
+
+function getSvgFeatureLabelPosition(feature, projection) {
+  if (!window.d3?.geoCentroid || !projection?.projection) {
+    return null;
+  }
+
+  const centroid = window.d3.geoCentroid(feature);
+  const point = projection.projection(centroid);
+  if (!Array.isArray(point) || point.length < 2 || !point.every(Number.isFinite)) {
+    return null;
+  }
+
+  return point.map((value) => Number(value.toFixed(2)));
 }
 
 function buildReactComponentSource(viewport = defaultExportViewport) {
