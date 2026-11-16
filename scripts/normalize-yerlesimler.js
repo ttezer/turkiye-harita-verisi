@@ -19,7 +19,7 @@ const scriptPath = fileURLToPath(import.meta.url);
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
 
 export const SETTLEMENT_SOURCE = 'e-icisleri-mulki-idare-bolumleri';
-export const SETTLEMENT_SOURCE_LABEL = 'Kamuya açık kaynaklar';
+export const SETTLEMENT_SOURCE_LABEL = 'Açık Veri';
 export const MAHALLE_FILE = 'Mahalle_Listesi.xls';
 export const KOY_FILE = 'Koy_Listesi.xls';
 

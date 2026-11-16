@@ -34,7 +34,7 @@ const sourceLabels = readJson(paths.sourceLabels);
 const PUBLIC_CITY_GUIDE_LABEL = sourceLabels.public_data_and_city_guides;
 const PUBLIC_SOURCES_LABEL = sourceLabels.public_sources;
 const USER_PROVIDED_KML_LABEL = sourceLabels.user_provided_kml;
-const MANUAL_DATA_LABEL = 'Manuel veri';
+const MANUAL_DATA_LABEL = 'Manuel Kaynak';
 
 const SOURCES = [
   {
@@ -607,7 +607,7 @@ function repairPolygonRings(polygon) {
   return polygons;
 }
 
-function buildGeometryProperties(source, district, rawName, override, settlement = null, displayNameOverride = null) {
+export function buildGeometryProperties(source, district, rawName, override, settlement = null, displayNameOverride = null) {
   if (settlement) {
     const displayName = formatDisplayNamePreservingAcronyms(
       override?.name || displayNameOverride || settlement.name,
@@ -615,13 +615,15 @@ function buildGeometryProperties(source, district, rawName, override, settlement
     return {
       id: settlement.id,
       level: 'yerlesim',
-      type: source.use_settlement_type ? settlement.type || 'mahalle' : 'mahalle',
+      type: settlement.type || 'mahalle',
       parent_id: settlement.parent_id,
       province_id: settlement.province_id,
       district_id: settlement.district_id,
+      province_name: settlement.province_name || source.province_name,
+      district_name: settlement.district_name || district.name,
       name: displayName,
       source_raw_name: normalizeDisplayText(rawName),
-      source: source.source || source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+      source: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
       source_label: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
       source_name: source.source_name,
     };
@@ -635,9 +637,11 @@ function buildGeometryProperties(source, district, rawName, override, settlement
     parent_id: district.id,
     province_id: source.province_id,
     district_id: district.id,
+    province_name: source.province_name,
+    district_name: district.name,
     name,
     source_raw_name: normalizeDisplayText(rawName),
-    source: source.source || source.source_label || PUBLIC_CITY_GUIDE_LABEL,
+    source: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
     source_label: source.source_label || source.source || PUBLIC_CITY_GUIDE_LABEL,
     source_name: source.source_name,
     source_only: true,
@@ -1071,15 +1075,19 @@ function parseHtmlDescription(description) {
 function buildSettlementIndexes(settlements) {
   const byDistrictAndName = new Map();
   const byProvinceAndName = new Map();
+  const byDistrict = new Map();
 
   for (const settlement of settlements) {
+    const districtSettlements = byDistrict.get(settlement.district_id) || [];
+    districtSettlements.push(settlement);
+    byDistrict.set(settlement.district_id, districtSettlements);
     for (const nameKey of nameMatchKeys(settlement.name)) {
       addIndexValue(byDistrictAndName, `${settlement.district_id}|${nameKey}`, settlement);
       addIndexValue(byProvinceAndName, `${settlement.province_id}|${nameKey}`, settlement);
     }
   }
 
-  return { byDistrictAndName, byProvinceAndName };
+  return { byDistrictAndName, byProvinceAndName, byDistrict };
 }
 
 function uniqueMatchingSettlements(districtId, nameKeys, settlementIndexes) {
@@ -1119,6 +1127,24 @@ function filterSettlementMatchesByKmlContext(source, feature, settlements) {
   }
 
   return filtered;
+}
+
+export function findCompositeSettlementMatches(districtId, rawName, settlementIndexes) {
+  const rawKey = compactKey(rawName);
+  if (!rawKey) {
+    return [];
+  }
+
+  return (settlementIndexes.byDistrict.get(districtId) || []).filter((settlement) => {
+    const settlementKey = compactKey(settlement.name);
+    const parentKey = compactKey(
+      String(settlement.administrative_unit_name || '').replace(/-İlçe Merkezi$/i, ''),
+    );
+    if (!settlementKey || !parentKey || settlementKey === parentKey) {
+      return false;
+    }
+    return rawKey === `${parentKey}${settlementKey}` || rawKey === `${settlementKey}${parentKey}`;
+  });
 }
 
 function buildOverrideIndex(overrides) {
@@ -1295,9 +1321,11 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
           parent_id: district.id,
           province_id: source.province_id,
           district_id: district.id,
+          province_name: source.province_name,
+          district_name: district.name,
           name: osbName,
           source_raw_name: osbName,
-          source: source.source || source.source_label || '',
+          source: source.source_label || source.source || '',
           source_label: source.source_label || source.source || '',
           source_name: source.source_name,
           source_only: true,
@@ -1358,6 +1386,8 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
                     parent_id: fallbackDistrict.id,
                     province_id: source.province_id,
                     district_id: fallbackDistrict.id,
+                    province_name: source.province_name,
+                    district_name: fallbackDistrict.name,
                     name: osbName,
                     source_raw_name: osbName,
                     source: source.source_label || '',
@@ -1522,6 +1552,20 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
 
   settlementMatches = filterSettlementMatchesByKmlContext(source, feature, settlementMatches);
 
+  // Some municipal KMLs qualify a neighbourhood with its administrative unit
+  // (for example, "Karapınar Merkez"), while the canonical settlement list
+  // stores the neighbourhood as "Merkez" and keeps "Karapınar" in
+  // administrative_unit_name. Resolve only an exact, unique composite match.
+  let usedCompositeDisplayName = false;
+  if (settlementMatches.length === 0) {
+    settlementMatches = filterSettlementMatchesByKmlContext(
+      source,
+      feature,
+      findCompositeSettlementMatches(district.id, rawName, indexes.settlements),
+    );
+    usedCompositeDisplayName = settlementMatches.length === 1;
+  }
+
   if (settlementMatches.length === 0 && shouldTreatKmlFeatureAsOsb(source, feature)) {
     return buildOsbResult(rawName, district, geometry);
   }
@@ -1581,7 +1625,9 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
         rawName,
         override,
         settlement,
-        displayNameForSettlement(settlement),
+        usedCompositeDisplayName
+          ? rawName
+          : displayNameForSettlement(settlement),
       ),
       geometry: roundGeometryCoordinates(rewindGeometry(geometry), 6),
     },
@@ -1674,6 +1720,8 @@ function splitGonenAltayFeature(source, district, rawName, geometry, settlement)
           parent_id: district.id,
           province_id: source.province_id,
           district_id: district.id,
+          province_name: source.province_name,
+          district_name: district.name,
           name: 'Altay-Denizkent',
           source_raw_name: normalizeDisplayText(rawName),
           source: sourceLabel,
@@ -2134,6 +2182,7 @@ async function processLocalMunicipalSources(features, sourceReports, indexes, di
 
       const resolvedSource = {
         ...source,
+        province_name: indexes.provincesById.get(source.province_id)?.name || source.province_name,
         resolved_format: source.format === 'local_kml' ? 'kml' : 'arcgis',
         district_field: districtRef ? '_resolved_district' : source.district_field,
       };
@@ -2170,6 +2219,9 @@ export async function main() {
     settlementsById: new Map(settlements.map((item) => [item.id, item])),
     overrides: buildOverrideIndex(overrides),
     districts: buildDistrictIndexes(districts),
+    provincesById: new Map(
+      readJson(path.join(paths.processedDir, 'provinces.metadata.json')).map((item) => [item.id, item]),
+    ),
   };
   const districtFeaturesByProvince = groupBy(districtGeometry.features, (feature) => feature.properties.parent_id);
   const features = [];
@@ -2181,6 +2233,7 @@ export async function main() {
     for (const source of SOURCES) {
       const resolvedSource = {
         ...source,
+        province_name: indexes.provincesById.get(source.province_id)?.name || source.province_name,
         resolved_format: resolveSourceFormat(source),
       };
       const isLegacyFileSource = ['kmz', 'kml', 'shapefile'].includes(resolvedSource.resolved_format);

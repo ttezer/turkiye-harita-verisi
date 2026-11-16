@@ -2458,7 +2458,7 @@ function renderDetail(forcedId = '') {
   }
 
   const parentName = state.level === 'mahalle'
-    ? datasets.districtsById.get(item.parent_id)?.name || '-'
+    ? item.district_name || datasets.districtsById.get(item.parent_id)?.name || '-'
     : state.level === 'district'
       ? datasets.provincesById.get(item.parent_id)?.name || '-'
       : state.level === 'province'
@@ -2469,7 +2469,7 @@ function renderDetail(forcedId = '') {
     ? [
       ['Ad', item.name],
       ['ID', item.id],
-      ['Seviye', getLevelLabel(item.level)],
+      ['Seviye', getLevelLabel(item.level, item.type)],
       ['Bölge Türü', item.region_kind || '-'],
       ['İl Sayısı', item.member_ids?.length || 0],
     ]
@@ -2477,7 +2477,7 @@ function renderDetail(forcedId = '') {
       ? [
         ['Ad', item.name],
         ['ID', item.id],
-        ['Seviye', getLevelLabel(item.level)],
+        ['Seviye', getLevelLabel(item.level, item.type)],
         ['Bölge', item.region_name || '-'],
         ['İl Kodu', item.plate_code || '-'],
       ]
@@ -2485,7 +2485,7 @@ function renderDetail(forcedId = '') {
       ? [
         ['Ad', item.name],
         ['ID', item.id],
-        ['Seviye', getLevelLabel(item.level)],
+        ['Seviye', getLevelLabel(item.level, item.type)],
         ['Bölge', item.region_name || '-'],
         ['İl', parentName],
         ['İlçe Kodu', item.district_local_code || '-'],
@@ -2493,14 +2493,12 @@ function renderDetail(forcedId = '') {
       : [
         ['Ad', item.name],
         ['ID', item.id],
-        ['Seviye', getLevelLabel(item.level)],
-        ['İl', item.province_name || '-'],
+        ['Seviye', getLevelLabel(item.level, item.type)],
+        ['İl', item.province_name || datasets.provincesById.get(item.province_id)?.name || '-'],
         ['İlçe', parentName],
       ];
 
-  const sourceLabel = state.level === 'mahalle'
-    ? (item.source_label || datasets.sourceLabels?.public_sources || item.source || '')
-    : (item.source_label || item.source || '');
+  const sourceLabel = item.source_label || item.source || datasets.sourceLabels?.public_sources || '';
   if (sourceLabel) {
     rows.push(['Kaynak', sourceLabel]);
   }
@@ -2595,13 +2593,16 @@ function getStyleLabel(style) {
   return labels[style] || style;
 }
 
-function getLevelLabel(level) {
+function getLevelLabel(level, type) {
+  if (level === 'yerlesim') {
+    return type === 'koy' ? 'Köy' : 'Mahalle';
+  }
+
   const labels = {
     region: 'Bölge',
     province: 'İl',
     district: 'İlçe',
     mahalle: 'Mahalle',
-    yerlesim: 'Mahalle',
   };
 
   return labels[level] || level;

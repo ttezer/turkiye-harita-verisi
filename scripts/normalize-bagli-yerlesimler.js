@@ -28,7 +28,7 @@ const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
 
 export const BAGLI_FILE = 'Bagli_Listesi.xls';
 export const BAGLI_SOURCE = 'e-icisleri-mulki-idare-bagli-birimleri';
-export const BAGLI_SOURCE_LABEL = 'Kamuya açık kaynaklar';
+export const BAGLI_SOURCE_LABEL = 'Açık Veri';
 
 function splitLocation(rawLocation) {
   return normalizeDisplayText(rawLocation)
