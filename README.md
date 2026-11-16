@@ -49,6 +49,42 @@ Mahalle katmanı yalnızca doğrulanmış açık veri veya manuel kaynak bulunan
 - Mahalle için aktif kaynaklar: `source/yayinlanabilir/municipal/` altındaki açık veri snapshot'ları ve `source/mahalle-manual/` altındaki tanımlı manuel kaynaklar
 - Mahalle kapsamı ve kalite özeti: [`dist/json/mahalle-geometrileri-report.json`](./dist/json/mahalle-geometrileri-report.json)
 
+### Mahalle İlçe Tamamlama
+
+Yüzde, mahalle sayısına göre değil; mahalle geometrisi tamamlanan ilçe sayısının
+ildeki toplam ilçe sayısına oranına göre hesaplanır. Aşağıdaki tablo, mahalle
+kaynağı bulunan illerin ilçe kapsamını gösterir.
+
+| İl | Tamamlanan ilçe | Oran |
+| --- | ---: | ---: |
+| Adıyaman | 1/9 | %11,1 |
+| Ankara | 25/25 | %100,0 |
+| Antalya | 19/19 | %100,0 |
+| Aydın | 17/17 | %100,0 |
+| Balıkesir | 20/20 | %100,0 |
+| Bolu | 9/9 | %100,0 |
+| Bursa | 17/17 | %100,0 |
+| Çanakkale | 12/12 | %100,0 |
+| Denizli | 19/19 | %100,0 |
+| Düzce | 8/8 | %100,0 |
+| Edirne | 9/9 | %100,0 |
+| Erzurum | 20/20 | %100,0 |
+| Gaziantep | 9/9 | %100,0 |
+| İstanbul | 39/39 | %100,0 |
+| İzmir | 30/30 | %100,0 |
+| Kayseri | 16/16 | %100,0 |
+| Kırklareli | 8/8 | %100,0 |
+| Kocaeli | 12/12 | %100,0 |
+| Konya | 31/31 | %100,0 |
+| Muğla | 13/13 | %100,0 |
+| Ordu | 19/19 | %100,0 |
+| Sakarya | 16/16 | %100,0 |
+| Sivas | 1/17 | %5,9 |
+| Tekirdağ | 11/11 | %100,0 |
+| Trabzon | 18/18 | %100,0 |
+| Yalova | 6/6 | %100,0 |
+| Zonguldak | 8/8 | %100,0 |
+
 ## Hızlı Başlangıç
 
 ```bash
