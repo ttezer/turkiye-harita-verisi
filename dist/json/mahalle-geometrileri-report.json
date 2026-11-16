@@ -1,6 +1,6 @@
 {
   "source_count": 27,
-  "geometry_count": 18657,
+  "geometry_count": 18661,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -1370,6 +1370,12 @@
       "skipped": [],
       "osb_areas": [
         {
+          "raw_name": "HAMZABEY OSB",
+          "district_id": "TR-D-16-005",
+          "district_name": "İnegöl",
+          "osb_id": "TR-Y-16-005-OSB-HAMZABEYOSB"
+        },
+        {
           "raw_name": "SÜLEYMANİYEOSB",
           "district_id": "TR-D-16-005",
           "district_name": "İnegöl",
@@ -1400,10 +1406,28 @@
           "osb_id": "TR-Y-16-002-OSB-ATASB"
         },
         {
+          "raw_name": "AHMET VEFİK PAŞA OSB",
+          "district_id": "TR-D-16-009",
+          "district_name": "Kestel",
+          "osb_id": "TR-Y-16-009-OSB-AHMETVEFIKPASAOSB"
+        },
+        {
+          "raw_name": "BARAKFAKİH OSB",
+          "district_id": "TR-D-16-009",
+          "district_name": "Kestel",
+          "osb_id": "TR-Y-16-009-OSB-BARAKFAKIHOSB"
+        },
+        {
           "raw_name": "DEMİRTAŞ DUMLUPINAROSB",
           "district_id": "TR-D-16-015",
           "district_name": "Osmangazi",
           "osb_id": "TR-Y-16-015-OSB-DEMIRTASDUMLUPINAROSB"
+        },
+        {
+          "raw_name": "HASANAĞA OSB",
+          "district_id": "TR-D-16-012",
+          "district_name": "Nilüfer",
+          "osb_id": "TR-Y-16-012-OSB-HASANAGAOSB"
         },
         {
           "raw_name": "MİNARELİÇAVUŞ BURSA OSB",

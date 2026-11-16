@@ -105,6 +105,7 @@ const SOURCES = [
 const municipalDir = path.join(paths.rootDir, 'source', 'yayinlanabilir', 'municipal');
 const LOCAL_GEOJSON_CRS_DEFS = {
   'EPSG:5254': '+proj=tmerc +lat_0=0 +lon_0=30 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0.023,0.036,-0.068,0.00176,0.00912,-0.01136,0.00439 +units=m +no_defs +type=crs',
+  'EPSG:2320': '+proj=tmerc +lat_0=0 +lon_0=30 +k=1 +x_0=500000 +y_0=0 +ellps=intl +towgs84=-87,-98,-121,0,0,0,0 +units=m +no_defs +type=crs',
 };
 
 const LOCAL_MUNICIPAL_SOURCES = [
@@ -154,7 +155,13 @@ const LOCAL_MUNICIPAL_SOURCES = [
     format: 'local_geojson',
     file_path: path.join(municipalDir, '16-bursa', 'mahalle', 'raw', 'bursa-mahalle-sinirlari.geojson'),
     name_field: 'AD',
-    infer_district_from_geometry: true,
+    district_field: 'ILCE_ADI',
+    district_value_map: {
+      KELES: 'Harmancık',
+      HARMANCIK: 'Keles',
+    },
+    use_osb_type: true,
+    osb_name_pattern: 'osb|\\bsb\\b',
   },
   {
     province_id: 'TR-P-27',
@@ -1502,7 +1509,12 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
         district = indexes.districts.byId.get(inferredDistrictId);
       }
     } else {
-      district = resolveDistrictByName(source, feature.properties[source.district_field], indexes.districts);
+      const rawDistrictName = feature.properties[source.district_field];
+      const districtValueMap = source.district_value_map || {};
+      const mappedDistrictName = Object.entries(districtValueMap).find(([rawValue]) => (
+        compactKey(rawValue) === compactKey(rawDistrictName)
+      ))?.[1] || rawDistrictName;
+      district = resolveDistrictByName(source, mappedDistrictName, indexes.districts);
     }
   }
 

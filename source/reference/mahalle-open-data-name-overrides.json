@@ -5103,6 +5103,15 @@
   {
     "province_id": "TR-P-07",
     "district_id": "TR-D-07-011",
+    "raw_key": "deretrbelinas",
+    "action": "include",
+    "id": "TR-Y-07-011-M-SRC-DERETURBELINAS",
+    "name": "Deretürbelinas",
+    "note": "Kaş / kaynak adındaki bozuk karakter düzeltildi; source-only kayıt olarak korundu"
+  },
+  {
+    "province_id": "TR-P-07",
+    "district_id": "TR-D-07-011",
     "raw_key": "kemer",
     "settlement_id": "TR-Y-07-011-M-0033",
     "note": "Kas / Kemer -> Kemerkoy"
@@ -5638,5 +5647,269 @@
     "raw_key": "yesiltepe",
     "settlement_id": "TR-Y-61-011-M-0063",
     "name": "Yeşiltepe"
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-002",
+    "raw_key": "feyziye",
+    "settlement_id": "TR-Y-16-002-M-0011",
+    "name": "Fevziye",
+    "note": "Açık Veri karşılaştırması: Feyziye -> Fevziye."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-002",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-16-002-M-0035",
+    "name": "Yenimahalle",
+    "note": "Açık Veri karşılaştırması: kaynakta Yeni, resmi kayıtta Yenimahalle."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-004",
+    "raw_key": "hopandanisment",
+    "settlement_id": "TR-Y-16-004-M-0017",
+    "name": "Hobandanişment",
+    "note": "Açık Veri karşılaştırması: Hopandanişment -> Hobandanişment."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-004",
+    "raw_key": "kismanlar",
+    "settlement_id": "TR-Y-16-004-M-0022",
+    "name": "Kıçmanlar",
+    "note": "Açık Veri karşılaştırması: Kişmanlar -> Kıçmanlar."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-007",
+    "raw_key": "canbaz",
+    "settlement_id": "TR-Y-16-007-M-0011",
+    "name": "Cambaz",
+    "note": "Açık Veri karşılaştırması: Canbaz -> Cambaz."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-007",
+    "raw_key": "mamuriyet",
+    "settlement_id": "TR-Y-16-007-M-0053",
+    "name": "Mahmuriyet",
+    "note": "Açık Veri karşılaştırması: Mamuriyet -> Mahmuriyet."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-007",
+    "raw_key": "runguspasa",
+    "settlement_id": "TR-Y-16-007-M-0063",
+    "name": "Runguçpaşa",
+    "note": "Açık Veri karşılaştırması: Runguşpaşa -> Runguçpaşa."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-008",
+    "raw_key": "kucukkovacik",
+    "settlement_id": "TR-Y-16-008-M-0033",
+    "name": "Küçükkavacık",
+    "note": "Açık Veri karşılaştırması: Küçük Kovacik -> Küçükkavacık."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-009",
+    "raw_key": "umitalan",
+    "settlement_id": "TR-Y-16-009-M-0032",
+    "name": "Ümitalanı",
+    "note": "Açık Veri karşılaştırması: Ümitalan -> Ümitalanı."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-010",
+    "raw_key": "egerce",
+    "settlement_id": "TR-Y-16-010-M-0017",
+    "name": "Eyerci",
+    "note": "Açık Veri karşılaştırması: Eğerce -> Eyerci."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-010",
+    "raw_key": "yorukali",
+    "settlement_id": "TR-Y-16-010-M-0046",
+    "name": "Yürükali",
+    "note": "Açık Veri karşılaştırması: Yörükali -> Yürükali."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-010",
+    "raw_key": "yorukyenicesi",
+    "settlement_id": "TR-Y-16-010-M-0047",
+    "name": "Yürükyenicesi",
+    "note": "Açık Veri karşılaştırması: Yörükyenicesi -> Yürükyenicesi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-011",
+    "raw_key": "caltilibuk",
+    "settlement_id": "TR-Y-16-011-M-0021",
+    "name": "Çaltılıbük B.M",
+    "note": "Açık Veri karşılaştırması: kaynak kısaltması resmi kayıtla eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-011",
+    "raw_key": "devecikonagi",
+    "settlement_id": "TR-Y-16-011-M-0038",
+    "name": "Devecikonağı B.M",
+    "note": "Açık Veri karşılaştırması: kaynak kısaltması resmi kayıtla eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-011",
+    "raw_key": "sogutalan",
+    "settlement_id": "TR-Y-16-011-M-0107",
+    "name": "Söğütalan B.M",
+    "note": "Açık Veri karşılaştırması: kaynak kısaltması resmi kayıtla eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-011",
+    "raw_key": "tirnova",
+    "settlement_id": "TR-Y-16-011-M-0113",
+    "name": "Tırnava",
+    "note": "Açık Veri karşılaştırması: Tırnova -> Tırnava."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-013",
+    "raw_key": "firoz",
+    "settlement_id": "TR-Y-16-013-M-0027",
+    "name": "Firuzköy",
+    "note": "Açık Veri karşılaştırması: Firoz -> Firuzköy."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-013",
+    "raw_key": "osmaniyecatak",
+    "settlement_id": "TR-Y-16-013-M-0010",
+    "name": "Çatak",
+    "note": "Açık Veri karşılaştırması: Osmaniyeçatak kaydı resmi Çatak kaydına eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-014",
+    "raw_key": "akharem",
+    "settlement_id": "TR-Y-16-014-M-0001",
+    "name": "Akharım",
+    "note": "Açık Veri karşılaştırması: Akharem -> Akharım."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-014",
+    "raw_key": "camiikebir",
+    "settlement_id": "TR-Y-16-014-M-0005",
+    "name": "Camikebir",
+    "note": "Açık Veri karşılaştırması: Camiikebir -> Camikebir."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "alaaddin",
+    "settlement_id": "TR-Y-16-015-M-0010",
+    "name": "Alattin",
+    "note": "Açık Veri karşılaştırması: Alaaddin -> Alattin."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "buyukdeliller",
+    "settlement_id": "TR-Y-16-015-M-0022",
+    "name": "Büyükdeliler",
+    "note": "Açık Veri karşılaştırması: Büyükdeliller -> Büyükdeliler."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "demirtasdumlupinar",
+    "settlement_id": "TR-Y-16-015-M-0043",
+    "name": "Dumlupınar",
+    "note": "Açık Veri karşılaştırması: Demirtaş Dumlupınar kaynak kaydı resmi Dumlupınar kaydına eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "doburca",
+    "settlement_id": "TR-Y-16-015-M-0039",
+    "name": "Dobruca",
+    "note": "Açık Veri karşılaştırması: Doburca -> Dobruca."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "guneybayir",
+    "settlement_id": "TR-Y-16-015-M-0058",
+    "name": "Güneybayırı",
+    "note": "Açık Veri karşılaştırması: Güneybayir -> Güneybayırı."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "huseyinalan",
+    "settlement_id": "TR-Y-16-015-M-0067",
+    "name": "Hüseyinalanı",
+    "note": "Açık Veri karşılaştırması: Hüseyinalan -> Hüseyinalanı."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "kayihan",
+    "settlement_id": "TR-Y-16-015-M-0077",
+    "name": "Kayhan",
+    "note": "Açık Veri karşılaştırması: Kayihan -> Kayhan."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "kogukcinar",
+    "settlement_id": "TR-Y-16-015-M-0083",
+    "name": "Kovukçınar",
+    "note": "Açık Veri karşılaştırması: Koğukçınar -> Kovukçınar."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "sogukpinar",
+    "settlement_id": "TR-Y-16-015-M-0119",
+    "name": "Soğukpınar B.M",
+    "note": "Açık Veri karşılaştırması: kaynak kısaltması resmi kayıtla eşlendi."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-016",
+    "raw_key": "beypinar",
+    "settlement_id": "TR-Y-16-016-M-0009",
+    "name": "Beypınarı",
+    "note": "Açık Veri karşılaştırması: Beypinar -> Beypınarı."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-016",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-16-016-M-0067",
+    "name": "Yenimahalle",
+    "note": "Açık Veri karşılaştırması: kaynakta Yeni, resmi kayıtta Yenimahalle."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-017",
+    "raw_key": "75yil",
+    "settlement_id": "TR-Y-16-017-M-0066",
+    "name": "Yetmişbeşinciyıl",
+    "note": "Açık Veri karşılaştırması: 75.Yıl -> Yetmişbeşinciyıl."
+  },
+  {
+    "province_id": "TR-P-16",
+    "district_id": "TR-D-16-015",
+    "raw_key": "suleymaniye",
+    "settlement_id": "TR-Y-16-015-M-0046",
+    "name": "Elmaçukur",
+    "note": "Kullanıcı doğrulaması: Bursa Osmangazi Süleymaniye kaydının yeni adı Elmaçukur."
   }
 ]

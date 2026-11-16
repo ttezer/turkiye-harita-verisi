@@ -16,6 +16,7 @@
     "inspect:nvi": "python scripts/inspect-nvi-surface.py",
     "normalize:bagli-yerlesimler": "node scripts/normalize-bagli-yerlesimler.js",
     "report:final-mahalle-overlaps": "node scripts/report-final-mahalle-overlaps.js",
+    "report:bursa-mahalle-qc": "node scripts/report-bursa-mahalle-qc.js",
     "example:js": "node examples/basic-js-example.mjs",
     "test": "vitest run --reporter dot",
     "test:coverage": "vitest run --coverage",
