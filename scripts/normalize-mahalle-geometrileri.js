@@ -162,9 +162,6 @@ const LOCAL_MUNICIPAL_SOURCES = [
     },
     use_osb_type: true,
     osb_name_pattern: 'osb|\\bsb\\b',
-    osb_id_key_overrides: {
-      hasanagaosb: 'BAYOSB',
-    },
   },
   {
     province_id: 'TR-P-27',
@@ -386,6 +383,9 @@ const LOCAL_MUNICIPAL_SOURCES = [
     include_ambiguous_as_source_only: true,
     use_osb_type: true,
     osb_name_pattern: '(?:osb|(?:^|\\s)sb(?:$|\\s)|organ[iİ]ze sanay[iİ] b[oö]lges[iİ]|serbest b[oö]lge)',
+    osb_id_key_overrides: {
+      halilbeyliosb: 'BAYOSB',
+    },
   },
   {
     province_id: 'TR-P-77',

@@ -19,9 +19,9 @@
       "province_id": "TR-P-16",
       "province_name": "Bursa",
       "issue": "manual_quality_note",
-      "status": "open",
-      "reviewed_at": "2026-04-24",
-      "note": "Bazı OSB veya özel sanayi alanı adları resmi mahalle metadata'sı ile birebir eşleşmediği için mahalle polygonu olarak çizilmeyebilir. Bu not, görünmeyen OSB benzeri alanlar için genel veri kapsamı uyarısıdır."
+      "status": "resolved",
+      "reviewed_at": "2026-11-16",
+      "note": "Bursa Açık Veri kaynağı yeniden kontrol edildi. Mahalle eşleşmeleri tamam; OSB kayıtları mahalle dışı özel alan olarak ayrı tutuluyor."
     },
     {
       "province_id": "TR-P-58",
