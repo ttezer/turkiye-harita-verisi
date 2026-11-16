@@ -6455,5 +6455,13 @@
     "settlement_id": "TR-Y-35-023-M-0040",
     "name": "Koyundere Cumhuriyet",
     "note": "İzmir Kent Rehberi ve adres karşılaştırması: Cumhuriyet -> Koyundere Cumhuriyet."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "mahmudiye",
+    "settlement_id": "TR-Y-35-005-M-0033",
+    "name": "Mahmudiye",
+    "note": "Kullanıcı doğrulaması: Bergama Çamtepe mahallesinin güncel adı Mahmudiye. Eski resmi ID korunarak görünen ad güncellendi."
   }
 ]

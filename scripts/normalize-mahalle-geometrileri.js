@@ -162,6 +162,9 @@ const LOCAL_MUNICIPAL_SOURCES = [
     },
     use_osb_type: true,
     osb_name_pattern: 'osb|\\bsb\\b',
+    osb_id_key_overrides: {
+      hasanagaosb: 'BAYOSB',
+    },
   },
   {
     province_id: 'TR-P-27',
@@ -1310,7 +1313,8 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
 
   const buildOsbResult = (rawName, district, geometry) => {
     const osbName = formatDisplayNamePreservingAcronyms(displayNameForFeature() || rawName);
-    const nameKey = compactKey(rawName).toUpperCase();
+    const rawNameKey = compactKey(rawName);
+    const nameKey = String(source.osb_id_key_overrides?.[rawNameKey] || rawNameKey).toUpperCase();
     const distSeq = district.id.split('-').pop();
     const provincePlate = source.province_id.replace('TR-P-', '');
     const osbId = `TR-Y-${provincePlate}-${distSeq}-OSB-${nameKey}`;
