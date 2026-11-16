@@ -381,7 +381,8 @@ const LOCAL_MUNICIPAL_SOURCES = [
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
-    osb_name_pattern: '\\b(osb|organize sanayi bolgesi|serbest bolge)\\b',
+    use_osb_type: true,
+    osb_name_pattern: '(?:osb|(?:^|\\s)sb(?:$|\\s)|organ[iİ]ze sanay[iİ] b[oö]lges[iİ]|serbest b[oö]lge)',
   },
   {
     province_id: 'TR-P-77',

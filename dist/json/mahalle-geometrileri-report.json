@@ -1954,10 +1954,34 @@
           "osb_id": "TR-Y-35-001-OSB-CORAKLAROSB"
         },
         {
+          "raw_name": "BATI ANADOLU SERBEST BÖLGESİ",
+          "district_id": "TR-D-35-005",
+          "district_name": "Bergama",
+          "osb_id": "TR-Y-35-005-OSB-BATIANADOLUSERBESTBOLGESI"
+        },
+        {
           "raw_name": "BERGAMA OSB",
           "district_id": "TR-D-35-005",
           "district_name": "Bergama",
           "osb_id": "TR-Y-35-005-OSB-BERGAMAOSB"
+        },
+        {
+          "raw_name": "BUCAOSB",
+          "district_id": "TR-D-35-008",
+          "district_name": "Buca",
+          "osb_id": "TR-Y-35-008-OSB-BUCAOSB"
+        },
+        {
+          "raw_name": "AOSB",
+          "district_id": "TR-D-35-010",
+          "district_name": "Çiğli",
+          "osb_id": "TR-Y-35-010-OSB-AOSB"
+        },
+        {
+          "raw_name": "ZAFER SB",
+          "district_id": "TR-D-35-013",
+          "district_name": "Gaziemir",
+          "osb_id": "TR-Y-35-013-OSB-ZAFERSB"
         },
         {
           "raw_name": "HALİLBEYLİ OSB",
@@ -1990,6 +2014,18 @@
           "osb_id": "TR-Y-35-022-OSB-ITOBOSB"
         },
         {
+          "raw_name": "ATATÜRK PLASTİKOSB",
+          "district_id": "TR-D-35-023",
+          "district_name": "Menemen",
+          "osb_id": "TR-Y-35-023-OSB-ATATURKPLASTIKOSB"
+        },
+        {
+          "raw_name": "MALTEPE SB",
+          "district_id": "TR-D-35-023",
+          "district_name": "Menemen",
+          "osb_id": "TR-Y-35-023-OSB-MALTEPESB"
+        },
+        {
           "raw_name": "ÖDEMİŞ OSB",
           "district_id": "TR-D-35-025",
           "district_name": "Ödemiş",
@@ -2000,6 +2036,12 @@
           "district_id": "TR-D-35-028",
           "district_name": "Tire",
           "osb_id": "TR-Y-35-028-OSB-IBNIMELEKOSB"
+        },
+        {
+          "raw_name": "ORGANİZE SANAYİ BÖLGESİ",
+          "district_id": "TR-D-35-029",
+          "district_name": "Torbalı",
+          "osb_id": "TR-Y-35-029-OSB-ORGANIZESANAYIBOLGESI"
         },
         {
           "raw_name": "YENİKÖY OSB",

@@ -5911,5 +5911,525 @@
     "settlement_id": "TR-Y-16-015-M-0046",
     "name": "Elmaçukur",
     "note": "Kullanıcı doğrulaması: Bursa Osmangazi Süleymaniye kaydının yeni adı Elmaçukur."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-001",
+    "raw_key": "bhayrettinpasa",
+    "settlement_id": "TR-Y-35-001-M-0004",
+    "name": "Barbaros Hayrettin Paşa",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: B. Hayrettin Paşa -> Barbaros Hayrettin Paşa."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-001",
+    "raw_key": "kapukaya",
+    "settlement_id": "TR-Y-35-001-M-0015",
+    "name": "Kapıkaya",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kapukaya -> Kapıkaya."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-003",
+    "raw_key": "mithatpasa",
+    "settlement_id": "TR-Y-35-003-M-0043",
+    "name": "Mitatpaşa",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Mithatpaşa -> Mitatpaşa."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-004",
+    "raw_key": "alpaslan",
+    "settlement_id": "TR-Y-35-004-M-0004",
+    "name": "Alparslan",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Alpaslan -> Alparslan."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-004",
+    "raw_key": "rsevketince",
+    "settlement_id": "TR-Y-35-004-M-0021",
+    "name": "Refik Şevket İnce",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: R. Şevket İnce -> Refik Şevket İnce."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "curukbaglar",
+    "settlement_id": "TR-Y-35-005-M-0038",
+    "name": "Çürükbağ",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Çürükbağlar -> Çürükbağ."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "hacilarderekoybucagi",
+    "settlement_id": "TR-Y-35-005-M-0060",
+    "name": "Hacılar Dereköy",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Hacılar (Dereköy Bucağı) -> Hacılar Dereköy."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "hacilarismaillibucagi",
+    "settlement_id": "TR-Y-35-005-M-0059",
+    "name": "Hacılar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Hacılar (İsmailli Bucağı) -> Hacılar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "kaplangocbeylibucagi",
+    "settlement_id": "TR-Y-35-005-M-0075",
+    "name": "Kaplan Göçbeyli",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kaplan (Göçbeyli Bucağı) -> Kaplan Göçbeyli."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "kaplanyukaribeybucagi",
+    "settlement_id": "TR-Y-35-005-M-0074",
+    "name": "Kaplan",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kaplan (Yukarıbey Bucağı) -> Kaplan."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "kapukaya",
+    "settlement_id": "TR-Y-35-005-M-0073",
+    "name": "Kapıkaya",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kapukaya -> Kapıkaya."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "oruslar",
+    "settlement_id": "TR-Y-35-005-M-0099",
+    "name": "Oruçlar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Oruşlar -> Oruçlar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "tiyelti",
+    "settlement_id": "TR-Y-35-005-M-0115",
+    "name": "Teğelti",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Tiyelti -> Teğelti."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-005",
+    "raw_key": "zagnoz",
+    "settlement_id": "TR-Y-35-005-M-0136",
+    "name": "Zağnos",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Zağnoz -> Zağnos."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-007",
+    "raw_key": "sarnickoy",
+    "settlement_id": "TR-Y-35-007-M-0036",
+    "name": "Sarnıç",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Sarnıçköy -> Sarnıç."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-009",
+    "raw_key": "16eylul",
+    "settlement_id": "TR-Y-35-009-M-0018",
+    "name": "Onaltı Eylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 16 Eylül -> Onaltı Eylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-010",
+    "raw_key": "ahmettanerkislali",
+    "settlement_id": "TR-Y-35-010-M-0021",
+    "name": "Prf. Dr.Ahmet Taner Kışlalı",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Ahmet Taner Kışlalı -> Prf. Dr.Ahmet Taner Kışlalı."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-011",
+    "raw_key": "cukuralani",
+    "settlement_id": "TR-Y-35-011-M-0005",
+    "name": "Çukuralan",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Çukuralanı -> Çukuralan."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-011",
+    "raw_key": "samanlikkoy",
+    "settlement_id": "TR-Y-35-011-M-0026",
+    "name": "Samanlık",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Samanlıkköy -> Samanlık."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-013",
+    "raw_key": "dokuzeylul",
+    "settlement_id": "TR-Y-35-013-M-0001",
+    "name": "9 Eylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Dokuz Eylül -> 9 Eylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-015",
+    "raw_key": "yurdoglu",
+    "settlement_id": "TR-Y-35-015-M-0057",
+    "name": "Yurtoğlu",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yurdoğlu -> Yurtoğlu."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-015",
+    "raw_key": "yuzbasiserafettin",
+    "settlement_id": "TR-Y-35-015-M-0058",
+    "name": "Yzb. Şerafettin",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yüzbaşı Şerafettin -> Yzb. Şerafettin."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-016",
+    "raw_key": "anbarseki",
+    "settlement_id": "TR-Y-35-016-M-0001",
+    "name": "Ambarseki",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Anbarseki -> Ambarseki."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-016",
+    "raw_key": "yayla",
+    "settlement_id": "TR-Y-35-016-M-0016",
+    "name": "Yaylaköy",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yayla -> Yaylaköy."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-018",
+    "raw_key": "sekizeylul",
+    "settlement_id": "TR-Y-35-018-M-0001",
+    "name": "8 Eylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Sekiz Eylül -> 8 Eylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-019",
+    "raw_key": "bademalan",
+    "settlement_id": "TR-Y-35-019-M-0005",
+    "name": "Bademalanı",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Bademalan -> Bademalanı."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-019",
+    "raw_key": "bagalan",
+    "settlement_id": "TR-Y-35-019-M-0006",
+    "name": "Bağalanı",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Bağalan -> Bağalanı."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-019",
+    "raw_key": "kocaomer",
+    "settlement_id": "TR-Y-35-019-M-0023",
+    "name": "Kocaömerli",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kocaömer -> Kocaömerli."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-020",
+    "raw_key": "hisar",
+    "settlement_id": "TR-Y-35-020-M-0021",
+    "name": "Hisarköy",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Hisar -> Hisarköy."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-020",
+    "raw_key": "oren",
+    "settlement_id": "TR-Y-35-020-M-0035",
+    "name": "Örenköy",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Ören -> Örenköy."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-020",
+    "raw_key": "tumbullar",
+    "settlement_id": "TR-Y-35-020-M-0047",
+    "name": "Tombullar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Tumbullar -> Tombullar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-021",
+    "raw_key": "19mayis",
+    "settlement_id": "TR-Y-35-021-M-0083",
+    "name": "Ondokuzmayıs",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 19 Mayıs -> Ondokuzmayıs."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-021",
+    "raw_key": "1kadriye",
+    "settlement_id": "TR-Y-35-021-M-0017",
+    "name": "Birinci Kadriye",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 1. Kadriye -> Birinci Kadriye."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-021",
+    "raw_key": "2kadriye",
+    "settlement_id": "TR-Y-35-021-M-0048",
+    "name": "İkinci Kadriye",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 2. Kadriye -> İkinci Kadriye."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-021",
+    "raw_key": "mehmetaliakman",
+    "settlement_id": "TR-Y-35-021-M-0068",
+    "name": "M. Ali Akman",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Mehmet Ali Akman -> M. Ali Akman."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-021",
+    "raw_key": "sehitnedimtugaltay",
+    "settlement_id": "TR-Y-35-021-M-0086",
+    "name": "Ş. Nedim Tuğaltay",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Şehit Nedim Tuğaltay -> Ş. Nedim Tuğaltay."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "30agustos",
+    "settlement_id": "TR-Y-35-023-M-0061",
+    "name": "Ulukent 30 Ağustos",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 30 Ağustos -> Ulukent 30 Ağustos."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "9eylul",
+    "settlement_id": "TR-Y-35-023-M-0062",
+    "name": "Ulukent Dokuz Eylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 9 Eylül -> Ulukent Dokuz Eylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "camiikebir",
+    "settlement_id": "TR-Y-35-023-M-0016",
+    "name": "Camikebir",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Camiikebir -> Camikebir."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "degirmendere",
+    "settlement_id": "TR-Y-35-023-M-0020",
+    "name": "Emialem Değirmendere",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Değirmendere -> Emialem Değirmendere."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "fatih",
+    "settlement_id": "TR-Y-35-023-M-0058",
+    "name": "Türkelli Fatih",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Fatih -> Türkelli Fatih."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "gazi",
+    "settlement_id": "TR-Y-35-023-M-0041",
+    "name": "Koyundere Gazi",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Gazi -> Koyundere Gazi."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "golcuk",
+    "settlement_id": "TR-Y-35-023-M-0004",
+    "name": "Asarlık Gölcük",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Gölcük -> Asarlık Gölcük."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "gunerli",
+    "settlement_id": "TR-Y-35-023-M-0049",
+    "name": "Seyrek Günerli",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Günerli -> Seyrek Günerli."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "incirlipinar",
+    "settlement_id": "TR-Y-35-023-M-0005",
+    "name": "Asarlık İncirlipınar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: İncirli Pınar -> Asarlık İncirlipınar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "inonu",
+    "settlement_id": "TR-Y-35-023-M-0050",
+    "name": "Seyrek İnönü",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: İnönü -> Seyrek İnönü."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "irmak",
+    "settlement_id": "TR-Y-35-023-M-0006",
+    "name": "Asarlık Irmak",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Irmak -> Asarlık Irmak."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "kemalataturk",
+    "settlement_id": "TR-Y-35-023-M-0039",
+    "name": "Koyundere Atatürk",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kemal Atatürk -> Koyundere Atatürk."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "kir",
+    "settlement_id": "TR-Y-35-023-M-0021",
+    "name": "Emiralem Kır",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Kır -> Emiralem Kır."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "seydinnasrullah",
+    "settlement_id": "TR-Y-35-023-M-0047",
+    "name": "Seydinasrullah",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Seydinnasrullah -> Seydinasrullah."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "suzbeyli",
+    "settlement_id": "TR-Y-35-023-M-0051",
+    "name": "Seyrek Süzbeyli",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Süzbeyli -> Seyrek Süzbeyli."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "tuzcullu",
+    "settlement_id": "TR-Y-35-023-M-0052",
+    "name": "Seyrek Tuzçullu",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Tuzçullu -> Seyrek Tuzçullu."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "ulus",
+    "settlement_id": "TR-Y-35-023-M-0042",
+    "name": "Koyundere Ulus",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Ulus -> Koyundere Ulus."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "villakent",
+    "settlement_id": "TR-Y-35-023-M-0053",
+    "name": "Seyrek Villakent",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Villakent -> Seyrek Villakent."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "yayla",
+    "settlement_id": "TR-Y-35-023-M-0023",
+    "name": "Emiralem Yayla",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yayla -> Emiralem Yayla."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "yesilpinar",
+    "settlement_id": "TR-Y-35-023-M-0007",
+    "name": "Asarlık Yeşilpınar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yeşil Pınar -> Asarlık Yeşilpınar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "yildirim",
+    "settlement_id": "TR-Y-35-023-M-0059",
+    "name": "Türkelli Yıldırım",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yıldırım -> Türkelli Yıldırım."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-023",
+    "raw_key": "zeytinlik",
+    "settlement_id": "TR-Y-35-023-M-0008",
+    "name": "Asarlık Zeytinlik",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Zeytinlik -> Asarlık Zeytinlik."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "bebekler",
+    "settlement_id": "TR-Y-35-025-M-0029",
+    "name": "Derebebekler",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Bebekler -> Derebebekler."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "beyazitlar",
+    "settlement_id": "TR-Y-35-025-M-0011",
+    "name": "Beyezitlar",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Beyazıtlar -> Beyezitlar."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-025",
+    "raw_key": "uceylul",
+    "settlement_id": "TR-Y-35-025-M-0001",
+    "name": "3 Eylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Üç Eylül -> 3 Eylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-026",
+    "raw_key": "mersinalani",
+    "settlement_id": "TR-Y-35-026-M-0015",
+    "name": "Mersinalan",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Mersin Alanı -> Mersinalan."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-028",
+    "raw_key": "4eylul",
+    "settlement_id": "TR-Y-35-028-M-0030",
+    "name": "Dörteylül",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: 4 Eylül -> Dörteylül."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-029",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-35-029-M-0058",
+    "name": "Yenimahalle",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Yeni -> Yenimahalle."
+  },
+  {
+    "province_id": "TR-P-35",
+    "district_id": "TR-D-35-019",
+    "raw_key": "turkcedit",
+    "settlement_id": "TR-Y-35-019-M-0033",
+    "name": "Türk",
+    "note": "İzmir Kent Rehberi / Açık Veri karşılaştırması: Türkcedit -> Türk; Kent Rehberi kaydı mahalle tipinde."
   }
 ]
