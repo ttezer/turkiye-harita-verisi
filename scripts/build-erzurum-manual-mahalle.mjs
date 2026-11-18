@@ -7,7 +7,7 @@ import polygonClipping from 'polygon-clipping';
 const root = process.cwd();
 const manualDir = join(root, 'source', 'mahalle-manual', '25-erzurum');
 const bbKmlPath = join(root, 'data', 'erzurum-mahalle-sources-2026-11-15', 'erzurum-bb', 'erzurum-bb-aktar3-mahalle.kml');
-const canonicalKmlPath = join(root, 'data', 'erzurum-mahalle-sources-2026-11-15', 'resmi-adlandirilmis', 'erzurum-bulutkbs-resmi-adlandirilmis.kml');
+const canonicalKmlPath = join(root, 'data', 'erzurum-mahalle-sources-2026-11-15', 'resmi-adlandirilmis', 'erzurum-resmi-adlandirilmis.kml');
 const officialPath = join(root, 'dist', 'json', 'yerlesimler.json');
 const outputPath = join(manualDir, 'erzurum-mahalle-manual.kml');
 
