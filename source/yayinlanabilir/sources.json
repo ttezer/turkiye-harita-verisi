@@ -308,7 +308,6 @@
       "formats": ["GeoJSON"],
       "publishable": true,
       "local_manifests": [
-        "source/yayinlanabilir/municipal/16-bursa/district/manifest.json",
         "source/yayinlanabilir/municipal/16-bursa/mahalle/manifest.json"
       ],
       "note": "Ilce ve mahalle sinirlari acik veri portalinda GeoJSON olarak gorunuyor; il siniri ayrica bulunamadi."
@@ -455,9 +454,6 @@
       "settlement_geometry": true,
       "formats": ["KML"],
       "publishable": "partial",
-      "local_manifests": [
-        "source/yayinlanabilir/municipal/80-osmaniye/merkez/mahalle/manifest.json"
-      ],
       "note": "Il geneli degil, sadece Osmaniye Merkez ilcesi kapsami. KML mahalle adlarini iceriyor."
     },
     {
@@ -467,9 +463,6 @@
       "settlement_geometry": true,
       "formats": ["KML"],
       "publishable": "partial",
-      "local_manifests": [
-        "source/yayinlanabilir/municipal/29-gumushane/merkez/mahalle/manifest.json"
-      ],
       "note": "Il geneli degil, sadece Gumushane Merkez ilcesi kapsami. Ham KML 14 mahalle polygonu disinda point/line objeleri de iceriyor; donusumde filtre gerekli."
     },
     {
@@ -479,9 +472,6 @@
       "settlement_geometry": true,
       "formats": ["SHP ZIP"],
       "publishable": "partial",
-      "local_manifests": [
-        "source/yayinlanabilir/municipal/33-mersin/yenisehir/mahalle/manifest.json"
-      ],
       "note": "Il geneli degil, sadece ilce kapsami. Zip tam shapefile paketi iceriyor ve DBF icinde mahalle adlari var."
     }
   ]
