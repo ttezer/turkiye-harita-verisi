@@ -58,6 +58,19 @@
   ],
   "province_sources": [
     {
+      "province": "Adana",
+      "province_code": 1,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "Manuel Kaynak"
+    },
+    {
       "province": "Adiyaman",
       "province_code": 2,
       "source_name": "Manuel veri",
