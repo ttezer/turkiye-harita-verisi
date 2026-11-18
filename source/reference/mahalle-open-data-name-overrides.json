@@ -6463,5 +6463,179 @@
     "settlement_id": "TR-Y-35-005-M-0033",
     "name": "Mahmudiye",
     "note": "Kullanıcı doğrulaması: Bergama Çamtepe mahallesinin güncel adı Mahmudiye. Eski resmi ID korunarak görünen ad güncellendi."
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "adanalioglulimonlu",
+    "settlement_id": "TR-Y-33-001-M-0044"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "bahceliasagiburhan",
+    "settlement_id": "TR-Y-33-001-M-0007"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "bahcelikurkcu",
+    "settlement_id": "TR-Y-33-001-M-0043"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "bahceliyukariburhan",
+    "settlement_id": "TR-Y-33-001-M-0065"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "karacailyasemek",
+    "settlement_id": "TR-Y-33-001-M-0023"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "karacailyasevren",
+    "settlement_id": "TR-Y-33-001-M-0026"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "mithatpasa",
+    "settlement_id": "TR-Y-33-001-M-0047"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-001",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-33-001-M-0062"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-002",
+    "raw_key": "sultanalaaddin",
+    "settlement_id": "TR-Y-33-002-M-0051"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-002",
+    "raw_key": "yukarikukur",
+    "settlement_id": "TR-Y-33-002-M-0040"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-006",
+    "raw_key": "kizilen",
+    "settlement_id": "TR-Y-33-006-M-0040"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-006",
+    "raw_key": "sariyer",
+    "settlement_id": "TR-Y-33-006-M-0054"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-006",
+    "raw_key": "tapureli",
+    "settlement_id": "TR-Y-33-006-M-0059"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-008",
+    "raw_key": "findikpinari",
+    "settlement_id": "TR-Y-33-008-M-0020"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-008",
+    "raw_key": "tol",
+    "settlement_id": "TR-Y-33-008-M-0037"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-008",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-33-008-M-0039"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-009",
+    "raw_key": "hamam",
+    "settlement_id": "TR-Y-33-009-M-0047"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-009",
+    "raw_key": "ilica",
+    "settlement_id": "TR-Y-33-009-M-0052"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-010",
+    "raw_key": "camiikebir",
+    "settlement_id": "TR-Y-33-010-M-0018"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-010",
+    "raw_key": "canbazli",
+    "settlement_id": "TR-Y-33-010-M-0017"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-010",
+    "raw_key": "gedikpinari",
+    "settlement_id": "TR-Y-33-010-M-0028"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-010",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-33-010-M-0086"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "barbaros",
+    "settlement_id": "TR-Y-33-011-M-0025"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "cin",
+    "settlement_id": "TR-Y-33-011-M-0047"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "camalanbm",
+    "settlement_id": "TR-Y-33-011-M-0037"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "kanberhuyugu",
+    "settlement_id": "TR-Y-33-011-M-0093"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "yeni",
+    "settlement_id": "TR-Y-33-011-M-0173"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-011",
+    "raw_key": "yesil",
+    "settlement_id": "TR-Y-33-011-M-0175"
+  },
+  {
+    "province_id": "TR-P-33",
+    "district_id": "TR-D-33-012",
+    "raw_key": "huseyinokanmerzeci",
+    "settlement_id": "TR-Y-33-012-M-0029"
   }
 ]

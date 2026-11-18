@@ -1,6 +1,6 @@
 {
-  "source_count": 28,
-  "geometry_count": 19497,
+  "source_count": 29,
+  "geometry_count": 20308,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2122,6 +2122,50 @@
       "ambiguous": [],
       "skipped": [],
       "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-33",
+      "province_name": "Mersin",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 811,
+      "matched_count": 811,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Burhanosb",
+          "district_id": "TR-D-33-001",
+          "district_name": "Akdeniz",
+          "osb_id": "TR-Y-33-001-OSB-BURHANOSB"
+        },
+        {
+          "raw_name": "Evciosb",
+          "district_id": "TR-D-33-001",
+          "district_name": "Akdeniz",
+          "osb_id": "TR-Y-33-001-OSB-EVCIOSB"
+        },
+        {
+          "raw_name": "Karaduvar sb",
+          "district_id": "TR-D-33-001",
+          "district_name": "Akdeniz",
+          "osb_id": "TR-Y-33-001-OSB-KARADUVARSB"
+        },
+        {
+          "raw_name": "Nacarlıosb",
+          "district_id": "TR-D-33-001",
+          "district_name": "Akdeniz",
+          "osb_id": "TR-Y-33-001-OSB-NACARLIOSB"
+        },
+        {
+          "raw_name": "Tosmurlu osb",
+          "district_id": "TR-D-33-010",
+          "district_name": "Silifke",
+          "osb_id": "TR-Y-33-010-OSB-TOSMURLUOSB"
+        }
+      ]
     },
     {
       "province_id": "TR-P-67",

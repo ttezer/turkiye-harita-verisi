@@ -3,7 +3,10 @@ import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
-const forbidden = ['bulut' + 'kbs', 'parsel' + 'sorgu'];
+const forbidden = [
+  String.fromCharCode(...[98, 117, 108, 117, 116, 107, 98, 115]),
+  String.fromCharCode(...[112, 97, 114, 115, 101, 108, 115, 111, 114, 103, 117]),
+];
 const mode = process.argv.includes('--all') ? 'all' : 'staged';
 
 function runGit(args) {
