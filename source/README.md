@@ -30,4 +30,5 @@ Bu klasor aktif il, ilce ve mahalle kaynaklarini tutar.
 Ilgili belgeler:
 
 - [docs/data-sources.md](../docs/data-sources.md)
+- [docs/source-layout.md](../docs/source-layout.md)
 - [docs/pipeline.md](../docs/pipeline.md)

@@ -21,7 +21,7 @@
   "geometry_types": ["KML Polygon"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/80-osmaniye/merkez/mahalle/raw/osmaniye-merkez-mahalle-sinirlari.kml",
+      "path": "source/yayinlanabilir/municipal/80-osmaniye/mahalle/raw/osmaniye-mahalle.kml",
       "format": "KML",
       "bytes": 127179,
       "sha256": "f30c69b36a0e24d6a9605bb5c048b2334d4e59301ca50fa04c782ab05e11095d"

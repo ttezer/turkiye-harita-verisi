@@ -116,7 +116,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: MANUAL_DATA_LABEL,
     source_label: MANUAL_DATA_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '02-adiyaman', 'besni-mahalleleri.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '02-adiyaman', 'raw', 'adiyaman-mahalle.kml'),
     use_settlement_type: true,
     use_osb_type: true,
     infer_district_from_geometry: true,
@@ -268,7 +268,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Kocaeli Mahalle KML - kullanıcı tarafından sağlandı',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '41-kocaeli', 'kocaeli-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '41-kocaeli', 'raw', 'kocaeli-mahalle.kml'),
     district_field: 'ilce_adi',
   },
   {
@@ -278,7 +278,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Edirne Mahalle KML - kullanıcı tarafından sağlandı',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '22-edirne', 'edirne-mahalleler.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '22-edirne', 'raw', 'edirne-mahalle.kml'),
     pre_matched_id_field: 'mahalle_id',
     district_field: 'ilce_adi',
   },
@@ -289,7 +289,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Canakkale Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '17-canakkale', 'canakkale-mahalle-manual.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '17-canakkale', 'raw', 'canakkale-mahalle.kml'),
     pre_matched_id_field: 'canonical_id',
     district_field: 'source_ilce_adi',
   },
@@ -300,7 +300,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Aydin Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '09-aydin', 'aydin-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '09-aydin', 'raw', 'aydin-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     osb_name_pattern: '\\b(osb|ataosb|sanayi|sanayii)\\b',
@@ -312,7 +312,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Balikesir Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '10-balikesir', 'balikesir-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '10-balikesir', 'raw', 'balikesir-mahalle.kml'),
     district_field: 'district',
   },
   {
@@ -322,7 +322,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Antalya Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '07-antalya', 'antalya-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '07-antalya', 'raw', 'antalya-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
   },
@@ -333,7 +333,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Tekirdağ Mahalle KML',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '59-tekirdag', 'tekirdag-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '59-tekirdag', 'raw', 'tekirdag-mahalle.kml'),
     district_field: 'district',
     kml_text_replacements: [
       ['Tekirda?', 'Tekirdağ'],
@@ -351,7 +351,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Kırklareli Mahalle KML',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '39-kirklareli', 'kirklareli-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '39-kirklareli', 'raw', 'kirklareli-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
@@ -363,7 +363,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Istanbul Mahalle KML',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '34-istanbul', 'istanbul-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '34-istanbul', 'raw', 'istanbul-mahalle.kml'),
     district_field: 'district',
     kml_text_replacements: [
       ['?l?e:', 'İlçe:'],
@@ -377,7 +377,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Izmir Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '35-izmir', 'izmir-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '35-izmir', 'raw', 'izmir-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
@@ -394,7 +394,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Yalova Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '77-yalova', 'yalova-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '77-yalova', 'raw', 'yalova-mahalle.kml'),
     district_field: 'district',
   },
   {
@@ -404,7 +404,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Bolu Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '14-bolu', 'bolu-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '14-bolu', 'raw', 'bolu-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
@@ -417,7 +417,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Duzce Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '81-duzce', 'duzce-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '81-duzce', 'raw', 'duzce-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
@@ -430,7 +430,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: MANUAL_DATA_LABEL,
     source_label: MANUAL_DATA_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '25-erzurum', 'erzurum-mahalle-manual.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '25-erzurum', 'raw', 'erzurum-mahalle.kml'),
     district_field: 'district',
     pre_matched_id_field: 'mahalle_id',
   },
@@ -441,24 +441,10 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source: 'manual',
     source_name: MANUAL_DATA_LABEL,
     source_label: MANUAL_DATA_LABEL,
-    format: 'local_geojson',
-    file_path: path.join(municipalDir, '01-adana', 'mahalle', 'raw', 'adana-mahalleleri.geojson'),
-    name_field: 'mahalle',
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '01-adana', 'raw', 'adana-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
-  },
-  {
-    province_id: 'TR-P-01',
-    province_name: 'Adana',
-    slug: '01-adana-saricam-mahalleleri',
-    source: 'manual',
-    source_name: MANUAL_DATA_LABEL,
-    source_label: MANUAL_DATA_LABEL,
-    format: 'local_geojson',
-    file_path: path.join(municipalDir, '01-adana', 'mahalle', 'raw', 'adana-saricam-mahalleleri.geojson'),
-    name_field: 'mahalle',
-    district_field: 'district',
-    replace_existing_ids: true,
   },
   {
     province_id: 'TR-P-67',
@@ -467,7 +453,7 @@ const LOCAL_MUNICIPAL_SOURCES = [
     source_name: 'Zonguldak Mahalle KML - kullanici tarafindan saglandi',
     source_label: USER_PROVIDED_KML_LABEL,
     format: 'local_kml',
-    file_path: path.join(paths.manualMahalleRawDir, '67-zonguldak', 'zonguldak-mahalle.kml'),
+    file_path: path.join(paths.manualMahalleRawDir, '67-zonguldak', 'raw', 'zonguldak-mahalle.kml'),
     district_field: 'district',
     include_unmatched_as_source_only: true,
     include_ambiguous_as_source_only: true,
@@ -711,7 +697,7 @@ function findFileByExtension(dir, extension) {
 }
 
 function getLegacySourceDir(source) {
-  return path.join(paths.manualMahalleRawDir, source.slug);
+  return path.join(paths.manualMahalleRawDir, source.slug, 'raw');
 }
 
 function hasLegacySourceDir(source) {
@@ -1067,7 +1053,7 @@ function resolveSourceFormat(source) {
     return source.format;
   }
 
-  const dir = path.join(paths.manualMahalleRawDir, source.slug);
+  const dir = path.join(paths.manualMahalleRawDir, source.slug, 'raw');
   const files = fs.readdirSync(dir).map((file) => file.toLowerCase());
   if (files.some((file) => file.endsWith('.kml'))) {
     return 'kml';

@@ -5,12 +5,14 @@ Bu klasör, mahalle geometri pipeline'ında açıkça tanımlanmış manuel kayn
 Kurallar:
 
 - yalnızca `scripts/normalize-mahalle-geometrileri.js` içinde tanımlı dosyalar build'e alınır
-- klasöre yeni dosya koymak tek başına yayın kapsamına eklenmesi anlamına gelmez
-- her il veya veri grubu ayrı alt klasörde tutulmalıdır
-- ham dosya adları mümkün olduğunca kaynağı yansıtmalıdır
+- her il tek bir `raw/<il>-mahalle.kml` dosyasıyla temsil edilir
+- ilçe düzeltmeleri ayrı klasör veya dosya olarak bırakılmaz; il KML'ine işlenir
+- ham dosya adı il ve veri türünü yansıtır
 
 Beklenen kullanım:
 
-- `source/mahalle-manual/<il-kodu-veya-ad>/`
+- `source/mahalle-manual/<plaka>-<il>/raw/<il>-mahalle.kml`
 
 Bu klasör açık veri kaynağı yerine geçmez; lisans, kaynak ve kalite notları ayrıca korunmalıdır.
+
+Ayrıntılı klasör standardı için [docs/source-layout.md](../../docs/source-layout.md) belgesine bakın.

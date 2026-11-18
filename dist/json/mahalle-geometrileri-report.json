@@ -1,6 +1,6 @@
 {
-  "source_count": 29,
-  "geometry_count": 19494,
+  "source_count": 28,
+  "geometry_count": 19497,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -727,7 +727,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.135
     },
     {
@@ -763,7 +763,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.128
     },
     {
@@ -772,7 +772,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 3,
+      "polygon_count": 4,
       "max_dist_deg": 0.111
     },
     {
@@ -790,7 +790,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.151
     },
     {
@@ -817,7 +817,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.132
     },
     {
@@ -826,7 +826,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.105
     },
     {
@@ -835,7 +835,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.118
     },
     {
@@ -853,7 +853,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.121
     },
     {
@@ -889,7 +889,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.148
     },
     {
@@ -898,7 +898,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 3,
       "max_dist_deg": 0.117
     },
     {
@@ -907,7 +907,7 @@
       "province_id": "TR-P-14",
       "district_id": "TR-D-14-001",
       "district_name": "Bolu",
-      "polygon_count": 2,
+      "polygon_count": 4,
       "max_dist_deg": 0.176
     },
     {
@@ -1855,8 +1855,8 @@
       "source_name": "Istanbul Mahalle KML",
       "source_label": "Manuel Kaynak",
       "format": "local_kml",
-      "source_feature_count": 979,
-      "matched_count": 979,
+      "source_feature_count": 974,
+      "matched_count": 974,
       "unmatched": [],
       "ambiguous": [],
       "skipped": [],
@@ -2070,8 +2070,8 @@
       "source_name": "Bolu Mahalle KML - kullanici tarafindan saglandi",
       "source_label": "Manuel Kaynak",
       "format": "local_kml",
-      "source_feature_count": 581,
-      "matched_count": 581,
+      "source_feature_count": 676,
+      "matched_count": 676,
       "unmatched": [],
       "ambiguous": [],
       "skipped": [],
@@ -2115,22 +2115,9 @@
       "province_name": "Adana",
       "source_name": "Manuel Kaynak",
       "source_label": "Manuel Kaynak",
-      "format": "local_geojson",
+      "format": "local_kml",
       "source_feature_count": 833,
       "matched_count": 833,
-      "unmatched": [],
-      "ambiguous": [],
-      "skipped": [],
-      "osb_areas": []
-    },
-    {
-      "province_id": "TR-P-01",
-      "province_name": "Adana",
-      "source_name": "Manuel Kaynak",
-      "source_label": "Manuel Kaynak",
-      "format": "local_geojson",
-      "source_feature_count": 2,
-      "matched_count": 2,
       "unmatched": [],
       "ambiguous": [],
       "skipped": [],

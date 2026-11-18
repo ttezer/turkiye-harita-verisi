@@ -22,7 +22,7 @@
   "attribute_fields": ["Mahalle", "Ilce", "Nufus2023"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/33-mersin/yenisehir/mahalle/raw/yenisehir-mahalle.zip",
+      "path": "source/yayinlanabilir/municipal/33-mersin/mahalle/raw/mersin-mahalle.zip",
       "format": "SHP ZIP",
       "bytes": 21910,
       "sha256": "7e9de2de783eeb4277614c557fee713f91330cd637b7cec1857eb12f422181e5"

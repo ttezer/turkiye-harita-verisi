@@ -21,7 +21,7 @@
   "geometry_types": ["Polygon", "MultiPolygon"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/34-istanbul/uskudar/mahalle/raw/uskudar-mahalle-bilgi.geojson",
+      "path": "source/yayinlanabilir/municipal/34-istanbul/mahalle/raw/istanbul-uskudar-mahalle.geojson",
       "format": "GeoJSON",
       "bytes": 357910,
       "sha256": "19d20c46033eb14e9c695d963c1199d098e7f7e151f5cb37c16581518915d9b0"

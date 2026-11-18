@@ -42,19 +42,11 @@ Guncel resmi liste icin:
 
 - [sources.json](./sources.json)
 
-## Kullanicidan gelecek mahalle dosyalari
+## Klasor standardi
 
-Yeni ham mahalle dosyalari once su klasore birakilmalidir:
-
-- [incoming-mahalle](./incoming-mahalle)
-
-Bu klasorun amaci:
-
-- dosyayi kaybetmeden sabit bir yerde toplamak
-- kaynak kararini sonradan verebilmek
-- manifest hazirlanmadan once ham dosyayi ayri tutmak
-
-Dosya geldiginde hemen yayinlanabilir kabul edilmez; once lisans, kapsam ve kalite kontrol edilir.
+Her il kendi klasoru altinda tek bir `mahalle/raw` yolu kullanir. İlçe adına
+ayri ham veri klasörü açılmaz. Özgün dosya uzantısı korunur; ayrıntılı düzen
+kuralları için [kaynak dosyası standardına](../../docs/source-layout.md) bakın.
 
 ## Kapsam notu
 

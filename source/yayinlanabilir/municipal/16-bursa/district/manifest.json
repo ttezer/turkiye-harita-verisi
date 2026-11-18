@@ -20,7 +20,7 @@
   "geometry_types": ["MultiPolygon"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/16-bursa/district/raw/bursa-ilce-sinirlari.geojson",
+      "path": "source/yayinlanabilir/municipal/16-bursa/mahalle/raw/bursa-ilce-sinirlari.geojson",
       "format": "GeoJSON",
       "bytes": 998259,
       "sha256": "0476699ddc6f7450b6949cde6e8289d957d71a1086f3bc5c8a95657fc579caec"

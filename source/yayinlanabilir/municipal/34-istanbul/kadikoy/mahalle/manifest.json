@@ -20,7 +20,7 @@
   "geometry_types": ["SHP Polygon"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/34-istanbul/kadikoy/mahalle/raw/kadikoy-mahalle-sinir.shp",
+      "path": "source/yayinlanabilir/municipal/34-istanbul/mahalle/raw/istanbul-kadikoy-mahalle.shp",
       "format": "SHP",
       "bytes": 103260,
       "sha256": "4967957a2801fe70dbc565c030eae24d66e750762f06f247dc2d2fdb9e3c8946"

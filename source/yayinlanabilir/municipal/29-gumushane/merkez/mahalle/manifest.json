@@ -22,7 +22,7 @@
   "geometry_types": ["KML Polygon", "KML Point", "KML LineString"],
   "resources": [
     {
-      "path": "source/yayinlanabilir/municipal/29-gumushane/merkez/mahalle/raw/gumushane-merkez-mahalleler.kml",
+      "path": "source/yayinlanabilir/municipal/29-gumushane/mahalle/raw/gumushane-mahalle.kml",
       "format": "KML",
       "bytes": 165068,
       "sha256": "42e06f673d9273b268935573448d35360197565057ec00254e5430973e6486a4"
