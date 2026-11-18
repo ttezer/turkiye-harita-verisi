@@ -1,0 +1,153 @@
+{
+  "type": "FeatureCollection",
+  "name": "Adana mahalleleri",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "{664D2894-AF48-46FA-8408-AB6587745DAF}",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35.43286,
+              37.02731
+            ],
+            [
+              35.4174,
+              37.0282
+            ],
+            [
+              35.41792,
+              37.02674
+            ],
+            [
+              35.41642,
+              37.02572
+            ],
+            [
+              35.40227,
+              37.02191
+            ],
+            [
+              35.39882,
+              37.01909
+            ],
+            [
+              35.39944,
+              37.0143
+            ],
+            [
+              35.39134,
+              37.00846
+            ],
+            [
+              35.39546,
+              37.00813
+            ],
+            [
+              35.41105,
+              37.01516
+            ],
+            [
+              35.41273,
+              37.01231
+            ],
+            [
+              35.41943,
+              37.01074
+            ],
+            [
+              35.41737,
+              37.02037
+            ],
+            [
+              35.426,
+              37.02277
+            ],
+            [
+              35.43286,
+              37.02731
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "source": "Manuel Kaynak",
+        "province": "Adana",
+        "province_id": "{924744C0-7C4C-43AA-86D4-150B7FF80D6C}",
+        "district": "Sariçam",
+        "district_id": "{9ADCE1AA-4463-4F03-B9B4-7529F11B9ED3}",
+        "mahalle": "Elif Su Uludağ",
+        "mahalle_id": "{664D2894-AF48-46FA-8408-AB6587745DAF}",
+        "type": "Mahalle"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "{9F31F4BB-75B1-4ECA-913B-BDE421EA5A66}",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35.39135,
+              37.00931
+            ],
+            [
+              35.39944,
+              37.0143
+            ],
+            [
+              35.39909,
+              37.01972
+            ],
+            [
+              35.40472,
+              37.02251
+            ],
+            [
+              35.39936,
+              37.02505
+            ],
+            [
+              35.39103,
+              37.01849
+            ],
+            [
+              35.3833,
+              37.01499
+            ],
+            [
+              35.39135,
+              37.00931
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "source": "Manuel Kaynak",
+        "province": "Adana",
+        "province_id": "{924744C0-7C4C-43AA-86D4-150B7FF80D6C}",
+        "district": "Sariçam",
+        "district_id": "{9ADCE1AA-4463-4F03-B9B4-7529F11B9ED3}",
+        "mahalle": "Mehmet Akif Ersoy",
+        "mahalle_id": "{9F31F4BB-75B1-4ECA-913B-BDE421EA5A66}",
+        "type": "Mahalle"
+      }
+    }
+  ],
+  "metadata": {
+    "province": "Adana",
+    "province_id": 1,
+    "source": "Manuel Kaynak",
+    "fetched_at": "2026-11-18T00:00:00+03:00",
+    "geometry_note": "Null geometry records are retained so the source count is auditable."
+  }
+}
