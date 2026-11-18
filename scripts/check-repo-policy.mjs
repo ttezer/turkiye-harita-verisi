@@ -1,4 +1,6 @@
 import { execFileSync, spawnSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const root = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
 const forbidden = ['bulut' + 'kbs', 'parsel' + 'sorgu'];
@@ -26,6 +28,17 @@ function hasForbiddenPath(path) {
   return forbidden.some((term) => normalized.includes(term));
 }
 
+function filesystemPaths(directory, relative = '') {
+  const result = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = relative ? `${relative}/${entry.name}` : entry.name;
+    if (entryPath === '.git' || entryPath.startsWith('.git/')) continue;
+    result.push(entryPath);
+    if (entry.isDirectory()) result.push(...filesystemPaths(join(directory, entry.name), entryPath));
+  }
+  return result;
+}
+
 const paths = nulSeparated(runGit(
   mode === 'all'
     ? ['ls-files', '-z']
@@ -33,6 +46,9 @@ const paths = nulSeparated(runGit(
 ));
 
 const pathFindings = paths.filter(hasForbiddenPath);
+if (mode === 'all') {
+  pathFindings.push(...filesystemPaths(root).filter(hasForbiddenPath));
+}
 
 const grepArgs = ['grep', '-I', '-n', '-i'];
 for (const term of forbidden) grepArgs.push('-e', term);
