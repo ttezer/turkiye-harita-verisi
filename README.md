@@ -57,7 +57,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 
 | İl | Tamamlanan ilçe | Oran |
 | --- | ---: | ---: |
-| Adana | 0/15 | %0,0 |
+| Adana | 15/15 | %100,0 |
 | Adıyaman | 1/9 | %11,1 |
 | Afyonkarahisar | 0/18 | %0,0 |
 | Ağrı | 0/8 | %0,0 |
@@ -114,7 +114,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Malatya | 0/13 | %0,0 |
 | Manisa | 0/17 | %0,0 |
 | Mardin | 0/10 | %0,0 |
-| Mersin | 0/13 | %0,0 |
+| Mersin | 13/13 | %100,0 |
 | Muğla | 13/13 | %100,0 |
 | Muş | 0/6 | %0,0 |
 | Nevşehir | 0/8 | %0,0 |
