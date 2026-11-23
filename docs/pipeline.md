@@ -16,9 +16,11 @@ Bu repo tek bir web arayüzünden çoklu format indirme üretir. Veri hattı, ha
    Bağlı yerleşim metadata setini ve raporunu üretir.
 5. `normalize-mahalle-geometrileri`
    Açık veri ve manuel mahalle kaynaklarını eşleyip ilçe bazlı geometri üretir.
-6. `validate`
+6. `build-district-boundaries`
+   Mahalle geometrisi bulunan ilçeler için mahalle birleşimini üretir; sayım ve çok parçalı mahalle parça QC'sinde sorun bulunan ilçeleri beklemeye alıp mevcut sınırlarını korur. Mahalle verisi olmayan ilçelerde HDX geometrisi kalır. Ayrıntılar `docs/district-boundary-qc.md` içindedir.
+7. `validate`
    Üretilen veri setlerini şema ve temel sayı kontrollerinden geçirir.
-7. `export`
+8. `export`
    `dist/` altındaki JSON, GeoJSON, TopoJSON, CSV, XLSX, SQL, WKT, KML, KMZ,
    GML, OSM, SHP, DXF ve GPKG çıktıları üretir. SVG, PNG, PDF ve React
    Component çıktıları tarayıcı tarafında üretilir.

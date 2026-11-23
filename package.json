@@ -22,7 +22,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "node scripts/serve-test-ui.js",
     "test:smoke": "node scripts/smoke-test.js",
-    "build:mahalle-geometries": "node --max-old-space-size=4096 scripts/normalize-mahalle-geometrileri.js",
+    "build:mahalle-geometries": "node --max-old-space-size=4096 scripts/normalize-mahalle-geometrileri.js && node scripts/build-district-boundaries.js",
     "build:data": "node scripts/normalize.js --source hdx && python scripts/generate-province-crosswalk.py && python scripts/generate-display-name-overrides.py && node scripts/assign-ids.js && node scripts/normalize-yerlesimler.js && node scripts/normalize-bagli-yerlesimler.js && node scripts/validate.js",
     "build:dist": "node scripts/export.js",
     "build": "node scripts/clean.js && npm run build:data && npm run build:mahalle-geometries && npm run build:dist",
