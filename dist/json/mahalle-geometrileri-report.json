@@ -1,6 +1,6 @@
 {
-  "source_count": 29,
-  "geometry_count": 20308,
+  "source_count": 30,
+  "geometry_count": 21014,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2164,6 +2164,32 @@
           "district_id": "TR-D-33-010",
           "district_name": "Silifke",
           "osb_id": "TR-Y-33-010-OSB-TOSMURLUOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-47",
+      "province_name": "Mardin",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 706,
+      "matched_count": 706,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Ofis OSB",
+          "district_id": "TR-D-47-001",
+          "district_name": "Artuklu",
+          "osb_id": "TR-Y-47-001-OSB-OFISOSB"
+        },
+        {
+          "raw_name": "Yukarıazıklı OSB",
+          "district_id": "TR-D-47-004",
+          "district_name": "Kızıltepe",
+          "osb_id": "TR-Y-47-004-OSB-YUKARIAZIKLIOSB"
         }
       ]
     },

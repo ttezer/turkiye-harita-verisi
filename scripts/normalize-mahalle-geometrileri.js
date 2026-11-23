@@ -461,6 +461,23 @@ const LOCAL_MUNICIPAL_SOURCES = [
     osb_name_pattern: 'osb|\\bsb\\b',
   },
   {
+    province_id: 'TR-P-47',
+    province_name: 'Mardin',
+    slug: '47-mardin',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '47-mardin', 'raw', 'mardin-mahalle.kml'),
+    district_field: 'district',
+    display_name_overrides: {
+      '13mart': '13.Mart',
+    },
+    include_unmatched_as_source_only: true,
+    use_osb_type: true,
+    osb_name_pattern: 'osb|\\bsb\\b',
+  },
+  {
     province_id: 'TR-P-67',
     province_name: 'Zonguldak',
     slug: '67-zonguldak',
@@ -646,7 +663,8 @@ function repairPolygonRings(polygon) {
 
 export function buildGeometryProperties(source, district, rawName, override, settlement = null, displayNameOverride = null) {
   if (settlement) {
-    const displayName = formatDisplayNamePreservingAcronyms(
+    const sourceDisplayNameOverride = source.display_name_overrides?.[compactKey(settlement.name)];
+    const displayName = sourceDisplayNameOverride || formatDisplayNamePreservingAcronyms(
       override?.name || displayNameOverride || settlement.name,
     );
     return {
