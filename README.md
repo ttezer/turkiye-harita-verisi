@@ -106,7 +106,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Kayseri | 16/16 | %100,0 |
 | Kırıkkale | 0/9 | %0,0 |
 | Kırklareli | 8/8 | %100,0 |
-| Kırşehir | 0/7 | %0,0 |
+| Kırşehir | 7/7 | %100,0 |
 | Kilis | 0/4 | %0,0 |
 | Kocaeli | 12/12 | %100,0 |
 | Konya | 31/31 | %100,0 |
