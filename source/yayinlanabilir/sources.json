@@ -110,6 +110,19 @@
       "note": "Manuel Kaynak"
     },
     {
+      "province": "Çorum",
+      "province_code": 19,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "14 ilçe; 756 köy, 129 mahalle ve resmî mahalle/köy toplamına dahil edilmeyen 1 OSB alanı. Laçin Yeni/Yenimahalle ad farkı QC'de açık bırakıldı."
+    },
+    {
       "province": "Adiyaman",
       "province_code": 2,
       "source_name": "Manuel veri",

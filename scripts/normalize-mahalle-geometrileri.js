@@ -476,6 +476,25 @@ const LOCAL_MUNICIPAL_SOURCES = [
     use_osb_type: true,
   },
   {
+    province_id: 'TR-P-19',
+    province_name: 'Çorum',
+    slug: '19-corum',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '19-corum', 'raw', 'corum-mahalle.kml'),
+    district_field: 'district',
+    kml_name_field: 'match_name',
+    kml_display_name_field: 'name',
+    kml_type_field: 'type_code',
+    kml_parent_field: 'administrative_unit_name',
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+    use_osb_type: true,
+    osb_name_pattern: '\\b(osb|sb)\\b',
+  },
+  {
     province_id: 'TR-P-47',
     province_name: 'Mardin',
     slug: '47-mardin',
@@ -1192,9 +1211,13 @@ function filterSettlementMatchesByKmlContext(source, feature, settlements) {
     const rawParentKey = compactKey(rawParent);
     const expectedParent = source.kml_parent_value_map?.[rawParentKey] || rawParent;
     const expectedParentKey = compactKey(expectedParent);
-    filtered = filtered.filter((settlement) => (
-      compactKey(settlement.administrative_unit_name) === expectedParentKey
-    ));
+    filtered = filtered.filter((settlement) => {
+      const settlementParentKey = settlement.administrative_unit_name
+        ? compactKey(settlement.administrative_unit_name)
+        : '';
+      const isDistrictCenter = !settlementParentKey && expectedParentKey.endsWith('ilcemerkezi');
+      return settlementParentKey === expectedParentKey || isDistrictCenter;
+    });
   }
 
   return filtered;
