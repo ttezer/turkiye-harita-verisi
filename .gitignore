@@ -87,6 +87,7 @@ dist/geojson/mahalle-geometrileri-by-district/*.geojson
 !dist/geojson/mahalle-geometrileri-by-district/TR-D-61-*.geojson
 data/normalized/
 data/processed/
+data/external/
 .vscode/
 .idea/
 .claude/
