@@ -1,6 +1,6 @@
 {
   "description": "Yayinlanabilir acik veri adaylari. Ham veri yerine kaynak ve karar manifesti tutulur.",
-  "last_reviewed": "2026-04-23",
+  "last_reviewed": "2026-11-24",
   "policy": {
     "publishable": "Acik veri portali/lisansli indirilebilir kaynak olarak teyit edilen veri.",
     "verification_only": "Goruntulenebilir veya teknik olarak erisilebilir ama yeniden yayim izni net olmayan kaynak.",
@@ -302,6 +302,19 @@
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Kirklareli mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
+    },
+    {
+      "province": "Kırşehir",
+      "province_code": 40,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "7 ilçe; 252 köy, 67 mahalle ve resmî mahalle/köy toplamına dahil edilmeyen 1 Güldiken OSB. Devrecek ve Şehricedit ad eşleştirmeleri ile Kurancılı mahalle ayırtları işlendi."
     },
     {
       "province": "Kocaeli",
