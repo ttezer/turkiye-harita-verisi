@@ -1,0 +1,249 @@
+{
+  "province": "Çorum",
+  "province_id": "TR-P-19",
+  "source_directory": "data/external/eksik-iller-ilce-bazli/19-corum/ilce",
+  "source_feature_count": 886,
+  "output_feature_count": 886,
+  "output_counts": {
+    "koy": 756,
+    "mahalle": 129,
+    "osb": 1
+  },
+  "official_counts": {
+    "koy": 756,
+    "mahalle": 129
+  },
+  "count_comparison": [
+    {
+      "district_id": "TR-D-19-001",
+      "district": "Alaca",
+      "kml_mahalle": 7,
+      "official_mahalle": 7,
+      "mahalle_fark": 0,
+      "kml_koy": 101,
+      "official_koy": 101,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-002",
+      "district": "Bayat",
+      "kml_mahalle": 5,
+      "official_mahalle": 5,
+      "mahalle_fark": 0,
+      "kml_koy": 40,
+      "official_koy": 40,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-003",
+      "district": "Boğazkale",
+      "kml_mahalle": 4,
+      "official_mahalle": 4,
+      "mahalle_fark": 0,
+      "kml_koy": 13,
+      "official_koy": 13,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-004",
+      "district": "Çorum",
+      "kml_mahalle": 24,
+      "official_mahalle": 24,
+      "mahalle_fark": 0,
+      "kml_koy": 197,
+      "official_koy": 197,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-005",
+      "district": "Dodurga",
+      "kml_mahalle": 6,
+      "official_mahalle": 6,
+      "mahalle_fark": 0,
+      "kml_koy": 12,
+      "official_koy": 12,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-006",
+      "district": "İskilip",
+      "kml_mahalle": 14,
+      "official_mahalle": 14,
+      "mahalle_fark": 0,
+      "kml_koy": 64,
+      "official_koy": 64,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-007",
+      "district": "Kargı",
+      "kml_mahalle": 6,
+      "official_mahalle": 6,
+      "mahalle_fark": 0,
+      "kml_koy": 58,
+      "official_koy": 58,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-008",
+      "district": "Lâçin",
+      "kml_mahalle": 3,
+      "official_mahalle": 3,
+      "mahalle_fark": 0,
+      "kml_koy": 14,
+      "official_koy": 14,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-009",
+      "district": "Mecitözü",
+      "kml_mahalle": 8,
+      "official_mahalle": 8,
+      "mahalle_fark": 0,
+      "kml_koy": 54,
+      "official_koy": 54,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-010",
+      "district": "Oğuzlar",
+      "kml_mahalle": 7,
+      "official_mahalle": 7,
+      "mahalle_fark": 0,
+      "kml_koy": 6,
+      "official_koy": 6,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-011",
+      "district": "Ortaköy",
+      "kml_mahalle": 5,
+      "official_mahalle": 5,
+      "mahalle_fark": 0,
+      "kml_koy": 14,
+      "official_koy": 14,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-012",
+      "district": "Osmancık",
+      "kml_mahalle": 18,
+      "official_mahalle": 18,
+      "mahalle_fark": 0,
+      "kml_koy": 55,
+      "official_koy": 55,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-013",
+      "district": "Sungurlu",
+      "kml_mahalle": 17,
+      "official_mahalle": 17,
+      "mahalle_fark": 0,
+      "kml_koy": 108,
+      "official_koy": 108,
+      "koy_fark": 0
+    },
+    {
+      "district_id": "TR-D-19-014",
+      "district": "Uğurludağ",
+      "kml_mahalle": 5,
+      "official_mahalle": 5,
+      "mahalle_fark": 0,
+      "kml_koy": 20,
+      "official_koy": 20,
+      "koy_fark": 0
+    }
+  ],
+  "unmatched_source": [
+    {
+      "source_id": "23856",
+      "district": "Merkez",
+      "name": "Pınarçay Osb",
+      "source_name": "Pınarçay Osb",
+      "type_code": "osb"
+    }
+  ],
+  "missing_official": [],
+  "duplicate_names_same_district": [],
+  "same_name_different_type": [
+    {
+      "district": "Çorum",
+      "name": "Karakeçili",
+      "records": [
+        {
+          "id": "TR-Y-19-004-K-0109",
+          "type": "koy",
+          "source_name": "Karakeçili Köyü"
+        },
+        {
+          "id": "TR-Y-19-004-M-0013",
+          "type": "mahalle",
+          "source_name": "Karakeçili"
+        }
+      ]
+    }
+  ],
+  "duplicate_geometries": [],
+  "empty_geometries": [],
+  "geometry_issues": [],
+  "multipolygons": [
+    {
+      "id": "TR-Y-19-004-M-0001",
+      "district": "Çorum",
+      "name": "Akkent",
+      "type": "mahalle",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-006-K-0037",
+      "district": "İskilip",
+      "name": "Kavakköy",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-007-K-0021",
+      "district": "Kargı",
+      "name": "Çukuralıç",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-007-K-0012",
+      "district": "Kargı",
+      "name": "Beygircioğlu",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-007-K-0019",
+      "district": "Kargı",
+      "name": "Çobankaya",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-012-K-0054",
+      "district": "Osmancık",
+      "name": "Yenidanişment",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-012-K-0034",
+      "district": "Osmancık",
+      "name": "Karalargüney",
+      "type": "koy",
+      "parts": 2
+    },
+    {
+      "id": "TR-Y-19-008-K-0005",
+      "district": "Lâçin",
+      "name": "Gökgözler",
+      "type": "koy",
+      "parts": 2
+    }
+  ],
+  "overlap_pairs": []
+}

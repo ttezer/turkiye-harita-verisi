@@ -1,0 +1,129 @@
+{
+  "status": "completed",
+  "source": "Açık Kaynak",
+  "provinceId": "TR-P-19",
+  "plateCode": "19",
+  "province": "Çorum",
+  "retrievedAt": "2026-11-23T22:00:45.548Z",
+  "countyCount": 14,
+  "totalFeatures": 886,
+  "counties": [
+    {
+      "countyId": 1124,
+      "county": "Alaca",
+      "featureCount": 108,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1177,
+      "county": "Bayat",
+      "featureCount": 45,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1259,
+      "county": "Merkez",
+      "featureCount": 222,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1414,
+      "county": "İskilip",
+      "featureCount": 78,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1445,
+      "county": "Kargı",
+      "featureCount": 64,
+      "geometryTypes": [
+        "MultiPolygon",
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1520,
+      "county": "Mecitözü",
+      "featureCount": 62,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1556,
+      "county": "Ortaköy",
+      "featureCount": 19,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1558,
+      "county": "Osmancık",
+      "featureCount": 73,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1642,
+      "county": "Sungurlu",
+      "featureCount": 125,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1778,
+      "county": "Boğazkale",
+      "featureCount": 17,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1850,
+      "county": "Uğurludağ",
+      "featureCount": 25,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1911,
+      "county": "Dodurga",
+      "featureCount": 18,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1972,
+      "county": "Laçin",
+      "featureCount": 17,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1976,
+      "county": "Oğuzlar",
+      "featureCount": 13,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    }
+  ]
+}

@@ -80,7 +80,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Bursa | 17/17 | %100,0 |
 | Çanakkale | 12/12 | %100,0 |
 | Çankırı | 0/12 | %0,0 |
-| Çorum | 0/14 | %0,0 |
+| Çorum | 14/14 | %100,0 |
 | Denizli | 19/19 | %100,0 |
 | Diyarbakır | 0/17 | %0,0 |
 | Düzce | 8/8 | %100,0 |

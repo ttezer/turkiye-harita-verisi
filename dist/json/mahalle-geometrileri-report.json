@@ -1,6 +1,6 @@
 {
-  "source_count": 31,
-  "geometry_count": 21870,
+  "source_count": 32,
+  "geometry_count": 22756,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -1314,6 +1314,15 @@
       "district_name": "Şenkaya",
       "polygon_count": 2,
       "max_dist_deg": 0.131
+    },
+    {
+      "id": "TR-Y-19-007-K-0021",
+      "name": "Çukuralıç",
+      "province_id": "TR-P-19",
+      "district_id": "TR-D-19-007",
+      "district_name": "Kargı",
+      "polygon_count": 2,
+      "max_dist_deg": 0.153
     }
   ],
   "sources": [
@@ -2208,6 +2217,26 @@
           "district_id": "TR-D-03-015",
           "district_name": "Sandıklı",
           "osb_id": "TR-Y-03-015-OSB-SANDIKLIOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-19",
+      "province_name": "Çorum",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 886,
+      "matched_count": 886,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Pınarçay Osb",
+          "district_id": "TR-D-19-004",
+          "district_name": "Çorum",
+          "osb_id": "TR-Y-19-004-OSB-PINARCAYOSB"
         }
       ]
     },
