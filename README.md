@@ -139,47 +139,10 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Yozgat | 0/14 | %0,0 |
 | Zonguldak | 8/8 | %100,0 |
 
-## Hızlı Başlangıç
-
-```bash
-npm install
-npm run build
-```
-
-Yerel test arayuzu:
-
-```bash
-npm run test:ui
-```
-
-Otomatik kontroller:
-
-```bash
-npm test
-npm run test:smoke
-```
-
-## Dizin Ozeti
-
-```text
-source/          ham ve referans veri
-data/processed/  pipeline ara ve rapor çıktıları
-scripts/         normalize, validate ve export adımları
-dist/            üretilmiş tüketici çıktıları
-docs/            ürün ve pipeline belgeleri
-tests/           otomatik testler
-```
-
 ## Temel Belgeler
 
-- [CHANGELOG.md](./CHANGELOG.md)
-- [docs/data-sources.md](./docs/data-sources.md)
-- [docs/pipeline.md](./docs/pipeline.md)
-- [docs/release-checklist.md](./docs/release-checklist.md)
-- [docs/commit-standardi.md](./docs/commit-standardi.md)
-- [DATA-LICENSE.md](./DATA-LICENSE.md)
+- [Lisans](./LICENSE)
 
 ## Lisans
 
-- Kod: [LICENSE](./LICENSE)
-- Veri politikasi: [DATA-LICENSE.md](./DATA-LICENSE.md)
+- [LICENSE](./LICENSE)
