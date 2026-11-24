@@ -123,6 +123,19 @@
       "note": "14 ilçe; 756 köy, 129 mahalle ve resmî mahalle/köy toplamına dahil edilmeyen 1 OSB alanı. Laçin Yeni/Yenimahalle ad farkı QC'de açık bırakıldı."
     },
     {
+      "province": "Çankırı",
+      "province_code": 18,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "12 ilçe; 368 köy, 99 mülki idare mahallesi ve kaynakta ayrıca bulunan 3 OSB ile 6 kaynak-ilave yerleşim alanı. Kalekapu/Kalekapı, Kavak/Kavakköy ve Çerkeş Yeni (Saçak) ad ayrımları QC'de işlendi."
+    },
+    {
       "province": "Adiyaman",
       "province_code": 2,
       "source_name": "Manuel veri",

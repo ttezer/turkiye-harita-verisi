@@ -1,6 +1,6 @@
 {
-  "source_count": 32,
-  "geometry_count": 22756,
+  "source_count": 33,
+  "geometry_count": 23230,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -1323,6 +1323,15 @@
       "district_name": "Kargı",
       "polygon_count": 2,
       "max_dist_deg": 0.153
+    },
+    {
+      "id": "TR-Y-18-003-K-0026",
+      "name": "Doğantepe",
+      "province_id": "TR-P-18",
+      "district_id": "TR-D-18-003",
+      "district_name": "Çankırı",
+      "polygon_count": 2,
+      "max_dist_deg": 0.147
     }
   ],
   "sources": [
@@ -2237,6 +2246,38 @@
           "district_id": "TR-D-19-004",
           "district_name": "Çorum",
           "osb_id": "TR-Y-19-004-OSB-PINARCAYOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-18",
+      "province_name": "Çankırı",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 474,
+      "matched_count": 474,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Çerkeş Osb",
+          "district_id": "TR-D-18-004",
+          "district_name": "Çerkeş",
+          "osb_id": "TR-Y-18-004-OSB-CERKESOSB"
+        },
+        {
+          "raw_name": "Yeni Osb",
+          "district_id": "TR-D-18-011",
+          "district_name": "Şabanözü",
+          "osb_id": "TR-Y-18-011-OSB-YENIOSB"
+        },
+        {
+          "raw_name": "Büyük Osb",
+          "district_id": "TR-D-18-008",
+          "district_name": "Korgun",
+          "osb_id": "TR-Y-18-008-OSB-BUYUKOSB"
         }
       ]
     },

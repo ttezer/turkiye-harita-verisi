@@ -10,6 +10,10 @@ if (!provinceDir) throw new Error('Usage: node scripts/prepare-external-mahalle-
 const provinceCode = provinceDir.slice(0, 2);
 const provinceSlug = provinceDir.slice(3);
 const manualIdOverrides = {
+  '18-cankiri': {
+    '20281': 'TR-Y-18-009-M-0009',
+    '140787': 'TR-Y-18-012-M-0005',
+  },
   '19-corum': {
     '20336': 'TR-Y-19-004-M-0018',
     '20343': 'TR-Y-19-004-M-0019',
@@ -20,6 +24,16 @@ const manualIdOverrides = {
   },
 };
 const manualNameOverrides = {
+  '18-cankiri': {
+    'TR-Y-18-004-M-0013': 'Yeni (Saçak)',
+    'TR-Y-18-004-OSB-SRC-100250': 'Çerkeş OSB',
+    'TR-Y-18-011-OSB-SRC-20315': 'Yeni OSB',
+    'TR-Y-18-008-OSB-SRC-20274': 'Büyük OSB',
+    'TR-Y-18-010-M-SRC-117002': 'Kalfat Nevzat Ayaz',
+    'TR-Y-18-010-M-SRC-624106': 'Kalfat Hatipler',
+    'TR-Y-18-010-M-SRC-452698': 'Kalfat Hacı Hasan',
+    'TR-Y-18-010-M-SRC-689554': 'Kalfat Sünnetçiler',
+  },
   '19-corum': {
     'TR-Y-19-004-M-0019': 'Düvenci Mimar Sinan',
     'TR-Y-19-011-M-0001': 'Aştavul Bahçelievler',
@@ -231,9 +245,15 @@ function matchSourceFeatures() {
     const canonicalRow = manualId ? yerlesimler.find((candidate) => candidate.id === manualId) || row : row;
     const typeCode = canonicalRow?.type || sourceHint;
     const id = manualId || canonicalRow?.id || `TR-Y-${provinceCode}-${district?.district_local_code || '000'}-${typeCode === 'koy' ? 'K' : typeCode === 'osb' ? 'OSB' : 'M'}-SRC-${sourceId.replace(/[^A-Za-z0-9]+/g, '').toUpperCase()}`;
-    const status = canonicalRow ? (manualId ? 'matched_manual_override' : 'matched') : 'unmatched';
+    const status = canonicalRow ? (manualId ? 'matched_manual_override' : 'matched') : 'source_only';
     if (canonicalRow) used.add(canonicalRow.id);
-    else unmatched.push({ source_id: sourceId, district: sourceDistrict, name: rawName, type_code: typeCode });
+    else unmatched.push({
+      source_id: sourceId,
+      district: sourceDistrict,
+      name: manualNameOverrides[provinceDir]?.[id] || displayName(rawName, typeCode),
+      source_name: rawName,
+      type_code: typeCode,
+    });
     output.push({
       type: 'Feature',
       properties: {
@@ -371,7 +391,7 @@ zip.writeZip(kmzPath);
 fs.writeFileSync(qcJsonPath, `${JSON.stringify({ province: yerlesimler[0]?.province_name || provinceSlug, province_id: `TR-P-${provinceCode}`, source_directory: path.relative(root, inputRoot), ...qc }, null, 2)}\n`, 'utf8');
 
 const problematic = [
-  qc.unmatched_source.length ? `- Eşleşmeyen kaynak kayıtları: ${qc.unmatched_source.length}` : '- Eşleşmeyen kaynak kaydı yok.',
+  qc.unmatched_source.length ? `- Kaynak-ilave (source-only) kayıtlar: ${qc.unmatched_source.length}` : '- Kaynak-ilave kayıt yok.',
   qc.missing_official.length ? `- Geometride bulunmayan mülki idare kayıtları: ${qc.missing_official.length}` : '- Mülki idarede olup geometride bulunmayan kayıt yok.',
   qc.duplicate_names_same_district.length ? `- Aynı ilçe içinde aynı ad ve aynı tür kayıt grupları: ${qc.duplicate_names_same_district.length}` : '- Aynı ilçe içinde aynı ad ve aynı tür kayıt yok.',
   qc.duplicate_geometries.length ? `- Birebir aynı geometri grupları: ${qc.duplicate_geometries.length}` : '- Birebir aynı geometri yok.',
