@@ -1,0 +1,112 @@
+{
+  "status": "completed",
+  "source": "Açık Kaynak",
+  "provinceId": "TR-P-18",
+  "plateCode": "18",
+  "province": "Çankırı",
+  "retrievedAt": "2026-11-23T22:00:27.995Z",
+  "countyCount": 12,
+  "totalFeatures": 474,
+  "counties": [
+    {
+      "countyId": 1232,
+      "county": "Merkez",
+      "featureCount": 65,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1248,
+      "county": "Çerkeş",
+      "featureCount": 64,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1300,
+      "county": "Eldivan",
+      "featureCount": 22,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1399,
+      "county": "Ilgaz",
+      "featureCount": 84,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1494,
+      "county": "Kurşunlu",
+      "featureCount": 38,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1555,
+      "county": "Orta",
+      "featureCount": 38,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1649,
+      "county": "Şabanözü",
+      "featureCount": 26,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1718,
+      "county": "Yapraklı",
+      "featureCount": 43,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1765,
+      "county": "Atkaracalar",
+      "featureCount": 19,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1817,
+      "county": "Kızılırmak",
+      "featureCount": 29,
+      "geometryTypes": [
+        "Polygon",
+        "MultiPolygon"
+      ]
+    },
+    {
+      "countyId": 1885,
+      "county": "Bayramören",
+      "featureCount": 30,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    },
+    {
+      "countyId": 1963,
+      "county": "Korgun",
+      "featureCount": 16,
+      "geometryTypes": [
+        "Polygon"
+      ]
+    }
+  ]
+}

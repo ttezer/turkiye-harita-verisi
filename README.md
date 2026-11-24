@@ -79,7 +79,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Burdur | 0/11 | %0,0 |
 | Bursa | 17/17 | %100,0 |
 | Çanakkale | 12/12 | %100,0 |
-| Çankırı | 0/12 | %0,0 |
+| Çankırı | 12/12 | %100,0 |
 | Çorum | 14/14 | %100,0 |
 | Denizli | 19/19 | %100,0 |
 | Diyarbakır | 0/17 | %0,0 |

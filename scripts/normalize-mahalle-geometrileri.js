@@ -495,6 +495,26 @@ const LOCAL_MUNICIPAL_SOURCES = [
     osb_name_pattern: '\\b(osb|sb)\\b',
   },
   {
+    province_id: 'TR-P-18',
+    province_name: 'Çankırı',
+    slug: '18-cankiri',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '18-cankiri', 'raw', 'cankiri-mahalle.kml'),
+    district_field: 'district',
+    kml_name_field: 'match_name',
+    kml_display_name_field: 'name',
+    kml_type_field: 'type_code',
+    kml_parent_field: 'administrative_unit_name',
+    display_name_parent_on_duplicate: true,
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+    use_osb_type: true,
+    osb_name_pattern: '\\b(osb|sb)\\b',
+  },
+  {
     province_id: 'TR-P-47',
     province_name: 'Mardin',
     slug: '47-mardin',
@@ -550,6 +570,9 @@ function formatDisplayNamePreservingAcronyms(value) {
         return part;
       }
       const lower = part.toLocaleLowerCase('tr-TR');
+      if (lower.startsWith('(') && lower.length > 2) {
+        return `(${lower.charAt(1).toLocaleUpperCase('tr-TR')}${lower.slice(2)}`;
+      }
       return lower.charAt(0).toLocaleUpperCase('tr-TR') + lower.slice(1);
     })
     .join('');
