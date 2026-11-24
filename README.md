@@ -59,7 +59,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | --- | ---: | ---: |
 | Adana | 15/15 | %100,0 |
 | Adıyaman | 1/9 | %11,1 |
-| Afyonkarahisar | 0/18 | %0,0 |
+| Afyonkarahisar | 18/18 | %100,0 |
 | Ağrı | 0/8 | %0,0 |
 | Aksaray | 0/8 | %0,0 |
 | Amasya | 0/7 | %0,0 |
@@ -113,7 +113,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Kütahya | 0/13 | %0,0 |
 | Malatya | 0/13 | %0,0 |
 | Manisa | 0/17 | %0,0 |
-| Mardin | 0/10 | %0,0 |
+| Mardin | 10/10 | %100,0 |
 | Mersin | 13/13 | %100,0 |
 | Muğla | 13/13 | %100,0 |
 | Muş | 0/6 | %0,0 |
@@ -176,6 +176,7 @@ tests/           otomatik testler
 - [docs/data-sources.md](./docs/data-sources.md)
 - [docs/pipeline.md](./docs/pipeline.md)
 - [docs/release-checklist.md](./docs/release-checklist.md)
+- [docs/commit-standardi.md](./docs/commit-standardi.md)
 - [DATA-LICENSE.md](./DATA-LICENSE.md)
 
 ## Lisans

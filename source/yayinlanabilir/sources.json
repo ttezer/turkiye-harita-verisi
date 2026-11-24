@@ -84,6 +84,19 @@
       "note": "Manuel Kaynak"
     },
     {
+      "province": "Afyonkarahisar",
+      "province_code": 3,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "18 ilçe; 431 mahalle, 420 köy ve resmî mahalle/köy toplamına dahil edilmeyen 5 OSB alanı."
+    },
+    {
       "province": "Mardin",
       "province_code": 47,
       "source_name": "Manuel Kaynak",

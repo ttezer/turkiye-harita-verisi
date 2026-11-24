@@ -461,6 +461,21 @@ const LOCAL_MUNICIPAL_SOURCES = [
     osb_name_pattern: 'osb|\\bsb\\b',
   },
   {
+    province_id: 'TR-P-03',
+    province_name: 'Afyonkarahisar',
+    slug: '03-afyonkarahisar',
+    source: 'manual',
+    source_name: MANUAL_DATA_LABEL,
+    source_label: MANUAL_DATA_LABEL,
+    format: 'local_kml',
+    file_path: path.join(paths.manualMahalleRawDir, '03-afyonkarahisar', 'raw', 'afyonkarahisar-mahalle.kml'),
+    district_field: 'district',
+    kml_type_field: 'type',
+    include_unmatched_as_source_only: true,
+    include_ambiguous_as_source_only: true,
+    use_osb_type: true,
+  },
+  {
     province_id: 'TR-P-47',
     province_name: 'Mardin',
     slug: '47-mardin',
@@ -703,13 +718,14 @@ export function buildGeometryProperties(source, district, rawName, override, set
   };
 }
 
-function sourceOnlyFeatureId(source, district, feature, rawName) {
+function sourceOnlyFeatureId(source, district, feature, rawName, settlementType = 'mahalle') {
   const rawId = String(
     feature?.properties?.id ||
     feature?.properties?.ID ||
     `${district.id}-${compactKey(rawName)}`
   ).replace(/[^A-Za-z0-9]+/g, '').toUpperCase();
-  return `TR-Y-${source.province_id.replace(/^TR-P-/, '')}-${district.id.replace(/^TR-D-\d{2}-/, '')}-M-SRC-${rawId}`;
+  const typeCode = settlementType === 'koy' ? 'K' : 'M';
+  return `TR-Y-${source.province_id.replace(/^TR-P-/, '')}-${district.id.replace(/^TR-D-\d{2}-/, '')}-${typeCode}-SRC-${rawId}`;
 }
 
 function addIndexValue(index, key, settlement) {
@@ -1637,7 +1653,11 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
       (settlementMatches.length > 1 && source.include_ambiguous_as_source_only)
     );
     if (shouldIncludeSourceOnly) {
-      const sourceOnlyId = sourceOnlyFeatureId(source, district, feature, rawName);
+      const sourceTypeKey = source.kml_type_field && feature?.properties?.[source.kml_type_field]
+        ? compactKey(feature.properties[source.kml_type_field])
+        : 'mahalle';
+      const sourceSettlementType = sourceTypeKey === 'koy' || sourceTypeKey === 'koyu' ? 'koy' : 'mahalle';
+      const sourceOnlyId = sourceOnlyFeatureId(source, district, feature, rawName, sourceSettlementType);
       return {
         status: 'matched',
         feature: {
@@ -1647,6 +1667,7 @@ function normalizeSourceFeature(source, feature, indexes, districtFeatures) {
               id: sourceOnlyId,
               name: formatDisplayNamePreservingAcronyms(displayNameForFeature() || rawName),
             }),
+            type: sourceSettlementType,
             source_only_keep_separate: true,
             source_match_status: settlementMatches.length === 0 ? 'unmatched' : 'ambiguous',
           },
