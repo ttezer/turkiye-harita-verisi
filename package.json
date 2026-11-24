@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@tmcw/togeojson": "^7.1.2",
-    "@xmldom/xmldom": "^0.9.10",
+    "@xmldom/xmldom": "0.9.12",
     "adm-zip": "^0.5.17",
     "d3-geo": "^3.1.1",
     "iconv-lite": "^0.7.2",
