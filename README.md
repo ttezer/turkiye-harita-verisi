@@ -93,7 +93,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Giresun | 0/16 | %0,0 |
 | Gümüşhane | 0/6 | %0,0 |
 | Hakkari | 0/5 | %0,0 |
-| Hatay | 0/15 | %0,0 |
+| Hatay | 15/15 | %100,0 |
 | Iğdır | 0/4 | %0,0 |
 | Isparta | 13/13 | %100,0 |
 | İstanbul | 39/39 | %100,0 |

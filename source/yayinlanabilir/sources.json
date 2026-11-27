@@ -42,18 +42,6 @@
       "license": "ODbL",
       "status": "candidate_with_license_obligations",
       "note": "Teknik olarak genis kapsama sahip olabilir; ODbL atif ve share-alike yukumlulukleri proje dokumaninda acik yazilmali."
-    },
-    {
-      "name": "GADM",
-      "url": "https://gadm.org/license.html",
-      "levels": {
-        "province": true,
-        "district": true,
-        "settlement": false
-      },
-      "license": "Academic/non-commercial only",
-      "status": "not_recommended",
-      "note": "Yeniden dagitim ve ticari kullanim kisitli oldugu icin bu proje icin ana kaynak olmamali."
     }
   ],
   "province_sources": [
@@ -65,7 +53,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Manuel Kaynak"
@@ -78,7 +68,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Manuel Kaynak"
@@ -91,7 +83,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "18 ilçe; 431 mahalle, 420 köy ve resmî mahalle/köy toplamına dahil edilmeyen 5 OSB alanı."
@@ -104,7 +98,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Manuel Kaynak"
@@ -117,7 +113,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "14 ilçe; 756 köy, 129 mahalle ve resmî mahalle/köy toplamına dahil edilmeyen 1 OSB alanı. Laçin Yeni/Yenimahalle ad farkı QC'de açık bırakıldı."
@@ -130,7 +128,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "12 ilçe; 368 köy, 99 mülki idare mahallesi ve kaynakta ayrıca bulunan 3 OSB ile 6 kaynak-ilave yerleşim alanı. Kalekapu/Kalekapı, Kavak/Kavakköy ve Çerkeş Yeni (Saçak) ad ayrımları QC'de işlendi."
@@ -144,7 +144,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan Besni mahalle verisi. Manuel veri olarak yayinlanir."
@@ -158,7 +160,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Balikesir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -172,7 +176,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Antalya mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -186,7 +192,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Aydin mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -200,7 +208,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Istanbul mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce bilgisi ile ilce eslesmesi yapilir."
@@ -214,7 +224,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Izmir mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -228,7 +240,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Yalova mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -242,7 +256,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Bolu mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir. OSB kaydi mahalle sayimina dahil edilmez."
@@ -256,7 +272,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Duzce mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -270,7 +288,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Zonguldak mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -284,7 +304,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Tekirdag mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -298,7 +320,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Kirklareli mahalle KML dosyasi. Normalize asamasinda KML icindeki district alani ile ilce eslesmesi yapilir."
@@ -311,7 +335,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "7 ilçe; 252 köy, 67 mahalle ve resmî mahalle/köy toplamına dahil edilmeyen 1 Güldiken OSB. Devrecek ve Şehricedit ad eşleştirmeleri ile Kurancılı mahalle ayırtları işlendi."
@@ -325,7 +351,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Kocaeli mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce_adi alani ile ilce eslesmesi yapilir."
@@ -339,7 +367,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Edirne mahalle KML dosyasi. Normalize asamasinda KML icindeki ilce ve mahalle kimligi alanlari kullanilir."
@@ -353,7 +383,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Kullanici tarafindan saglanan manuel Canakkale mahalle KML dosyasi. Normalize asamasinda KML icindeki canonical ve ilce alanlari kullanilir."
@@ -367,7 +399,14 @@
       "province_geometry": true,
       "district_geometry": true,
       "settlement_geometry": true,
-      "formats": ["KMZ", "SHP", "XLS", "XLSX", "JSON", "GEOJSON"],
+      "formats": [
+        "KMZ",
+        "SHP",
+        "XLS",
+        "XLSX",
+        "JSON",
+        "GEOJSON"
+      ],
       "publishable": true,
       "note": "Il, ilce ve mahalle veri setleri acik veri portalinda gorunuyor."
     },
@@ -380,7 +419,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["GeoJSON"],
+      "formats": [
+        "GeoJSON"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/06-ankara/mahalle/manifest.json"
@@ -396,7 +437,9 @@
       "province_geometry": false,
       "district_geometry": true,
       "settlement_geometry": true,
-      "formats": ["GeoJSON"],
+      "formats": [
+        "GeoJSON"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/16-bursa/mahalle/manifest.json"
@@ -412,7 +455,11 @@
       "province_geometry": true,
       "district_geometry": true,
       "settlement_geometry": true,
-      "formats": ["API", "PDF", "KML"],
+      "formats": [
+        "API",
+        "PDF",
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/27-gaziantep/mahalle/manifest.json"
@@ -428,7 +475,10 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML", "SHP"],
+      "formats": [
+        "KML",
+        "SHP"
+      ],
       "publishable": true,
       "note": "Mahalle sinirlari acik lisansli. Il/ilce siniri acik portalda bu taramada bulunamadi."
     },
@@ -441,7 +491,11 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["CSV", "GeoJSON", "SHP ZIP"],
+      "formats": [
+        "CSV",
+        "GeoJSON",
+        "SHP ZIP"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/38-kayseri/mahalle/manifest.json"
@@ -457,7 +511,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["GeoJSON"],
+      "formats": [
+        "GeoJSON"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/42-konya/mahalle/manifest.json"
@@ -473,7 +529,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["GeoJSON"],
+      "formats": [
+        "GeoJSON"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/52-ordu/mahalle/manifest.json"
@@ -489,7 +547,11 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["SHP", "PDF", "PNG"],
+      "formats": [
+        "SHP",
+        "PDF",
+        "PNG"
+      ],
       "publishable": true,
       "note": "Mahalle siniri verisi var; kapsam Sivas merkez olabilir, il geneli kontrol edilmeli."
     },
@@ -502,7 +564,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "Manuel veri"
@@ -516,12 +580,29 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["GeoJSON"],
+      "formats": [
+        "GeoJSON"
+      ],
       "publishable": true,
       "local_manifests": [
         "source/yayinlanabilir/municipal/61-trabzon/mahalle/manifest.json"
       ],
       "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
+    },
+    {
+      "province": "Hatay",
+      "province_code": 31,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": [
+        "KML"
+      ],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "15 ilçe; 599 mahalle ve 2 OSB. Arsuz / Özbekistan için açık kaynaklardan ayrı poligon tespit edilemedi."
     },
     {
       "province": "Burdur",
@@ -531,7 +612,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "11 ilçe; 130 mahalle, 192 köy ve 2 OSB. Değirmenler çok parçalı geometri olarak doğrulandı."
@@ -544,7 +627,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "13 ilçe; 218 mahalle, 204 köy ve 1 OSB. Eğirler çok parçalı geometri olarak doğrulandı."
@@ -557,7 +642,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "13 ilçede geometri; 231 mahalle, 539 köy ve 4 OSB. Simav Demir ve Tavşanlı Gürağaç için ayrı geometri yok."
@@ -570,7 +657,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "17 ilçe; 1.089 mahalle ve 4 OSB. Yedi çok parçalı geometri kontrol edildi."
@@ -583,7 +672,9 @@
       "province_geometry": false,
       "district_geometry": false,
       "settlement_geometry": true,
-      "formats": ["KML"],
+      "formats": [
+        "KML"
+      ],
       "publishable": true,
       "local_manifests": [],
       "note": "6 ilçe; 73 mahalle, 245 köy ve 3 OSB."
@@ -597,38 +688,13 @@
       "province_geometry": true,
       "district_geometry": true,
       "settlement_geometry": true,
-      "formats": ["SHP", "RAR"],
+      "formats": [
+        "SHP",
+        "RAR"
+      ],
       "publishable": true,
       "note": "Kullanici onayi ile yayin adayi. Kaynak sayfada resmi is ve islemlerde kullanilmaz notu var; kalite uyarisi gosterilmeli."
     }
   ],
-  "partial_sources": [
-    {
-      "province": "Osmaniye",
-      "district": "Merkez",
-      "source_url": "https://ulasav.csb.gov.tr/dataset/osmaniye-merkez-mahalle-sinirlari/resource/2537c8d1-a311-45a0-9bc5-cfee8ea6923d",
-      "settlement_geometry": true,
-      "formats": ["KML"],
-      "publishable": "partial",
-      "note": "Il geneli degil, sadece Osmaniye Merkez ilcesi kapsami. KML mahalle adlarini iceriyor."
-    },
-    {
-      "province": "Gumushane",
-      "district": "Merkez",
-      "source_url": "https://ulasav.csb.gov.tr/dataset/gumushane-ili-merkez-mahalle-sinirlari/resource/6db673a5-770f-4dd3-bc36-7ffa005574d8",
-      "settlement_geometry": true,
-      "formats": ["KML"],
-      "publishable": "partial",
-      "note": "Il geneli degil, sadece Gumushane Merkez ilcesi kapsami. Ham KML 14 mahalle polygonu disinda point/line objeleri de iceriyor; donusumde filtre gerekli."
-    },
-    {
-      "province": "Mersin",
-      "district": "Yenisehir",
-      "source_url": "https://ulasav.csb.gov.tr/dataset/331-mersin-yenisehir-ilcesi-mahalle-sinirlari",
-      "settlement_geometry": true,
-      "formats": ["SHP ZIP"],
-      "publishable": "partial",
-      "note": "Il geneli degil, sadece ilce kapsami. Zip tam shapefile paketi iceriyor ve DBF icinde mahalle adlari var."
-    }
-  ]
+  "partial_sources": []
 }

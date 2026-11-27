@@ -1,6 +1,6 @@
 {
-  "source_count": 39,
-  "geometry_count": 26485,
+  "source_count": 40,
+  "geometry_count": 27086,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2507,6 +2507,32 @@
           "district_id": "TR-D-15-004",
           "district_name": "Burdur",
           "osb_id": "TR-Y-15-004-OSB-SRC-10977"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-31",
+      "province_name": "Hatay",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 601,
+      "matched_count": 601,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Azganlık Osb",
+          "district_id": "TR-D-31-009",
+          "district_name": "İskenderun",
+          "osb_id": "TR-Y-31-009-OSB-SRC-181242"
+        },
+        {
+          "raw_name": "Karşı Osb",
+          "district_id": "TR-D-31-012",
+          "district_name": "Payas",
+          "osb_id": "TR-Y-31-012-OSB-SRC-31193"
         }
       ]
     }
