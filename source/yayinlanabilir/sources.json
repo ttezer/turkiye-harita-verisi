@@ -524,6 +524,19 @@
       "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
     },
     {
+      "province": "Isparta",
+      "province_code": 32,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "13 ilçe; 218 mahalle, 204 köy ve 1 OSB. Eğirler çok parçalı geometri olarak doğrulandı."
+    },
+    {
       "province": "Kütahya",
       "province_code": 43,
       "source_name": "Manuel Kaynak",

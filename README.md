@@ -95,7 +95,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Hakkari | 0/5 | %0,0 |
 | Hatay | 0/15 | %0,0 |
 | Iğdır | 0/4 | %0,0 |
-| Isparta | 0/13 | %0,0 |
+| Isparta | 13/13 | %100,0 |
 | İstanbul | 39/39 | %100,0 |
 | İzmir | 30/30 | %100,0 |
 | Kahramanmaraş | 0/11 | %0,0 |
