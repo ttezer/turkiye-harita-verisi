@@ -524,6 +524,19 @@
       "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
     },
     {
+      "province": "Kütahya",
+      "province_code": 43,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "13 ilçede geometri; 231 mahalle, 539 köy ve 4 OSB. Simav Demir ve Tavşanlı Gürağaç için ayrı geometri yok."
+    },
+    {
       "province": "Uşak",
       "province_code": 64,
       "source_name": "Manuel Kaynak",

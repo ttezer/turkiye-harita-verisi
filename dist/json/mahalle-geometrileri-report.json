@@ -1,6 +1,6 @@
 {
-  "source_count": 35,
-  "geometry_count": 23871,
+  "source_count": 36,
+  "geometry_count": 24645,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2369,6 +2369,60 @@
           "district_id": "TR-D-64-006",
           "district_name": "Uşak",
           "osb_id": "TR-Y-64-006-OSB-TEKSTILOSB"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-43",
+      "province_name": "Kütahya",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 774,
+      "matched_count": 774,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Gediz Osb",
+          "district_id": "TR-D-43-007",
+          "district_name": "Gediz",
+          "osb_id": "TR-Y-43-007-OSB-SRC-51526"
+        },
+        {
+          "raw_name": "Organize Sanayi Bölgesi",
+          "district_id": "TR-D-43-009",
+          "district_name": "Kütahya",
+          "osb_id": "TR-Y-43-009-OSB-SRC-51394"
+        },
+        {
+          "raw_name": "Çalca Osb",
+          "district_id": "TR-D-43-009",
+          "district_name": "Kütahya",
+          "osb_id": "TR-Y-43-009-OSB-SRC-140146"
+        },
+        {
+          "raw_name": "Çobanköy Osb",
+          "district_id": "TR-D-43-013",
+          "district_name": "Tavşanlı",
+          "osb_id": "TR-Y-43-013-OSB-SRC-104436"
+        }
+      ],
+      "missing_official": [
+        {
+          "id": "TR-Y-43-011-M-0014",
+          "name": "Demir",
+          "district_id": "TR-D-43-011",
+          "district_name": "Simav",
+          "type": "mahalle"
+        },
+        {
+          "id": "TR-Y-43-013-M-0014",
+          "name": "Gürağaç",
+          "district_id": "TR-D-43-013",
+          "district_name": "Tavşanlı",
+          "type": "mahalle"
         }
       ]
     }

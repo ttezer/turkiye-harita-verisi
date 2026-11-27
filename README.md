@@ -110,7 +110,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Kilis | 0/4 | %0,0 |
 | Kocaeli | 12/12 | %100,0 |
 | Konya | 31/31 | %100,0 |
-| Kütahya | 0/13 | %0,0 |
+| Kütahya | 13/13 | %100,0 |
 | Malatya | 0/13 | %0,0 |
 | Manisa | 0/17 | %0,0 |
 | Mardin | 10/10 | %100,0 |
