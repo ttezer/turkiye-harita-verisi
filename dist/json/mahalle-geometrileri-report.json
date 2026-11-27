@@ -1,6 +1,6 @@
 {
-  "source_count": 38,
-  "geometry_count": 26161,
+  "source_count": 39,
+  "geometry_count": 26485,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2481,6 +2481,32 @@
           "district_id": "TR-D-32-006",
           "district_name": "Isparta",
           "osb_id": "TR-Y-32-006-OSB-SRC-31413"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-15",
+      "province_name": "Burdur",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 324,
+      "matched_count": 324,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Çamlıca Osb",
+          "district_id": "TR-D-15-003",
+          "district_name": "Bucak",
+          "osb_id": "TR-Y-15-003-OSB-SRC-11018"
+        },
+        {
+          "raw_name": "Kışla Osb",
+          "district_id": "TR-D-15-004",
+          "district_name": "Burdur",
+          "osb_id": "TR-Y-15-004-OSB-SRC-10977"
         }
       ]
     }

@@ -76,7 +76,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Bingöl | 0/8 | %0,0 |
 | Bitlis | 0/7 | %0,0 |
 | Bolu | 9/9 | %100,0 |
-| Burdur | 0/11 | %0,0 |
+| Burdur | 11/11 | %100,0 |
 | Bursa | 17/17 | %100,0 |
 | Çanakkale | 12/12 | %100,0 |
 | Çankırı | 12/12 | %100,0 |
