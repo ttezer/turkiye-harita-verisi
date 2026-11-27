@@ -291,6 +291,8 @@ select:hover, input[type="search"]:hover { border-color: var(--line-strong); }
 .status-footer strong { color: var(--blue); font-size: 25px; letter-spacing: -.04em; }
 .status-footer span { color: var(--muted); font-size: 12px; font-weight: 650; }
 .status-footer p { margin: 0 0 0 30px; color: var(--muted); font-size: 12px; }
+.status-footer .footer-license { margin-left: auto; text-align: right; line-height: 1.35; }
+.footer-license a { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
 
 @media (max-width: 1300px) {
   .workspace { grid-template-columns: 340px 1fr; }
@@ -311,6 +313,7 @@ select:hover, input[type="search"]:hover { border-color: var(--line-strong); }
   .map-stage { min-height: 360px; height: 54vh; }
   .status-footer { order: 4; flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
   .status-footer article { padding: 0 14px 0 0; }
+  .status-footer .footer-license { flex-basis: 100%; margin-left: 0; text-align: left; }
 }
 
 

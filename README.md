@@ -141,4 +141,4 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 
 ## Veri kaynakları ve kullanım koşulları
 
-- [Veri kaynakları, lisanslar ve sorumluluk reddi](./LICENSE)
+- [Veri kaynakları, lisanslar ve sorumluluk reddi](./LICENSE.md)
