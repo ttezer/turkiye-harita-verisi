@@ -1,6 +1,6 @@
 {
-  "source_count": 40,
-  "geometry_count": 27086,
+  "source_count": 41,
+  "geometry_count": 27810,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2533,6 +2533,38 @@
           "district_id": "TR-D-31-012",
           "district_name": "Payas",
           "osb_id": "TR-Y-31-012-OSB-SRC-31193"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-46",
+      "province_name": "Kahramanmaraş",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 724,
+      "matched_count": 724,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Çiçek Osb",
+          "district_id": "TR-D-46-006",
+          "district_name": "Elbistan",
+          "osb_id": "TR-Y-46-006-OSB-SRC-197935"
+        },
+        {
+          "raw_name": "Organize Sanayi Bölgesi",
+          "district_id": "TR-D-46-009",
+          "district_name": "Oniki Şubat",
+          "osb_id": "TR-Y-46-009-OSB-SRC-52580"
+        },
+        {
+          "raw_name": "Türkoğlu Osb",
+          "district_id": "TR-D-46-011",
+          "district_name": "Türkoğlu",
+          "osb_id": "TR-Y-46-011-OSB-SRC-139969"
         }
       ]
     }

@@ -98,7 +98,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Isparta | 13/13 | %100,0 |
 | İstanbul | 39/39 | %100,0 |
 | İzmir | 30/30 | %100,0 |
-| Kahramanmaraş | 0/11 | %0,0 |
+| Kahramanmaraş | 11/11 | %100,0 |
 | Karabük | 0/6 | %0,0 |
 | Karaman | 0/6 | %0,0 |
 | Kars | 0/8 | %0,0 |

@@ -590,6 +590,19 @@
       "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
     },
     {
+      "province": "Kahramanmaraş",
+      "province_code": 46,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "11 ilçe; 721 mahalle ve 3 OSB. Elbistan / Tepebaşı Gücük ayrı kaynak kaydı olarak korundu. Ekinözü / Anbar iki parçalı geometri olarak doğrulandı."
+    },
+    {
       "province": "Hatay",
       "province_code": 31,
       "source_name": "Manuel Kaynak",
