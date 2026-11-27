@@ -13,7 +13,7 @@
 
       gtag('config', 'G-H9QM1EV95K');
     </script>
-    <link rel="stylesheet" href="./styles.css?v=ui-revision-1">
+    <link rel="stylesheet" href="./styles.css?v=ui-revision-2">
   </head>
   <body>
     <div class="page-shell">
@@ -211,9 +211,13 @@
                 <span aria-hidden="true">⌕</span>
                 <input id="searchInput" type="search" placeholder="İl, ilçe veya mahalle ara…">
               </label>
-              <div class="click-hint">
+              <div id="mapClickHint" class="click-hint">
                 <strong>Haritadan seçin</strong>
                 <span>Detayı açmak için bir alana tıklayın</span>
+              </div>
+              <div id="mahallePreviewNotice" class="click-hint mahalle-preview-notice is-hidden" role="status">
+                <strong>Kısmi mahalle gösterimi</strong>
+                <span>Bir bölge veya il seçin.</span>
               </div>
             </div>
 
@@ -433,6 +437,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js"></script>
-    <script type="module" src="./app.js?v=37"></script>
+    <script type="module" src="./app.js?v=38"></script>
   </body>
 </html>

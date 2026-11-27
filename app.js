@@ -73,6 +73,8 @@ const els = {
   provinceSelect: document.querySelector('#provinceSelect'),
   districtSelect: document.querySelector('#districtSelect'),
   searchInput: document.querySelector('#searchInput'),
+  mapClickHint: document.querySelector('#mapClickHint'),
+  mahallePreviewNotice: document.querySelector('#mahallePreviewNotice'),
   heroFormatChips: document.querySelectorAll('.hero-format-chip[data-format]'),
   resetButton: document.querySelector('#resetButton'),
   regionCount: document.querySelector('#regionCount'),
@@ -1715,7 +1717,16 @@ async function render() {
   }
 
   const visibleFeatures = getVisibleFeatures();
-  const renderableFeatures = limitPreviewFeatures(getRenderableFeatures());
+  const allRenderableFeatures = getRenderableFeatures();
+  const renderableFeatures = limitPreviewFeatures(allRenderableFeatures);
+  const showMahallePreviewNotice = state.scope === 'turkey'
+    && !state.regionId
+    && !state.provinceId
+    && !state.districtId
+    && isPreviewLimited(allRenderableFeatures.length);
+
+  els.mapClickHint.classList.toggle('is-hidden', showMahallePreviewNotice);
+  els.mahallePreviewNotice.classList.toggle('is-hidden', !showMahallePreviewNotice);
 
   setText(els.regionCount, numberFormat.format(datasets.regions.length));
   setText(els.provinceCount, numberFormat.format(datasets.provinces.length));

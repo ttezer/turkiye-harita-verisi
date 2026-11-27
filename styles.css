@@ -156,6 +156,8 @@ select:hover, input[type="search"]:hover { border-color: var(--line-strong); }
   border-radius: 50%; color: white; background: var(--blue); font-weight: 800;
 }
 .click-hint strong { color: var(--blue-dark); font-size: 12.5px; }
+.mahalle-preview-notice { min-width: 0; }
+.mahalle-preview-notice::before { content: "!"; }
 
 .map-stage {
   height: min(calc(100vh - 335px), 650px);
