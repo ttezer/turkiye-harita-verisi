@@ -139,10 +139,6 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Yozgat | 0/14 | %0,0 |
 | Zonguldak | 8/8 | %100,0 |
 
-## Temel Belgeler
+## Veri kaynakları ve kullanım koşulları
 
-- [Lisans](./LICENSE)
-
-## Lisans
-
-- [LICENSE](./LICENSE)
+- [Veri kaynakları, lisanslar ve sorumluluk reddi](./LICENSE)
