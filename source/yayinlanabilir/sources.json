@@ -537,6 +537,19 @@
       "note": "13 ilçede geometri; 231 mahalle, 539 köy ve 4 OSB. Simav Demir ve Tavşanlı Gürağaç için ayrı geometri yok."
     },
     {
+      "province": "Manisa",
+      "province_code": 45,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "17 ilçe; 1.089 mahalle ve 4 OSB. Yedi çok parçalı geometri kontrol edildi."
+    },
+    {
       "province": "Uşak",
       "province_code": 64,
       "source_name": "Manuel Kaynak",

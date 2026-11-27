@@ -1,6 +1,6 @@
 {
-  "source_count": 36,
-  "geometry_count": 24645,
+  "source_count": 37,
+  "geometry_count": 25738,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2423,6 +2423,44 @@
           "district_id": "TR-D-43-013",
           "district_name": "Tavşanlı",
           "type": "mahalle"
+        }
+      ]
+    },
+    {
+      "province_id": "TR-P-45",
+      "province_name": "Manisa",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 1093,
+      "matched_count": 1093,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Süleymanlı Osb",
+          "district_id": "TR-D-45-002",
+          "district_name": "Akhisar",
+          "osb_id": "TR-Y-45-002-OSB-SRC-198013"
+        },
+        {
+          "raw_name": "Salihli Osb",
+          "district_id": "TR-D-45-010",
+          "district_name": "Salihli",
+          "osb_id": "TR-Y-45-010-OSB-SRC-52345"
+        },
+        {
+          "raw_name": "Selvilitepe Osb",
+          "district_id": "TR-D-45-016",
+          "district_name": "Turgutlu",
+          "osb_id": "TR-Y-45-016-OSB-SRC-52469"
+        },
+        {
+          "raw_name": "Keçiliköy Osb",
+          "district_id": "TR-D-45-017",
+          "district_name": "Yunusemre",
+          "osb_id": "TR-Y-45-017-OSB-SRC-52060"
         }
       ]
     }
