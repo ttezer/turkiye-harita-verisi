@@ -524,6 +524,19 @@
       "note": "Adrese dayali mahalle sinirlari GeoJSON olarak indirildi. Ilce atamasi normalize asamasinda ilce geometrisi ile yapilir."
     },
     {
+      "province": "Uşak",
+      "province_code": 64,
+      "source_name": "Manuel Kaynak",
+      "source_url": null,
+      "province_geometry": false,
+      "district_geometry": false,
+      "settlement_geometry": true,
+      "formats": ["KML"],
+      "publishable": true,
+      "local_manifests": [],
+      "note": "6 ilçe; 73 mahalle, 245 köy ve 3 OSB."
+    },
+    {
       "province": "Mugla",
       "province_code": 48,
       "source_name": "Mugla Buyuksehir Belediyesi CBS Acik Veri",

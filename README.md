@@ -133,7 +133,7 @@ kaynağı bulunan illerin ilçe kapsamını gösterir.
 | Tokat | 0/12 | %0,0 |
 | Trabzon | 18/18 | %100,0 |
 | Tunceli | 0/8 | %0,0 |
-| Uşak | 0/6 | %0,0 |
+| Uşak | 6/6 | %100,0 |
 | Van | 0/13 | %0,0 |
 | Yalova | 6/6 | %100,0 |
 | Yozgat | 0/14 | %0,0 |

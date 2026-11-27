@@ -1,6 +1,6 @@
 {
-  "source_count": 34,
-  "geometry_count": 23550,
+  "source_count": 35,
+  "geometry_count": 23871,
   "geometry_repair_count": 5,
   "geometry_repairs": [
     {
@@ -2339,6 +2339,38 @@
       "ambiguous": [],
       "skipped": [],
       "osb_areas": []
+    },
+    {
+      "province_id": "TR-P-64",
+      "province_name": "Uşak",
+      "source_name": "Manuel Kaynak",
+      "source_label": "Manuel Kaynak",
+      "format": "local_kml",
+      "source_feature_count": 321,
+      "matched_count": 321,
+      "unmatched": [],
+      "ambiguous": [],
+      "skipped": [],
+      "osb_areas": [
+        {
+          "raw_name": "Konak Osb",
+          "district_id": "TR-D-64-003",
+          "district_name": "Karahallı",
+          "osb_id": "TR-Y-64-003-OSB-KONAKOSB"
+        },
+        {
+          "raw_name": "Karma Osb",
+          "district_id": "TR-D-64-006",
+          "district_name": "Uşak",
+          "osb_id": "TR-Y-64-006-OSB-KARMAOSB"
+        },
+        {
+          "raw_name": "Tekstil Osb",
+          "district_id": "TR-D-64-006",
+          "district_name": "Uşak",
+          "osb_id": "TR-Y-64-006-OSB-TEKSTILOSB"
+        }
+      ]
     }
   ]
 }
